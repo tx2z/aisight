@@ -4,7 +4,7 @@ struct CitationText: View {
     let text: String
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 14) {
             ForEach(Array(parseBlocks(text).enumerated()), id: \.offset) { _, block in
                 renderBlock(block)
             }
@@ -134,7 +134,7 @@ struct CitationText: View {
                     Text("\(num).")
                         .foregroundStyle(.secondary)
                 } else {
-                    Text("•")
+                    Text("\u{2022}")
                         .foregroundStyle(.secondary)
                 }
                 renderInline(text)
@@ -143,13 +143,14 @@ struct CitationText: View {
 
         case .paragraph(let text):
             renderInline(text)
+                .lineSpacing(3)
 
         case .codeBlock(let code):
             Text(code)
                 .font(.system(.callout, design: .monospaced))
-                .padding(10)
+                .padding(12)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .background(.quaternary, in: .rect(cornerRadius: 8))
+                .background(.fill.secondary, in: .rect(cornerRadius: 10))
         }
     }
 
@@ -176,13 +177,13 @@ struct CitationText: View {
             attributed = AttributedString(escaped)
         }
 
-        // Replace attribution placeholders with styled badges
+        // Replace attribution placeholders with subtle italic caption text
         for domain in domains {
             let placeholder = "\(attrPrefix)\(domain)\(attrSuffix)"
             while let range = attributed.range(of: placeholder) {
-                var badge = AttributedString(" via \(domain) ")
+                var badge = AttributedString(" via \(domain)")
                 badge.foregroundColor = .secondary
-                badge.font = .caption2
+                badge.font = .caption.italic()
                 attributed.replaceSubrange(range, with: badge)
             }
         }

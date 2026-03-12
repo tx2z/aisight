@@ -22,36 +22,39 @@ struct HistoryView: View {
                         Button {
                             selectedEntry = entry
                         } label: {
-                            VStack(alignment: .leading, spacing: 6) {
-                                Text(entry.query)
-                                    .font(.headline)
-                                    .foregroundStyle(.primary)
-                                    .lineLimit(1)
+                            HStack(spacing: 10) {
+                                RoundedRectangle(cornerRadius: 2)
+                                    .fill(.accent)
+                                    .frame(width: 3, height: 44)
 
-                                Text(strippedMarkdown(entry.answer))
-                                    .font(.callout)
-                                    .foregroundStyle(.secondary)
-                                    .lineLimit(2)
+                                VStack(alignment: .leading, spacing: 6) {
+                                    Text(entry.query)
+                                        .font(.headline)
+                                        .foregroundStyle(.primary)
+                                        .lineLimit(1)
 
-                                HStack {
-                                    Text(entry.timestamp, style: .relative)
-                                        .font(.caption)
+                                    Text(strippedMarkdown(entry.answer))
+                                        .font(.callout)
                                         .foregroundStyle(.secondary)
+                                        .lineLimit(2)
 
-                                    Text("ago")
-                                        .font(.caption)
-                                        .foregroundStyle(.secondary)
+                                    HStack {
+                                        Text(entry.timestamp, format: .relative(presentation: .named))
+                                            .font(.caption)
+                                            .foregroundStyle(.secondary)
 
-                                    Spacer()
+                                        Spacer()
 
-                                    Text("\(entry.sources.count) source\(entry.sources.count == 1 ? "" : "s")")
-                                        .font(.caption)
-                                        .foregroundStyle(.secondary)
+                                        Text("\(entry.sources.count) source\(entry.sources.count == 1 ? "" : "s")")
+                                            .font(.caption)
+                                            .foregroundStyle(.secondary)
+                                    }
                                 }
                             }
                             .padding(.vertical, 4)
                         }
                         .buttonStyle(.plain)
+                        .listRowSeparator(.hidden)
                         .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                             Button(role: .destructive) {
                                 viewModel.deleteEntry(entry, modelContext: modelContext)
@@ -89,6 +92,7 @@ struct HistoryView: View {
             NavigationStack {
                 HistoryDetailView(entry: entry)
             }
+            .presentationDragIndicator(.visible)
         }
         .onAppear {
             viewModel.loadEntries(modelContext: modelContext)
@@ -135,33 +139,19 @@ private struct HistoryDetailView: View {
                         .font(.title2.weight(.semibold))
 
                     ForEach(Array(entry.sources.enumerated()), id: \.offset) { _, source in
-                        HStack(alignment: .top, spacing: 8) {
-                            Image(systemName: "globe")
-                                .font(.caption)
-                                .foregroundStyle(.secondary)
-
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text(source.title)
-                                    .font(.headline)
-                                    .lineLimit(2)
-
-                                if let url = URL(string: source.url) {
-                                    Link(destination: url) {
-                                        Text(source.url)
-                                            .font(.caption)
-                                            .foregroundStyle(.accent)
-                                            .lineLimit(1)
-                                    }
-                                }
-
-                                if let engine = source.engine {
-                                    Text("via \(engine.capitalized)")
-                                        .font(.caption)
-                                        .foregroundStyle(.secondary)
-                                }
-                            }
-                        }
-                        .padding(.vertical, 4)
+                        SourceCardView(
+                            result: SearXNGResult(
+                                url: source.url,
+                                title: source.title,
+                                content: nil,
+                                engine: source.engine,
+                                score: nil,
+                                engines: nil,
+                                positions: nil,
+                                category: nil,
+                                publishedDate: nil
+                            )
+                        )
                     }
                 }
             }

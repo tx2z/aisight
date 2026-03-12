@@ -14,6 +14,7 @@ struct AISightApp: App {
                     OnboardingView()
                 }
             }
+            .animation(.easeIn(duration: 0.3), value: appState.hasSeenOnboarding)
             .environment(appState)
             .task {
                 await appState.checkServerAvailability()

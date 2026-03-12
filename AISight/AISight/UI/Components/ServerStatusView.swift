@@ -28,6 +28,14 @@ struct ServerStatusView: View {
         return "Checked \(formatter.localizedString(for: lastChecked, relativeTo: Date()))"
     }
 
+    private var statusIcon: String {
+        switch isAvailable {
+        case true: return "checkmark.circle.fill"
+        case false: return "xmark.circle.fill"
+        case nil: return "questionmark.circle"
+        }
+    }
+
     var body: some View {
         Button {
             Task {
@@ -35,9 +43,9 @@ struct ServerStatusView: View {
             }
         } label: {
             HStack(spacing: 6) {
-                Circle()
-                    .fill(statusColor)
-                    .frame(width: 10, height: 10)
+                Image(systemName: statusIcon)
+                    .foregroundStyle(statusColor)
+                    .symbolEffect(.appear)
 
                 VStack(alignment: .leading, spacing: 2) {
                     Text(statusText)

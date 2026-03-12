@@ -72,11 +72,20 @@ struct SettingsView: View {
                     .font(.callout)
                 }
 
-                if let testResult {
+                if isTesting {
                     HStack(spacing: 8) {
-                        Circle()
-                            .fill(testResult.success ? .green : .red)
-                            .frame(width: 10, height: 10)
+                        Image(systemName: "arrow.trianglehead.2.counterclockwise")
+                            .foregroundStyle(.secondary)
+                            .symbolEffect(.pulse)
+                        Text("Testing...")
+                            .font(.callout)
+                            .foregroundStyle(.secondary)
+                    }
+                } else if let testResult {
+                    HStack(spacing: 8) {
+                        Image(systemName: testResult.success ? "checkmark.circle.fill" : "xmark.circle.fill")
+                            .foregroundStyle(testResult.success ? .green : .red)
+                            .symbolEffect(.appear)
 
                         Text(testResult.message)
                             .font(.callout)

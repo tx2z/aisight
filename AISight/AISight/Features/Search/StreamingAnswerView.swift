@@ -6,22 +6,24 @@ struct StreamingAnswerView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            CitationText(text: streamingText)
+            HStack(alignment: .lastTextBaseline, spacing: 2) {
+                CitationText(text: streamingText)
 
-            if isGenerating {
-                ProgressView()
-                    .controlSize(.small)
+                if isGenerating {
+                    TypingCursor()
+                }
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+        .transition(.opacity)
     }
 }
 
 #Preview {
     VStack(spacing: 20) {
         StreamingAnswerView(
-            streamingText: "**Swift** is a programming language developed by Apple [1]. It was introduced in *2014* [2] and has since become the primary language for iOS development [3].",
-            isGenerating: false
+            streamingText: "**Swift** is a programming language developed by Apple. It was introduced in *2014* and has since become the primary language for iOS development (via developer.apple.com).",
+            isGenerating: true
         )
     }
     .padding()
