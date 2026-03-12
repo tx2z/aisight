@@ -25,6 +25,9 @@ enum AppConfig: Sendable {
     static let snippetThreshold = 150 // chars; skip full fetch if snippet > this
     static let minSnippetLength = 30 // discard results with shorter snippets
 
+    // Deep Search
+    static let deepSearchResearcherCount = 3
+
     // RRF ranking constant (standard value from Cormack, Clarke, Butt paper)
     static let rrfK: Double = 60
 

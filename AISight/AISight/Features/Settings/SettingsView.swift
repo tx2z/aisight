@@ -103,6 +103,7 @@ struct SettingsView: View {
                 .onChange(of: selectedLanguage) {
                     UserDefaults.standard.set(selectedLanguage, forKey: "search_language")
                 }
+
             }
 
             Section("Data") {

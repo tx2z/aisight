@@ -19,6 +19,12 @@ class AnswerSession {
         return SystemLanguageModel.default.availability == .available
     }
 
+    func reset() {
+        streamingText = ""
+        isGenerating = false
+        error = nil
+    }
+
     static var availabilityStatus: SystemLanguageModel.Availability {
         SystemLanguageModel.default.availability
     }
