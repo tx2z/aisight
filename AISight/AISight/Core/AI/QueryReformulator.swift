@@ -27,9 +27,9 @@ final class QueryReformulator {
         - Output exactly 3 queries, one per line
         - Use short keyword phrases, not full sentences
         - Each query should cover a different aspect of the question
-        - CRITICAL: Keep all specific names, brands, and key terms from the \
-        original question in every query. For example, if the user asks about \
-        "Marvel superheroes", every query MUST include "Marvel"
+        - CRITICAL: Preserve all specific names, brands, and key terms from the \
+        original question. Do not drop or replace them. If the user mentions a \
+        specific name, include it in every query
         - Include the current year if the question is about recent/latest things
         - No numbering, no bullets, no explanations — just the queries
         """
