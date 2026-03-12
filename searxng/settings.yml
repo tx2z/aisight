@@ -1,0 +1,45 @@
+use_default_settings: true
+
+server:
+  secret_key: "aisight-dev-key-change-in-production"
+  bind_address: "0.0.0.0"
+  port: 8080
+  limiter: false
+
+search:
+  safe_search: 0
+  autocomplete: ""
+  default_lang: "en"
+  formats:
+    - html
+    - json
+
+outgoing:
+  request_timeout: 5.0
+  max_request_timeout: 10.0
+
+engines:
+  - name: google
+    engine: google
+    shortcut: g
+    weight: 1.5
+
+  - name: bing
+    engine: bing
+    shortcut: b
+    weight: 1.0
+
+  - name: brave
+    engine: brave
+    shortcut: br
+    weight: 1.2
+
+  - name: duckduckgo
+    engine: duckduckgo
+    shortcut: ddg
+    disabled: true
+
+  - name: wikipedia
+    engine: wikipedia
+    shortcut: wp
+    weight: 1.3
