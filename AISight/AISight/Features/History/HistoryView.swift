@@ -28,7 +28,7 @@ struct HistoryView: View {
                                     .foregroundStyle(.primary)
                                     .lineLimit(1)
 
-                                Text(entry.answer)
+                                Text(strippedMarkdown(entry.answer))
                                     .font(.callout)
                                     .foregroundStyle(.secondary)
                                     .lineLimit(2)
@@ -94,6 +94,20 @@ struct HistoryView: View {
             viewModel.loadEntries(modelContext: modelContext)
         }
     }
+
+    /// Strip markdown syntax for plain-text preview in the list.
+    private func strippedMarkdown(_ text: String) -> String {
+        var result = text
+        // Remove headings
+        result = result.replacingOccurrences(of: "#{1,6}\\s+", with: "", options: .regularExpression)
+        // Remove bold/italic markers
+        result = result.replacingOccurrences(of: "\\*+", with: "", options: .regularExpression)
+        // Remove (via domain) attributions
+        result = result.replacingOccurrences(of: "\\(via [^)]+\\)", with: "", options: .regularExpression)
+        // Collapse whitespace
+        result = result.replacingOccurrences(of: "\\s+", with: " ", options: .regularExpression)
+        return result.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
 }
 
 private struct HistoryDetailView: View {
@@ -120,9 +134,11 @@ private struct HistoryDetailView: View {
                     Text("Sources")
                         .font(.title2.weight(.semibold))
 
-                    ForEach(Array(entry.sources.enumerated()), id: \.offset) { index, source in
+                    ForEach(Array(entry.sources.enumerated()), id: \.offset) { _, source in
                         HStack(alignment: .top, spacing: 8) {
-                            CitationBadge(number: index + 1)
+                            Image(systemName: "globe")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
 
                             VStack(alignment: .leading, spacing: 2) {
                                 Text(source.title)

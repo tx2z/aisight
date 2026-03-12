@@ -2,7 +2,6 @@ import SwiftUI
 
 struct SourceCardView: View {
     let result: SearXNGResult
-    let index: Int
 
     @State private var isExpanded = false
 
@@ -39,8 +38,6 @@ struct SourceCardView: View {
                     .lineLimit(1)
 
                 Spacer()
-
-                CitationBadge(number: index + 1)
             }
 
             Text(result.title)
@@ -85,7 +82,6 @@ struct SourceCardView: View {
             category: "general",
             publishedDate: nil
         ),
-        index: 0
     )
     .padding()
 }
