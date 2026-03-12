@@ -6,12 +6,13 @@ The core feature of AISight: users type a question, the app searches the web, an
 
 ## User Flow
 
-1. User types question in search text field
-2. Taps search / presses return
-3. Loading indicator appears during SearXNG search
-4. Source cards appear with titles, domains, and engine badges
-5. Answer streams in token-by-token with inline citation badges `[1]` `[2]`
+1. User types question in bottom input bar (chat-style, like ChatGPT/Claude/Perplexity)
+2. Taps send button (arrow.up.circle.fill) or presses return
+3. Input bar disappears, "Thinking..." indicator appears centered on screen
+4. Answer streams in with markdown formatting and inline citation badges `[1]` `[2]`
+5. Source cards appear below the answer with titles, domains, and engine badges
 6. Completed answer is saved to history
+7. User taps "New Search" toolbar button (square.and.pencil) to start over
 
 ## State Management
 
@@ -26,15 +27,16 @@ The core feature of AISight: users type a question, the app searches the web, an
 | `streamingText` | `String` | Live answer text (forwarded from AnswerSession) |
 | `isGenerating` | `Bool` | True during model generation (forwarded) |
 
-## Citation Rendering
+## Markdown & Citation Rendering
 
-`CitationText` parses `[N]` patterns in the answer text:
+`CitationText` renders the AI response with full markdown support and inline citation badges:
 
-- Scans character-by-character through the text
-- When `[` is found, looks ahead for digits followed by `]`
-- Matched citations render as blue background, white text badges (`.caption2.bold()`)
-- Unmatched brackets render as normal body text
-- Uses `AttributedString` for styling
+- **Block-level:** Splits text into headings (`##`), list items (`-`), code blocks, paragraphs
+- **Headings** render with `.title`/`.title2`/`.title3` fonts
+- **List items** render with bullet `•` or number prefix in an `HStack`
+- **Code blocks** render in monospaced font with background
+- **Inline markdown:** `AttributedString(markdown:)` handles bold, italic, code, links within each block
+- **Citations:** `[N]` patterns are escaped to `\u{FFFC}` placeholders before markdown parsing, then replaced with blue/white badge `AttributedString` segments after parsing
 
 Citations map to the numbered sources in the source card list.
 
@@ -65,3 +67,31 @@ Starting a new search cancels the previous one:
 | Model unavailable | "AISight requires Apple Intelligence. Enable it in Settings → Apple Intelligence & Siri." |
 | Content policy | "This query can't be answered on-device. Try a different question." |
 | Empty response | "The model returned an empty response. Try rephrasing your question." |
+
+## Deep Search Mode
+
+When Deep Search is enabled in Settings, the pipeline uses a multi-agent research approach:
+
+### User Flow (Deep Search)
+
+1. User types question and taps send
+2. Progress indicator shows current step:
+   - "Reformulating query..."
+   - "Searching the web..."
+   - "Analyzing sources (1/3)..." → "2/3" → "3/3"
+   - "Writing answer..."
+3. Answer streams in with same markdown + citation rendering
+4. Source cards appear grouped by search query
+5. Result saved to history
+
+### State Management (Deep Search)
+
+Additional state in `SearchViewModel`:
+
+| State | Type | Description |
+|-------|------|-------------|
+| `deepSearchPipeline` | `DeepSearchPipeline` | Manages multi-step pipeline |
+| `isDeepSearch` | `Bool` | Reads UserDefaults `"deep_search_enabled"` |
+| `searchStepDescription` | `String?` | Step label for progress UI |
+
+`streamingText` and `isGenerating` forward from `DeepSearchPipeline` instead of `AnswerSession` when in deep search mode.

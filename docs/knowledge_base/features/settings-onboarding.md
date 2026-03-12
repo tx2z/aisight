@@ -29,6 +29,14 @@
 
 Displays whether Apple Intelligence is available on the device via `SystemLanguageModel.default.availability`.
 
+### Deep Search Toggle
+
+- Toggle to enable/disable Deep Search mode
+- Located in the **Search tab** (below the input bar), not in Settings
+- Stored in UserDefaults key `"deep_search_enabled"` (default: false)
+- When enabled, shows a one-line disclaimer about the tradeoff (15-25s vs 5-10s)
+- Uses `sparkle.magnifyingglass` SF Symbol icon
+
 ## Onboarding
 
 ### First-Launch Flow

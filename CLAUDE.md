@@ -12,6 +12,7 @@ AISight is a native iOS 26 / macOS 26 answer engine. It searches the web via a s
 - The `Package.swift` exists for syntax validation only — the real build uses an Xcode project.
 - Set `AppConfig.defaultSearXNGBaseURL` in `AISight/App/AppConfig.swift` before building.
 - Deployment target: iOS 26.0 / macOS 26.0. Will not run on older OS versions.
+- **Before building**, check available simulators — don't assume device names. Use `xcodebuild -project AISight/AISight.xcodeproj -scheme AISight -showdestinations` or pick from known available: `iPhone 17 Pro` (iOS 26.2). Device names change across Xcode versions.
 
 ## Architecture
 
