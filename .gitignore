@@ -28,8 +28,9 @@ Package.resolved
 .idea/
 .vscode/
 
-# Claude Code
-.claude/
+# Claude Code (keep commands, ignore local state)
+.claude/*
+!.claude/commands/
 
 # Docker data (local SearXNG state)
 searxng/data/
