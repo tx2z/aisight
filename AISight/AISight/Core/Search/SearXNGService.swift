@@ -56,9 +56,62 @@ final class SearXNGService: SearchService, Sendable {
 
         return SearchOutput(
             results: processed,
+            queryGroups: [SearchQueryGroup(query: query, results: processed)],
             directAnswers: searxResponse.answers ?? [],
             suggestions: searxResponse.suggestions ?? [],
             infoboxes: searxResponse.infoboxes ?? []
+        )
+    }
+
+    /// Search with multiple queries in parallel, merge and deduplicate results.
+    func multiSearch(queries: [String], language: String) async throws -> SearchOutput {
+        guard !queries.isEmpty else { throw SearchError.noResults }
+
+        // Single query — use standard path
+        if queries.count == 1 {
+            return try await search(query: queries[0], language: language)
+        }
+
+        // Run all queries in parallel, tracking results per query
+        var allResults: [SearXNGResult] = []
+        var queryGroups: [SearchQueryGroup] = []
+        var allAnswers: [String] = []
+        var allSuggestions: [String] = []
+        var allInfoboxes: [SearXNGInfobox] = []
+
+        // Use a struct to pass back both query and its output
+        await withTaskGroup(of: (String, SearchOutput?).self) { group in
+            for query in queries {
+                group.addTask {
+                    let output = try? await self.search(query: query, language: language)
+                    return (query, output)
+                }
+            }
+
+            for await (query, output) in group {
+                if let output {
+                    queryGroups.append(SearchQueryGroup(query: query, results: output.results))
+                    allResults.append(contentsOf: output.results)
+                    allAnswers.append(contentsOf: output.directAnswers)
+                    allSuggestions.append(contentsOf: output.suggestions)
+                    allInfoboxes.append(contentsOf: output.infoboxes)
+                }
+            }
+        }
+
+        // Deduplicate and rank the merged results for the answer session
+        let merged = processResults(allResults)
+
+        guard !merged.isEmpty else {
+            throw SearchError.noResults
+        }
+
+        return SearchOutput(
+            results: merged,
+            queryGroups: queryGroups,
+            directAnswers: Array(Set(allAnswers)),
+            suggestions: Array(Set(allSuggestions)),
+            infoboxes: allInfoboxes
         )
     }
 
