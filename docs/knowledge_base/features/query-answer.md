@@ -8,11 +8,12 @@ The core feature of AISight: users type a question, the app searches the web, an
 
 1. User types question in bottom input bar (chat-style, like ChatGPT/Claude/Perplexity)
 2. Taps send button (arrow.up.circle.fill) or presses return
-3. Input bar disappears, "Thinking..." indicator appears centered on screen
-4. Answer streams in with markdown formatting and inline citation badges `[1]` `[2]`
-5. Source cards appear below the answer with titles, domains, and engine badges
-6. Completed answer is saved to history
-7. User taps "New Search" toolbar button (square.and.pencil) to start over
+3. Empty state disappears, Apple Intelligence breathing icon + "Thinking..." appears immediately
+4. Answer streams in with markdown formatting, inline domain attributions `(via domain.com)`, and a blinking typing cursor
+5. Source cards appear below with favicon (letter fallback), domain, title, expandable snippet
+6. "Generated on-device" footer with Apple Intelligence icon appears
+7. Completed answer is saved to history
+8. User taps "New Search" toolbar button (square.and.pencil) to start over
 
 ## State Management
 
@@ -29,25 +30,29 @@ The core feature of AISight: users type a question, the app searches the web, an
 
 ## Markdown & Citation Rendering
 
-`CitationText` renders the AI response with full markdown support and inline citation badges:
+`CitationText` renders the AI response with full markdown support and inline domain attributions:
 
 - **Block-level:** Splits text into headings (`##`), list items (`-`), code blocks, paragraphs
 - **Headings** render with `.title`/`.title2`/`.title3` fonts
 - **List items** render with bullet `•` or number prefix in an `HStack`
-- **Code blocks** render in monospaced font with background
+- **Code blocks** render in monospaced font with `.fill.secondary` background, 12pt padding, rounded 10
+- **Paragraphs** have `.lineSpacing(3)` for readability
 - **Inline markdown:** `AttributedString(markdown:)` handles bold, italic, code, links within each block
-- **Citations:** `[N]` patterns are escaped to `\u{FFFC}` placeholders before markdown parsing, then replaced with blue/white badge `AttributedString` segments after parsing
+- **Attributions:** `(via domain.com)` patterns are escaped to `\u{FFFC}` placeholders before markdown parsing, then replaced with subtle italic `.caption` `.secondary` text
 
-Citations map to the numbered sources in the source card list.
+`StreamingAnswerView` appends a `TypingCursor` (blinking rectangle via `PhaseAnimator`) while `isGenerating` is true.
 
 ## Source Cards
 
-`SourceCardView` displays each search result:
+`SourceCardView` displays each search result in a horizontal layout:
 
-- Title of the source page
+- Favicon (28pt) with letter-initial fallback in a colored rounded rect
 - Domain name (extracted from URL, `www.` stripped)
-- Engine badge (Google, Bing, Brave)
-- Tappable to open the source URL
+- Title (medium weight)
+- Expandable snippet with chevron rotation animation
+- `.scrollTransition` for subtle fade+scale on scroll
+- `.regularMaterial` background, 12pt corner radius, subtle shadow
+- No search engine attribution (removed — irrelevant to users)
 
 ## Cancellation
 
@@ -68,9 +73,19 @@ Starting a new search cancels the previous one:
 | Content policy | "This query can't be answered on-device. Try a different question." |
 | Empty response | "The model returned an empty response. Try rephrasing your question." |
 
+## Empty State
+
+When no search is active, SearchView shows a centered branding screen:
+
+- Apple Intelligence icon (48pt) with `.breathe.pulse.byLayer` animation
+- "AISight" title
+- "Search the web." / "Get answers on-device." on separate lines
+- "Powered by Apple Intelligence" attribution with icon
+- Tappable suggestion chips (`.regularMaterial` capsules)
+
 ## Deep Search Mode
 
-When Deep Search is enabled in Settings, the pipeline uses a multi-agent research approach:
+When Deep Search is enabled via the pill button below the search bar, the pipeline uses a multi-agent research approach:
 
 ### User Flow (Deep Search)
 

@@ -27,7 +27,11 @@ User Query → SearXNGService (search) → ContentFetcher (HTML→text) → Answ
 - **SearXNGService is Sendable**: Uses `URLSession.shared` with per-request timeouts (no stored session). This is intentional for Swift 6 compliance.
 - **ContentFetcher is an actor**: Isolates mutable state for HTML fetching. Uses basic regex stripping, not a full HTML parser.
 - **No custom theme**: `AppTheme.swift` is intentionally empty. Use system colors (`.primary`, `.secondary`), system fonts (`.font(.body)`), and numeric spacing directly. This follows KISS — matches ChatGPT/Claude/Perplexity iOS patterns.
-- **Liquid glass**: iOS 26 liquid glass is automatic on TabView, NavigationStack, toolbars. Only custom glass usage is `.regularMaterial` on source cards. Don't add `.glassEffect()` to content views.
+- **Liquid glass**: iOS 26 liquid glass is automatic on TabView, NavigationStack, toolbars. Only custom glass usage is `.regularMaterial` on source cards and search bar. Don't add `.glassEffect()` to content views.
+- **Animation patterns**: Use spring animations for interactive state changes (expand/collapse), `.symbolEffect()` for SF Symbol delight (`.breathe`, `.bounce`, `.appear`, `.pulse`), `.scrollTransition` for scroll-driven effects, `.contentTransition(.numericText())` for text changes. `PhaseAnimator` for repeating animations (typing cursor, loading dots).
+- **No "via Engine" badges**: Source cards show domain + favicon only, no search engine attribution. Engine info is irrelevant to users.
+- **Shimmer loading**: `SearchSkeletonView` with `ShimmerModifier` replaces plain `ProgressView("Thinking...")` during loading.
+- **Typing cursor**: `TypingCursor` (blinking rectangle) appended to streaming text instead of a spinner.
 
 ### Layer structure
 
