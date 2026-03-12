@@ -25,7 +25,7 @@ struct SourceCardView: View {
     private var content: some View {
         VStack(alignment: .leading, spacing: 6) {
             HStack {
-                AsyncImage(url: URL(string: "https://www.google.com/s2/favicons?sz=32&domain=\(domain)")) { image in
+                AsyncImage(url: URL(string: "https://\(domain)/favicon.ico")) { image in
                     image.resizable().frame(width: 16, height: 16)
                 } placeholder: {
                     Image(systemName: "globe")

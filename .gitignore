@@ -32,5 +32,6 @@ Package.resolved
 .claude/*
 !.claude/commands/
 
-# Docker data (local SearXNG state)
+# Docker data and local SearXNG config (contains secret_key)
 searxng/data/
+searxng/settings.yml

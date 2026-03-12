@@ -27,6 +27,7 @@ class AnswerSession {
         streamingText = ""
         isGenerating = true
         error = nil
+        defer { isGenerating = false }
 
         do {
             // 1. Optionally fetch full content for short snippets
@@ -97,8 +98,6 @@ class AnswerSession {
         } catch {
             self.error = .generationFailed(error.localizedDescription)
         }
-
-        isGenerating = false
     }
 }
 

@@ -6,7 +6,13 @@ enum AppConfig: Sendable {
     static let defaultSearXNGBaseURL = "http://localhost:8888"
 
     static var effectiveSearXNGBaseURL: String {
-        UserDefaults.standard.string(forKey: "searxng_base_url") ?? defaultSearXNGBaseURL
+        guard let stored = UserDefaults.standard.string(forKey: "searxng_base_url"),
+              let url = URL(string: stored),
+              let scheme = url.scheme?.lowercased(),
+              scheme == "http" || scheme == "https" else {
+            return defaultSearXNGBaseURL
+        }
+        return stored
     }
 
     // SearXNG search parameters

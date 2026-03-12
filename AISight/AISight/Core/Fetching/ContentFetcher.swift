@@ -13,8 +13,12 @@ actor ContentFetcher {
         self.maxSnippetLength = maxSnippetLength
     }
 
+    private static let maxRawHTMLSize = 512_000 // 512KB — cap before regex processing
+
     func fetchContent(from url: String) async throws -> String {
-        guard let requestURL = URL(string: url) else {
+        guard let requestURL = URL(string: url),
+              let scheme = requestURL.scheme?.lowercased(),
+              scheme == "http" || scheme == "https" else {
             throw URLError(.badURL)
         }
 
@@ -25,8 +29,17 @@ actor ContentFetcher {
             throw URLError(.badServerResponse)
         }
 
-        guard let html = String(data: data, encoding: .utf8)
-                ?? String(data: data, encoding: .ascii) else {
+        // Reject non-text content types (PDFs, images, etc.)
+        if let contentType = httpResponse.value(forHTTPHeaderField: "Content-Type"),
+           !contentType.contains("text/") {
+            throw URLError(.cannotDecodeContentData)
+        }
+
+        // Cap raw HTML size before regex processing to prevent ReDoS/memory issues
+        let cappedData = data.count > Self.maxRawHTMLSize ? data.prefix(Self.maxRawHTMLSize) : data
+
+        guard let html = String(data: cappedData, encoding: .utf8)
+                ?? String(data: cappedData, encoding: .ascii) else {
             throw URLError(.cannotDecodeContentData)
         }
 
@@ -68,6 +81,13 @@ actor ContentFetcher {
         text = text.replacingOccurrences(of: "&quot;", with: "\"")
         text = text.replacingOccurrences(of: "&#39;", with: "'")
         text = text.replacingOccurrences(of: "&nbsp;", with: " ")
+
+        // Second pass: strip any tags reconstructed by entity decoding
+        text = text.replacingOccurrences(
+            of: "<[^>]+>",
+            with: "",
+            options: .regularExpression
+        )
 
         // Collapse whitespace
         text = text.replacingOccurrences(

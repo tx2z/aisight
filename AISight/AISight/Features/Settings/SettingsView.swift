@@ -10,6 +10,7 @@ struct SettingsView: View {
     @State private var testResult: TestResult?
     @State private var selectedLanguage: String = UserDefaults.standard.string(forKey: "search_language") ?? AppConfig.defaultSearchLanguage
     @State private var showClearConfirmation = false
+    @State private var showClearError = false
 
     // swiftlint:disable:next force_unwrapping
     private static let searxngURL = URL(string: "https://searxng.org")!
@@ -39,8 +40,11 @@ struct SettingsView: View {
                     .keyboardType(.URL)
                     #endif
                     .onSubmit {
-                        UserDefaults.standard.set(serverURL, forKey: "searxng_base_url")
-                        testResult = nil
+                        if validateAndSaveURL(serverURL) {
+                            testResult = nil
+                        } else {
+                            testResult = TestResult(success: false, message: "Invalid URL. Use http:// or https://.")
+                        }
                     }
 
                 HStack(spacing: 12) {
@@ -128,6 +132,11 @@ struct SettingsView: View {
         }
         .formStyle(.grouped)
         .navigationTitle("Settings")
+        .alert("Failed to Clear Data", isPresented: $showClearError) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text("Your search history could not be deleted. Please try again.")
+        }
         .confirmationDialog("Clear Cache?", isPresented: $showClearConfirmation, titleVisibility: .visible) {
             Button("Clear All Data", role: .destructive) {
                 clearCache()
@@ -138,8 +147,23 @@ struct SettingsView: View {
         }
     }
 
+    @discardableResult
+    private func validateAndSaveURL(_ urlString: String) -> Bool {
+        guard let url = URL(string: urlString),
+              let scheme = url.scheme?.lowercased(),
+              scheme == "http" || scheme == "https",
+              url.host() != nil else {
+            return false
+        }
+        UserDefaults.standard.set(urlString, forKey: "searxng_base_url")
+        return true
+    }
+
     private func testConnection() async {
-        UserDefaults.standard.set(serverURL, forKey: "searxng_base_url")
+        guard validateAndSaveURL(serverURL) else {
+            testResult = TestResult(success: false, message: "Invalid URL. Use http:// or https://.")
+            return
+        }
         isTesting = true
         let start = Date()
         let service = SearXNGService()
@@ -162,7 +186,7 @@ struct SettingsView: View {
             try modelContext.delete(model: QueryEntry.self)
             try modelContext.save()
         } catch {
-            // Handle silently
+            showClearError = true
         }
     }
 }
