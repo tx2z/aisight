@@ -38,7 +38,8 @@ final class QueryReformulator {
             let session = LanguageModelSession(instructions: instructions)
             let response = try await session.respond(to: trimmed)
             let lines = response.content
-                .components(separatedBy: .newlines)
+                .split(separator: "\n", omittingEmptySubsequences: false)
+                .map(String.init)
                 .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
                 .filter { !$0.isEmpty && $0.count < 200 }
 
@@ -53,8 +54,6 @@ final class QueryReformulator {
     }
 
     static func currentDateString() -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        return formatter.string(from: Date())
+        Date.now.formatted(.iso8601.year().month().day().dateSeparator(.dash))
     }
 }

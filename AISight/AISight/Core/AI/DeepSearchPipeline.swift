@@ -4,7 +4,7 @@ import FoundationModels
 @available(iOS 26.0, macOS 26.0, *)
 @MainActor
 @Observable
-class DeepSearchPipeline {
+final class DeepSearchPipeline {
     var streamingText: String = ""
     var isGenerating: Bool = false
     var currentStep: DeepSearchStep = .idle
@@ -108,7 +108,7 @@ class DeepSearchPipeline {
 
         // Build source text for this group
         var sourcesText = ""
-        for (i, result) in searchGroup.results.prefix(AppConfig.maxResults).enumerated() {
+        for result in searchGroup.results.prefix(AppConfig.maxResults) {
             var snippet = result.content ?? ""
             if await contentFetcher.shouldFetchFullContent(snippet: snippet) {
                 if let fullContent = try? await contentFetcher.fetchContent(from: result.url) {
@@ -119,7 +119,7 @@ class DeepSearchPipeline {
                 snippet = String(snippet.prefix(AppConfig.maxSnippetLength))
             }
             let domain = URL(string: result.url).flatMap { $0.host() }?
-                .replacingOccurrences(of: "www.", with: "") ?? result.url
+                .replacing("www.", with: "") ?? result.url
             sourcesText += """
             \(result.title) (\(domain))
             \(snippet)
@@ -169,7 +169,7 @@ class DeepSearchPipeline {
         var sourceList = ""
         for source in sources.prefix(AppConfig.maxResults) {
             let domain = URL(string: source.url).flatMap { $0.host() }?
-                .replacingOccurrences(of: "www.", with: "") ?? source.url
+                .replacing("www.", with: "") ?? source.url
             sourceList += "- \(source.title) (\(domain))\n"
         }
 

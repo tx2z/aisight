@@ -1,10 +1,11 @@
 import Foundation
+import OSLog
 import SwiftData
-import Observation
 
-@Observable
-class QueryHistoryStore {
+@MainActor
+final class QueryHistoryStore {
     private let modelContext: ModelContext
+    private let logger = Logger(subsystem: "com.aisight", category: "QueryHistoryStore")
 
     init(modelContext: ModelContext) {
         self.modelContext = modelContext
@@ -16,7 +17,7 @@ class QueryHistoryStore {
         do {
             try modelContext.save()
         } catch {
-            print("QueryHistoryStore: Failed to save entry: \(error.localizedDescription)")
+            logger.error("Failed to save entry: \(error.localizedDescription)")
         }
     }
 
@@ -27,7 +28,7 @@ class QueryHistoryStore {
         do {
             return try modelContext.fetch(descriptor)
         } catch {
-            print("QueryHistoryStore: Failed to fetch history: \(error.localizedDescription)")
+            logger.error("Failed to fetch history: \(error.localizedDescription)")
             return []
         }
     }
@@ -37,7 +38,7 @@ class QueryHistoryStore {
         do {
             try modelContext.save()
         } catch {
-            print("QueryHistoryStore: Failed to delete entry: \(error.localizedDescription)")
+            logger.error("Failed to delete entry: \(error.localizedDescription)")
         }
     }
 
@@ -49,7 +50,7 @@ class QueryHistoryStore {
         do {
             try modelContext.save()
         } catch {
-            print("QueryHistoryStore: Failed to clear all entries: \(error.localizedDescription)")
+            logger.error("Failed to clear all entries: \(error.localizedDescription)")
         }
     }
 }

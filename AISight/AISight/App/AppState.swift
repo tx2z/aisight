@@ -17,9 +17,10 @@ final class AppState {
 
     var isAppleIntelligenceAvailable: Bool {
         if #available(iOS 26.0, macOS 26.0, *) {
-            return SystemLanguageModel.default.availability == .available
+            SystemLanguageModel.default.availability == .available
+        } else {
+            false
         }
-        return false
     }
 
 }

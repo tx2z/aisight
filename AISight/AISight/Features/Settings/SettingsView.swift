@@ -112,12 +112,11 @@ struct SettingsView: View {
                         Text(language.name).tag(language.code)
                     }
                 }
-                .onChange(of: selectedAppLanguage) {
-                    UserDefaults.standard.set([selectedAppLanguage], forKey: "AppleLanguages")
-                    UserDefaults.standard.synchronize()
+                .onChange(of: selectedAppLanguage) { _, newValue in
+                    UserDefaults.standard.set([newValue], forKey: "AppleLanguages")
                     // Sync search language to match app language
-                    selectedLanguage = selectedAppLanguage
-                    UserDefaults.standard.set(selectedAppLanguage, forKey: "search_language")
+                    selectedLanguage = newValue
+                    UserDefaults.standard.set(newValue, forKey: "search_language")
                     showRestartAlert = true
                 }
 
@@ -126,8 +125,8 @@ struct SettingsView: View {
                         Text(language.name).tag(language.code)
                     }
                 }
-                .onChange(of: selectedLanguage) {
-                    UserDefaults.standard.set(selectedLanguage, forKey: "search_language")
+                .onChange(of: selectedLanguage) { _, newValue in
+                    UserDefaults.standard.set(newValue, forKey: "search_language")
                 }
             }
 
@@ -159,12 +158,10 @@ struct SettingsView: View {
         .formStyle(.grouped)
         .navigationTitle("Settings")
         .alert("Language Changed", isPresented: $showRestartAlert) {
-            Button("OK", role: .cancel) {}
         } message: {
             Text("Please close and reopen the app for the language change to take effect.")
         }
         .alert("Failed to Clear Data", isPresented: $showClearError) {
-            Button("OK", role: .cancel) {}
         } message: {
             Text("Your search history could not be deleted. Please try again.")
         }
@@ -172,7 +169,6 @@ struct SettingsView: View {
             Button("Clear All Data", role: .destructive) {
                 clearCache()
             }
-            Button("Cancel", role: .cancel) {}
         } message: {
             Text("This will delete all cached data including search history.")
         }
@@ -196,19 +192,17 @@ struct SettingsView: View {
             return
         }
         isTesting = true
-        let start = Date()
+        let start = Date.now
         let service = SearXNGService()
         let available = await service.checkAvailability()
-        let latency = Date().timeIntervalSince(start)
+        let latency = Date.now.timeIntervalSince(start)
 
-        await MainActor.run {
-            isTesting = false
-            if available {
-                let ms = Int(latency * 1000)
-                testResult = TestResult(success: true, message: String(localized: "Connected (\(ms)ms)"))
-            } else {
-                testResult = TestResult(success: false, message: String(localized: "Connection failed"))
-            }
+        isTesting = false
+        if available {
+            let ms = Int(latency * 1000)
+            testResult = TestResult(success: true, message: String(localized: "Connected (\(ms)ms)"))
+        } else {
+            testResult = TestResult(success: false, message: String(localized: "Connection failed"))
         }
     }
 

@@ -48,7 +48,7 @@ actor ContentFetcher {
     }
 
     func shouldFetchFullContent(snippet: String) -> Bool {
-        return snippet.count < snippetThreshold
+        snippet.count < snippetThreshold
     }
 
     // MARK: - HTML Stripping
@@ -68,43 +68,31 @@ actor ContentFetcher {
         text = removeTagBlock(from: text, tag: "footer")
 
         // Remove all remaining HTML tags
-        text = text.replacingOccurrences(
-            of: "<[^>]+>",
-            with: "",
-            options: .regularExpression
-        )
+        let htmlTagRegex = #/<[^>]+>/#
+        text = text.replacing(htmlTagRegex, with: "")
 
         // Decode common HTML entities
-        text = text.replacingOccurrences(of: "&amp;", with: "&")
-        text = text.replacingOccurrences(of: "&lt;", with: "<")
-        text = text.replacingOccurrences(of: "&gt;", with: ">")
-        text = text.replacingOccurrences(of: "&quot;", with: "\"")
-        text = text.replacingOccurrences(of: "&#39;", with: "'")
-        text = text.replacingOccurrences(of: "&nbsp;", with: " ")
+        text = text.replacing("&amp;", with: "&")
+        text = text.replacing("&lt;", with: "<")
+        text = text.replacing("&gt;", with: ">")
+        text = text.replacing("&quot;", with: "\"")
+        text = text.replacing("&#39;", with: "'")
+        text = text.replacing("&nbsp;", with: " ")
 
         // Second pass: strip any tags reconstructed by entity decoding
-        text = text.replacingOccurrences(
-            of: "<[^>]+>",
-            with: "",
-            options: .regularExpression
-        )
+        text = text.replacing(htmlTagRegex, with: "")
 
         // Collapse whitespace
-        text = text.replacingOccurrences(
-            of: "\\s+",
-            with: " ",
-            options: .regularExpression
-        )
+        text = text.replacing(/\s+/, with: " ")
 
         return text.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
     private func removeTagBlock(from text: String, tag: String) -> String {
-        return text.replacingOccurrences(
-            of: "<\(tag)[^>]*>[\\s\\S]*?</\(tag)>",
-            with: "",
-            options: [.regularExpression, .caseInsensitive]
-        )
+        guard let regex = try? Regex("<\(tag)[^>]*>[\\s\\S]*?</\(tag)>").ignoresCase() else {
+            return text
+        }
+        return text.replacing(regex, with: "")
     }
 
     private func truncate(_ text: String, to maxLength: Int) -> String {

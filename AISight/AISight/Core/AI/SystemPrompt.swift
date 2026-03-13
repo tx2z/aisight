@@ -74,7 +74,7 @@ enum SystemPrompt {
 
         for source in sources {
             let domain = URL(string: source.url).flatMap { $0.host() }?
-                .replacingOccurrences(of: "www.", with: "") ?? source.url
+                .replacing("www.", with: "") ?? source.url
             prompt += """
 
             <source domain="\(domain)">
