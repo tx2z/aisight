@@ -197,32 +197,15 @@ private struct SearchContentView: View {
 
     private var searchBarSection: some View {
         VStack(spacing: 8) {
-            HStack(spacing: 12) {
-                TextField("Ask anything...", text: $viewModel.query)
-                    .textFieldStyle(.plain)
-                    .focused($isInputFocused)
-                    .onSubmit {
-                        viewModel.performSearch(modelContext: modelContext)
-                    }
-
-                Button {
-                    viewModel.performSearch(modelContext: modelContext)
-                } label: {
-                    Image(systemName: "arrow.up.circle.fill")
-                        .font(.title2)
-                        .foregroundStyle(
-                            viewModel.query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-                                ? .gray : .accent
-                        )
-                        .symbolEffect(.bounce, value: !viewModel.query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
-                }
-                .disabled(viewModel.query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+            if isDeepSearchEnabled {
+                Text("Deep Search uses multiple AI research passes to find better answers. " +
+                     "This takes longer (15-25 seconds vs 5-10 seconds) and uses more " +
+                     "on-device processing. Best for complex questions that need thorough research.")
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+                    .padding(.horizontal, 20)
+                    .transition(.opacity.combined(with: .move(edge: .bottom)))
             }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 10)
-            .background(.regularMaterial, in: .capsule)
-            .shadow(color: .black.opacity(0.08), radius: 8, y: 4)
-            .padding(.bottom, 4)
 
             Button {
                 withAnimation(.spring(duration: 0.3)) {
@@ -242,18 +225,47 @@ private struct SearchContentView: View {
             }
             .buttonStyle(.plain)
 
-            if isDeepSearchEnabled {
-                Text("Deep Search uses multiple AI research passes to find better answers. " +
-                     "This takes longer (15-25 seconds vs 5-10 seconds) and uses more " +
-                     "on-device processing. Best for complex questions that need thorough research.")
-                    .font(.caption2)
-                    .foregroundStyle(.secondary)
-                    .padding(.horizontal, 20)
-                    .transition(.opacity.combined(with: .move(edge: .top)))
+            HStack(alignment: .bottom, spacing: 8) {
+                ZStack(alignment: .topLeading) {
+                    if viewModel.query.isEmpty {
+                        Text("Ask anything...")
+                            .foregroundStyle(.tertiary)
+                            .padding(.horizontal, 4)
+                            .padding(.vertical, 8)
+                    }
+                    TextEditor(text: $viewModel.query)
+                        .focused($isInputFocused)
+                        .scrollContentBackground(.hidden)
+                        .frame(minHeight: 36, maxHeight: 120)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .onChange(of: viewModel.query) { _, newValue in
+                            if newValue.count > 500 {
+                                viewModel.query = String(newValue.prefix(500))
+                            }
+                        }
+                }
+
+                Button {
+                    viewModel.performSearch(modelContext: modelContext)
+                } label: {
+                    Image(systemName: "arrow.up.circle.fill")
+                        .font(.title2)
+                        .foregroundStyle(
+                            viewModel.query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                                ? .gray : .accent
+                        )
+                        .symbolEffect(.bounce, value: !viewModel.query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                }
+                .disabled(viewModel.query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                .padding(.bottom, 4)
             }
+            .padding(.horizontal, 12)
+            .padding(.vertical, 6)
+            .background(.regularMaterial, in: .rect(cornerRadius: 20))
+            .shadow(color: .black.opacity(0.08), radius: 8, y: 4)
         }
         .padding(.horizontal, 16)
-        .padding(.bottom, 8)
+        .padding(.bottom, 16)
     }
 }
 
