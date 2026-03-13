@@ -3,9 +3,16 @@ import SwiftUI
 struct CitationText: View {
     let text: String
 
+    private let blocks: [Block]
+
+    init(text: String) {
+        self.text = text
+        self.blocks = Self.parseBlocks(text)
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
-            ForEach(Array(parseBlocks(text).enumerated()), id: \.offset) { _, block in
+            ForEach(Array(blocks.enumerated()), id: \.offset) { _, block in
                 renderBlock(block)
             }
         }
@@ -14,7 +21,7 @@ struct CitationText: View {
 
     // MARK: - Block Types
 
-    private enum Block {
+    enum Block {
         case heading(Int, String)      // level, content
         case listItem(String, Int?)    // content, ordered number (nil = unordered)
         case paragraph(String)
@@ -23,9 +30,9 @@ struct CitationText: View {
 
     // MARK: - Block Parsing
 
-    private func parseBlocks(_ text: String) -> [Block] {
+    private static func parseBlocks(_ text: String) -> [Block] {
         var blocks: [Block] = []
-        let lines = text.components(separatedBy: "\n")
+        let lines = text.split(separator: "\n", omittingEmptySubsequences: false).map(String.init)
         var i = 0
         var paragraphLines: [String] = []
 
@@ -125,7 +132,7 @@ struct CitationText: View {
         case .heading(let level, let text):
             renderInline(text)
                 .font(fontForHeading(level))
-                .fontWeight(.bold)
+                .bold()
                 .padding(.top, level <= 2 ? 4 : 2)
 
         case .listItem(let text, let ordered):

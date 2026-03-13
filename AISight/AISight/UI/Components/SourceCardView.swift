@@ -8,8 +8,36 @@ struct SourceCardView: View {
 
     private var domain: String {
         URL(string: result.url).flatMap { $0.host() }?
-            .replacingOccurrences(of: "www.", with: "") ?? result.url
+            .replacing("www.", with: "") ?? result.url
     }
+
+    var body: some View {
+        if let url = URL(string: result.url) {
+            Link(destination: url) {
+                SourceCardContent(
+                    result: result,
+                    domain: domain,
+                    index: index,
+                    isExpanded: $isExpanded
+                )
+            }
+            .buttonStyle(.plain)
+        } else {
+            SourceCardContent(
+                result: result,
+                domain: domain,
+                index: index,
+                isExpanded: $isExpanded
+            )
+        }
+    }
+}
+
+private struct SourceCardContent: View {
+    let result: SearXNGResult
+    let domain: String
+    var index: Int? = nil
+    @Binding var isExpanded: Bool
 
     private var domainInitial: String {
         String(domain.prefix(1)).uppercased()
@@ -22,17 +50,6 @@ struct SourceCardView: View {
     }
 
     var body: some View {
-        if let url = URL(string: result.url) {
-            Link(destination: url) {
-                content
-            }
-            .buttonStyle(.plain)
-        } else {
-            content
-        }
-    }
-
-    private var content: some View {
         HStack(alignment: .top, spacing: 10) {
             // Favicon with index overlay
             ZStack(alignment: .bottomTrailing) {
@@ -79,7 +96,7 @@ struct SourceCardView: View {
                         Spacer(minLength: 0)
 
                         Image(systemName: "chevron.down")
-                            .font(.caption2)
+                            .font(.caption)
                             .foregroundStyle(.tertiary)
                             .rotationEffect(.degrees(isExpanded ? 180 : 0))
                             .animation(.spring(duration: 0.3), value: isExpanded)
@@ -88,12 +105,14 @@ struct SourceCardView: View {
                     .onTapGesture {
                         withAnimation(.spring(duration: 0.3)) { isExpanded.toggle() }
                     }
+                    .accessibilityAddTraits(.isButton)
+                    .accessibilityLabel(isExpanded ? "Collapse snippet" : "Expand snippet")
                 }
             }
         }
         .padding(12)
         .background(.regularMaterial, in: .rect(cornerRadius: 12))
-        .shadow(color: .black.opacity(0.04), radius: 3, y: 1)
+        .shadow(radius: 3, y: 1)
         .scrollTransition { content, phase in
             content
                 .opacity(phase.isIdentity ? 1 : 0.6)

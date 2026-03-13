@@ -31,19 +31,19 @@ struct OnboardingView: View {
             .padding(.horizontal, 16)
 
             VStack(spacing: 16) {
-                featureRow(
+                FeatureRow(
                     icon: "lock.shield.fill",
                     title: "Privacy First",
                     description: "AI runs entirely on your device. Nothing is sent to external AI services."
                 )
 
-                featureRow(
+                FeatureRow(
                     icon: "bolt.fill",
                     title: "Fast Answers",
                     description: "Get concise, cited answers from multiple search engines in seconds."
                 )
 
-                featureRow(
+                FeatureRow(
                     icon: "doc.text.magnifyingglass",
                     title: "Sourced Information",
                     description: "Every answer includes citations so you can verify the information."
@@ -70,7 +70,14 @@ struct OnboardingView: View {
         }
     }
 
-    private func featureRow(icon: String, title: LocalizedStringKey, description: LocalizedStringKey) -> some View {
+}
+
+private struct FeatureRow: View {
+    let icon: String
+    let title: LocalizedStringKey
+    let description: LocalizedStringKey
+
+    var body: some View {
         HStack(alignment: .top, spacing: 16) {
             Image(systemName: icon)
                 .font(.title2)

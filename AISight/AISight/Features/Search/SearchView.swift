@@ -8,7 +8,6 @@ struct SearchView: View {
     var body: some View {
         if #available(iOS 26.0, macOS 26.0, *) {
             SearchContentView()
-                .environment(appState)
         } else {
             ContentUnavailableView(
                 "Apple Intelligence Required",
@@ -19,13 +18,13 @@ struct SearchView: View {
     }
 }
 
-private struct Suggestion: Identifiable {
+struct Suggestion: Identifiable {
     let id = UUID()
     let title: String
     let query: String
 }
 
-private let suggestions: [Suggestion] = [
+let searchSuggestions: [Suggestion] = [
     Suggestion(title: String(localized: "What is liquid glass?"), query: String(localized: "What is liquid glass in iOS 26?")),
     Suggestion(title: String(localized: "Why is the sky blue?"), query: String(localized: "Why is the sky blue?")),
     Suggestion(title: String(localized: "Best coffee brewing methods"), query: String(localized: "Best coffee brewing methods compared")),
@@ -63,8 +62,9 @@ private struct SearchContentView: View {
     @FocusState private var isInputFocused: Bool
 
     private var currentSuggestions: [Suggestion] {
-        let startIndex = (currentPairIndex * 2) % suggestions.count
-        return [suggestions[startIndex], suggestions[(startIndex + 1) % suggestions.count]]
+        let all = AISight.searchSuggestions
+        let startIndex = (currentPairIndex * 2) % all.count
+        return [all[startIndex], all[(startIndex + 1) % all.count]]
     }
 
     private var hasResults: Bool {
@@ -81,7 +81,7 @@ private struct SearchContentView: View {
                                 .font(.body.weight(.semibold))
                                 .padding(.horizontal, 14)
                                 .padding(.vertical, 10)
-                                .background(.quaternary.opacity(0.5), in: .rect(cornerRadius: 16, style: .continuous))
+                                .background(.quaternary.opacity(0.5), in: .rect(cornerRadius: 16))
                                 .frame(maxWidth: .infinity, alignment: .trailing)
                         }
 
@@ -94,7 +94,7 @@ private struct SearchContentView: View {
                         }
 
                         if (viewModel.isSearching || viewModel.isGenerating) && viewModel.streamingText.isEmpty {
-                            loadingState
+                            SearchLoadingView(stepDescription: viewModel.searchStepDescription)
                         } else if !viewModel.streamingText.isEmpty || viewModel.isGenerating {
                             StreamingAnswerView(
                                 streamingText: viewModel.streamingText,
@@ -129,10 +129,10 @@ private struct SearchContentView: View {
                         if !viewModel.streamingText.isEmpty && !viewModel.isGenerating {
                             HStack(spacing: 4) {
                                 Image(systemName: "apple.intelligence")
-                                    .font(.caption2)
+                                    .font(.caption)
                                     .symbolEffect(.appear)
                                 Text("Generated on-device")
-                                    .font(.caption2)
+                                    .font(.caption)
                             }
                             .foregroundStyle(.tertiary)
                             .frame(maxWidth: .infinity)
@@ -142,7 +142,15 @@ private struct SearchContentView: View {
                     .padding()
                 }
             } else {
-                emptyState
+                SearchEmptyStateView(
+                    currentSuggestions: currentSuggestions,
+                    currentPairIndex: $currentPairIndex,
+                    hasResults: hasResults,
+                    onSuggestionTapped: { query in
+                        viewModel.query = query
+                        viewModel.performSearch(modelContext: modelContext)
+                    }
+                )
             }
         }
         .navigationTitle(hasResults ? "AISight" : "")
@@ -162,14 +170,33 @@ private struct SearchContentView: View {
         }
         .safeAreaInset(edge: .bottom) {
             if !hasResults {
-                searchBarSection
+                SearchBarSection(
+                    query: $viewModel.query,
+                    isDeepSearchEnabled: $isDeepSearchEnabled,
+                    isInputFocused: $isInputFocused,
+                    onSearch: {
+                        viewModel.performSearch(modelContext: modelContext)
+                    },
+                    onDeepSearchToggled: { enabled in
+                        viewModel.isDeepSearch = enabled
+                    }
+                )
             }
         }
     }
+}
 
-    // MARK: - Empty State
+// MARK: - Empty State
 
-    private var emptyState: some View {
+private struct SearchEmptyStateView: View {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+
+    let currentSuggestions: [Suggestion]
+    @Binding var currentPairIndex: Int
+    let hasResults: Bool
+    let onSuggestionTapped: (String) -> Void
+
+    var body: some View {
         VStack(spacing: 16) {
             Spacer()
 
@@ -179,7 +206,7 @@ private struct SearchContentView: View {
                 .symbolEffect(.breathe.pulse.byLayer)
 
             Text("AISight")
-                .font(.title.weight(.semibold))
+                .font(.title.bold())
                 .fixedSize()
 
             VStack(spacing: 4) {
@@ -192,17 +219,16 @@ private struct SearchContentView: View {
 
             HStack(spacing: 4) {
                 Image(systemName: "apple.intelligence")
-                    .font(.caption2)
+                    .font(.caption)
                 Text("Powered by Apple Intelligence")
-                    .font(.caption2)
+                    .font(.caption)
             }
             .foregroundStyle(.tertiary)
 
             VStack(spacing: 10) {
                 ForEach(currentSuggestions) { suggestion in
                     SuggestionChip(suggestion.title) {
-                        viewModel.query = suggestion.query
-                        viewModel.performSearch(modelContext: modelContext)
+                        onSuggestionTapped(suggestion.query)
                     }
                     .id(suggestion.id)
                     .transition(.asymmetric(
@@ -219,29 +245,37 @@ private struct SearchContentView: View {
         .frame(maxWidth: .infinity)
         .padding()
         .onAppear {
-            currentPairIndex = Int.random(in: 0..<suggestions.count / 2)
+            currentPairIndex = Int.random(in: 0..<AISight.searchSuggestions.count / 2)
         }
         .task(id: hasResults) {
             guard !hasResults else { return }
             while !Task.isCancelled {
                 try? await Task.sleep(for: .seconds(6))
-                withAnimation(.spring(duration: 0.45, bounce: 0.15)) {
-                    currentPairIndex = (currentPairIndex + 1) % (suggestions.count / 2)
+                if reduceMotion {
+                    currentPairIndex = (currentPairIndex + 1) % (AISight.searchSuggestions.count / 2)
+                } else {
+                    withAnimation(.spring(duration: 0.45, bounce: 0.15)) {
+                        currentPairIndex = (currentPairIndex + 1) % (AISight.searchSuggestions.count / 2)
+                    }
                 }
             }
         }
     }
+}
 
-    // MARK: - Loading State
+// MARK: - Loading State
 
-    private var loadingState: some View {
+private struct SearchLoadingView: View {
+    let stepDescription: String?
+
+    var body: some View {
         VStack(spacing: 12) {
             Image(systemName: "apple.intelligence")
                 .font(.system(size: 32))
                 .foregroundStyle(.secondary)
                 .symbolEffect(.breathe.pulse.byLayer)
 
-            if let step = viewModel.searchStepDescription {
+            if let step = stepDescription {
                 Text(step)
                     .font(.subheadline.weight(.medium))
                     .foregroundStyle(.secondary)
@@ -258,16 +292,28 @@ private struct SearchContentView: View {
             height * 0.5
         }
     }
+}
 
-    // MARK: - Search Bar
+// MARK: - Search Bar
 
-    private var searchBarSection: some View {
+private struct SearchBarSection: View {
+    @Binding var query: String
+    @Binding var isDeepSearchEnabled: Bool
+    var isInputFocused: FocusState<Bool>.Binding
+    let onSearch: () -> Void
+    let onDeepSearchToggled: (Bool) -> Void
+
+    private var isQueryEmpty: Bool {
+        query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
+
+    var body: some View {
         VStack(spacing: 8) {
             if isDeepSearchEnabled {
                 Text("Deep Search uses multiple AI research passes to find better answers. " +
                      "This takes longer (15-25 seconds vs 5-10 seconds) and uses more " +
                      "on-device processing. Best for complex questions that need thorough research.")
-                    .font(.caption2)
+                    .font(.caption)
                     .foregroundStyle(.secondary)
                     .padding(.horizontal, 20)
                     .transition(.opacity.combined(with: .move(edge: .bottom)))
@@ -276,59 +322,56 @@ private struct SearchContentView: View {
             Button {
                 withAnimation(.spring(duration: 0.3)) {
                     isDeepSearchEnabled.toggle()
-                    viewModel.isDeepSearch = isDeepSearchEnabled
+                    onDeepSearchToggled(isDeepSearchEnabled)
                 }
             } label: {
                 Label("Deep Search", systemImage: "sparkle.magnifyingglass")
                     .font(.subheadline.weight(.medium))
                     .padding(.horizontal, 14)
                     .padding(.vertical, 6)
-                    .background(
-                        isDeepSearchEnabled ? AnyShapeStyle(.accent.opacity(0.15)) : AnyShapeStyle(.regularMaterial),
-                        in: .capsule
-                    )
+                    .background {
+                        if isDeepSearchEnabled {
+                            Capsule().fill(.accent.opacity(0.15))
+                        } else {
+                            Capsule().fill(.regularMaterial)
+                        }
+                    }
                     .foregroundStyle(isDeepSearchEnabled ? .accent : .secondary)
             }
             .buttonStyle(.plain)
 
             HStack(alignment: .bottom, spacing: 8) {
                 ZStack(alignment: .topLeading) {
-                    if viewModel.query.isEmpty {
+                    if query.isEmpty {
                         Text("Ask anything...")
                             .foregroundStyle(.tertiary)
                             .padding(.horizontal, 4)
                             .padding(.vertical, 8)
                     }
-                    TextEditor(text: $viewModel.query)
-                        .focused($isInputFocused)
+                    TextEditor(text: $query)
+                        .focused(isInputFocused)
                         .scrollContentBackground(.hidden)
                         .frame(minHeight: 36, maxHeight: 120)
                         .fixedSize(horizontal: false, vertical: true)
-                        .onChange(of: viewModel.query) { _, newValue in
+                        .onChange(of: query) { _, newValue in
                             if newValue.count > 500 {
-                                viewModel.query = String(newValue.prefix(500))
+                                query = String(newValue.prefix(500))
                             }
                         }
                 }
 
-                Button {
-                    viewModel.performSearch(modelContext: modelContext)
-                } label: {
-                    Image(systemName: "arrow.up.circle.fill")
-                        .font(.title2)
-                        .foregroundStyle(
-                            viewModel.query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-                                ? .gray : .accent
-                        )
-                        .symbolEffect(.bounce, value: !viewModel.query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
-                }
-                .disabled(viewModel.query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
-                .padding(.bottom, 4)
+                Button("Send", systemImage: "arrow.up.circle.fill", action: onSearch)
+                    .labelStyle(.iconOnly)
+                    .font(.title2)
+                    .foregroundStyle(isQueryEmpty ? Color.secondary : Color.accentColor)
+                    .symbolEffect(.bounce, value: !isQueryEmpty)
+                    .disabled(isQueryEmpty)
+                    .padding(.bottom, 4)
             }
             .padding(.horizontal, 12)
             .padding(.vertical, 6)
             .background(.regularMaterial, in: .rect(cornerRadius: 20))
-            .shadow(color: .black.opacity(0.08), radius: 8, y: 4)
+            .shadow(radius: 8, y: 4)
         }
         .padding(.horizontal, 16)
         .padding(.bottom, 16)

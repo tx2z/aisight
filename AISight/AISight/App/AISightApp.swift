@@ -9,7 +9,7 @@ struct AISightApp: App {
         WindowGroup {
             Group {
                 if appState.hasSeenOnboarding {
-                    mainTabView
+                    MainTabView()
                 } else {
                     OnboardingView()
                 }
@@ -19,8 +19,10 @@ struct AISightApp: App {
         }
         .modelContainer(for: QueryEntry.self)
     }
+}
 
-    private var mainTabView: some View {
+private struct MainTabView: View {
+    var body: some View {
         TabView {
             Tab("Search", systemImage: "magnifyingglass") {
                 NavigationStack {

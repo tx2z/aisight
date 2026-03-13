@@ -19,42 +19,9 @@ struct HistoryView: View {
             } else {
                 List {
                     ForEach(viewModel.entries) { entry in
-                        Button {
+                        HistoryRowView(entry: entry) {
                             selectedEntry = entry
-                        } label: {
-                            HStack(spacing: 10) {
-                                RoundedRectangle(cornerRadius: 2)
-                                    .fill(.accent)
-                                    .frame(width: 3, height: 44)
-
-                                VStack(alignment: .leading, spacing: 6) {
-                                    Text(entry.query)
-                                        .font(.headline)
-                                        .foregroundStyle(.primary)
-                                        .lineLimit(1)
-
-                                    Text(strippedMarkdown(entry.answer))
-                                        .font(.callout)
-                                        .foregroundStyle(.secondary)
-                                        .lineLimit(2)
-
-                                    HStack {
-                                        Text(entry.timestamp, format: .relative(presentation: .named))
-                                            .font(.caption)
-                                            .foregroundStyle(.secondary)
-
-                                        Spacer()
-
-                                        Text("\(entry.sources.count) sources")
-                                            .font(.caption)
-                                            .foregroundStyle(.secondary)
-                                    }
-                                }
-                            }
-                            .padding(.vertical, 4)
                         }
-                        .buttonStyle(.plain)
-                        .listRowSeparator(.hidden)
                         .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                             Button(role: .destructive) {
                                 viewModel.deleteEntry(entry, modelContext: modelContext)
@@ -84,7 +51,6 @@ struct HistoryView: View {
             Button("Clear All", role: .destructive) {
                 viewModel.clearAll(modelContext: modelContext)
             }
-            Button("Cancel", role: .cancel) {}
         } message: {
             Text("This will permanently delete all saved queries and answers.")
         }
@@ -94,80 +60,71 @@ struct HistoryView: View {
             }
             .presentationDragIndicator(.visible)
         }
-        .onAppear {
+        .task {
             viewModel.loadEntries(modelContext: modelContext)
         }
     }
 
-    /// Strip markdown syntax for plain-text preview in the list.
-    private func strippedMarkdown(_ text: String) -> String {
-        var result = text
-        // Remove headings
-        result = result.replacingOccurrences(of: "#{1,6}\\s+", with: "", options: .regularExpression)
-        // Remove bold/italic markers
-        result = result.replacingOccurrences(of: "\\*+", with: "", options: .regularExpression)
-        // Remove (via domain) attributions
-        result = result.replacingOccurrences(of: "\\(via [^)]+\\)", with: "", options: .regularExpression)
-        // Collapse whitespace
-        result = result.replacingOccurrences(of: "\\s+", with: " ", options: .regularExpression)
-        return result.trimmingCharacters(in: .whitespacesAndNewlines)
-    }
 }
 
-private struct HistoryDetailView: View {
+// MARK: - History Row
+
+private struct HistoryRowView: View {
     let entry: QueryEntry
-    @Environment(\.dismiss) private var dismiss
+    let onTap: () -> Void
+
+    private let strippedAnswer: String
+
+    init(entry: QueryEntry, onTap: @escaping () -> Void) {
+        self.entry = entry
+        self.onTap = onTap
+        self.strippedAnswer = Self.stripMarkdown(entry.answer)
+    }
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
-                Text(entry.query)
-                    .font(.title2.weight(.semibold))
+        Button(action: onTap) {
+            HStack(spacing: 10) {
+                RoundedRectangle(cornerRadius: 2)
+                    .fill(.accent)
+                    .frame(width: 3, height: 44)
 
-                Text(entry.timestamp, format: .dateTime.month().day().year().hour().minute())
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+                VStack(alignment: .leading, spacing: 6) {
+                    Text(entry.query)
+                        .font(.headline)
+                        .foregroundStyle(.primary)
+                        .lineLimit(1)
 
-                Divider()
+                    Text(strippedAnswer)
+                        .font(.callout)
+                        .foregroundStyle(.secondary)
+                        .lineLimit(2)
 
-                CitationText(text: entry.answer)
+                    HStack {
+                        Text(entry.timestamp, format: .relative(presentation: .named))
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
 
-                if !entry.sources.isEmpty {
-                    Divider()
+                        Spacer()
 
-                    Text("Sources")
-                        .font(.title2.weight(.semibold))
-
-                    ForEach(Array(entry.sources.enumerated()), id: \.offset) { _, source in
-                        SourceCardView(
-                            result: SearXNGResult(
-                                url: source.url,
-                                title: source.title,
-                                content: nil,
-                                engine: source.engine,
-                                score: nil,
-                                engines: nil,
-                                positions: nil,
-                                category: nil,
-                                publishedDate: nil
-                            )
-                        )
+                        Text("\(entry.sources.count) sources")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
                     }
                 }
             }
-            .padding()
+            .padding(.vertical, 4)
         }
-        .navigationTitle("Details")
-        #if os(iOS)
-        .navigationBarTitleDisplayMode(.inline)
-        #endif
-        .toolbar {
-            ToolbarItem(placement: .automatic) {
-                Button("Done") {
-                    dismiss()
-                }
-            }
-        }
+        .buttonStyle(.plain)
+        .listRowSeparator(.hidden)
+    }
+
+    private static func stripMarkdown(_ text: String) -> String {
+        var result = text
+        result = result.replacing(/#{1,6}\s+/, with: "")
+        result = result.replacing(/\*+/, with: "")
+        result = result.replacing(/\(via [^)]+\)/, with: "")
+        result = result.replacing(/\s+/, with: " ")
+        return result.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 }
 
