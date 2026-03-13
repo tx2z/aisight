@@ -45,7 +45,7 @@ struct HistoryView: View {
 
                                         Spacer()
 
-                                        Text("\(entry.sources.count) source\(entry.sources.count == 1 ? "" : "s")")
+                                        Text("\(entry.sources.count) sources")
                                             .font(.caption)
                                             .foregroundStyle(.secondary)
                                     }

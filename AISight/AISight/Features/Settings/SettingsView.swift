@@ -9,19 +9,31 @@ struct SettingsView: View {
     @State private var isTesting = false
     @State private var testResult: TestResult?
     @State private var selectedLanguage: String = UserDefaults.standard.string(forKey: "search_language") ?? AppConfig.defaultSearchLanguage
+    @State private var selectedAppLanguage: String = {
+        if let preferred = UserDefaults.standard.array(forKey: "AppleLanguages") as? [String],
+           let first = preferred.first {
+            // Normalize "es-ES" → "es"
+            return String(first.prefix(2))
+        }
+        return Locale.current.language.languageCode?.identifier ?? "en"
+    }()
+    @State private var showRestartAlert = false
     @State private var showClearConfirmation = false
     @State private var showClearError = false
 
     // swiftlint:disable:next force_unwrapping
     private static let searxngURL = URL(string: "https://searxng.org")!
 
-    private let languages: [(code: String, name: String)] = [
+    private let supportedLanguages: [(code: String, name: String)] = [
         ("en", "English"),
         ("de", "Deutsch"),
         ("fr", "Fran\u{00E7}ais"),
         ("es", "Espa\u{00F1}ol"),
+        ("it", "Italiano"),
         ("ja", "\u{65E5}\u{672C}\u{8A9E}"),
-        ("zh", "\u{4E2D}\u{6587}")
+        ("ko", "\u{D55C}\u{AD6D}\u{C5B4}"),
+        ("zh", "\u{4E2D}\u{6587}"),
+        ("pt", "Portugu\u{00EA}s")
     ]
 
     private var appVersion: String {
@@ -43,7 +55,7 @@ struct SettingsView: View {
                         if validateAndSaveURL(serverURL) {
                             testResult = nil
                         } else {
-                            testResult = TestResult(success: false, message: "Invalid URL. Use http:// or https://.")
+                            testResult = TestResult(success: false, message: String(localized: "Invalid URL. Use http:// or https://."))
                         }
                     }
 
@@ -146,6 +158,11 @@ struct SettingsView: View {
         }
         .formStyle(.grouped)
         .navigationTitle("Settings")
+        .alert("Language Changed", isPresented: $showRestartAlert) {
+            Button("OK", role: .cancel) {}
+        } message: {
+            Text("Please close and reopen the app for the language change to take effect.")
+        }
         .alert("Failed to Clear Data", isPresented: $showClearError) {
             Button("OK", role: .cancel) {}
         } message: {
@@ -175,7 +192,7 @@ struct SettingsView: View {
 
     private func testConnection() async {
         guard validateAndSaveURL(serverURL) else {
-            testResult = TestResult(success: false, message: "Invalid URL. Use http:// or https://.")
+            testResult = TestResult(success: false, message: String(localized: "Invalid URL. Use http:// or https://."))
             return
         }
         isTesting = true
@@ -188,9 +205,9 @@ struct SettingsView: View {
             isTesting = false
             if available {
                 let ms = Int(latency * 1000)
-                testResult = TestResult(success: true, message: "Connected (\(ms)ms)")
+                testResult = TestResult(success: true, message: String(localized: "Connected (\(ms)ms)"))
             } else {
-                testResult = TestResult(success: false, message: "Connection failed")
+                testResult = TestResult(success: false, message: String(localized: "Connection failed"))
             }
         }
     }

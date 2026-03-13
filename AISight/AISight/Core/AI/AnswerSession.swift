@@ -29,7 +29,7 @@ class AnswerSession {
         SystemLanguageModel.default.availability
     }
 
-    func generateAnswer(for query: String, with searchOutput: SearchOutput) async {
+    func generateAnswer(for query: String, with searchOutput: SearchOutput, language: String = "en") async {
         streamingText = ""
         isGenerating = true
         error = nil
@@ -63,7 +63,8 @@ class AnswerSession {
                 query: query,
                 sources: sources,
                 directAnswers: searchOutput.directAnswers,
-                infoboxes: searchOutput.infoboxes
+                infoboxes: searchOutput.infoboxes,
+                language: language
             )
             let session = LanguageModelSession(
                 instructions: systemPromptText
@@ -79,28 +80,7 @@ class AnswerSession {
             guard !Task.isCancelled else { return }
 
         } catch let genError as LanguageModelSession.GenerationError {
-            switch genError {
-            case .guardrailViolation:
-                self.error = .contentPolicy
-            case .exceededContextWindowSize:
-                self.error = .generationFailed("The query is too long for the on-device model.")
-            case .unsupportedLanguageOrLocale:
-                self.error = .generationFailed("This language is not supported by the on-device model.")
-            case .rateLimited:
-                self.error = .generationFailed("The on-device model is rate limited. Please try again shortly.")
-            case .assetsUnavailable:
-                self.error = .modelUnavailable
-            case .concurrentRequests:
-                self.error = .generationFailed("Another request is in progress. Please wait.")
-            case .refusal:
-                self.error = .contentPolicy
-            case .unsupportedGuide:
-                self.error = .generationFailed("Unsupported generation configuration.")
-            case .decodingFailure:
-                self.error = .generationFailed("Failed to decode the model response.")
-            @unknown default:
-                self.error = .generationFailed(genError.localizedDescription)
-            }
+            self.error = generationErrorToAnswerError(genError)
         } catch {
             self.error = .generationFailed(error.localizedDescription)
         }
@@ -116,13 +96,13 @@ enum AnswerError: Error, LocalizedError {
     var errorDescription: String? {
         switch self {
         case .searchFailed(let searchError):
-            return "Search failed: \(searchError.localizedDescription)"
+            return String(localized: "Search failed: \(searchError.localizedDescription)")
         case .generationFailed(let message):
-            return "Failed to generate answer: \(message)"
+            return String(localized: "Failed to generate answer: \(message)")
         case .modelUnavailable:
-            return "The on-device language model is not available on this device."
+            return String(localized: "The on-device language model is not available on this device.")
         case .contentPolicy:
-            return "The request was blocked due to content policy restrictions."
+            return String(localized: "The request was blocked due to content policy restrictions.")
         }
     }
 }

@@ -19,6 +19,39 @@ struct SearchView: View {
     }
 }
 
+private struct Suggestion: Identifiable {
+    let id = UUID()
+    let title: String
+    let query: String
+}
+
+private let suggestions: [Suggestion] = [
+    Suggestion(title: String(localized: "What is liquid glass?"), query: String(localized: "What is liquid glass in iOS 26?")),
+    Suggestion(title: String(localized: "Why is the sky blue?"), query: String(localized: "Why is the sky blue?")),
+    Suggestion(title: String(localized: "Best coffee brewing methods"), query: String(localized: "Best coffee brewing methods compared")),
+    Suggestion(title: String(localized: "How do black holes form?"), query: String(localized: "How do black holes form?")),
+    Suggestion(title: String(localized: "Swift concurrency patterns"), query: String(localized: "Best Swift concurrency patterns")),
+    Suggestion(title: String(localized: "History of the Internet"), query: String(localized: "History of the Internet")),
+    Suggestion(title: String(localized: "How does mRNA work?"), query: String(localized: "How do mRNA vaccines work?")),
+    Suggestion(title: String(localized: "Tips for better sleep"), query: String(localized: "Science-backed tips for better sleep")),
+    Suggestion(title: String(localized: "How do planes fly?"), query: String(localized: "How do airplanes generate lift?")),
+    Suggestion(title: String(localized: "Best hiking trails in Europe"), query: String(localized: "Best hiking trails in Europe")),
+    Suggestion(title: String(localized: "What causes northern lights?"), query: String(localized: "What causes the aurora borealis?")),
+    Suggestion(title: String(localized: "Beginner guitar chords"), query: String(localized: "Essential beginner guitar chords")),
+    Suggestion(title: String(localized: "How does Wi-Fi work?"), query: String(localized: "How does Wi-Fi technology work?")),
+    Suggestion(title: String(localized: "Mediterranean diet basics"), query: String(localized: "Mediterranean diet basics and benefits")),
+    Suggestion(title: String(localized: "Mars colonization challenges"), query: String(localized: "Challenges of colonizing Mars")),
+    Suggestion(title: String(localized: "How to start journaling"), query: String(localized: "How to start a journaling habit")),
+    Suggestion(title: String(localized: "What is quantum computing?"), query: String(localized: "What is quantum computing explained simply?")),
+    Suggestion(title: String(localized: "Best stretches for desk workers"), query: String(localized: "Best stretches for people who sit all day")),
+    Suggestion(title: String(localized: "How do tides work?"), query: String(localized: "How do ocean tides work?")),
+    Suggestion(title: String(localized: "Stoic philosophy basics"), query: String(localized: "Introduction to Stoic philosophy")),
+    Suggestion(title: String(localized: "How does GPS work?"), query: String(localized: "How does GPS satellite navigation work?")),
+    Suggestion(title: String(localized: "Benefits of reading daily"), query: String(localized: "Science-backed benefits of reading every day")),
+    Suggestion(title: String(localized: "How do volcanoes erupt?"), query: String(localized: "How and why do volcanoes erupt?")),
+    Suggestion(title: String(localized: "Best productivity methods"), query: String(localized: "Most effective productivity methods compared")),
+]
+
 @available(iOS 26.0, macOS 26.0, *)
 private struct SearchContentView: View {
     @Environment(\.modelContext) private var modelContext
@@ -26,7 +59,13 @@ private struct SearchContentView: View {
 
     @State private var viewModel = SearchViewModel()
     @State private var isDeepSearchEnabled: Bool = false
+    @State private var currentPairIndex: Int = 0
     @FocusState private var isInputFocused: Bool
+
+    private var currentSuggestions: [Suggestion] {
+        let startIndex = (currentPairIndex * 2) % suggestions.count
+        return [suggestions[startIndex], suggestions[(startIndex + 1) % suggestions.count]]
+    }
 
     private var hasResults: Bool {
         !viewModel.streamingText.isEmpty || viewModel.isGenerating || viewModel.isSearching || !viewModel.queryGroups.isEmpty || viewModel.errorMessage != nil
@@ -160,13 +199,16 @@ private struct SearchContentView: View {
             .foregroundStyle(.tertiary)
 
             VStack(spacing: 10) {
-                SuggestionChip("What is liquid glass?") {
-                    viewModel.query = "What is liquid glass?"
-                    viewModel.performSearch(modelContext: modelContext)
-                }
-                SuggestionChip("Swift concurrency patterns") {
-                    viewModel.query = "Best Swift concurrency patterns"
-                    viewModel.performSearch(modelContext: modelContext)
+                ForEach(currentSuggestions) { suggestion in
+                    SuggestionChip(suggestion.title) {
+                        viewModel.query = suggestion.query
+                        viewModel.performSearch(modelContext: modelContext)
+                    }
+                    .id(suggestion.id)
+                    .transition(.asymmetric(
+                        insertion: .opacity.combined(with: .move(edge: .bottom)).combined(with: .scale(scale: 0.95)),
+                        removal: .opacity.combined(with: .move(edge: .top)).combined(with: .scale(scale: 0.95))
+                    ))
                 }
             }
             .padding(.top, 8)
@@ -176,6 +218,18 @@ private struct SearchContentView: View {
         }
         .frame(maxWidth: .infinity)
         .padding()
+        .onAppear {
+            currentPairIndex = Int.random(in: 0..<suggestions.count / 2)
+        }
+        .task(id: hasResults) {
+            guard !hasResults else { return }
+            while !Task.isCancelled {
+                try? await Task.sleep(for: .seconds(6))
+                withAnimation(.spring(duration: 0.45, bounce: 0.15)) {
+                    currentPairIndex = (currentPairIndex + 1) % (suggestions.count / 2)
+                }
+            }
+        }
     }
 
     // MARK: - Loading State

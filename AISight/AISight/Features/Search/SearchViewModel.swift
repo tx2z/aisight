@@ -97,7 +97,7 @@ final class SearchViewModel {
             }
 
             if deepSearchPipeline.error == nil && deepSearchPipeline.streamingText.isEmpty {
-                errorMessage = "The model returned an empty response. Try rephrasing your question."
+                errorMessage = String(localized: "The model returned an empty response. Try rephrasing your question.")
             }
 
             // Save to history on success
@@ -138,19 +138,19 @@ final class SearchViewModel {
             } catch let error as URLError where error.code == .notConnectedToInternet {
                 guard !Task.isCancelled else { return }
                 isSearching = false
-                errorMessage = "Connect to the internet to search. Previously answered questions are available in History."
+                errorMessage = String(localized: "Connect to the internet to search. Previously answered questions are available in History.")
                 return
             } catch {
                 guard !Task.isCancelled else { return }
                 isSearching = false
-                errorMessage = "Search server is unavailable. Check your connection or update the server URL in Settings."
+                errorMessage = String(localized: "Search server is unavailable. Check your connection or update the server URL in Settings.")
                 return
             }
 
             guard !Task.isCancelled else { return }
 
             // 3. Generate answer via AnswerSession with pre-fetched results
-            await answerSession.generateAnswer(for: trimmedQuery, with: searchOutput)
+            await answerSession.generateAnswer(for: trimmedQuery, with: searchOutput, language: language)
 
             guard !Task.isCancelled else { return }
 
@@ -160,7 +160,7 @@ final class SearchViewModel {
             }
 
             if answerSession.error == nil && answerSession.streamingText.isEmpty {
-                errorMessage = "The model returned an empty response. Try rephrasing your question."
+                errorMessage = String(localized: "The model returned an empty response. Try rephrasing your question.")
             }
 
             // 5. Save to history on success
@@ -192,13 +192,13 @@ final class SearchViewModel {
     private func userFacingMessage(for error: SearchError) -> String {
         switch error {
         case .serverUnavailable:
-            return "Search server is unavailable. Check your connection or update the server URL in Settings."
+            return String(localized: "Search server is unavailable. Check your connection or update the server URL in Settings.")
         case .timeout:
-            return "Search took too long. The server may be overloaded \u{2014} try again in a moment."
+            return String(localized: "Search took too long. The server may be overloaded \u{2014} try again in a moment.")
         case .noResults:
-            return "No sources found for this query. Try rephrasing."
+            return String(localized: "No sources found for this query. Try rephrasing.")
         case .invalidResponse:
-            return "Search server is unavailable. Check your connection or update the server URL in Settings."
+            return String(localized: "Search server is unavailable. Check your connection or update the server URL in Settings.")
         }
     }
 
@@ -207,11 +207,11 @@ final class SearchViewModel {
         case .searchFailed(let searchError):
             return userFacingMessage(for: searchError)
         case .generationFailed(let message):
-            return "An error occurred while generating the answer: \(message)"
+            return String(localized: "An error occurred while generating the answer: \(message)")
         case .modelUnavailable:
-            return "AISight requires Apple Intelligence. Enable it in Settings \u{2192} Apple Intelligence & Siri."
+            return String(localized: "AISight requires Apple Intelligence. Enable it in Settings \u{2192} Apple Intelligence & Siri.")
         case .contentPolicy:
-            return "This query can't be answered on-device. Try a different question."
+            return String(localized: "This query can't be answered on-device. Try a different question.")
         }
     }
 }

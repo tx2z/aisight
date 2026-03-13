@@ -20,10 +20,10 @@ class DeepSearchPipeline {
         var description: String {
             switch self {
             case .idle: return ""
-            case .reformulating: return "Reformulating query..."
-            case .searching: return "Searching the web..."
-            case .researching(let current, let total): return "Analyzing sources (\(current)/\(total))..."
-            case .synthesizing: return "Writing answer..."
+            case .reformulating: return String(localized: "Reformulating query...")
+            case .searching: return String(localized: "Searching the web...")
+            case .researching(let current, let total): return String(localized: "Analyzing sources (\(current)/\(total))...")
+            case .synthesizing: return String(localized: "Writing answer...")
             }
         }
     }
@@ -85,7 +85,7 @@ class DeepSearchPipeline {
 
         // If all researchers failed, fall back — the caller can use normal mode
         if researcherSummaries.isEmpty {
-            self.error = .generationFailed("Deep search analysis failed. Try again or disable Deep Search.")
+            self.error = .generationFailed(String(localized: "Deep search analysis failed. Try again or disable Deep Search."))
             return searchOutput
         }
 
@@ -94,7 +94,8 @@ class DeepSearchPipeline {
         await runSynthesizer(
             query: query,
             summaries: researcherSummaries,
-            sources: searchOutput.results
+            sources: searchOutput.results,
+            language: language
         )
 
         return searchOutput
@@ -161,7 +162,7 @@ class DeepSearchPipeline {
 
     // MARK: - Synthesizer
 
-    private func runSynthesizer(query: String, summaries: [String], sources: [SearXNGResult]) async {
+    private func runSynthesizer(query: String, summaries: [String], sources: [SearXNGResult], language: String) async {
         let dateString = QueryReformulator.currentDateString()
 
         // Build source list
@@ -195,7 +196,7 @@ class DeepSearchPipeline {
         - If researchers found different or conflicting information, present all viewpoints
         - Write 3-5 paragraphs minimum — this is a deep research answer, not a quick summary
         - Write in clear, accessible language
-
+        \(Self.languageInstruction(for: language))
         ## Research Findings
         \(findings)
         ## Sources
@@ -210,28 +211,20 @@ class DeepSearchPipeline {
                 streamingText = partial.content
             }
         } catch let genError as LanguageModelSession.GenerationError {
-            switch genError {
-            case .guardrailViolation, .refusal:
-                self.error = .contentPolicy
-            case .exceededContextWindowSize:
-                self.error = .generationFailed("The query is too long for the on-device model.")
-            case .unsupportedLanguageOrLocale:
-                self.error = .generationFailed("This language is not supported by the on-device model.")
-            case .rateLimited:
-                self.error = .generationFailed("The on-device model is rate limited. Please try again shortly.")
-            case .assetsUnavailable:
-                self.error = .modelUnavailable
-            case .concurrentRequests:
-                self.error = .generationFailed("Another request is in progress. Please wait.")
-            case .unsupportedGuide:
-                self.error = .generationFailed("Unsupported generation configuration.")
-            case .decodingFailure:
-                self.error = .generationFailed("Failed to decode the model response.")
-            @unknown default:
-                self.error = .generationFailed(genError.localizedDescription)
-            }
+            self.error = generationErrorToAnswerError(genError)
         } catch {
             self.error = .generationFailed(error.localizedDescription)
         }
+    }
+
+    private static let languageNames: [String: String] = [
+        "en": "English", "de": "German", "fr": "French", "es": "Spanish",
+        "it": "Italian", "ja": "Japanese", "ko": "Korean", "zh": "Chinese",
+        "pt": "Portuguese"
+    ]
+
+    private static func languageInstruction(for code: String) -> String {
+        guard code != "en", let name = languageNames[code] else { return "" }
+        return "- IMPORTANT: Respond entirely in \(name). The user's language is \(name)."
     }
 }
