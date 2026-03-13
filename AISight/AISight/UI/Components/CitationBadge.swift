@@ -5,11 +5,11 @@ struct CitationBadge: View {
 
     var body: some View {
         Text("[\(number)]")
-            .font(.caption2.bold())
+            .font(.caption.bold())
             .foregroundStyle(.white)
             .padding(.horizontal, 4)
             .padding(.vertical, 2)
-            .background(.blue, in: .rect(cornerRadius: 4))
+            .background(.accent, in: .rect(cornerRadius: 4))
     }
 }
 

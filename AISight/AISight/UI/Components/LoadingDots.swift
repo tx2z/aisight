@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct LoadingDots: View {
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
     @State private var active = false
 
     var body: some View {
@@ -11,9 +12,10 @@ struct LoadingDots: View {
                     .frame(width: 6, height: 6)
                     .offset(y: active ? -4 : 2)
                     .animation(
-                        .spring(duration: 0.4, bounce: 0.5)
-                            .repeatForever(autoreverses: true)
-                            .delay(Double(index) * 0.15),
+                        reduceMotion ? nil :
+                            .spring(duration: 0.4, bounce: 0.5)
+                                .repeatForever(autoreverses: true)
+                                .delay(Double(index) * 0.15),
                         value: active
                     )
             }
