@@ -16,9 +16,6 @@ struct AISightApp: App {
             }
             .animation(.easeIn(duration: 0.3), value: appState.hasSeenOnboarding)
             .environment(appState)
-            .task {
-                await appState.checkServerAvailability()
-            }
         }
         .modelContainer(for: QueryEntry.self)
     }

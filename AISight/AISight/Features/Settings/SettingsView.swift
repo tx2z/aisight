@@ -94,25 +94,29 @@ struct SettingsView: View {
                 }
             }
 
-            Section("Server Status") {
-                ServerStatusView(
-                    isAvailable: appState.serverAvailable,
-                    lastChecked: appState.lastServerCheck
-                ) {
-                    await appState.checkServerAvailability()
-                }
-            }
-
             Section("Preferences") {
+                Picker("App Language", selection: $selectedAppLanguage) {
+                    ForEach(supportedLanguages, id: \.code) { language in
+                        Text(language.name).tag(language.code)
+                    }
+                }
+                .onChange(of: selectedAppLanguage) {
+                    UserDefaults.standard.set([selectedAppLanguage], forKey: "AppleLanguages")
+                    UserDefaults.standard.synchronize()
+                    // Sync search language to match app language
+                    selectedLanguage = selectedAppLanguage
+                    UserDefaults.standard.set(selectedAppLanguage, forKey: "search_language")
+                    showRestartAlert = true
+                }
+
                 Picker("Search Language", selection: $selectedLanguage) {
-                    ForEach(languages, id: \.code) { language in
+                    ForEach(supportedLanguages, id: \.code) { language in
                         Text(language.name).tag(language.code)
                     }
                 }
                 .onChange(of: selectedLanguage) {
                     UserDefaults.standard.set(selectedLanguage, forKey: "search_language")
                 }
-
             }
 
             Section("Data") {

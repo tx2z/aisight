@@ -9,9 +9,6 @@ import FoundationModels
 @Observable
 final class AppState {
 
-    var serverAvailable: Bool? = nil
-    var lastServerCheck: Date?
-
     var hasSeenOnboarding: Bool = UserDefaults.standard.bool(forKey: "hasSeenOnboarding") {
         didSet {
             UserDefaults.standard.set(hasSeenOnboarding, forKey: "hasSeenOnboarding")
@@ -25,15 +22,4 @@ final class AppState {
         return false
     }
 
-    private let searchService: SearXNGService
-
-    init(searchService: SearXNGService = SearXNGService()) {
-        self.searchService = searchService
-    }
-
-    func checkServerAvailability() async {
-        let available = await searchService.checkAvailability()
-        self.serverAvailable = available
-        self.lastServerCheck = Date()
-    }
 }
