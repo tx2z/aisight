@@ -38,6 +38,7 @@ private struct SourceCardContent: View {
     let domain: String
     var index: Int? = nil
     @Binding var isExpanded: Bool
+    @State private var isTruncated = false
 
     private var domainInitial: String {
         String(domain.prefix(1)).uppercased()
@@ -92,27 +93,41 @@ private struct SourceCardContent: View {
                             .font(.caption)
                             .foregroundStyle(.secondary)
                             .lineLimit(isExpanded ? nil : 2)
+                            .background {
+                                Text(snippet)
+                                    .font(.caption)
+                                    .lineLimit(nil)
+                                    .hidden()
+                                    .onGeometryChange(for: CGFloat.self) { proxy in
+                                        proxy.size.height
+                                    } action: { fullHeight in
+                                        // Caption font at 2 lines is ~32pt; if full height exceeds that, text is truncated
+                                        isTruncated = fullHeight > 34
+                                    }
+                            }
 
-                        Spacer(minLength: 0)
+                        if isTruncated || isExpanded {
+                            Spacer(minLength: 0)
 
-                        Image(systemName: "chevron.down")
-                            .font(.caption)
-                            .foregroundStyle(.tertiary)
-                            .rotationEffect(.degrees(isExpanded ? 180 : 0))
-                            .animation(.spring(duration: 0.3), value: isExpanded)
+                            Image(systemName: "chevron.down")
+                                .font(.caption)
+                                .foregroundStyle(.tertiary)
+                                .rotationEffect(.degrees(isExpanded ? 180 : 0))
+                                .animation(.spring(duration: 0.3), value: isExpanded)
+                        }
                     }
                     .contentShape(Rectangle())
                     .onTapGesture {
+                        guard isTruncated || isExpanded else { return }
                         withAnimation(.spring(duration: 0.3)) { isExpanded.toggle() }
                     }
-                    .accessibilityAddTraits(.isButton)
-                    .accessibilityLabel(isExpanded ? "Collapse snippet" : "Expand snippet")
+                    .accessibilityAddTraits(isTruncated ? .isButton : [])
+                    .accessibilityLabel(isTruncated ? (isExpanded ? "Collapse snippet" : "Expand snippet") : "")
                 }
             }
         }
         .padding(12)
         .background(.regularMaterial, in: .rect(cornerRadius: 12))
-        .shadow(radius: 3, y: 1)
         .scrollTransition { content, phase in
             content
                 .opacity(phase.isIdentity ? 1 : 0.6)

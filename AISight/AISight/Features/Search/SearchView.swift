@@ -127,12 +127,18 @@ private struct SearchContentView: View {
                         }
 
                         if !viewModel.streamingText.isEmpty && !viewModel.isGenerating {
-                            HStack(spacing: 4) {
-                                Image(systemName: "apple.intelligence")
+                            VStack(spacing: 6) {
+                                HStack(spacing: 4) {
+                                    Image(systemName: "apple.intelligence")
+                                        .font(.caption)
+                                        .symbolEffect(.appear)
+                                    Text("Generated on-device")
+                                        .font(.caption)
+                                }
+
+                                Text("AI-generated answers may be inaccurate. Verify important information with original sources.")
                                     .font(.caption)
-                                    .symbolEffect(.appear)
-                                Text("Generated on-device")
-                                    .font(.caption)
+                                    .multilineTextAlignment(.center)
                             }
                             .foregroundStyle(.tertiary)
                             .frame(maxWidth: .infinity)
@@ -140,6 +146,10 @@ private struct SearchContentView: View {
                         }
                     }
                     .padding()
+                    #if os(macOS)
+                    .frame(maxWidth: 720)
+                    .frame(maxWidth: .infinity)
+                    #endif
                 }
             } else {
                 SearchEmptyStateView(
@@ -315,6 +325,7 @@ private struct SearchBarSection: View {
                      "on-device processing. Best for complex questions that need thorough research.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
                     .padding(.horizontal, 20)
                     .transition(.opacity.combined(with: .move(edge: .bottom)))
             }
@@ -340,39 +351,38 @@ private struct SearchBarSection: View {
             }
             .buttonStyle(.plain)
 
-            HStack(alignment: .bottom, spacing: 8) {
-                ZStack(alignment: .topLeading) {
-                    if query.isEmpty {
-                        Text("Ask anything...")
-                            .foregroundStyle(.tertiary)
-                            .padding(.horizontal, 4)
-                            .padding(.vertical, 8)
-                    }
-                    TextEditor(text: $query)
-                        .focused(isInputFocused)
-                        .scrollContentBackground(.hidden)
-                        .frame(minHeight: 36, maxHeight: 120)
-                        .fixedSize(horizontal: false, vertical: true)
-                        .onChange(of: query) { _, newValue in
-                            if newValue.count > 500 {
-                                query = String(newValue.prefix(500))
-                            }
+            HStack(alignment: .center, spacing: 8) {
+                TextField("Ask anything...", text: $query, axis: .vertical)
+                    .focused(isInputFocused)
+                    .textFieldStyle(.plain)
+                    .lineLimit(1...5)
+                    .onChange(of: query) { _, newValue in
+                        if newValue.count > 500 {
+                            query = String(newValue.prefix(500))
                         }
-                }
+                    }
 
                 Button("Send", systemImage: "arrow.up.circle.fill", action: onSearch)
+                    .buttonStyle(.plain)
                     .labelStyle(.iconOnly)
                     .font(.title2)
                     .foregroundStyle(isQueryEmpty ? Color.secondary : Color.accentColor)
                     .symbolEffect(.bounce, value: !isQueryEmpty)
                     .disabled(isQueryEmpty)
-                    .padding(.bottom, 4)
             }
             .padding(.horizontal, 12)
+            #if os(macOS)
+            .padding(.vertical, 10)
+            #else
             .padding(.vertical, 6)
+            #endif
             .background(.regularMaterial, in: .rect(cornerRadius: 20))
             .shadow(radius: 8, y: 4)
         }
+        #if os(macOS)
+        .frame(maxWidth: 720)
+        #endif
+        .frame(maxWidth: .infinity)
         .padding(.horizontal, 16)
         .padding(.bottom, 16)
     }
