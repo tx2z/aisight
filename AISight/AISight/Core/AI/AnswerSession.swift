@@ -4,7 +4,7 @@ import FoundationModels
 @available(iOS 26.0, macOS 26.0, *)
 @MainActor
 @Observable
-class AnswerSession {
+final class AnswerSession {
     var streamingText: String = ""
     var isGenerating: Bool = false
     private(set) var error: AnswerError? = nil
@@ -16,7 +16,7 @@ class AnswerSession {
     }
 
     static func checkAvailability() -> Bool {
-        return SystemLanguageModel.default.availability == .available
+        SystemLanguageModel.default.availability == .available
     }
 
     func reset() {
@@ -83,26 +83,6 @@ class AnswerSession {
             self.error = generationErrorToAnswerError(genError)
         } catch {
             self.error = .generationFailed(error.localizedDescription)
-        }
-    }
-}
-
-enum AnswerError: Error, LocalizedError {
-    case searchFailed(SearchError)
-    case generationFailed(String)
-    case modelUnavailable
-    case contentPolicy
-
-    var errorDescription: String? {
-        switch self {
-        case .searchFailed(let searchError):
-            return String(localized: "Search failed: \(searchError.localizedDescription)")
-        case .generationFailed(let message):
-            return String(localized: "Failed to generate answer: \(message)")
-        case .modelUnavailable:
-            return String(localized: "The on-device language model is not available on this device.")
-        case .contentPolicy:
-            return String(localized: "The request was blocked due to content policy restrictions.")
         }
     }
 }

@@ -25,37 +25,6 @@ struct SearXNGResult: Codable, Identifiable, Sendable {
     /// Domain extracted from URL
     var domain: String? {
         URL(string: url).flatMap { $0.host() }?
-            .replacingOccurrences(of: "www.", with: "")
+            .replacing("www.", with: "")
     }
-}
-
-struct SearXNGResponse: Codable, Sendable {
-    let query: String?
-    let results: [SearXNGResult]
-    let numberOfResults: Int?
-    let answers: [String]?
-    let suggestions: [String]?
-    let infoboxes: [SearXNGInfobox]?
-    let unresponsiveEngines: [[String]]?
-
-    enum CodingKeys: String, CodingKey {
-        case query, results, answers, suggestions, infoboxes
-        case numberOfResults = "number_of_results"
-        case unresponsiveEngines = "unresponsive_engines"
-    }
-}
-
-struct SearXNGInfobox: Codable, Sendable {
-    let infobox: String?
-    let content: String?
-    let urls: [SearXNGInfoboxURL]?
-
-    enum CodingKeys: String, CodingKey {
-        case infobox, content, urls
-    }
-}
-
-struct SearXNGInfoboxURL: Codable, Sendable {
-    let title: String?
-    let url: String?
 }

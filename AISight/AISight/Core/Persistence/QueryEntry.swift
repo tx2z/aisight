@@ -1,14 +1,8 @@
 import Foundation
 import SwiftData
 
-struct SourceInfo: Codable, Hashable, Sendable {
-    let url: String
-    let title: String
-    let engine: String?
-}
-
 @Model
-class QueryEntry {
+final class QueryEntry {
     var id: UUID
     var query: String
     var answer: String
@@ -20,6 +14,6 @@ class QueryEntry {
         self.query = query
         self.answer = answer
         self.sources = sources
-        self.timestamp = Date()
+        self.timestamp = Date.now
     }
 }
