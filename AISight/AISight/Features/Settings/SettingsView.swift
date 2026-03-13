@@ -22,7 +22,9 @@ struct SettingsView: View {
     @State private var showClearError = false
 
     // swiftlint:disable:next force_unwrapping
-    private static let searxngURL = URL(string: "https://searxng.org")!
+    private static let searxngURL = URL(string: "https://github.com/searxng/searxng")!
+    // swiftlint:disable:next force_unwrapping
+    private static let supportURL = URL(string: "mailto:jesus@perezpaz.es")!
 
     private let supportedLanguages: [(code: String, name: String)] = [
         ("en", "English"),
@@ -131,8 +133,22 @@ struct SettingsView: View {
             }
 
             Section("Data") {
-                Button("Clear Cache", role: .destructive) {
+                Button("Delete All Data", role: .destructive) {
                     showClearConfirmation = true
+                }
+            }
+
+            Section("Legal") {
+                NavigationLink {
+                    PrivacyPolicyView()
+                } label: {
+                    Label("Privacy Policy", systemImage: "hand.raised.fill")
+                }
+
+                NavigationLink {
+                    TermsOfUseView()
+                } label: {
+                    Label("Terms of Use", systemImage: "doc.text.fill")
                 }
             }
 
@@ -143,6 +159,16 @@ struct SettingsView: View {
                             .foregroundStyle(.primary)
                         Spacer()
                         Image(systemName: "arrow.up.right.square")
+                            .foregroundStyle(.accent)
+                    }
+                }
+
+                Link(destination: Self.supportURL) {
+                    HStack {
+                        Text("Contact Support")
+                            .foregroundStyle(.primary)
+                        Spacer()
+                        Image(systemName: "envelope.fill")
                             .foregroundStyle(.accent)
                     }
                 }
@@ -165,12 +191,12 @@ struct SettingsView: View {
         } message: {
             Text("Your search history could not be deleted. Please try again.")
         }
-        .confirmationDialog("Clear Cache?", isPresented: $showClearConfirmation, titleVisibility: .visible) {
-            Button("Clear All Data", role: .destructive) {
+        .confirmationDialog("Delete All Data?", isPresented: $showClearConfirmation, titleVisibility: .visible) {
+            Button("Delete All Data", role: .destructive) {
                 clearCache()
             }
         } message: {
-            Text("This will delete all cached data including search history.")
+            Text("This will permanently delete all your search history and saved answers. This action cannot be undone.")
         }
     }
 

@@ -2,6 +2,12 @@ import SwiftUI
 
 struct OnboardingView: View {
     @Environment(AppState.self) private var appState
+    @State private var showLegalSheet: LegalSheet?
+
+    private enum LegalSheet: Identifiable {
+        case privacy, terms
+        var id: Self { self }
+    }
 
     var body: some View {
         VStack(spacing: 24) {
@@ -53,20 +59,53 @@ struct OnboardingView: View {
 
             Spacer()
 
-            Button {
-                withAnimation {
-                    appState.hasSeenOnboarding = true
+            VStack(spacing: 12) {
+                Button {
+                    withAnimation {
+                        appState.hasSeenOnboarding = true
+                    }
+                } label: {
+                    Text("Start Searching")
+                        .font(.headline)
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 12)
+                        .background(.accent, in: .rect(cornerRadius: 10))
                 }
-            } label: {
-                Text("Start Searching")
-                    .font(.headline)
-                    .foregroundStyle(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 12)
-                    .background(.accent, in: .rect(cornerRadius: 10))
+                .padding(.horizontal, 24)
+
+                Text("By continuing, you agree to our [Terms of Use](aisight://terms) and [Privacy Policy](aisight://privacy).")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 24)
+                    .environment(\.openURL, OpenURLAction { url in
+                        if url.scheme == "aisight" {
+                            showLegalSheet = url.host() == "privacy" ? .privacy : .terms
+                        }
+                        return .handled
+                    })
             }
-            .padding(.horizontal, 24)
             .padding(.bottom, 32)
+        }
+        .sheet(item: $showLegalSheet) { sheet in
+            NavigationStack {
+                Group {
+                    switch sheet {
+                    case .privacy:
+                        PrivacyPolicyView()
+                    case .terms:
+                        TermsOfUseView()
+                    }
+                }
+                .toolbar {
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button("Done") {
+                            showLegalSheet = nil
+                        }
+                    }
+                }
+            }
         }
     }
 
