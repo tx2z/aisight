@@ -1,0 +1,134 @@
+# UI / Features Domain
+
+> When to load: Modifying views, view models, or reusable UI components.
+
+## Overview
+
+AISight follows MVVM with SwiftUI views and `@Observable` view models. The app has 4 main screens (Search, History, Settings, Onboarding) organized under `Features/`, plus shared components in `UI/Components/`. No custom theme — uses system colors and fonts throughout.
+
+## Key Files
+
+### Features
+
+| File | Key Types | Location |
+|------|-----------|----------|
+| SearchView.swift | `SearchView` | `Features/Search/` |
+| SearchViewModel.swift | `SearchViewModel` | `Features/Search/` |
+| StreamingAnswerView.swift | `StreamingAnswerView` | `Features/Search/` |
+| HistoryView.swift | `HistoryView` | `Features/History/` |
+| HistoryViewModel.swift | `HistoryViewModel` | `Features/History/` |
+| SettingsView.swift | `SettingsView` | `Features/Settings/` |
+| OnboardingView.swift | `OnboardingView` | `Features/Onboarding/` |
+
+### UI Components
+
+| File | Key Types | Location |
+|------|-----------|----------|
+| CitationText.swift | `CitationText` | `UI/Components/` |
+| SourceCardView.swift | `SourceCardView` | `UI/Components/` |
+| CitationBadge.swift | `CitationBadge` | `UI/Components/` |
+| LoadingDots.swift | `LoadingDots` | `UI/Components/` |
+| ServerStatusView.swift | `ServerStatusView` | `UI/Components/` |
+| ShimmerEffect.swift | `ShimmerModifier`, `SkeletonBlock`, `SearchSkeletonView` | `UI/Components/` |
+| TypingCursor.swift | `TypingCursor` | `UI/Components/` |
+| AppTheme.swift | (empty) | `UI/Theme/` |
+
+### App
+
+| File | Key Types | Location |
+|------|-----------|----------|
+| AISightApp.swift | `AISightApp` | `App/` |
+| AppState.swift | `AppState` | `App/` |
+
+## SearchViewModel
+
+`@available(iOS 26.0, macOS 26.0, *)` `@MainActor` `@Observable`
+
+### State
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `query` | `String` | Current query text (bound to TextField) |
+| `sources` | `[SearXNGResult]` | Current search results for display |
+| `errorMessage` | `String?` | User-facing error message |
+| `answerSession` | `AnswerSession` | Owned answer session |
+| `isSearching` | `Bool` | True during SearXNG search |
+| `streamingText` | `String` | Forwarded from answerSession |
+| `isGenerating` | `Bool` | Forwarded from answerSession |
+| `deepSearchPipeline` | `DeepSearchPipeline` | Owned deep search pipeline |
+| `isDeepSearch` | `Bool` | Reads from UserDefaults `"deep_search_enabled"` |
+| `searchStepDescription` | `String?` | Current deep search step for UI, nil in normal mode |
+
+### performSearch(modelContext:)
+
+Branches based on `isDeepSearch`:
+
+**Normal mode:**
+1. Reformulate → multiSearch → AnswerSession.generateAnswer() → save to history
+
+**Deep Search mode:**
+1. Reset deep search pipeline
+2. `deepSearchPipeline.execute(query:language:searchService:)` — handles all steps internally
+3. Forward sources/queryGroups from returned SearchOutput
+4. Map errors, save to history on success
+
+Both modes: cancel previous task, check `Task.isCancelled` between stages.
+
+### resetSearch()
+
+Resets all state for a new query: cancels in-flight task, clears query/sources/errors, calls `answerSession.reset()` and `deepSearchPipeline.reset()`. Used by the "New Search" toolbar button.
+
+### Error Mapping
+
+Converts `SearchError` and `AnswerError` to human-readable strings. See `patterns/error-handling.md` for full mapping.
+
+## CitationText
+
+Parses markdown and `(via domain.com)` attribution markers, rendering formatted text with inline styled attributions.
+
+**Architecture:** Block-level parser + inline markdown renderer.
+
+1. **Block parsing:** Splits text into blocks — headings (`##`), list items (`-`, `1.`), code blocks (`` ``` ``), paragraphs
+2. **Block rendering:** Each block type renders as a separate SwiftUI view:
+   - Headings → `.title` / `.title2` / `.title3` fonts with bold weight
+   - List items → `HStack` with bullet `•` or number prefix
+   - Code blocks → monospaced font with `.fill.secondary` background, 12pt padding, rounded 10
+   - Paragraphs → inline-rendered text with `.lineSpacing(3)`
+3. **Inline rendering:** Within each block, text is parsed via `AttributedString(markdown:)` for bold/italic/code/links, then `(via domain)` placeholders are replaced with subtle italic `.caption` `.secondary` text
+
+**Attribution escaping:** Before markdown parsing, `(via domain.com)` patterns are replaced with `\u{FFFC}` placeholders to prevent markdown interference. After parsing, placeholders are swapped back to styled inline text.
+
+**Used in:** StreamingAnswerView, HistoryDetailView
+
+## AppState
+
+`@MainActor` `@Observable`
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `serverAvailable` | `Bool?` | nil = unchecked, true/false = checked (not shown on search screen) |
+| `lastServerCheck` | `Date?` | Timestamp of last check |
+| `hasSeenOnboarding` | `Bool` | UserDefaults-backed |
+| `isAppleIntelligenceAvailable` | `Bool` | Computed from SystemLanguageModel |
+
+## Design Principles
+
+- **No custom theme:** `AppTheme.swift` is intentionally empty. Use `.primary`, `.secondary`, `.font(.body)`, numeric spacing.
+- **Liquid glass:** iOS 26 automatic on TabView, NavigationStack, toolbars. Only custom glass: `.regularMaterial` on source cards and search bar.
+- **No `.glassEffect()`** on content views — let the system handle it.
+- **Standard components:** NavigationStack, TabView, List, TextField, ProgressView. No custom navigation.
+- **No "via Engine" badges:** Source cards show domain + favicon only, no search engine attribution.
+- **Animation patterns:** Spring animations for interactive state (expand/collapse), `.symbolEffect()` for SF Symbol delight (`.breathe`, `.bounce`, `.appear`, `.pulse`), `.scrollTransition` for scroll-driven fade+scale, `.contentTransition(.numericText())` for text changes, `PhaseAnimator` for repeating animations (typing cursor, loading dots).
+- **Loading states:** Apple Intelligence icon with `.breathe.pulse.byLayer` + "Thinking..." text (or deep search step labels). No skeleton/shimmer for primary loading. `TypingCursor` appended to streaming text.
+
+## Common Modifications
+
+**Adding a new tab:** Add case to TabView in `AISightApp.swift`, create Feature folder with View + ViewModel.
+
+**Adding a new UI component:** Create in `UI/Components/`. Use system colors and fonts. No custom theme values.
+
+**Modifying citation rendering:** Edit `CitationText`. Block parsing is in `parseBlocks()`, inline markdown+attributions in `renderInline()`. Attribution escaping uses `\u{FFFC}` placeholders.
+
+**Adding loading states:** Use the Apple Intelligence breathing icon pattern from SearchView's `loadingState`, or `LoadingDots` for inline indicators.
+
+**Enabling/disabling Deep Search:** `SearchViewModel.isDeepSearch` toggled via pill button in SearchView. Deep Search description text appears below when active.

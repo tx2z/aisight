@@ -27,9 +27,8 @@ Package.resolved
 .idea/
 .vscode/
 
-# Claude Code (keep commands, ignore local state)
-.claude/*
-!.claude/commands/
+# Claude Code (track skills/KB, ignore local state)
+.claude/settings.local.json
 
 # Docker data and local SearXNG config (contains secret_key)
 searxng/data/

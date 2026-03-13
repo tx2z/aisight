@@ -1,0 +1,79 @@
+{
+  "version": "2.0.0",
+  "created": "2026-03-12",
+  "lastUpdate": "2026-03-12",
+  "lastCommitAnalyzed": "7ad2e78",
+  "project": {
+    "name": "AISight",
+    "stack": "Swift 6 / SwiftUI / FoundationModels / SwiftData",
+    "language": "Swift",
+    "framework": "SwiftUI + FoundationModels",
+    "platforms": ["iOS 26", "macOS 26"]
+  },
+  "paths": {
+    "aiSkills": ".claude/skills/",
+    "humanDocs": "docs/knowledge_base/"
+  },
+  "structure": {
+    "domains": 5,
+    "patterns": 4,
+    "infrastructure": 1,
+    "references": 2,
+    "onboarding": 3
+  },
+  "mappings": {
+    "patterns": [
+      {
+        "glob": "AISight/AISight/Core/AI/*.swift",
+        "skill": "domains/ai-foundation-models.md",
+        "humanDoc": "systems/ai-generation.md"
+      },
+      {
+        "glob": "AISight/AISight/Core/Search/*.swift",
+        "skill": "domains/search-searxng.md",
+        "humanDoc": "systems/search-pipeline.md"
+      },
+      {
+        "glob": "AISight/AISight/Core/Fetching/*.swift",
+        "skill": "domains/content-fetching.md",
+        "humanDoc": "systems/search-pipeline.md"
+      },
+      {
+        "glob": "AISight/AISight/Core/Persistence/*.swift",
+        "skill": "domains/persistence.md",
+        "humanDoc": "systems/persistence-layer.md"
+      },
+      {
+        "glob": "AISight/AISight/Features/**/*.swift",
+        "skill": "domains/ui-features.md",
+        "humanDoc": "features/*.md"
+      }
+    ]
+  },
+  "updateHistory": [
+    {
+      "date": "2026-03-12",
+      "commit": "7ad2e78",
+      "action": "update",
+      "changes": {
+        "skills": ["domains/ai-foundation-models.md", "domains/ui-features.md", "references/file-index.md"],
+        "humanDocs": ["features/query-answer.md"]
+      }
+    },
+    {
+      "date": "2026-03-12",
+      "commit": "e32a383",
+      "action": "update",
+      "changes": {
+        "skills": ["domains/ai-foundation-models.md", "domains/ui-features.md"],
+        "humanDocs": ["features/query-answer.md", "systems/ai-generation.md"]
+      }
+    },
+    {
+      "date": "2026-03-12",
+      "commit": "3a96d0b",
+      "action": "initial_creation",
+      "sections": ["all"]
+    }
+  ]
+}
