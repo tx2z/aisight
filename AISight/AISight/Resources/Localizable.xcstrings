@@ -182,6 +182,786 @@
     "•" : {
 
     },
+    "1. Acceptance of Terms" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Annahme der Bedingungen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Aceptación de las Condiciones"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Acceptation des conditions"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Accettazione delle Condizioni"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. 規約への同意"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. 약관의 동의"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Aceitação dos Termos"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. 条款的接受"
+          }
+        }
+      }
+    },
+    "2. Description of Service" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. Beschreibung des Dienstes"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. Descripción del Servicio"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. Description du service"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. Descrizione del Servizio"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. サービスの説明"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. 서비스 설명"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. Descrição do Serviço"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. 服务描述"
+          }
+        }
+      }
+    },
+    "3. AI-Generated Content Disclaimer" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. Haftungsausschluss für KI-generierte Inhalte"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. Aviso Legal sobre Contenido Generado por IA"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. Avertissement concernant le contenu généré par l'IA"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. Esclusione di Responsabilità sui Contenuti Generati dall'IA"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. AI生成コンテンツに関する免責事項"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. AI 생성 콘텐츠 면책 조항"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. Aviso sobre Conteúdo Gerado por IA"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. AI 生成内容免责声明"
+          }
+        }
+      }
+    },
+    "4. SearXNG Server Configuration" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. SearXNG-Serverkonfiguration"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. Configuración del Servidor SearXNG"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. Configuration du serveur SearXNG"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. Configurazione del Server SearXNG"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. SearXNGサーバーの設定"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. SearXNG 서버 설정"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. Configuração do Servidor SearXNG"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. SearXNG 服务器配置"
+          }
+        }
+      }
+    },
+    "5. Acceptable Use" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5. Zulässige Nutzung"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5. Uso Aceptable"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5. Utilisation acceptable"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5. Uso Consentito"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5. 許容される使用"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5. 허용되는 사용"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5. Uso Aceitável"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5. 可接受的使用"
+          }
+        }
+      }
+    },
+    "6. Intellectual Property" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "6. Geistiges Eigentum"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "6. Propiedad Intelectual"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "6. Propriété intellectuelle"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "6. Proprietà Intellettuale"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "6. 知的財産"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "6. 지적 재산권"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "6. Propriedade Intelectual"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "6. 知识产权"
+          }
+        }
+      }
+    },
+    "7. Limitation of Liability" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7. Haftungsbeschränkung"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7. Limitación de Responsabilidad"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7. Limitation de responsabilité"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7. Limitazione di Responsabilità"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7. 責任の制限"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7. 책임의 제한"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7. Limitação de Responsabilidade"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7. 责任限制"
+          }
+        }
+      }
+    },
+    "8. Disclaimer of Warranties" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "8. Gewährleistungsausschluss"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "8. Exclusión de Garantías"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "8. Exclusion de garanties"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "8. Esclusione di Garanzie"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "8. 保証の否認"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "8. 보증의 부인"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "8. Isenção de Garantias"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "8. 免责声明"
+          }
+        }
+      }
+    },
+    "9. Changes to Terms" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "9. Änderungen der Bedingungen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "9. Cambios en las Condiciones"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "9. Modifications des conditions"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "9. Modifiche alle Condizioni"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "9. 規約の変更"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "9. 약관의 변경"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "9. Alterações nos Termos"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "9. 条款变更"
+          }
+        }
+      }
+    },
+    "10. Termination" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10. Kündigung"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10. Terminación"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10. Résiliation"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10. Risoluzione"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10. 終了"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10. 해지"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10. Rescisão"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10. 终止"
+          }
+        }
+      }
+    },
+    "11. Indemnification" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "11. Freistellung"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "11. Indemnización"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "11. Indemnisation"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "11. Manleva"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "11. 補償"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "11. 면책"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "11. Indenização"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "11. 赔偿"
+          }
+        }
+      }
+    },
+    "12. Apple App Store Terms" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "12. Apple App Store-Bedingungen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "12. Condiciones de la App Store de Apple"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "12. Conditions de l'App Store Apple"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "12. Condizioni dell'Apple App Store"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "12. Apple App Storeの規約"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "12. Apple App Store 조건"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "12. Termos da App Store da Apple"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "12. Apple App Store 条款"
+          }
+        }
+      }
+    },
+    "13. Severability" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "13. Salvatorische Klausel"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "13. Divisibilidad"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "13. Divisibilité"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "13. Clausola di Salvaguardia"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "13. 可分性"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "13. 분리 가능성"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "13. Divisibilidade"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "13. 可分性"
+          }
+        }
+      }
+    },
+    "14. Governing Law" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "14. Anwendbares Recht"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "14. Ley Aplicable"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "14. Droit applicable"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "14. Legge Applicabile"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "14. 準拠法"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "14. 준거법"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "14. Lei Aplicável"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "14. 适用法律"
+          }
+        }
+      }
+    },
+    "15. Contact" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "15. Kontakt"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "15. Contacto"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "15. Contact"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "15. Contatti"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "15. お問い合わせ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "15. 연락처"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "15. Contato"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "15. 联系方式"
+          }
+        }
+      }
+    },
     "About" : {
       "localizations" : {
         "de" : {
@@ -282,6 +1062,58 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "AI 完全在您的设备上运行，不会向外部 AI 服务发送任何数据。"
+          }
+        }
+      }
+    },
+    "AI-generated answers may be inaccurate. Verify important information with original sources." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "KI-generierte Antworten können ungenau sein. Überprüfe wichtige Informationen anhand der Originalquellen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las respuestas generadas por IA pueden ser inexactas. Verifica la información importante con las fuentes originales."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les réponses générées par l'IA peuvent être inexactes. Vérifie les informations importantes auprès des sources originales."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le risposte generate dall'IA possono essere imprecise. Verifica le informazioni importanti con le fonti originali."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AI生成の回答は不正確な場合があります。重要な情報は元のソースで確認してください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AI가 생성한 답변은 부정확할 수 있어요. 중요한 정보는 원본 출처에서 확인해 주세요."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Respostas geradas por IA podem ser imprecisas. Verifique informações importantes nas fontes originais."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AI 生成的回答可能不准确。请通过原始来源核实重要信息。"
           }
         }
       }
@@ -390,6 +1222,370 @@
         }
       }
     },
+    "AISight does not collect:\n• Personal identifiers (name, email, phone number)\n• Device identifiers for tracking purposes\n• Location data\n• Usage analytics or telemetry\n• Advertising identifiers\n• Cookies or browser fingerprints\n\nWe do not sell, rent, share, or monetize any user data — ever." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight erhebt keine:\n• Persönliche Identifikatoren (Name, E-Mail, Telefonnummer)\n• Gerätekennungen zu Tracking-Zwecken\n• Standortdaten\n• Nutzungsanalysen oder Telemetrie\n• Werbe-Identifikatoren\n• Cookies oder Browser-Fingerabdrücke\n\nWir verkaufen, vermieten, teilen oder monetarisieren niemals Nutzerdaten — unter keinen Umständen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight no recopila:\n• Identificadores personales (nombre, correo electrónico, número de teléfono)\n• Identificadores de dispositivo con fines de rastreo\n• Datos de ubicación\n• Analíticas de uso o telemetría\n• Identificadores publicitarios\n• Cookies o huellas digitales del navegador\n\nNo vendemos, alquilamos, compartimos ni monetizamos ningún dato de usuario — jamás."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight ne collecte pas :\n• Les identifiants personnels (nom, adresse e-mail, numéro de téléphone)\n• Les identifiants d'appareil à des fins de suivi\n• Les données de localisation\n• Les analyses d'utilisation ou la télémétrie\n• Les identifiants publicitaires\n• Les cookies ou les empreintes numériques de navigateur\n\nNous ne vendons, ne louons, ne partageons ni ne monétisons aucune donnée utilisateur — jamais."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight non raccoglie:\n• Identificativi personali (nome, email, numero di telefono)\n• Identificativi del dispositivo a fini di tracciamento\n• Dati di localizzazione\n• Analisi di utilizzo o telemetria\n• Identificativi pubblicitari\n• Cookie o impronte digitali del browser\n\nNon vendiamo, affittiamo, condividiamo o monetizziamo alcun dato degli utenti — mai."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISightは以下の情報を収集しません：\n• 個人識別情報（氏名、メールアドレス、電話番号）\n• トラッキング目的のデバイス識別子\n• 位置情報\n• 利用状況の分析またはテレメトリ\n• 広告識別子\n• Cookieまたはブラウザフィンガープリント\n\n当社はユーザーデータの販売、貸与、共有、または収益化を一切行いません。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight는 다음 정보를 수집하지 않습니다:\n• 개인 식별 정보 (이름, 이메일, 전화번호)\n• 추적 목적의 기기 식별자\n• 위치 데이터\n• 사용 분석 또는 원격 측정 데이터\n• 광고 식별자\n• 쿠키 또는 브라우저 핑거프린트\n\n당사는 어떠한 경우에도 사용자 데이터를 판매, 임대, 공유 또는 수익화하지 않습니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O AISight não coleta:\n• Identificadores pessoais (nome, e-mail, número de telefone)\n• Identificadores de dispositivo para fins de rastreamento\n• Dados de localização\n• Análises de uso ou telemetria\n• Identificadores de publicidade\n• Cookies ou impressões digitais do navegador\n\nNós não vendemos, alugamos, compartilhamos ou monetizamos nenhum dado de usuário — jamais."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight 不收集以下信息：\n• 个人身份信息（姓名、电子邮件、电话号码）\n• 用于追踪目的的设备标识符\n• 位置数据\n• 使用分析或遥测数据\n• 广告标识符\n• Cookie 或浏览器指纹\n\n我们绝不出售、出租、共享或利用任何用户数据牟利——永远不会。"
+          }
+        }
+      }
+    },
+    "AISight does not knowingly collect any personal information from anyone, including children under 13. Since we do not collect personal data, there is no children’s data to manage. However, the AI-generated content may not always be appropriate for all ages. Parental guidance is recommended." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight erhebt wissentlich keine personenbezogenen Daten von Personen, einschließlich Kindern unter 13 Jahren. Da wir keine personenbezogenen Daten erheben, gibt es keine Kinderdaten zu verwalten. Die KI-generierten Inhalte sind jedoch möglicherweise nicht immer für alle Altersgruppen geeignet. Elterliche Aufsicht wird empfohlen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight no recopila deliberadamente información personal de nadie, incluidos los menores de 13 años. Dado que no recopilamos datos personales, no hay datos de menores que gestionar. No obstante, el contenido generado por IA puede no ser siempre adecuado para todas las edades. Se recomienda la supervisión parental."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight ne collecte sciemment aucune information personnelle de quiconque, y compris les enfants de moins de 13 ans. Étant donné que nous ne collectons pas de données personnelles, il n'y a pas de données d'enfants à gérer. Toutefois, le contenu généré par l'IA peut ne pas toujours être adapté à tous les âges. La supervision parentale est recommandée."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight non raccoglie consapevolmente alcuna informazione personale da nessuno, inclusi i minori di 13 anni. Poiché non raccogliamo dati personali, non ci sono dati di minori da gestire. Tuttavia, i contenuti generati dall'IA potrebbero non essere sempre appropriati per tutte le età. Si raccomanda la supervisione dei genitori."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISightは、13歳未満のお子様を含め、いかなる方からも個人情報を故意に収集することはありません。当社は個人データを収集しないため、管理すべきお子様のデータは存在しません。ただし、AI生成コンテンツがすべての年齢層に適切であるとは限りません。保護者の方のご指導をお勧めします。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight는 13세 미만 아동을 포함하여 누구로부터도 고의로 개인정보를 수집하지 않습니다. 당사는 개인 데이터를 수집하지 않으므로 관리해야 할 아동 데이터가 없습니다. 그러나 AI 생성 콘텐츠가 모든 연령대에 항상 적합하지 않을 수 있습니다. 보호자의 지도를 권장합니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O AISight não coleta intencionalmente nenhuma informação pessoal de ninguém, incluindo crianças menores de 13 anos. Como não coletamos dados pessoais, não há dados de crianças a serem gerenciados. No entanto, o conteúdo gerado por IA pode nem sempre ser apropriado para todas as idades. Recomenda-se orientação dos pais."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight 不会故意收集任何人的个人信息，包括13岁以下的儿童。由于我们不收集个人数据，因此不存在需要管理的儿童数据。但是，AI 生成的内容可能并不总是适合所有年龄段。建议家长给予指导。"
+          }
+        }
+      }
+    },
+    "AISight is an answer engine that searches the web via a user-configured SearXNG server and generates answers on-device using Apple Intelligence (FoundationModels framework). The App is provided free of charge with no in-app purchases or subscriptions." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight ist eine Antwortmaschine, die das Web über einen vom Benutzer konfigurierten SearXNG-Server durchsucht und Antworten auf dem Gerät mithilfe von Apple Intelligence (FoundationModels-Framework) generiert. Die App wird kostenlos ohne In-App-Käufe oder Abonnements bereitgestellt."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight es un motor de respuestas que busca en la web a través de un servidor SearXNG configurado por el usuario y genera respuestas en el dispositivo mediante Apple Intelligence (framework FoundationModels). La Aplicación se ofrece de forma gratuita, sin compras integradas ni suscripciones."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight est un moteur de réponses qui effectue des recherches sur le web via un serveur SearXNG configuré par l'utilisateur et génère des réponses sur l'appareil à l'aide d'Apple Intelligence (framework FoundationModels). L'Application est fournie gratuitement, sans achats intégrés ni abonnements."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight è un motore di risposte che effettua ricerche sul web tramite un server SearXNG configurato dall'utente e genera risposte sul dispositivo utilizzando Apple Intelligence (framework FoundationModels). L'App è fornita gratuitamente, senza acquisti in-app né abbonamenti."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISightは、ユーザーが設定したSearXNGサーバーを介してWebを検索し、Apple Intelligence（FoundationModelsフレームワーク）を使用してデバイス上で回答を生成する回答エンジンです。本アプリは無料で提供され、アプリ内課金やサブスクリプションはありません。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight는 사용자가 설정한 SearXNG 서버를 통해 웹을 검색하고 Apple Intelligence(FoundationModels 프레임워크)를 사용하여 기기에서 답변을 생성하는 답변 엔진입니다. 본 앱은 인앱 구매나 구독 없이 무료로 제공됩니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O AISight é um mecanismo de respostas que pesquisa a web por meio de um servidor SearXNG configurado pelo usuário e gera respostas no dispositivo usando Apple Intelligence (framework FoundationModels). O Aplicativo é fornecido gratuitamente, sem compras dentro do aplicativo ou assinaturas."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight 是一款答案引擎，通过用户配置的 SearXNG 服务器搜索网络，并使用 Apple Intelligence（FoundationModels 框架）在设备上生成回答。本应用免费提供，无应用内购买或订阅。"
+          }
+        }
+      }
+    },
+    "AISight is built with privacy as a core principle. We do not collect, store, or transmit your personal data to any external servers we operate. There are no analytics, no tracking, no advertising, and no user accounts. Your data stays on your device." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight wurde mit Datenschutz als Grundprinzip entwickelt. Wir erheben, speichern oder übermitteln keine personenbezogenen Daten an externe Server, die wir betreiben. Es gibt keine Analysen, kein Tracking, keine Werbung und keine Benutzerkonten. Ihre Daten verbleiben auf Ihrem Gerät."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight está construido con la privacidad como principio fundamental. No recopilamos, almacenamos ni transmitimos sus datos personales a ningún servidor externo operado por nosotros. No hay analíticas, ni rastreo, ni publicidad, ni cuentas de usuario. Sus datos permanecen en su dispositivo."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight est conçu avec la confidentialité comme principe fondamental. Nous ne collectons, ne stockons ni ne transmettons vos données personnelles à aucun serveur externe que nous exploitons. Il n'y a pas d'analyses, pas de suivi, pas de publicité et pas de comptes utilisateur. Vos données restent sur votre appareil."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight è costruito con la privacy come principio fondamentale. Non raccogliamo, archiviamo o trasmettiamo i tuoi dati personali a server esterni da noi gestiti. Non ci sono analisi, tracciamento, pubblicità né account utente. I tuoi dati restano sul tuo dispositivo."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISightはプライバシーを基本理念として設計されています。当社が運営する外部サーバーにお客様の個人データを収集、保存、または送信することはありません。アナリティクス、トラッキング、広告、ユーザーアカウントは一切ありません。お客様のデータはお客様のデバイス上に保持されます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight는 개인정보 보호를 핵심 원칙으로 설계되었습니다. 당사는 운영하는 외부 서버로 귀하의 개인 데이터를 수집, 저장 또는 전송하지 않습니다. 분석 도구, 추적, 광고 및 사용자 계정이 일체 없습니다. 귀하의 데이터는 귀하의 기기에만 보관됩니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O AISight foi desenvolvido com a privacidade como princípio fundamental. Nós não coletamos, armazenamos ou transmitimos seus dados pessoais para nenhum servidor externo operado por nós. Não há análises de dados, rastreamento, publicidade nem contas de usuário. Seus dados permanecem no seu dispositivo."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight 以隐私为核心原则构建。我们不会收集、存储或将您的个人数据传输至我们运营的任何外部服务器。没有数据分析、没有行为追踪、没有广告投放，也没有用户账户。您的数据始终留在您的设备上。"
+          }
+        }
+      }
+    },
+    "AISight itself does not integrate with any third-party analytics, advertising, crash reporting, or data collection services.\n\nYour self-hosted SearXNG instance may have its own data practices depending on how it is configured. We recommend reviewing the SearXNG documentation for details.\n\nWeb pages fetched during search may contain their own tracking mechanisms, but AISight only extracts plain text content and does not execute JavaScript or load tracking resources." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight selbst integriert keine Analyse-, Werbe-, Absturzbericht- oder Datenerfassungsdienste Dritter.\n\nIhre selbst gehostete SearXNG-Instanz kann je nach Konfiguration eigene Datenpraktiken haben. Wir empfehlen, die SearXNG-Dokumentation für Details zu lesen.\n\nWährend der Suche abgerufene Webseiten können eigene Tracking-Mechanismen enthalten, aber AISight extrahiert nur reinen Textinhalt und führt kein JavaScript aus und lädt keine Tracking-Ressourcen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight no se integra con ningún servicio de terceros de analíticas, publicidad, informes de errores ni recopilación de datos.\n\nSu instancia autoalojada de SearXNG puede tener sus propias prácticas de datos según su configuración. Recomendamos revisar la documentación de SearXNG para más detalles.\n\nLas páginas web obtenidas durante la búsqueda pueden contener sus propios mecanismos de rastreo, pero AISight solo extrae contenido de texto plano y no ejecuta JavaScript ni carga recursos de seguimiento."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight ne s'intègre à aucun service tiers d'analyse, de publicité, de signalement de plantages ou de collecte de données.\n\nVotre instance SearXNG auto-hébergée peut avoir ses propres pratiques en matière de données selon sa configuration. Nous vous recommandons de consulter la documentation de SearXNG pour plus de détails.\n\nLes pages web récupérées lors de la recherche peuvent contenir leurs propres mécanismes de suivi, mais AISight extrait uniquement le contenu en texte brut et n'exécute pas de JavaScript ni ne charge de ressources de suivi."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight non si integra con alcun servizio di terze parti per analisi, pubblicità, segnalazione di crash o raccolta dati.\n\nLa tua istanza SearXNG self-hosted potrebbe avere proprie pratiche relative ai dati a seconda della sua configurazione. Ti consigliamo di consultare la documentazione di SearXNG per i dettagli.\n\nLe pagine web recuperate durante la ricerca possono contenere propri meccanismi di tracciamento, ma AISight estrae solo il contenuto in testo semplice e non esegue JavaScript né carica risorse di tracciamento."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight自体は、サードパーティのアナリティクス、広告、クラッシュレポート、またはデータ収集サービスと一切連携していません。\n\nお客様がセルフホストしているSearXNGインスタンスは、その設定に応じて独自のデータ取り扱い方針を持つ場合があります。詳細についてはSearXNGのドキュメントを確認することをお勧めします。\n\n検索中に取得されるWebページには独自のトラッキング機構が含まれている場合がありますが、AISightはプレーンテキストコンテンツのみを抽出し、JavaScriptの実行やトラッキングリソースの読み込みは行いません。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight 자체는 제3자 분석, 광고, 충돌 보고 또는 데이터 수집 서비스와 통합되지 않습니다.\n\n귀하가 자체 호스팅하는 SearXNG 인스턴스는 구성 방식에 따라 자체적인 데이터 처리 관행이 있을 수 있습니다. 자세한 내용은 SearXNG 문서를 검토하시기 바랍니다.\n\n검색 중 가져온 웹 페이지에는 자체 추적 메커니즘이 포함될 수 있지만, AISight는 일반 텍스트 콘텐츠만 추출하며 JavaScript를 실행하거나 추적 리소스를 로드하지 않습니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O AISight não se integra a nenhum serviço de terceiros de análise de dados, publicidade, relatório de falhas ou coleta de dados.\n\nSua instância SearXNG auto-hospedada pode ter suas próprias práticas de dados, dependendo de como está configurada. Recomendamos consultar a documentação do SearXNG para mais detalhes.\n\nPáginas da web acessadas durante a pesquisa podem conter seus próprios mecanismos de rastreamento, mas o AISight apenas extrai conteúdo em texto simples e não executa JavaScript nem carrega recursos de rastreamento."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight 本身不集成任何第三方分析、广告、崩溃报告或数据收集服务。\n\n您自行托管的 SearXNG 实例可能有其自身的数据处理方式，具体取决于其配置方式。我们建议您查阅 SearXNG 文档以了解详情。\n\n搜索过程中获取的网页可能包含其自身的追踪机制，但 AISight 仅提取纯文本内容，不执行 JavaScript 或加载追踪资源。"
+          }
+        }
+      }
+    },
+    "AISight makes two types of network requests:\n\n1. Search Queries: When you perform a search, your query is sent to the SearXNG server you have configured. AISight does not operate this server — you provide and control it. The privacy of your search queries depends on the configuration of your SearXNG instance.\n\n2. Web Content Fetching: AISight fetches publicly available web pages from URLs returned by search results to extract text content for AI summarization. These are standard HTTP requests similar to visiting a website in a browser.\n\nAISight does not add tracking parameters, custom headers, or identifying information to these requests beyond what is standard for URL loading on iOS/macOS." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight führt zwei Arten von Netzwerkanfragen durch:\n\n1. Suchanfragen: Wenn Sie eine Suche durchführen, wird Ihre Anfrage an den von Ihnen konfigurierten SearXNG-Server gesendet. AISight betreibt diesen Server nicht — Sie stellen ihn bereit und kontrollieren ihn. Der Datenschutz Ihrer Suchanfragen hängt von der Konfiguration Ihrer SearXNG-Instanz ab.\n\n2. Abruf von Webinhalten: AISight ruft öffentlich zugängliche Webseiten von URLs ab, die von Suchergebnissen zurückgegeben werden, um Textinhalte für die KI-Zusammenfassung zu extrahieren. Dies sind Standard-HTTP-Anfragen, ähnlich dem Besuch einer Website in einem Browser.\n\nAISight fügt diesen Anfragen keine Tracking-Parameter, benutzerdefinierten Header oder identifizierenden Informationen hinzu, die über den Standard für das Laden von URLs unter iOS/macOS hinausgehen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight realiza dos tipos de solicitudes de red:\n\n1. Consultas de búsqueda: Cuando realiza una búsqueda, su consulta se envía al servidor SearXNG que usted haya configurado. AISight no opera este servidor — usted lo proporciona y controla. La privacidad de sus consultas de búsqueda depende de la configuración de su instancia de SearXNG.\n\n2. Obtención de contenido web: AISight obtiene páginas web de acceso público a partir de las URL devueltas por los resultados de búsqueda para extraer contenido textual y resumirlo mediante IA. Se trata de solicitudes HTTP estándar similares a visitar un sitio web en un navegador.\n\nAISight no añade parámetros de rastreo, cabeceras personalizadas ni información identificativa a estas solicitudes más allá de lo estándar para la carga de URL en iOS/macOS."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight effectue deux types de requêtes réseau :\n\n1. Requêtes de recherche : Lorsque vous effectuez une recherche, votre requête est envoyée au serveur SearXNG que vous avez configuré. AISight n'exploite pas ce serveur — c'est vous qui le fournissez et le contrôlez. La confidentialité de vos requêtes de recherche dépend de la configuration de votre instance SearXNG.\n\n2. Récupération de contenu web : AISight récupère des pages web accessibles au public à partir des URL renvoyées par les résultats de recherche afin d'extraire le contenu textuel pour la synthèse par l'IA. Il s'agit de requêtes HTTP standard, similaires à la consultation d'un site web dans un navigateur.\n\nAISight n'ajoute pas de paramètres de suivi, d'en-têtes personnalisés ni d'informations d'identification à ces requêtes au-delà de ce qui est standard pour le chargement d'URL sur iOS/macOS."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight effettua due tipi di richieste di rete:\n\n1. Query di Ricerca: Quando esegui una ricerca, la tua query viene inviata al server SearXNG che hai configurato. AISight non gestisce questo server — lo fornisci e lo controlli tu. La riservatezza delle tue query di ricerca dipende dalla configurazione della tua istanza SearXNG.\n\n2. Recupero di Contenuti Web: AISight recupera pagine web pubblicamente disponibili dagli URL restituiti dai risultati di ricerca per estrarre il contenuto testuale ai fini della sintesi tramite IA. Si tratta di richieste HTTP standard, simili alla visita di un sito web in un browser.\n\nAISight non aggiunge parametri di tracciamento, intestazioni personalizzate o informazioni identificative a queste richieste oltre a quanto previsto dallo standard per il caricamento degli URL su iOS/macOS."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISightは2種類のネットワークリクエストを行います：\n\n1. 検索クエリ：検索を実行すると、お客様のクエリはお客様が設定したSearXNGサーバーに送信されます。AISightはこのサーバーを運営していません — お客様自身が提供し管理するものです。検索クエリのプライバシーは、お客様のSearXNGインスタンスの設定に依存します。\n\n2. Webコンテンツの取得：AISightは検索結果から返されたURLの公開Webページを取得し、AI要約用のテキストコンテンツを抽出します。これらはブラウザでWebサイトにアクセスするのと同様の標準的なHTTPリクエストです。\n\nAISightは、iOS/macOSの標準的なURL読み込みで使用されるもの以外に、トラッキングパラメータ、カスタムヘッダー、または識別情報をこれらのリクエストに追加しません。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight는 두 가지 유형의 네트워크 요청을 수행합니다:\n\n1. 검색 쿼리: 검색을 수행하면 귀하의 쿼리가 귀하가 설정한 SearXNG 서버로 전송됩니다. AISight는 이 서버를 운영하지 않으며, 귀하가 직접 제공하고 관리합니다. 검색 쿼리의 개인정보 보호 수준은 귀하의 SearXNG 인스턴스 구성에 따라 달라집니다.\n\n2. 웹 콘텐츠 가져오기: AISight는 AI 요약을 위해 검색 결과에서 반환된 URL의 공개 웹 페이지를 가져와 텍스트 콘텐츠를 추출합니다. 이는 브라우저에서 웹사이트를 방문하는 것과 유사한 표준 HTTP 요청입니다.\n\nAISight는 iOS/macOS의 표준 URL 로딩에서 사용되는 것 이상의 추적 매개변수, 사용자 정의 헤더 또는 식별 정보를 이러한 요청에 추가하지 않습니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O AISight realiza dois tipos de solicitações de rede:\n\n1. Consultas de Pesquisa: Quando você realiza uma pesquisa, sua consulta é enviada ao servidor SearXNG que você configurou. O AISight não opera esse servidor — você o fornece e controla. A privacidade de suas consultas de pesquisa depende da configuração da sua instância SearXNG.\n\n2. Obtenção de Conteúdo Web: O AISight acessa páginas da web publicamente disponíveis a partir de URLs retornados pelos resultados de pesquisa para extrair conteúdo de texto para sumarização por IA. Essas são solicitações HTTP padrão, semelhantes a visitar um site em um navegador.\n\nO AISight não adiciona parâmetros de rastreamento, cabeçalhos personalizados ou informações de identificação a essas solicitações além do que é padrão para o carregamento de URLs no iOS/macOS."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight 发起两类网络请求：\n\n1. 搜索查询：当您执行搜索时，您的查询会发送至您配置的 SearXNG 服务器。AISight 不运营该服务器——由您自行提供和管理。您的搜索查询的隐私保护取决于您的 SearXNG 实例的配置。\n\n2. 网页内容获取：AISight 从搜索结果返回的 URL 获取公开可用的网页，以提取文本内容供 AI 摘要。这些是标准的 HTTP 请求，与在浏览器中访问网站类似。\n\nAISight 不会在这些请求中添加追踪参数、自定义请求头或身份识别信息，仅包含 iOS/macOS 上 URL 加载的标准内容。"
+          }
+        }
+      }
+    },
+    "AISight requires a SearXNG server to function. You are responsible for:\n\n• Providing and maintaining your own SearXNG server or using one you have authorization to access.\n• Ensuring your SearXNG server complies with applicable laws and the terms of service of the search engines it queries.\n• The security and privacy configuration of your SearXNG instance.\n\nWe do not provide, operate, or guarantee any SearXNG server." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight benötigt einen SearXNG-Server, um zu funktionieren. Sie sind verantwortlich für:\n\n• Die Bereitstellung und Wartung Ihres eigenen SearXNG-Servers oder die Nutzung eines Servers, für den Sie eine Zugangserlaubnis haben.\n• Die Sicherstellung, dass Ihr SearXNG-Server den geltenden Gesetzen und den Nutzungsbedingungen der von ihm abgefragten Suchmaschinen entspricht.\n• Die Sicherheits- und Datenschutzkonfiguration Ihrer SearXNG-Instanz.\n\nWir stellen keinen SearXNG-Server bereit, betreiben oder garantieren keinen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight requiere un servidor SearXNG para funcionar. Usted es responsable de:\n\n• Proporcionar y mantener su propio servidor SearXNG o utilizar uno para el que tenga autorización de acceso.\n• Asegurarse de que su servidor SearXNG cumple con las leyes aplicables y las condiciones de servicio de los motores de búsqueda que consulta.\n• La configuración de seguridad y privacidad de su instancia de SearXNG.\n\nNo proporcionamos, operamos ni garantizamos ningún servidor SearXNG."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight nécessite un serveur SearXNG pour fonctionner. Vous êtes responsable de :\n\n• Fournir et maintenir votre propre serveur SearXNG ou utiliser un serveur auquel vous êtes autorisé à accéder.\n• Vous assurer que votre serveur SearXNG est conforme aux lois applicables et aux conditions d'utilisation des moteurs de recherche qu'il interroge.\n• La configuration de la sécurité et de la confidentialité de votre instance SearXNG.\n\nNous ne fournissons, n'exploitons ni ne garantissons aucun serveur SearXNG."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight richiede un server SearXNG per funzionare. Sei responsabile di:\n\n• Fornire e mantenere il tuo server SearXNG o utilizzarne uno a cui sei autorizzato ad accedere.\n• Assicurarti che il tuo server SearXNG sia conforme alle leggi applicabili e alle condizioni di servizio dei motori di ricerca che interroga.\n• La configurazione di sicurezza e privacy della tua istanza SearXNG.\n\nNon forniamo, gestiamo né garantiamo alcun server SearXNG."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISightの動作にはSearXNGサーバーが必要です。お客様は以下について責任を負うものとします：\n\n• 独自のSearXNGサーバーの提供および維持、またはアクセス権限を有するサーバーの使用。\n• お客様のSearXNGサーバーが適用法令および照会先の検索エンジンの利用規約に準拠していることの確認。\n• お客様のSearXNGインスタンスのセキュリティおよびプライバシーの設定。\n\n当社はいかなるSearXNGサーバーも提供、運営、または保証しません。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight가 작동하려면 SearXNG 서버가 필요합니다. 귀하는 다음에 대한 책임이 있습니다:\n\n• 자체 SearXNG 서버를 제공 및 유지하거나 접근 권한이 있는 서버를 사용하는 것.\n• 귀하의 SearXNG 서버가 관련 법률 및 쿼리하는 검색 엔진의 서비스 약관을 준수하도록 하는 것.\n• 귀하의 SearXNG 인스턴스의 보안 및 개인정보 보호 설정.\n\n당사는 SearXNG 서버를 제공, 운영 또는 보증하지 않습니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O AISight requer um servidor SearXNG para funcionar. Você é responsável por:\n\n• Fornecer e manter seu próprio servidor SearXNG ou utilizar um ao qual você tenha autorização de acesso.\n• Garantir que seu servidor SearXNG esteja em conformidade com as leis aplicáveis e os termos de serviço dos mecanismos de busca que ele consulta.\n• A configuração de segurança e privacidade da sua instância SearXNG.\n\nNós não fornecemos, operamos ou garantimos nenhum servidor SearXNG."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight 需要 SearXNG 服务器才能运行。您有责任：\n\n• 提供和维护您自己的 SearXNG 服务器，或使用您有权访问的服务器。\n• 确保您的 SearXNG 服务器遵守适用法律以及其查询的搜索引擎的服务条款。\n• 您的 SearXNG 实例的安全和隐私配置。\n\n我们不提供、运营或保证任何 SearXNG 服务器。"
+          }
+        }
+      }
+    },
     "AISight requires Apple Intelligence. Enable it in Settings → Apple Intelligence & Siri." : {
       "localizations" : {
         "de" : {
@@ -438,6 +1634,162 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "AISight 需要 Apple Intelligence 支持。请前往设置 → Apple Intelligence 与 Siri 中开启。"
+          }
+        }
+      }
+    },
+    "AISight stores the following data locally on your device only:\n\nSearch History: Your search queries and AI-generated answers are saved to your device using Apple's SwiftData framework. This data never leaves your device unless you choose to share it.\n\nPreferences: Your app settings (language preferences, SearXNG server URL) are stored in UserDefaults on your device.\n\nYou can delete all locally stored data at any time from Settings → Data → Delete All Data." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight speichert die folgenden Daten ausschließlich lokal auf Ihrem Gerät:\n\nSuchverlauf: Ihre Suchanfragen und KI-generierten Antworten werden mit Apples SwiftData-Framework auf Ihrem Gerät gespeichert. Diese Daten verlassen Ihr Gerät nicht, es sei denn, Sie entscheiden sich, sie zu teilen.\n\nEinstellungen: Ihre App-Einstellungen (Spracheinstellungen, SearXNG-Server-URL) werden in UserDefaults auf Ihrem Gerät gespeichert.\n\nSie können alle lokal gespeicherten Daten jederzeit unter Einstellungen → Daten → Alle Daten löschen entfernen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight almacena los siguientes datos únicamente de forma local en su dispositivo:\n\nHistorial de búsqueda: Sus consultas de búsqueda y las respuestas generadas por IA se guardan en su dispositivo mediante el framework SwiftData de Apple. Estos datos nunca salen de su dispositivo a menos que usted decida compartirlos.\n\nPreferencias: Los ajustes de la aplicación (preferencias de idioma, URL del servidor SearXNG) se almacenan en UserDefaults en su dispositivo.\n\nPuede eliminar todos los datos almacenados localmente en cualquier momento desde Ajustes → Datos → Eliminar todos los datos."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight stocke les données suivantes uniquement en local sur votre appareil :\n\nHistorique de recherche : Vos requêtes de recherche et les réponses générées par l'IA sont enregistrées sur votre appareil à l'aide du framework SwiftData d'Apple. Ces données ne quittent jamais votre appareil, sauf si vous choisissez de les partager.\n\nPréférences : Les paramètres de l'application (préférences linguistiques, URL du serveur SearXNG) sont stockés dans UserDefaults sur votre appareil.\n\nVous pouvez supprimer toutes les données stockées localement à tout moment depuis Réglages → Données → Supprimer toutes les données."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight archivia i seguenti dati esclusivamente in locale sul tuo dispositivo:\n\nCronologia delle Ricerche: Le tue query di ricerca e le risposte generate dall'IA vengono salvate sul tuo dispositivo tramite il framework SwiftData di Apple. Questi dati non lasciano mai il tuo dispositivo a meno che tu non scelga di condividerli.\n\nPreferenze: Le impostazioni dell'app (preferenze linguistiche, URL del server SearXNG) sono archiviate in UserDefaults sul tuo dispositivo.\n\nPuoi eliminare tutti i dati archiviati localmente in qualsiasi momento da Impostazioni → Dati → Elimina Tutti i Dati."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISightは以下のデータをお客様のデバイスにのみローカル保存します：\n\n検索履歴：お客様の検索クエリおよびAI生成による回答は、AppleのSwiftDataフレームワークを使用してお客様のデバイスに保存されます。お客様が共有を選択しない限り、このデータがデバイスの外に出ることはありません。\n\n設定：アプリの設定（言語設定、SearXNGサーバーURL）はお客様のデバイス上のUserDefaultsに保存されます。\n\nローカルに保存されたすべてのデータは、設定 → データ → すべてのデータを削除 からいつでも削除できます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight는 다음 데이터를 귀하의 기기에만 로컬로 저장합니다:\n\n검색 기록: 귀하의 검색어와 AI 생성 답변은 Apple의 SwiftData 프레임워크를 사용하여 귀하의 기기에 저장됩니다. 이 데이터는 귀하가 직접 공유하지 않는 한 기기 외부로 전송되지 않습니다.\n\n환경설정: 앱 설정(언어 기본 설정, SearXNG 서버 URL)은 귀하의 기기의 UserDefaults에 저장됩니다.\n\n설정 → 데이터 → 모든 데이터 삭제에서 언제든지 로컬에 저장된 모든 데이터를 삭제할 수 있습니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O AISight armazena os seguintes dados localmente apenas no seu dispositivo:\n\nHistórico de Pesquisa: Suas consultas de pesquisa e respostas geradas por IA são salvas no seu dispositivo usando o framework SwiftData da Apple. Esses dados nunca saem do seu dispositivo, a menos que você opte por compartilhá-los.\n\nPreferências: Suas configurações do aplicativo (preferências de idioma, URL do servidor SearXNG) são armazenadas no UserDefaults do seu dispositivo.\n\nVocê pode excluir todos os dados armazenados localmente a qualquer momento em Configurações → Dados → Excluir Todos os Dados."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight 仅在您的设备上本地存储以下数据：\n\n搜索历史：您的搜索查询和 AI 生成的回答通过 Apple 的 SwiftData 框架保存在您的设备上。除非您主动选择分享，否则这些数据绝不会离开您的设备。\n\n偏好设置：您的应用设置（语言偏好、SearXNG 服务器 URL）通过 UserDefaults 存储在您的设备上。\n\n您可以随时通过「设置 → 数据 → 删除所有数据」删除所有本地存储的数据。"
+          }
+        }
+      }
+    },
+    "AISight uses on-device artificial intelligence to generate answers based on web search results. You acknowledge and agree that:\n\n• AI-generated answers may contain inaccuracies, errors, or outdated information.\n• Answers are not a substitute for professional advice of any kind, including but not limited to medical, legal, financial, or safety advice.\n• You are solely responsible for verifying the accuracy of any information before relying on it.\n• Citations and sources are provided for reference; you should review original sources to confirm accuracy.\n\nThe App provides information on an \"as is\" basis. We make no warranties regarding the accuracy, completeness, reliability, or suitability of AI-generated content for any purpose." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight verwendet geräteinterne künstliche Intelligenz, um Antworten auf Basis von Websuchergebnissen zu generieren. Sie erkennen an und stimmen zu, dass:\n\n• KI-generierte Antworten Ungenauigkeiten, Fehler oder veraltete Informationen enthalten können.\n• Antworten keinen Ersatz für professionelle Beratung jeglicher Art darstellen, einschließlich, aber nicht beschränkt auf medizinische, rechtliche, finanzielle oder sicherheitsbezogene Beratung.\n• Sie allein für die Überprüfung der Richtigkeit aller Informationen verantwortlich sind, bevor Sie sich darauf verlassen.\n• Quellenangaben und Quellen als Referenz bereitgestellt werden; Sie sollten die Originalquellen zur Bestätigung der Richtigkeit überprüfen.\n\nDie App stellt Informationen auf einer \"wie besehen\"-Basis bereit. Wir übernehmen keine Gewährleistung hinsichtlich der Genauigkeit, Vollständigkeit, Zuverlässigkeit oder Eignung KI-generierter Inhalte für irgendeinen Zweck."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight utiliza inteligencia artificial en el dispositivo para generar respuestas basadas en resultados de búsqueda web. Usted reconoce y acepta que:\n\n• Las respuestas generadas por IA pueden contener inexactitudes, errores o información desactualizada.\n• Las respuestas no sustituyen el asesoramiento profesional de ningún tipo, incluyendo, entre otros, el asesoramiento médico, jurídico, financiero o de seguridad.\n• Usted es el único responsable de verificar la exactitud de cualquier información antes de basarse en ella.\n• Las citas y fuentes se proporcionan como referencia; debe consultar las fuentes originales para confirmar su exactitud.\n\nLa Aplicación proporciona información \"tal cual\". No ofrecemos garantías respecto a la exactitud, integridad, fiabilidad o idoneidad del contenido generado por IA para ningún propósito."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight utilise l'intelligence artificielle sur l'appareil pour générer des réponses basées sur les résultats de recherche web. Vous reconnaissez et acceptez que :\n\n• Les réponses générées par l'IA peuvent contenir des inexactitudes, des erreurs ou des informations obsolètes.\n• Les réponses ne se substituent pas à un avis professionnel de quelque nature que ce soit, y compris, mais sans s'y limiter, les conseils médicaux, juridiques, financiers ou de sécurité.\n• Vous êtes seul responsable de la vérification de l'exactitude de toute information avant de vous y fier.\n• Les citations et les sources sont fournies à titre de référence ; vous devez consulter les sources originales pour en confirmer l'exactitude.\n\nL'Application fournit des informations « en l'état ». Nous ne donnons aucune garantie quant à l'exactitude, l'exhaustivité, la fiabilité ou l'adéquation du contenu généré par l'IA à quelque fin que ce soit."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight utilizza l'intelligenza artificiale sul dispositivo per generare risposte basate sui risultati di ricerca web. Riconosci e accetti che:\n\n• Le risposte generate dall'IA possono contenere imprecisioni, errori o informazioni obsolete.\n• Le risposte non sostituiscono la consulenza professionale di alcun tipo, inclusa ma non limitata a quella medica, legale, finanziaria o in materia di sicurezza.\n• Sei l'unico responsabile della verifica dell'accuratezza di qualsiasi informazione prima di farvi affidamento.\n• Citazioni e fonti sono fornite a titolo di riferimento; dovresti consultare le fonti originali per confermarne l'accuratezza.\n\nL'App fornisce informazioni \"così come sono\". Non offriamo alcuna garanzia riguardo all'accuratezza, completezza, affidabilità o idoneità dei contenuti generati dall'IA per qualsiasi scopo."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISightは、Web検索結果に基づいてデバイス上の人工知能を使用して回答を生成します。お客様は以下の事項を了承し、同意するものとします：\n\n• AI生成による回答には、不正確な情報、誤り、または古い情報が含まれる場合があります。\n• 回答は、医療、法律、財務、安全に関する助言を含むがこれに限定されない、いかなる種類の専門的助言の代替となるものではありません。\n• 情報の正確性を確認する責任はお客様のみに帰属します。\n• 引用および出典は参考として提供されるものであり、正確性を確認するために原典を確認する必要があります。\n\n本アプリは情報を「現状のまま」提供します。当社は、AI生成コンテンツの正確性、完全性、信頼性、またはいかなる目的への適合性についても保証しません。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight는 온디바이스 인공지능을 사용하여 웹 검색 결과를 기반으로 답변을 생성합니다. 귀하는 다음 사항을 인정하고 동의합니다:\n\n• AI 생성 답변에는 부정확한 내용, 오류 또는 오래된 정보가 포함될 수 있습니다.\n• 답변은 의료, 법률, 금융 또는 안전 관련 조언을 포함하되 이에 국한되지 않는 어떠한 종류의 전문적 조언도 대체할 수 없습니다.\n• 귀하는 정보에 의존하기 전에 해당 정보의 정확성을 확인할 전적인 책임이 있습니다.\n• 인용 및 출처는 참고용으로 제공됩니다. 정확성을 확인하려면 원본 출처를 검토해야 합니다.\n\n본 앱은 정보를 \"있는 그대로\" 제공합니다. 당사는 AI 생성 콘텐츠의 정확성, 완전성, 신뢰성 또는 특정 목적에 대한 적합성에 대해 어떠한 보증도 하지 않습니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O AISight utiliza inteligência artificial no dispositivo para gerar respostas com base em resultados de pesquisa na web. Você reconhece e concorda que:\n\n• Respostas geradas por IA podem conter imprecisões, erros ou informações desatualizadas.\n• As respostas não substituem aconselhamento profissional de qualquer tipo, incluindo, mas não se limitando a, aconselhamento médico, jurídico, financeiro ou de segurança.\n• Você é o único responsável por verificar a precisão de qualquer informação antes de confiar nela.\n• Citações e fontes são fornecidas para referência; você deve consultar as fontes originais para confirmar a precisão.\n\nO Aplicativo fornece informações \"no estado em que se encontram\". Não oferecemos nenhuma garantia quanto à precisão, integridade, confiabilidade ou adequação do conteúdo gerado por IA para qualquer finalidade."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight 使用设备端人工智能根据网络搜索结果生成回答。您确认并同意：\n\n• AI 生成的回答可能包含不准确、错误或过时的信息。\n• 回答不能替代任何类型的专业建议，包括但不限于医疗、法律、财务或安全建议。\n• 在依赖任何信息之前，您应自行负责核实其准确性。\n• 引用和来源仅供参考；您应查阅原始来源以确认其准确性。\n\n本应用以「按原样」的基础提供信息。我们不对 AI 生成内容的准确性、完整性、可靠性或对任何目的的适用性作出任何保证。"
+          }
+        }
+      }
+    },
+    "All AI processing in AISight happens entirely on your device using Apple's FoundationModels framework (Apple Intelligence). Your queries, search results, and generated answers are never sent to any cloud AI service. The AI model runs locally on your device's neural engine." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die gesamte KI-Verarbeitung in AISight erfolgt vollständig auf Ihrem Gerät unter Verwendung von Apples FoundationModels-Framework (Apple Intelligence). Ihre Anfragen, Suchergebnisse und generierten Antworten werden niemals an einen Cloud-KI-Dienst gesendet. Das KI-Modell läuft lokal auf der Neural Engine Ihres Geräts."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todo el procesamiento de IA en AISight se realiza íntegramente en su dispositivo mediante el framework FoundationModels de Apple (Apple Intelligence). Sus consultas, resultados de búsqueda y respuestas generadas nunca se envían a ningún servicio de IA en la nube. El modelo de IA se ejecuta localmente en el motor neuronal de su dispositivo."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tout le traitement IA dans AISight s'effectue entièrement sur votre appareil à l'aide du framework FoundationModels d'Apple (Apple Intelligence). Vos requêtes, résultats de recherche et réponses générées ne sont jamais envoyés à un service d'IA dans le cloud. Le modèle d'IA fonctionne localement sur le moteur neuronal de votre appareil."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tutta l'elaborazione IA in AISight avviene interamente sul tuo dispositivo tramite il framework FoundationModels di Apple (Apple Intelligence). Le tue query, i risultati di ricerca e le risposte generate non vengono mai inviati ad alcun servizio di IA cloud. Il modello di IA viene eseguito localmente sul motore neurale del tuo dispositivo."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISightにおけるすべてのAI処理は、AppleのFoundationModelsフレームワーク（Apple Intelligence）を使用して、完全にお客様のデバイス上で行われます。お客様のクエリ、検索結果、および生成された回答がクラウドAIサービスに送信されることはありません。AIモデルはお客様のデバイスのニューラルエンジン上でローカルに動作します。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight의 모든 AI 처리는 Apple의 FoundationModels 프레임워크(Apple Intelligence)를 사용하여 전적으로 귀하의 기기에서 이루어집니다. 귀하의 쿼리, 검색 결과 및 생성된 답변은 어떠한 클라우드 AI 서비스로도 전송되지 않습니다. AI 모델은 귀하의 기기의 뉴럴 엔진에서 로컬로 실행됩니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todo o processamento de IA no AISight ocorre inteiramente no seu dispositivo usando o framework FoundationModels da Apple (Apple Intelligence). Suas consultas, resultados de pesquisa e respostas geradas nunca são enviados a nenhum serviço de IA em nuvem. O modelo de IA é executado localmente no motor neural do seu dispositivo."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight 中的所有 AI 处理均完全在您的设备上通过 Apple 的 FoundationModels 框架（Apple Intelligence）完成。您的查询、搜索结果和生成的回答绝不会发送至任何云端 AI 服务。AI 模型在您设备的神经引擎上本地运行。"
           }
         }
       }
@@ -750,6 +2102,58 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "想问什么…"
+          }
+        }
+      }
+    },
+    "Because AISight does not collect or store your personal data on any external server, many traditional data rights are satisfied by design:\n\n• Right to Access: All your data is stored locally on your device and accessible to you.\n• Right to Deletion: You can delete all app data from Settings at any time, or by deleting the app.\n• Right to Data Portability: Your data is stored in standard formats on your device.\n• Right to Opt Out of Sale: We never sell your data.\n\nThese rights apply to users in all jurisdictions, including under the EU General Data Protection Regulation (GDPR) and the California Consumer Privacy Act (CCPA)." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Da AISight keine personenbezogenen Daten auf externen Servern erhebt oder speichert, werden viele traditionelle Datenrechte konzeptionell erfüllt:\n\n• Recht auf Auskunft: Alle Ihre Daten sind lokal auf Ihrem Gerät gespeichert und für Sie zugänglich.\n• Recht auf Löschung: Sie können alle App-Daten jederzeit in den Einstellungen oder durch Löschen der App entfernen.\n• Recht auf Datenübertragbarkeit: Ihre Daten sind in Standardformaten auf Ihrem Gerät gespeichert.\n• Recht auf Widerspruch gegen den Verkauf: Wir verkaufen niemals Ihre Daten.\n\nDiese Rechte gelten für Nutzer in allen Rechtsordnungen, einschließlich der EU-Datenschutz-Grundverordnung (GDPR) und des California Consumer Privacy Act (CCPA)."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dado que AISight no recopila ni almacena sus datos personales en ningún servidor externo, muchos derechos tradicionales sobre datos se satisfacen por diseño:\n\n• Derecho de acceso: Todos sus datos se almacenan localmente en su dispositivo y son accesibles para usted.\n• Derecho de supresión: Puede eliminar todos los datos de la aplicación desde Ajustes en cualquier momento, o eliminando la aplicación.\n• Derecho a la portabilidad de datos: Sus datos se almacenan en formatos estándar en su dispositivo.\n• Derecho a oponerse a la venta: Nunca vendemos sus datos.\n\nEstos derechos se aplican a los usuarios en todas las jurisdicciones, incluidos los amparados por el Reglamento General de Protección de Datos de la UE (GDPR) y la Ley de Privacidad del Consumidor de California (CCPA)."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Étant donné qu'AISight ne collecte ni ne stocke vos données personnelles sur aucun serveur externe, de nombreux droits traditionnels en matière de données sont satisfaits par conception :\n\n• Droit d'accès : Toutes vos données sont stockées localement sur votre appareil et vous sont accessibles.\n• Droit à l'effacement : Vous pouvez supprimer toutes les données de l'application depuis les Réglages à tout moment, ou en supprimant l'application.\n• Droit à la portabilité des données : Vos données sont stockées dans des formats standard sur votre appareil.\n• Droit d'opposition à la vente : Nous ne vendons jamais vos données.\n\nCes droits s'appliquent aux utilisateurs de toutes les juridictions, y compris en vertu du Règlement général sur la protection des données (GDPR) de l'UE et du California Consumer Privacy Act (CCPA)."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poiché AISight non raccoglie né archivia i tuoi dati personali su alcun server esterno, molti diritti tradizionali relativi ai dati sono garantiti fin dalla progettazione:\n\n• Diritto di Accesso: Tutti i tuoi dati sono archiviati localmente sul tuo dispositivo e accessibili da te.\n• Diritto alla Cancellazione: Puoi eliminare tutti i dati dell'app dalle Impostazioni in qualsiasi momento, oppure eliminando l'app.\n• Diritto alla Portabilità dei Dati: I tuoi dati sono archiviati in formati standard sul tuo dispositivo.\n• Diritto di Opposizione alla Vendita: Non vendiamo mai i tuoi dati.\n\nQuesti diritti si applicano agli utenti di tutte le giurisdizioni, inclusi quelli soggetti al Regolamento Generale sulla Protezione dei Dati dell'UE (GDPR) e al California Consumer Privacy Act (CCPA)."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISightはお客様の個人データを外部サーバーに収集・保存しないため、多くの従来のデータに関する権利は設計上満たされています：\n\n• アクセス権：お客様のすべてのデータはデバイス上にローカル保存されており、お客様がアクセスできます。\n• 削除権：アプリのデータは設定からいつでも削除できます。また、アプリを削除することでも可能です。\n• データポータビリティの権利：お客様のデータはデバイス上に標準的な形式で保存されています。\n• 販売拒否の権利：当社はお客様のデータを販売することはありません。\n\nこれらの権利は、EU一般データ保護規則（GDPR）およびカリフォルニア州消費者プライバシー法（CCPA）を含む、すべての法域のユーザーに適用されます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight는 외부 서버에 귀하의 개인 데이터를 수집하거나 저장하지 않으므로, 많은 전통적인 데이터 권리가 설계상 충족됩니다:\n\n• 액세스 권리: 귀하의 모든 데이터는 귀하의 기기에 로컬로 저장되며 귀하가 접근할 수 있습니다.\n• 삭제 권리: 설정에서 언제든지 모든 앱 데이터를 삭제하거나 앱을 삭제하여 데이터를 제거할 수 있습니다.\n• 데이터 이동 권리: 귀하의 데이터는 귀하의 기기에 표준 형식으로 저장됩니다.\n• 판매 거부 권리: 당사는 귀하의 데이터를 절대 판매하지 않습니다.\n\n이러한 권리는 EU 일반 데이터 보호 규정(GDPR) 및 캘리포니아 소비자 개인정보 보호법(CCPA)을 포함하여 모든 관할권의 사용자에게 적용됩니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Como o AISight não coleta nem armazena seus dados pessoais em nenhum servidor externo, muitos direitos tradicionais de dados já são atendidos por concepção:\n\n• Direito de Acesso: Todos os seus dados são armazenados localmente no seu dispositivo e acessíveis a você.\n• Direito à Exclusão: Você pode excluir todos os dados do aplicativo nas Configurações a qualquer momento, ou excluindo o aplicativo.\n• Direito à Portabilidade de Dados: Seus dados são armazenados em formatos padrão no seu dispositivo.\n• Direito de Recusar a Venda: Nós nunca vendemos seus dados.\n\nEsses direitos se aplicam a usuários em todas as jurisdições, incluindo sob o Regulamento Geral de Proteção de Dados da UE (GDPR) e a Lei de Privacidade do Consumidor da Califórnia (CCPA)."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "由于 AISight 不在任何外部服务器上收集或存储您的个人数据，许多传统数据权利在设计上已得到保障：\n\n• 访问权：您的所有数据均存储在您的设备本地，您可以随时访问。\n• 删除权：您可以随时通过设置删除所有应用数据，或通过删除应用来实现。\n• 数据可携权：您的数据以标准格式存储在您的设备上。\n• 拒绝出售权：我们绝不出售您的数据。\n\n这些权利适用于所有司法管辖区的用户，包括根据欧盟《通用数据保护条例》(GDPR) 和《加州消费者隐私法》(CCPA) 享有的权利。"
           }
         }
       }
@@ -1222,6 +2626,162 @@
         }
       }
     },
+    "By continuing, you agree to our [Terms of Use](aisight://terms) and [Privacy Policy](aisight://privacy)." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durch Fortfahren stimmst du unseren [Nutzungsbedingungen](aisight://terms) und der [Datenschutzerklärung](aisight://privacy) zu."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Al continuar, aceptas nuestras [Condiciones de uso](aisight://terms) y la [Política de privacidad](aisight://privacy)."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En continuant, tu acceptes nos [Conditions d'utilisation](aisight://terms) et notre [Politique de confidentialité](aisight://privacy)."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuando, accetti le nostre [Condizioni d'uso](aisight://terms) e l'[Informativa sulla privacy](aisight://privacy)."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "続行すると、[利用規約](aisight://terms)および[プライバシーポリシー](aisight://privacy)に同意したことになります。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "계속하면 [이용약관](aisight://terms) 및 [개인정보 처리방침](aisight://privacy)에 동의하게 됩니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ao continuar, você concorda com nossos [Termos de Uso](aisight://terms) e [Política de Privacidade](aisight://privacy)."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "继续即表示你同意我们的[使用条款](aisight://terms)和[隐私政策](aisight://privacy)。"
+          }
+        }
+      }
+    },
+    "By downloading, installing, or using AISight (\"the App\"), you agree to be bound by these Terms of Use. If you do not agree, do not use the App." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durch das Herunterladen, Installieren oder Verwenden von AISight (\"die App\") erklären Sie sich mit diesen Nutzungsbedingungen einverstanden. Wenn Sie nicht zustimmen, verwenden Sie die App nicht."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Al descargar, instalar o utilizar AISight (\"la Aplicación\"), usted acepta quedar vinculado por estas Condiciones de Uso. Si no está de acuerdo, no utilice la Aplicación."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En téléchargeant, installant ou utilisant AISight (« l'Application »), vous acceptez d'être lié par les présentes Conditions d'utilisation. Si vous n'acceptez pas, n'utilisez pas l'Application."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scaricando, installando o utilizzando AISight (\"l'App\"), accetti di essere vincolato dalle presenti Condizioni d'Uso. Se non accetti, non utilizzare l'App."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight（以下「本アプリ」）をダウンロード、インストール、または使用することにより、お客様はこれらの利用規約に拘束されることに同意するものとします。同意されない場合は、本アプリを使用しないでください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight(\"본 앱\")를 다운로드, 설치 또는 사용함으로써 귀하는 본 이용약관에 구속되는 데 동의합니다. 동의하지 않으시면 본 앱을 사용하지 마십시오."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ao baixar, instalar ou utilizar o AISight (\"o Aplicativo\"), você concorda em estar vinculado a estes Termos de Uso. Se você não concordar, não utilize o Aplicativo."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下载、安装或使用 AISight（「本应用」）即表示您同意受本使用条款的约束。如果您不同意，请勿使用本应用。"
+          }
+        }
+      }
+    },
+    "By using AISight, you agree to these terms. Please read them carefully." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durch die Nutzung von AISight stimmen Sie diesen Bedingungen zu. Bitte lesen Sie diese sorgfältig."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Al utilizar AISight, usted acepta estas condiciones. Por favor, léalas detenidamente."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En utilisant AISight, vous acceptez les présentes conditions. Veuillez les lire attentivement."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utilizzando AISight, accetti le presenti condizioni. Ti preghiamo di leggerle attentamente."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISightを使用することにより、お客様はこれらの規約に同意するものとします。よくお読みください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight를 사용함으로써 귀하는 본 약관에 동의하게 됩니다. 주의 깊게 읽어 주시기 바랍니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ao utilizar o AISight, você concorda com estes termos. Por favor, leia-os atentamente."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用 AISight 即表示您同意以下条款。请仔细阅读。"
+          }
+        }
+      }
+    },
     "Cancel" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1327,6 +2887,58 @@
         }
       }
     },
+    "Changes to This Policy" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Änderungen dieser Richtlinie"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambios en Esta Política"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifications de cette politique"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifiche alla Presente Informativa"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本ポリシーの変更"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "본 방침의 변경"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alterações nesta Política"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本政策的变更"
+          }
+        }
+      }
+    },
     "Checked %@" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1376,6 +2988,58 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "已检查 %@"
+          }
+        }
+      }
+    },
+    "Children’s Privacy" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datenschutz für Kinder"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacidad de los Menores"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confidentialité des enfants"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy dei Minori"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お子様のプライバシー"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "아동 개인정보 보호"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacidade de Crianças"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "儿童隐私"
           }
         }
       }
@@ -1433,6 +3097,7 @@
       }
     },
     "Clear All Data" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1537,6 +3202,7 @@
       }
     },
     "Clear Cache" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1589,6 +3255,7 @@
       }
     },
     "Clear Cache?" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1799,6 +3466,110 @@
         }
       }
     },
+    "Contact" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kontakt"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contacto"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contact"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contatti"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お問い合わせ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "연락처"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contato"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "联系方式"
+          }
+        }
+      }
+    },
+    "Contact Support" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Support kontaktieren"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contactar soporte"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contacter le support"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contatta l'assistenza"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サポートに問い合わせ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "지원 문의"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contatar Suporte"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "联系支持"
+          }
+        }
+      }
+    },
     "Data" : {
       "localizations" : {
         "de" : {
@@ -1847,6 +3618,162 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "数据"
+          }
+        }
+      }
+    },
+    "Data Retention" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datenspeicherung"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retención de Datos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conservation des données"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conservazione dei Dati"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "データの保持"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "데이터 보관"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retenção de Dados"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "数据保留"
+          }
+        }
+      }
+    },
+    "Data Stored on Your Device" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auf Ihrem Gerät gespeicherte Daten"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datos Almacenados en Su Dispositivo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Données stockées sur votre appareil"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dati Archiviati sul Tuo Dispositivo"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お客様のデバイスに保存されるデータ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기기에 저장되는 데이터"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dados Armazenados no Seu Dispositivo"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "存储在您设备上的数据"
+          }
+        }
+      }
+    },
+    "Data Transmitted Over the Network" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Über das Netzwerk übertragene Daten"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datos Transmitidos a través de la Red"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Données transmises via le réseau"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dati Trasmessi Tramite la Rete"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ネットワーク経由で送信されるデータ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "네트워크를 통해 전송되는 데이터"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dados Transmitidos pela Rede"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通过网络传输的数据"
           }
         }
       }
@@ -2056,6 +3983,110 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "删除"
+          }
+        }
+      }
+    },
+    "Delete All Data" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Daten löschen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar todos los datos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer toutes les données"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elimina tutti i dati"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべてのデータを削除"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "모든 데이터 삭제"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apagar Todos os Dados"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "删除所有数据"
+          }
+        }
+      }
+    },
+    "Delete All Data?" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Daten löschen?"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Eliminar todos los datos?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer toutes les données ?"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminare tutti i dati?"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべてのデータを削除しますか？"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "모든 데이터를 삭제할까요?"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apagar Todos os Dados?"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "删除所有数据？"
           }
         }
       }
@@ -2475,6 +4506,58 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "快速回答"
+          }
+        }
+      }
+    },
+    "For questions about these Terms of Use, please contact us at:\n\nEmail: jesus@perezpaz.es" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bei Fragen zu diesen Nutzungsbedingungen kontaktieren Sie uns bitte unter:\n\nE-Mail: jesus@perezpaz.es"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para preguntas sobre estas Condiciones de Uso, puede contactarnos en:\n\nCorreo electrónico: jesus@perezpaz.es"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pour toute question concernant les présentes Conditions d'utilisation, veuillez nous contacter à l'adresse suivante :\n\nE-mail : jesus@perezpaz.es"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Per domande sulle presenti Condizioni d'Uso, contattaci all'indirizzo:\n\nEmail: jesus@perezpaz.es"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本利用規約に関するご質問は、以下までお問い合わせください：\n\nメール：jesus@perezpaz.es"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "본 이용약관에 대해 문의 사항이 있으시면 다음으로 연락해 주시기 바랍니다:\n\n이메일: jesus@perezpaz.es"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para dúvidas sobre estes Termos de Uso, entre em contato conosco em:\n\nE-mail: jesus@perezpaz.es"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果您对本使用条款有任何疑问，请通过以下方式联系我们：\n\n电子邮件：jesus@perezpaz.es"
           }
         }
       }
@@ -3522,6 +5605,162 @@
     "https://search.yourdomain.com" : {
 
     },
+    "If any provision of these Terms is held to be unenforceable or invalid, that provision will be enforced to the maximum extent possible, and the other provisions will remain in full force and effect." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sollte eine Bestimmung dieser Bedingungen als nicht durchsetzbar oder ungültig angesehen werden, wird diese Bestimmung im größtmöglichen Umfang durchgesetzt, und die übrigen Bestimmungen bleiben in vollem Umfang wirksam."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si alguna disposición de estas Condiciones se considera inaplicable o inválida, dicha disposición se aplicará en la máxima medida posible, y las demás disposiciones permanecerán en pleno vigor y efecto."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si une disposition des présentes Conditions est jugée inapplicable ou invalide, cette disposition sera appliquée dans la mesure maximale possible, et les autres dispositions resteront pleinement en vigueur et de plein effet."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qualora una disposizione delle presenti Condizioni sia ritenuta inapplicabile o invalida, tale disposizione sarà applicata nella misura massima possibile e le restanti disposizioni rimarranno pienamente in vigore ed efficaci."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本規約のいずれかの条項が執行不能または無効と判断された場合、当該条項は可能な最大限の範囲で執行されるものとし、その他の条項は完全に有効に存続するものとします。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "본 약관의 조항이 집행 불가능하거나 무효로 판단되는 경우, 해당 조항은 가능한 최대 범위 내에서 집행되며 나머지 조항은 완전한 효력을 유지합니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se qualquer disposição destes Termos for considerada inexequível ou inválida, tal disposição será aplicada na máxima extensão possível, e as demais disposições permanecerão em pleno vigor e efeito."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果本条款的任何条文被认定为不可执行或无效，该条文将在最大可能范围内予以执行，其余条文仍然完全有效。"
+          }
+        }
+      }
+    },
+    "If you have questions about this privacy policy, please contact us at:\n\nEmail: jesus@perezpaz.es" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wenn Sie Fragen zu dieser Datenschutzerklärung haben, kontaktieren Sie uns bitte unter:\n\nE-Mail: jesus@perezpaz.es"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si tiene preguntas sobre esta política de privacidad, puede contactarnos en:\n\nCorreo electrónico: jesus@perezpaz.es"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si vous avez des questions concernant cette politique de confidentialité, veuillez nous contacter à l'adresse suivante :\n\nE-mail : jesus@perezpaz.es"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Per domande sulla presente informativa sulla privacy, contattaci all'indirizzo:\n\nEmail: jesus@perezpaz.es"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本プライバシーポリシーに関するご質問は、以下までお問い合わせください：\n\nメール：jesus@perezpaz.es"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "본 개인정보 처리방침에 대해 문의 사항이 있으시면 다음으로 연락해 주시기 바랍니다:\n\n이메일: jesus@perezpaz.es"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se você tiver dúvidas sobre esta política de privacidade, entre em contato conosco em:\n\nE-mail: jesus@perezpaz.es"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果您对本隐私政策有任何疑问，请通过以下方式联系我们：\n\n电子邮件：jesus@perezpaz.es"
+          }
+        }
+      }
+    },
+    "Information We Do Not Collect" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informationen, die wir nicht erheben"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Información que No Recopilamos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informations que nous ne collectons pas"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informazioni che Non Raccogliamo"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "当社が収集しない情報"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "수집하지 않는 정보"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informações que Não Coletamos"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "我们不收集的信息"
+          }
+        }
+      }
+    },
     "Introduction to Stoic philosophy" : {
       "localizations" : {
         "de" : {
@@ -3674,6 +5913,110 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "语言已更改"
+          }
+        }
+      }
+    },
+    "Last updated: March 13, 2026" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zuletzt aktualisiert: 13. März 2026"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Última actualización: 13 de marzo de 2026"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dernière mise à jour : 13 mars 2026"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ultimo aggiornamento: 13 marzo 2026"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最終更新日：2026年3月13日"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "최종 수정일: 2026년 3월 13일"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Última atualização: 13 de março de 2026"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最后更新：2026年3月13日"
+          }
+        }
+      }
+    },
+    "Legal" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rechtliches"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Legal"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mentions légales"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Note legali"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "法的情報"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "법적 정보"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jurídico"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "法律信息"
           }
         }
       }
@@ -4200,6 +6543,110 @@
         }
       }
     },
+    "On-Device AI Processing" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "KI-Verarbeitung auf dem Gerät"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Procesamiento de IA en el Dispositivo"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Traitement IA sur l'appareil"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elaborazione IA sul Dispositivo"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "オンデバイスAI処理"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "온디바이스 AI 처리"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Processamento de IA no Dispositivo"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设备端 AI 处理"
+          }
+        }
+      }
+    },
+    "Our Commitment to Privacy" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unser Engagement für den Datenschutz"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nuestro Compromiso con la Privacidad"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notre engagement en matière de confidentialité"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il Nostro Impegno per la Privacy"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プライバシーへの取り組み"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "개인정보 보호에 대한 약속"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nosso Compromisso com a Privacidade"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "我们对隐私的承诺"
+          }
+        }
+      }
+    },
     "Please close and reopen the app for the language change to take effect." : {
       "localizations" : {
         "de" : {
@@ -4456,6 +6903,58 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "隐私为先"
+          }
+        }
+      }
+    },
+    "Privacy Policy" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datenschutzerklärung"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Política de Privacidad"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Politique de confidentialité"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informativa sulla Privacy"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "プライバシーポリシー"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "개인정보 처리방침"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Política de Privacidade"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "隐私政策"
           }
         }
       }
@@ -4820,6 +7319,58 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "搜索失败：%@"
+          }
+        }
+      }
+    },
+    "Search history is retained on your device until you explicitly delete it. No data is retained on any external server operated by us. When you delete the app, all locally stored data is removed." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Suchverlauf wird auf Ihrem Gerät aufbewahrt, bis Sie ihn ausdrücklich löschen. Auf externen Servern, die von uns betrieben werden, werden keine Daten aufbewahrt. Wenn Sie die App löschen, werden alle lokal gespeicherten Daten entfernt."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "El historial de búsqueda se conserva en su dispositivo hasta que lo elimine explícitamente. No se retiene ningún dato en ningún servidor externo operado por nosotros. Al eliminar la aplicación, todos los datos almacenados localmente se borran."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'historique de recherche est conservé sur votre appareil jusqu'à ce que vous le supprimiez explicitement. Aucune donnée n'est conservée sur un serveur externe exploité par nous. Lorsque vous supprimez l'application, toutes les données stockées localement sont supprimées."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La cronologia delle ricerche viene conservata sul tuo dispositivo fino a quando non la elimini esplicitamente. Nessun dato viene conservato su alcun server esterno da noi gestito. Quando elimini l'app, tutti i dati archiviati localmente vengono rimossi."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "検索履歴は、お客様が明示的に削除するまでデバイス上に保持されます。当社が運営する外部サーバーにデータが保持されることはありません。アプリを削除すると、ローカルに保存されたすべてのデータが削除されます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "검색 기록은 귀하가 명시적으로 삭제할 때까지 귀하의 기기에 보관됩니다. 당사가 운영하는 외부 서버에는 어떠한 데이터도 보관되지 않습니다. 앱을 삭제하면 로컬에 저장된 모든 데이터가 제거됩니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O histórico de pesquisa é mantido no seu dispositivo até que você o exclua explicitamente. Nenhum dado é mantido em nenhum servidor externo operado por nós. Quando você exclui o aplicativo, todos os dados armazenados localmente são removidos."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "搜索历史保留在您的设备上，直到您明确删除为止。我们运营的任何外部服务器上不保留任何数据。当您删除应用时，所有本地存储的数据将被移除。"
           }
         }
       }
@@ -5236,6 +7787,58 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "SearXNG 服务器地址"
+          }
+        }
+      }
+    },
+    "Security" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sicherheit"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seguridad"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sécurité"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sicurezza"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "セキュリティ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "보안"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Segurança"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "安全性"
           }
         }
       }
@@ -5714,6 +8317,58 @@
         }
       }
     },
+    "Terms of Use" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nutzungsbedingungen"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Condiciones de Uso"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conditions d'utilisation"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Condizioni d'Uso"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "利用規約"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이용약관"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Termos de Uso"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用条款"
+          }
+        }
+      }
+    },
     "Test Connection" : {
       "localizations" : {
         "de" : {
@@ -5814,6 +8469,110 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "正在测试…"
+          }
+        }
+      }
+    },
+    "The App and its original content, features, and functionality are owned by the developer and are protected by international copyright, trademark, and other intellectual property laws.\n\nContent fetched from third-party websites remains the property of their respective owners. AISight displays excerpts for informational purposes, similar to how a search engine displays snippets. You should respect the intellectual property rights of content owners when using information obtained through the App." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die App und ihre ursprünglichen Inhalte, Funktionen und Funktionalitäten sind Eigentum des Entwicklers und sind durch internationale Urheber-, Marken- und andere Gesetze zum Schutz geistigen Eigentums geschützt.\n\nInhalte, die von Websites Dritter abgerufen werden, verbleiben im Eigentum ihrer jeweiligen Inhaber. AISight zeigt Auszüge zu Informationszwecken an, ähnlich wie eine Suchmaschine Snippets anzeigt. Sie sollten die geistigen Eigentumsrechte der Inhaltsinhaber respektieren, wenn Sie durch die App erhaltene Informationen verwenden."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La Aplicación y su contenido original, características y funcionalidad son propiedad del desarrollador y están protegidos por leyes internacionales de derechos de autor, marcas registradas y otras leyes de propiedad intelectual.\n\nEl contenido obtenido de sitios web de terceros sigue siendo propiedad de sus respectivos titulares. AISight muestra extractos con fines informativos, de forma similar a como un motor de búsqueda muestra fragmentos. Debe respetar los derechos de propiedad intelectual de los titulares del contenido al utilizar la información obtenida a través de la Aplicación."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'Application et son contenu original, ses fonctionnalités et ses fonctions sont la propriété du développeur et sont protégés par les lois internationales sur le droit d'auteur, les marques et autres lois sur la propriété intellectuelle.\n\nLe contenu récupéré à partir de sites web tiers reste la propriété de leurs propriétaires respectifs. AISight affiche des extraits à des fins d'information, de manière similaire à la façon dont un moteur de recherche affiche des aperçus. Vous devez respecter les droits de propriété intellectuelle des propriétaires de contenu lorsque vous utilisez des informations obtenues via l'Application."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'App e i suoi contenuti originali, funzionalità e caratteristiche sono di proprietà dello sviluppatore e sono protetti dalle leggi internazionali sul diritto d'autore, sui marchi e sulla proprietà intellettuale.\n\nI contenuti recuperati da siti web di terze parti rimangono di proprietà dei rispettivi titolari. AISight visualizza estratti a scopo informativo, in modo simile a come un motore di ricerca visualizza gli snippet. Dovresti rispettare i diritti di proprietà intellettuale dei titolari dei contenuti quando utilizzi informazioni ottenute tramite l'App."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本アプリおよびそのオリジナルコンテンツ、機能は開発者に帰属し、国際的な著作権法、商標法、およびその他の知的財産法によって保護されています。\n\nサードパーティのWebサイトから取得したコンテンツは、それぞれの所有者の財産です。AISightは、検索エンジンがスニペットを表示するのと同様に、情報提供の目的で抜粋を表示します。本アプリを通じて取得した情報を使用する際は、コンテンツ所有者の知的財産権を尊重してください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "본 앱과 그 고유 콘텐츠, 기능 및 기능성은 개발자가 소유하며 국제 저작권, 상표 및 기타 지적 재산권법에 의해 보호됩니다.\n\n제3자 웹사이트에서 가져온 콘텐츠는 해당 소유자의 재산으로 유지됩니다. AISight는 검색 엔진이 스니펫을 표시하는 것과 유사하게 정보 제공 목적으로 발췌문을 표시합니다. 본 앱을 통해 얻은 정보를 사용할 때 콘텐츠 소유자의 지적 재산권을 존중해야 합니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O Aplicativo e seu conteúdo original, recursos e funcionalidades são de propriedade do desenvolvedor e são protegidos por leis internacionais de direitos autorais, marcas registradas e outras leis de propriedade intelectual.\n\nO conteúdo obtido de sites de terceiros permanece como propriedade de seus respectivos titulares. O AISight exibe trechos para fins informativos, de maneira semelhante a como um mecanismo de busca exibe fragmentos. Você deve respeitar os direitos de propriedade intelectual dos titulares do conteúdo ao utilizar informações obtidas por meio do Aplicativo."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本应用及其原创内容、功能和特性归开发者所有，受国际版权法、商标法和其他知识产权法律保护。\n\n从第三方网站获取的内容仍归其各自所有者所有。AISight 出于信息目的展示摘录，类似于搜索引擎展示摘要。您在使用通过本应用获得的信息时，应尊重内容所有者的知识产权。"
+          }
+        }
+      }
+    },
+    "The App is provided on an \"AS IS\" and \"AS AVAILABLE\" basis, without warranties of any kind, either express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, and non-infringement." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die App wird auf einer \"WIE BESEHEN\"- und \"WIE VERFÜGBAR\"-Basis bereitgestellt, ohne Gewährleistungen jeglicher Art, weder ausdrücklich noch stillschweigend, einschließlich, aber nicht beschränkt auf stillschweigende Gewährleistungen der Marktgängigkeit, Eignung für einen bestimmten Zweck und Nichtverletzung von Rechten Dritter."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La Aplicación se proporciona \"TAL CUAL\" y \"SEGÚN DISPONIBILIDAD\", sin garantías de ningún tipo, ya sean expresas o implícitas, incluyendo, entre otras, las garantías implícitas de comerciabilidad, idoneidad para un propósito particular y no infracción."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'Application est fournie « EN L'ÉTAT » et « SELON DISPONIBILITÉ », sans garantie d'aucune sorte, expresse ou implicite, y compris, mais sans s'y limiter, les garanties implicites de qualité marchande, d'adéquation à un usage particulier et de non-contrefaçon."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'App è fornita \"COSÌ COM'È\" e \"COME DISPONIBILE\", senza garanzie di alcun tipo, esplicite o implicite, incluse ma non limitate alle garanzie implicite di commerciabilità, idoneità per uno scopo particolare e non violazione."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本アプリは「現状のまま」および「利用可能な状態で」提供され、商品性、特定目的への適合性、および非侵害の黙示的保証を含むがこれに限定されない、明示または黙示を問わず、いかなる種類の保証もありません。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "본 앱은 상품성, 특정 목적에 대한 적합성 및 비침해에 대한 묵시적 보증을 포함하되 이에 국한되지 않는 어떠한 종류의 명시적 또는 묵시적 보증 없이 \"있는 그대로\" 및 \"이용 가능한 상태로\" 제공됩니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O Aplicativo é fornecido \"NO ESTADO EM QUE SE ENCONTRA\" e \"CONFORME DISPONÍVEL\", sem garantias de qualquer tipo, expressas ou implícitas, incluindo, mas não se limitando a, garantias implícitas de comercialidade, adequação a uma finalidade específica e não violação."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本应用以「按原样」和「按可用性」的基础提供，不附带任何明示或暗示的保证，包括但不限于对适销性、特定用途适用性和不侵权的暗示保证。"
           }
         }
       }
@@ -6182,6 +8941,58 @@
         }
       }
     },
+    "These terms shall be governed by and construed in accordance with the laws of Spain, without regard to its conflict of law provisions." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Bedingungen unterliegen dem Recht Spaniens und sind in Übereinstimmung damit auszulegen, ohne Berücksichtigung der Kollisionsnormen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estas condiciones se regirán e interpretarán de conformidad con las leyes de España, sin tener en cuenta sus disposiciones sobre conflictos de leyes."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les présentes conditions sont régies et interprétées conformément aux lois d'Espagne, sans égard à ses dispositions en matière de conflit de lois."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le presenti condizioni saranno regolate e interpretate in conformità con le leggi della Spagna, senza riguardo alle sue disposizioni in materia di conflitto di leggi."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本規約はスペインの法律に準拠し、同法に従って解釈されるものとし、法の抵触に関する規定は適用されないものとします。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "본 약관은 법률 충돌 조항에 관계없이 스페인 법률에 따라 규율되고 해석됩니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estes termos serão regidos e interpretados de acordo com as leis da Espanha, independentemente de suas disposições sobre conflito de leis."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本条款受西班牙法律管辖并据其解释，不考虑其法律冲突条款。"
+          }
+        }
+      }
+    },
     "Thinking..." : {
       "localizations" : {
         "de" : {
@@ -6230,6 +9041,110 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "思考中…"
+          }
+        }
+      }
+    },
+    "Third-Party Services" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dienste Dritter"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Servicios de Terceros"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Services tiers"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Servizi di Terze Parti"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サードパーティサービス"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "제3자 서비스"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serviços de Terceiros"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "第三方服务"
+          }
+        }
+      }
+    },
+    "This agreement is between you and the developer of AISight, not with Apple Inc. The developer, not Apple, is solely responsible for the App and its content.\n\nThe license granted to you is limited to a non-transferable license to use the App on any Apple-branded products that you own or control, as permitted by the Usage Rules set forth in the Apple Media Services Terms and Conditions.\n\nThe developer is solely responsible for providing maintenance and support for the App. Apple has no obligation to furnish any maintenance and support services.\n\nThe developer, not Apple, is solely responsible for any product warranties, whether express or implied by law, to the extent not effectively disclaimed.\n\nThe developer, not Apple, is responsible for addressing any claims relating to the App, including product liability claims, claims that the App fails to conform to legal or regulatory requirements, or claims arising under consumer protection or similar legislation.\n\nIn the event of any third-party claim that the App infringes a third party’s intellectual property rights, the developer, not Apple, will be solely responsible for the investigation, defense, settlement, and discharge of any such claim.\n\nYou must comply with applicable third-party terms of agreement when using the App (for example, your SearXNG instance’s terms of service and your wireless data service agreement).\n\nYou acknowledge and agree that Apple and its subsidiaries are third-party beneficiaries of these Terms of Use, and that upon your acceptance of these terms, Apple will have the right (and will be deemed to have accepted the right) to enforce these terms against you as a third-party beneficiary." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Vereinbarung besteht zwischen Ihnen und dem Entwickler von AISight, nicht mit Apple Inc. Der Entwickler, nicht Apple, ist allein verantwortlich für die App und ihre Inhalte.\n\nDie Ihnen gewährte Lizenz beschränkt sich auf eine nicht übertragbare Lizenz zur Nutzung der App auf Apple-Markenprodukten, die Sie besitzen oder kontrollieren, wie in den Nutzungsregeln der Apple Media Services-Geschäftsbedingungen festgelegt.\n\nDer Entwickler ist allein verantwortlich für die Bereitstellung von Wartung und Support für die App. Apple ist nicht verpflichtet, Wartungs- und Supportdienste zu erbringen.\n\nDer Entwickler, nicht Apple, ist allein verantwortlich für etwaige Produktgewährleistungen, ob ausdrücklich oder gesetzlich stillschweigend, soweit nicht wirksam ausgeschlossen.\n\nDer Entwickler, nicht Apple, ist verantwortlich für die Bearbeitung aller Ansprüche in Bezug auf die App, einschließlich Produkthaftungsansprüche, Ansprüche, dass die App gesetzlichen oder regulatorischen Anforderungen nicht entspricht, oder Ansprüche nach Verbraucherschutzgesetzen oder ähnlichen Rechtsvorschriften.\n\nIm Falle eines Anspruchs Dritter, dass die App geistige Eigentumsrechte Dritter verletzt, ist der Entwickler, nicht Apple, allein verantwortlich für die Untersuchung, Verteidigung, Beilegung und Erledigung eines solchen Anspruchs.\n\nSie müssen bei der Nutzung der App geltende Drittanbietervereinbarungen einhalten (z. B. die Nutzungsbedingungen Ihrer SearXNG-Instanz und Ihren Mobilfunkvertrag).\n\nSie erkennen an und stimmen zu, dass Apple und seine Tochtergesellschaften Drittbegünstigte dieser Nutzungsbedingungen sind und dass Apple nach Ihrer Annahme dieser Bedingungen das Recht hat (und als dieses Recht akzeptiert habend gilt), diese Bedingungen als Drittbegünstigter gegen Sie durchzusetzen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este acuerdo se celebra entre usted y el desarrollador de AISight, no con Apple Inc. El desarrollador, no Apple, es el único responsable de la Aplicación y su contenido.\n\nLa licencia que se le otorga se limita a una licencia intransferible para utilizar la Aplicación en cualquier producto de la marca Apple que usted posea o controle, según lo permitido por las Reglas de Uso establecidas en los Términos y Condiciones de los Servicios Multimedia de Apple.\n\nEl desarrollador es el único responsable de proporcionar mantenimiento y soporte para la Aplicación. Apple no tiene ninguna obligación de prestar servicios de mantenimiento y soporte.\n\nEl desarrollador, no Apple, es el único responsable de cualquier garantía del producto, ya sea expresa o implícita por ley, en la medida en que no haya sido efectivamente excluida.\n\nEl desarrollador, no Apple, es responsable de atender cualquier reclamación relacionada con la Aplicación, incluidas reclamaciones de responsabilidad por producto, reclamaciones de que la Aplicación no cumple con los requisitos legales o reglamentarios, o reclamaciones derivadas de la legislación de protección al consumidor o similar.\n\nEn caso de cualquier reclamación de terceros de que la Aplicación infringe los derechos de propiedad intelectual de un tercero, el desarrollador, no Apple, será el único responsable de la investigación, defensa, acuerdo y resolución de dicha reclamación.\n\nDebe cumplir con los términos de acuerdo de terceros aplicables al utilizar la Aplicación (por ejemplo, las condiciones de servicio de su instancia de SearXNG y su contrato de servicio de datos inalámbricos).\n\nUsted reconoce y acepta que Apple y sus filiales son terceros beneficiarios de estas Condiciones de Uso, y que, tras su aceptación de estas condiciones, Apple tendrá el derecho (y se considerará que ha aceptado el derecho) de hacer valer estas condiciones contra usted como tercero beneficiario."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le présent accord est conclu entre vous et le développeur d'AISight, et non avec Apple Inc. Le développeur, et non Apple, est seul responsable de l'Application et de son contenu.\n\nLa licence qui vous est accordée est limitée à une licence non transférable d'utilisation de l'Application sur tout produit de marque Apple que vous possédez ou contrôlez, conformément aux Règles d'utilisation énoncées dans les Conditions générales des services multimédia d'Apple.\n\nLe développeur est seul responsable de la maintenance et du support de l'Application. Apple n'a aucune obligation de fournir des services de maintenance et de support.\n\nLe développeur, et non Apple, est seul responsable de toute garantie relative au produit, qu'elle soit expresse ou implicite en vertu de la loi, dans la mesure où elle n'a pas été effectivement exclue.\n\nLe développeur, et non Apple, est responsable du traitement de toute réclamation relative à l'Application, y compris les réclamations en matière de responsabilité du fait des produits, les réclamations selon lesquelles l'Application ne serait pas conforme aux exigences légales ou réglementaires, ou les réclamations découlant de la législation sur la protection des consommateurs ou d'une législation similaire.\n\nEn cas de réclamation d'un tiers selon laquelle l'Application porterait atteinte aux droits de propriété intellectuelle d'un tiers, le développeur, et non Apple, sera seul responsable de l'enquête, de la défense, du règlement et de la résolution de toute réclamation de ce type.\n\nVous devez vous conformer aux conditions applicables des accords avec des tiers lors de l'utilisation de l'Application (par exemple, les conditions d'utilisation de votre instance SearXNG et votre contrat de service de données sans fil).\n\nVous reconnaissez et acceptez qu'Apple et ses filiales sont des tiers bénéficiaires des présentes Conditions d'utilisation, et qu'à votre acceptation des présentes conditions, Apple aura le droit (et sera réputé avoir accepté le droit) de faire appliquer les présentes conditions à votre encontre en tant que tiers bénéficiaire."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il presente accordo è tra te e lo sviluppatore di AISight, non con Apple Inc. Lo sviluppatore, non Apple, è l'unico responsabile dell'App e del suo contenuto.\n\nLa licenza a te concessa è limitata a una licenza non trasferibile per utilizzare l'App su qualsiasi prodotto a marchio Apple di tua proprietà o sotto il tuo controllo, come consentito dalle Regole di Utilizzo stabilite nei Termini e Condizioni dei Servizi Multimediali di Apple.\n\nLo sviluppatore è l'unico responsabile della manutenzione e del supporto dell'App. Apple non ha alcun obbligo di fornire servizi di manutenzione e supporto.\n\nLo sviluppatore, non Apple, è l'unico responsabile di qualsiasi garanzia sul prodotto, esplicita o implicita per legge, nella misura in cui non sia stata efficacemente esclusa.\n\nLo sviluppatore, non Apple, è responsabile della gestione di qualsiasi reclamo relativo all'App, inclusi reclami per responsabilità del prodotto, reclami per la mancata conformità dell'App a requisiti legali o normativi, o reclami derivanti dalla normativa a tutela dei consumatori o da legislazione analoga.\n\nNel caso di qualsiasi reclamo di terzi secondo cui l'App viola i diritti di proprietà intellettuale di terzi, lo sviluppatore, non Apple, sarà l'unico responsabile dell'indagine, difesa, transazione e risoluzione di tale reclamo.\n\nDevi rispettare i termini contrattuali di terze parti applicabili quando utilizzi l'App (ad esempio, le condizioni di servizio della tua istanza SearXNG e il contratto del tuo servizio dati wireless).\n\nRiconosci e accetti che Apple e le sue sussidiarie sono terzi beneficiari delle presenti Condizioni d'Uso, e che al momento della tua accettazione delle presenti condizioni, Apple avrà il diritto (e sarà considerata aver accettato il diritto) di far valere le presenti condizioni nei tuoi confronti in qualità di terzo beneficiario."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本契約は、お客様とAISightの開発者との間の契約であり、Apple Inc.との契約ではありません。本アプリおよびそのコンテンツについては、Appleではなく開発者のみが責任を負います。\n\nお客様に付与されるライセンスは、Appleメディアサービス利用規約に定められた使用規則に基づき、お客様が所有または管理するAppleブランド製品上で本アプリを使用するための譲渡不能なライセンスに限定されます。\n\n本アプリのメンテナンスおよびサポートの提供については、開発者のみが責任を負います。Appleはメンテナンスおよびサポートサービスを提供する義務を負いません。\n\n有効に免責されていない範囲において、明示的か法律の黙示によるかを問わず、製品保証については、Appleではなく開発者のみが責任を負います。\n\n製造物責任に関する請求、本アプリが法的もしくは規制上の要件に適合しないとする請求、または消費者保護法もしくは類似の法令に基づく請求を含む、本アプリに関連するすべての請求への対応については、Appleではなく開発者が責任を負います。\n\n本アプリが第三者の知的財産権を侵害するという第三者からの請求が生じた場合、当該請求の調査、防御、和解、および解決については、Appleではなく開発者のみが責任を負います。\n\n本アプリの使用にあたり、お客様は適用される第三者の契約条件（例えば、お客様のSearXNGインスタンスの利用規約およびワイヤレスデータサービス契約）を遵守する必要があります。\n\nお客様は、Appleおよびその子会社が本利用規約の第三者受益者であること、ならびにお客様が本規約に同意した時点で、Appleが第三者受益者としてお客様に対して本規約を執行する権利を有する（かつ当該権利を受け入れたものとみなされる）ことを了承し、同意するものとします。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "본 계약은 귀하와 AISight 개발자 간의 계약이며, Apple Inc.와의 계약이 아닙니다. Apple이 아닌 개발자가 본 앱과 그 콘텐츠에 대해 전적으로 책임을 집니다.\n\n귀하에게 부여된 라이선스는 Apple 미디어 서비스 이용 약관에 명시된 사용 규칙에 따라 귀하가 소유하거나 관리하는 Apple 브랜드 제품에서 본 앱을 사용할 수 있는 양도 불가능한 라이선스로 제한됩니다.\n\n개발자가 본 앱의 유지보수 및 지원 제공에 대해 전적으로 책임을 집니다. Apple은 유지보수 및 지원 서비스를 제공할 의무가 없습니다.\n\n효과적으로 부인되지 않는 범위 내에서, Apple이 아닌 개발자가 법률에 의한 명시적 또는 묵시적 제품 보증에 대해 전적으로 책임을 집니다.\n\nApple이 아닌 개발자가 제조물 책임 청구, 앱이 법적 또는 규제 요건을 충족하지 못한다는 청구, 소비자 보호법 또는 유사 법률에 따른 청구를 포함하여 앱과 관련된 모든 청구를 처리할 책임이 있습니다.\n\n앱이 제3자의 지적 재산권을 침해한다는 제3자 청구가 발생하는 경우, Apple이 아닌 개발자가 해당 청구의 조사, 방어, 합의 및 해결에 대해 전적으로 책임을 집니다.\n\n앱 사용 시 관련 제3자 계약 조건을 준수해야 합니다(예: 귀하의 SearXNG 인스턴스 서비스 약관 및 무선 데이터 서비스 계약).\n\n귀하는 Apple과 그 자회사가 본 이용약관의 제3자 수익자임을 인정하고 동의하며, 귀하가 본 약관에 동의하면 Apple이 제3자 수익자로서 귀하에 대해 본 약관을 집행할 권리를 가지게 됨(그리고 해당 권리를 수락한 것으로 간주됨)을 인정하고 동의합니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este acordo é celebrado entre você e o desenvolvedor do AISight, não com a Apple Inc. O desenvolvedor, e não a Apple, é o único responsável pelo Aplicativo e seu conteúdo.\n\nA licença concedida a você é limitada a uma licença intransferível para usar o Aplicativo em quaisquer produtos da marca Apple que você possua ou controle, conforme permitido pelas Regras de Uso estabelecidas nos Termos e Condições dos Serviços de Mídia da Apple.\n\nO desenvolvedor é o único responsável por fornecer manutenção e suporte para o Aplicativo. A Apple não tem nenhuma obrigação de fornecer quaisquer serviços de manutenção e suporte.\n\nO desenvolvedor, e não a Apple, é o único responsável por quaisquer garantias do produto, sejam expressas ou implícitas por lei, na medida em que não tenham sido efetivamente excluídas.\n\nO desenvolvedor, e não a Apple, é responsável por tratar quaisquer reclamações relacionadas ao Aplicativo, incluindo reclamações de responsabilidade pelo produto, reclamações de que o Aplicativo não está em conformidade com requisitos legais ou regulatórios, ou reclamações decorrentes de legislação de proteção ao consumidor ou legislação similar.\n\nNo caso de qualquer reclamação de terceiros de que o Aplicativo infringe direitos de propriedade intelectual de terceiros, o desenvolvedor, e não a Apple, será o único responsável pela investigação, defesa, acordo e resolução de tal reclamação.\n\nVocê deve cumprir os termos de acordo de terceiros aplicáveis ao usar o Aplicativo (por exemplo, os termos de serviço da sua instância SearXNG e seu contrato de serviço de dados sem fio).\n\nVocê reconhece e concorda que a Apple e suas subsidiárias são terceiras beneficiárias destes Termos de Uso e que, após sua aceitação destes termos, a Apple terá o direito (e será considerada como tendo aceitado o direito) de fazer cumprir estes termos contra você como terceira beneficiária."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本协议由您与 AISight 的开发者之间签订，而非与 Apple Inc. 签订。开发者（而非 Apple）对本应用及其内容承担全部责任。\n\n授予您的许可仅限于在您拥有或控制的任何 Apple 品牌产品上使用本应用的不可转让许可，受 Apple 媒体服务条款和条件中规定的使用规则的约束。\n\n开发者对本应用的维护和支持承担全部责任。Apple 没有义务提供任何维护和支持服务。\n\n在未被有效免除的范围内，开发者（而非 Apple）对任何产品保证承担全部责任，无论是明示的还是法律暗示的。\n\n开发者（而非 Apple）负责处理与本应用相关的任何索赔，包括产品责任索赔、本应用不符合法律或监管要求的索赔，或根据消费者保护或类似法规提出的索赔。\n\n如发生任何第三方声称本应用侵犯第三方知识产权的索赔，开发者（而非 Apple）将对此类索赔的调查、抗辩、和解和解除承担全部责任。\n\n您在使用本应用时必须遵守适用的第三方协议条款（例如，您的 SearXNG 实例的服务条款和您的无线数据服务协议）。\n\n您确认并同意，Apple 及其子公司是本使用条款的第三方受益人，且在您接受本条款后，Apple 将有权（并将被视为已接受该权利）作为第三方受益人对您执行本条款。"
           }
         }
       }
@@ -6339,6 +9254,7 @@
       }
     },
     "This will delete all cached data including search history." : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -6442,6 +9358,58 @@
         }
       }
     },
+    "This will permanently delete all your search history and saved answers. This action cannot be undone." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dadurch werden dein gesamter Suchverlauf und alle gespeicherten Antworten dauerhaft gelöscht. Diese Aktion kann nicht rückgängig gemacht werden."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esto eliminará permanentemente todo tu historial de búsqueda y las respuestas guardadas. Esta acción no se puede deshacer."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cela supprimera définitivement tout ton historique de recherche et tes réponses enregistrées. Cette action est irréversible."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verranno eliminati definitivamente tutta la cronologia di ricerca e le risposte salvate. Questa azione non può essere annullata."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "すべての検索履歴と保存された回答が完全に削除されます。この操作は元に戻せません。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "모든 검색 기록과 저장된 답변이 영구적으로 삭제됩니다. 이 작업은 되돌릴 수 없어요."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Isso apagará permanentemente todo o seu histórico de buscas e respostas salvas. Esta ação não pode ser desfeita."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这将永久删除你的所有搜索历史和已保存的回答。此操作无法撤销。"
+          }
+        }
+      }
+    },
     "Tips for better sleep" : {
       "localizations" : {
         "de" : {
@@ -6490,6 +9458,58 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "改善睡眠的小建议"
+          }
+        }
+      }
+    },
+    "To the maximum extent permitted by applicable law, the developer shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, or any loss of data, use, goodwill, or other intangible losses resulting from:\n\n• Your use or inability to use the App.\n• Any inaccuracy in AI-generated content.\n• Unauthorized access to or alteration of your data.\n• Any third-party content or conduct.\n• Any issues with your SearXNG server configuration." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Im maximal gesetzlich zulässigen Umfang haftet der Entwickler nicht für indirekte, Neben-, besondere, Folge- oder Strafschäden oder für entgangene Gewinne oder Einnahmen, ob direkt oder indirekt entstanden, oder für den Verlust von Daten, Nutzung, Geschäftswert oder andere immaterielle Verluste, die sich ergeben aus:\n\n• Ihrer Nutzung oder der Unmöglichkeit der Nutzung der App.\n• Ungenauigkeiten in KI-generierten Inhalten.\n• Unbefugtem Zugriff auf oder Änderung Ihrer Daten.\n• Inhalten oder Verhalten Dritter.\n• Problemen mit Ihrer SearXNG-Serverkonfiguration."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En la máxima medida permitida por la ley aplicable, el desarrollador no será responsable de ningún daño indirecto, incidental, especial, consecuente o punitivo, ni de ninguna pérdida de beneficios o ingresos, ya sea incurrida directa o indirectamente, ni de ninguna pérdida de datos, uso, fondo de comercio u otras pérdidas intangibles derivadas de:\n\n• Su uso o imposibilidad de uso de la Aplicación.\n• Cualquier inexactitud en el contenido generado por IA.\n• El acceso no autorizado o la alteración de sus datos.\n• Cualquier contenido o conducta de terceros.\n• Cualquier problema con la configuración de su servidor SearXNG."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dans toute la mesure permise par la loi applicable, le développeur ne saurait être tenu responsable de tout dommage indirect, accessoire, spécial, consécutif ou punitif, ni de toute perte de bénéfices ou de revenus, que celle-ci soit subie directement ou indirectement, ni de toute perte de données, d'utilisation, de clientèle ou d'autres pertes intangibles résultant de :\n\n• Votre utilisation ou votre incapacité à utiliser l'Application.\n• Toute inexactitude dans le contenu généré par l'IA.\n• Tout accès non autorisé à vos données ou toute modification de celles-ci.\n• Tout contenu ou comportement de tiers.\n• Tout problème lié à la configuration de votre serveur SearXNG."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nella misura massima consentita dalla legge applicabile, lo sviluppatore non sarà responsabile per eventuali danni indiretti, incidentali, speciali, consequenziali o punitivi, né per la perdita di profitti o ricavi, sostenute direttamente o indirettamente, né per la perdita di dati, uso, avviamento o altre perdite immateriali derivanti da:\n\n• L'utilizzo o l'impossibilità di utilizzare l'App.\n• Qualsiasi imprecisione nei contenuti generati dall'IA.\n• L'accesso non autorizzato o l'alterazione dei tuoi dati.\n• Qualsiasi contenuto o condotta di terze parti.\n• Qualsiasi problema con la configurazione del tuo server SearXNG."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "適用法令で許容される最大限の範囲において、開発者は、以下に起因する間接的、付随的、特別、結果的、または懲罰的損害、直接的または間接的に生じた利益または収益の損失、またはデータ、使用、信用、その他の無形の損失について一切の責任を負わないものとします：\n\n• お客様による本アプリの使用または使用不能。\n• AI生成コンテンツの不正確さ。\n• お客様のデータへの不正アクセスまたは改ざん。\n• サードパーティのコンテンツまたは行為。\n• お客様のSearXNGサーバー設定に関する問題。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "관련 법률이 허용하는 최대 범위 내에서, 개발자는 다음으로 인해 발생하는 간접적, 부수적, 특별, 결과적 또는 징벌적 손해, 직접적 또는 간접적으로 발생한 이익 또는 수익의 손실, 또는 데이터, 사용, 영업권 또는 기타 무형 손실에 대해 책임을 지지 않습니다:\n\n• 귀하의 앱 사용 또는 사용 불능.\n• AI 생성 콘텐츠의 부정확성.\n• 귀하의 데이터에 대한 무단 접근 또는 변경.\n• 제3자의 콘텐츠 또는 행위.\n• 귀하의 SearXNG 서버 설정과 관련된 문제."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Na máxima extensão permitida pela lei aplicável, o desenvolvedor não será responsável por quaisquer danos indiretos, incidentais, especiais, consequenciais ou punitivos, ou qualquer perda de lucros ou receitas, seja incorrida direta ou indiretamente, ou qualquer perda de dados, uso, reputação comercial ou outras perdas intangíveis resultantes de:\n\n• Seu uso ou incapacidade de usar o Aplicativo.\n• Qualquer imprecisão no conteúdo gerado por IA.\n• Acesso não autorizado ou alteração dos seus dados.\n• Qualquer conteúdo ou conduta de terceiros.\n• Quaisquer problemas com a configuração do seu servidor SearXNG."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在适用法律允许的最大范围内，开发者不对任何间接的、附带的、特殊的、后果性的或惩罚性的损害赔偿，或任何直接或间接产生的利润或收入损失，或因以下原因导致的任何数据、使用权、商誉或其他无形损失承担责任：\n\n• 您对本应用的使用或无法使用。\n• AI 生成内容中的任何不准确之处。\n• 对您数据的未经授权的访问或篡改。\n• 任何第三方内容或行为。\n• 您的 SearXNG 服务器配置的任何问题。"
           }
         }
       }
@@ -6594,6 +9614,110 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "版本"
+          }
+        }
+      }
+    },
+    "We may update this privacy policy from time to time. Changes will be reflected in the app with an updated \"Last updated\" date. Continued use of the app after changes constitutes acceptance of the updated policy." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wir können diese Datenschutzerklärung von Zeit zu Zeit aktualisieren. Änderungen werden in der App mit einem aktualisierten Datum \"Zuletzt aktualisiert\" angezeigt. Die fortgesetzte Nutzung der App nach Änderungen gilt als Zustimmung zur aktualisierten Richtlinie."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podemos actualizar esta política de privacidad periódicamente. Los cambios se reflejarán en la aplicación con una fecha de \"Última actualización\" actualizada. El uso continuado de la aplicación tras los cambios constituye la aceptación de la política actualizada."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nous pouvons mettre à jour cette politique de confidentialité de temps à autre. Les modifications seront reflétées dans l'application avec une date de « Dernière mise à jour » actualisée. L'utilisation continue de l'application après les modifications vaut acceptation de la politique mise à jour."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Potremmo aggiornare la presente informativa sulla privacy di tanto in tanto. Le modifiche saranno riportate nell'app con una data di \"Ultimo aggiornamento\" aggiornata. L'uso continuato dell'app dopo le modifiche costituisce accettazione dell'informativa aggiornata."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "当社は本プライバシーポリシーを随時更新する場合があります。変更は「最終更新日」の日付の更新とともにアプリに反映されます。変更後もアプリの使用を継続された場合、更新されたポリシーに同意したものとみなされます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "당사는 수시로 본 개인정보 처리방침을 업데이트할 수 있습니다. 변경 사항은 업데이트된 '최종 수정일' 날짜와 함께 앱에 반영됩니다. 변경 후 앱을 계속 사용하면 업데이트된 방침에 동의한 것으로 간주됩니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Podemos atualizar esta política de privacidade periodicamente. As alterações serão refletidas no aplicativo com uma data de \"Última atualização\" atualizada. O uso continuado do aplicativo após as alterações constitui aceitação da política atualizada."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "我们可能会不时更新本隐私政策。变更将在应用中以更新的「最后更新」日期体现。在变更后继续使用本应用即表示您接受更新后的政策。"
+          }
+        }
+      }
+    },
+    "We reserve the right to modify these terms at any time. Changes will be reflected within the App with an updated date. Your continued use of the App after changes constitutes acceptance of the revised terms." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wir behalten uns das Recht vor, diese Bedingungen jederzeit zu ändern. Änderungen werden in der App mit einem aktualisierten Datum angezeigt. Ihre fortgesetzte Nutzung der App nach Änderungen gilt als Annahme der geänderten Bedingungen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nos reservamos el derecho de modificar estas condiciones en cualquier momento. Los cambios se reflejarán en la Aplicación con una fecha actualizada. El uso continuado de la Aplicación tras los cambios constituye la aceptación de las condiciones revisadas."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nous nous réservons le droit de modifier les présentes conditions à tout moment. Les modifications seront reflétées dans l'Application avec une date mise à jour. Votre utilisation continue de l'Application après les modifications vaut acceptation des conditions révisées."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ci riserviamo il diritto di modificare le presenti condizioni in qualsiasi momento. Le modifiche saranno riportate nell'App con una data aggiornata. L'uso continuato dell'App dopo le modifiche costituisce accettazione delle condizioni riviste."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "当社は、これらの規約をいつでも変更する権利を留保します。変更は更新された日付とともにアプリ内に反映されます。変更後もお客様が本アプリの使用を継続された場合、改訂された規約に同意したものとみなされます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "당사는 언제든지 본 약관을 수정할 권리를 보유합니다. 변경 사항은 업데이트된 날짜와 함께 앱 내에 반영됩니다. 변경 후 앱을 계속 사용하면 수정된 약관에 동의한 것으로 간주됩니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reservamo-nos o direito de modificar estes termos a qualquer momento. As alterações serão refletidas no Aplicativo com uma data atualizada. O uso continuado do Aplicativo após as alterações constitui aceitação dos termos revisados."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "我们保留随时修改这些条款的权利。变更将在应用内以更新日期的方式体现。在变更后继续使用本应用即表示您接受修订后的条款。"
           }
         }
       }
@@ -7010,6 +10134,266 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "正在撰写回答…"
+          }
+        }
+      }
+    },
+    "You agree not to use AISight to:\n\n• Violate any applicable laws or regulations.\n• Generate content that is harmful, threatening, abusive, or otherwise objectionable.\n• Infringe on the intellectual property rights of others.\n• Attempt to circumvent the on-device AI safety measures.\n• Misrepresent AI-generated content as human-authored work." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sie verpflichten sich, AISight nicht zu verwenden, um:\n\n• Gegen geltende Gesetze oder Vorschriften zu verstoßen.\n• Inhalte zu erzeugen, die schädlich, bedrohlich, missbräuchlich oder anderweitig anstößig sind.\n• Geistige Eigentumsrechte anderer zu verletzen.\n• Die geräteinternen KI-Sicherheitsmaßnahmen zu umgehen.\n• KI-generierte Inhalte fälschlicherweise als menschlich verfasste Werke auszugeben."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usted se compromete a no utilizar AISight para:\n\n• Infringir cualquier ley o normativa aplicable.\n• Generar contenido que sea dañino, amenazante, abusivo o de otra manera censurable.\n• Vulnerar los derechos de propiedad intelectual de terceros.\n• Intentar eludir las medidas de seguridad de la IA en el dispositivo.\n• Hacer pasar contenido generado por IA como obra de autoría humana."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous vous engagez à ne pas utiliser AISight pour :\n\n• Enfreindre toute loi ou réglementation applicable.\n• Générer du contenu nuisible, menaçant, abusif ou autrement répréhensible.\n• Porter atteinte aux droits de propriété intellectuelle d'autrui.\n• Tenter de contourner les mesures de sécurité de l'IA sur l'appareil.\n• Présenter faussement du contenu généré par l'IA comme étant une œuvre rédigée par un humain."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accetti di non utilizzare AISight per:\n\n• Violare qualsiasi legge o regolamento applicabile.\n• Generare contenuti dannosi, minacciosi, offensivi o comunque indesiderabili.\n• Violare i diritti di proprietà intellettuale di terzi.\n• Tentare di aggirare le misure di sicurezza dell'IA sul dispositivo.\n• Spacciare contenuti generati dall'IA come opera di un autore umano."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お客様は、AISightを以下の目的で使用しないことに同意するものとします：\n\n• 適用される法令または規制に違反すること。\n• 有害、脅迫的、侮辱的、またはその他好ましくないコンテンツを生成すること。\n• 他者の知的財産権を侵害すること。\n• デバイス上のAI安全対策を回避しようとすること。\n• AI生成コンテンツを人間が作成した著作物であると偽ること。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "귀하는 AISight를 다음 목적으로 사용하지 않을 것에 동의합니다:\n\n• 관련 법률 또는 규정을 위반하는 행위.\n• 유해하거나, 위협적이거나, 모욕적이거나, 기타 불쾌한 콘텐츠를 생성하는 행위.\n• 타인의 지적 재산권을 침해하는 행위.\n• 온디바이스 AI 안전 조치를 우회하려는 시도.\n• AI 생성 콘텐츠를 사람이 작성한 저작물로 허위 표시하는 행위."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Você concorda em não utilizar o AISight para:\n\n• Violar quaisquer leis ou regulamentos aplicáveis.\n• Gerar conteúdo que seja prejudicial, ameaçador, abusivo ou de outra forma censurável.\n• Infringir os direitos de propriedade intelectual de terceiros.\n• Tentar contornar as medidas de segurança da IA no dispositivo.\n• Apresentar falsamente conteúdo gerado por IA como obra de autoria humana."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您同意不将 AISight 用于：\n\n• 违反任何适用的法律或法规。\n• 生成有害、威胁性、辱骂性或其他令人反感的内容。\n• 侵犯他人的知识产权。\n• 试图规避设备端 AI 安全措施。\n• 将 AI 生成的内容虚假地表示为人工撰写的作品。"
+          }
+        }
+      }
+    },
+    "You agree to indemnify, defend, and hold harmless the developer from and against any claims, liabilities, damages, losses, and expenses, including reasonable legal fees, arising out of or in any way connected with: your use of the App, your violation of these Terms, your violation of any rights of any third party, or your configuration and use of any SearXNG instance in connection with the App." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sie verpflichten sich, den Entwickler von allen Ansprüchen, Haftungen, Schäden, Verlusten und Kosten, einschließlich angemessener Rechtsanwaltsgebühren, freizustellen, zu verteidigen und schadlos zu halten, die sich ergeben aus oder in irgendeiner Weise zusammenhängen mit: Ihrer Nutzung der App, Ihrem Verstoß gegen diese Bedingungen, Ihrer Verletzung von Rechten Dritter oder Ihrer Konfiguration und Nutzung einer SearXNG-Instanz in Verbindung mit der App."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usted se compromete a indemnizar, defender y eximir de responsabilidad al desarrollador frente a cualquier reclamación, responsabilidad, daño, pérdida y gasto, incluidos los honorarios legales razonables, que surjan de o estén de alguna manera relacionados con: su uso de la Aplicación, su incumplimiento de estas Condiciones, su vulneración de los derechos de terceros, o su configuración y uso de cualquier instancia de SearXNG en relación con la Aplicación."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous acceptez d'indemniser, de défendre et de dégager de toute responsabilité le développeur contre toute réclamation, responsabilité, dommage, perte et dépense, y compris les frais juridiques raisonnables, découlant de ou liés de quelque manière que ce soit à : votre utilisation de l'Application, votre violation des présentes Conditions, votre violation des droits de tout tiers, ou votre configuration et utilisation de toute instance SearXNG en lien avec l'Application."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accetti di manlevare, difendere e tenere indenne lo sviluppatore da e contro qualsiasi reclamo, responsabilità, danno, perdita e spesa, incluse le ragionevoli spese legali, derivanti da o comunque connesse a: il tuo utilizzo dell'App, la tua violazione delle presenti Condizioni, la tua violazione di qualsiasi diritto di terzi, o la tua configurazione e utilizzo di qualsiasi istanza SearXNG in relazione all'App."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お客様は、本アプリの使用、本規約への違反、第三者の権利の侵害、または本アプリに関連するSearXNGインスタンスの設定および使用に起因する、またはこれらに何らかの形で関連する、すべての請求、責任、損害、損失、および合理的な弁護士費用を含む費用について、開発者を補償し、防御し、免責することに同意するものとします。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "귀하는 앱 사용, 본 약관 위반, 제3자의 권리 침해, 또는 앱과 관련된 SearXNG 인스턴스의 설정 및 사용으로 인해 또는 이와 관련하여 발생하는 모든 청구, 책임, 손해, 손실 및 합리적인 법적 비용을 포함한 비용으로부터 개발자를 면책하고, 방어하며, 해를 입히지 않도록 할 것에 동의합니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Você concorda em indenizar, defender e isentar o desenvolvedor de e contra quaisquer reclamações, responsabilidades, danos, perdas e despesas, incluindo honorários advocatícios razoáveis, decorrentes de ou de qualquer forma relacionados a: seu uso do Aplicativo, sua violação destes Termos, sua violação de quaisquer direitos de terceiros, ou sua configuração e uso de qualquer instância SearXNG em conexão com o Aplicativo."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您同意就以下事项对开发者进行赔偿、抗辩并使其免受损害，包括任何索赔、责任、损害、损失和费用（包括合理的律师费）：您对本应用的使用、您对本条款的违反、您对任何第三方权利的侵犯，或您与本应用相关的任何 SearXNG 实例的配置和使用。"
+          }
+        }
+      }
+    },
+    "You may stop using the App at any time by deleting it from your device. We reserve the right to modify or discontinue the App at any time without notice." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sie können die Nutzung der App jederzeit durch Löschen von Ihrem Gerät beenden. Wir behalten uns das Recht vor, die App jederzeit ohne Vorankündigung zu ändern oder einzustellen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puede dejar de usar la Aplicación en cualquier momento eliminándola de su dispositivo. Nos reservamos el derecho de modificar o interrumpir la Aplicación en cualquier momento sin previo aviso."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous pouvez cesser d'utiliser l'Application à tout moment en la supprimant de votre appareil. Nous nous réservons le droit de modifier ou d'interrompre l'Application à tout moment sans préavis."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Puoi cessare l'utilizzo dell'App in qualsiasi momento eliminandola dal tuo dispositivo. Ci riserviamo il diritto di modificare o interrompere l'App in qualsiasi momento senza preavviso."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お客様はデバイスからアプリを削除することにより、いつでも本アプリの使用を中止することができます。当社は、予告なくいつでも本アプリを変更または提供を中止する権利を留保します。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "귀하는 기기에서 앱을 삭제하여 언제든지 사용을 중단할 수 있습니다. 당사는 사전 통지 없이 언제든지 앱을 수정하거나 중단할 권리를 보유합니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Você pode parar de usar o Aplicativo a qualquer momento excluindo-o do seu dispositivo. Reservamo-nos o direito de modificar ou descontinuar o Aplicativo a qualquer momento sem aviso prévio."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您可以随时通过从设备中删除本应用来停止使用。我们保留随时修改或停止提供本应用的权利，恕不另行通知。"
+          }
+        }
+      }
+    },
+    "Your data is protected by the security features built into your Apple device, including device encryption, app sandboxing, and biometric or passcode locks. Since AISight stores data only on your device using Apple’s frameworks, your data benefits from the full security architecture of iOS and macOS.\n\nNetwork requests to your SearXNG instance and source websites use standard HTTPS encryption when the server supports it." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ihre Daten sind durch die in Ihr Apple-Gerät integrierten Sicherheitsfunktionen geschützt, einschließlich Geräteverschlüsselung, App-Sandboxing und biometrischer oder Passcode-Sperre. Da AISight Daten nur auf Ihrem Gerät unter Verwendung von Apples Frameworks speichert, profitieren Ihre Daten von der vollständigen Sicherheitsarchitektur von iOS und macOS.\n\nNetzwerkanfragen an Ihre SearXNG-Instanz und Quellwebsites verwenden Standard-HTTPS-Verschlüsselung, wenn der Server dies unterstützt."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sus datos están protegidos por las funciones de seguridad integradas en su dispositivo Apple, incluyendo el cifrado del dispositivo, el aislamiento de aplicaciones (sandboxing) y los bloqueos biométricos o con código de acceso. Dado que AISight almacena datos únicamente en su dispositivo mediante los frameworks de Apple, sus datos se benefician de la arquitectura de seguridad completa de iOS y macOS.\n\nLas solicitudes de red a su instancia de SearXNG y a los sitios web de origen utilizan cifrado HTTPS estándar cuando el servidor lo admite."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vos données sont protégées par les fonctionnalités de sécurité intégrées à votre appareil Apple, notamment le chiffrement de l'appareil, le cloisonnement des applications (sandboxing) et les verrous biométriques ou par code d'accès. Étant donné qu'AISight stocke les données uniquement sur votre appareil à l'aide des frameworks d'Apple, vos données bénéficient de l'architecture de sécurité complète d'iOS et de macOS.\n\nLes requêtes réseau vers votre instance SearXNG et les sites web sources utilisent le chiffrement HTTPS standard lorsque le serveur le prend en charge."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I tuoi dati sono protetti dalle funzionalità di sicurezza integrate nel tuo dispositivo Apple, tra cui la crittografia del dispositivo, il sandboxing delle app e i blocchi biometrici o tramite codice. Poiché AISight archivia i dati solo sul tuo dispositivo tramite i framework di Apple, i tuoi dati beneficiano dell'intera architettura di sicurezza di iOS e macOS.\n\nLe richieste di rete verso la tua istanza SearXNG e i siti web di origine utilizzano la crittografia HTTPS standard quando il server la supporta."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お客様のデータは、デバイスの暗号化、アプリのサンドボックス化、生体認証またはパスコードロックを含む、Appleデバイスに組み込まれたセキュリティ機能によって保護されています。AISightはAppleのフレームワークを使用してデバイス上にのみデータを保存するため、お客様のデータはiOSおよびmacOSの完全なセキュリティアーキテクチャの恩恵を受けます。\n\nSearXNGインスタンスおよびソースWebサイトへのネットワークリクエストは、サーバーが対応している場合、標準的なHTTPS暗号化を使用します。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "귀하의 데이터는 기기 암호화, 앱 샌드박싱, 생체 인식 또는 암호 잠금 등 Apple 기기에 내장된 보안 기능으로 보호됩니다. AISight는 Apple의 프레임워크를 사용하여 귀하의 기기에만 데이터를 저장하므로, 귀하의 데이터는 iOS 및 macOS의 전체 보안 아키텍처의 혜택을 받습니다.\n\nSearXNG 인스턴스 및 소스 웹사이트에 대한 네트워크 요청은 서버가 지원하는 경우 표준 HTTPS 암호화를 사용합니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seus dados são protegidos pelos recursos de segurança integrados ao seu dispositivo Apple, incluindo criptografia do dispositivo, sandboxing de aplicativos e bloqueios biométricos ou por senha. Como o AISight armazena dados apenas no seu dispositivo usando os frameworks da Apple, seus dados se beneficiam de toda a arquitetura de segurança do iOS e macOS.\n\nAs solicitações de rede para sua instância SearXNG e sites de origem utilizam criptografia HTTPS padrão quando o servidor oferece suporte."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您的数据受到 Apple 设备内置安全功能的保护，包括设备加密、应用沙盒和生物识别或密码锁定。由于 AISight 仅使用 Apple 的框架在您的设备上存储数据，您的数据受益于 iOS 和 macOS 的完整安全架构。\n\n向您的 SearXNG 实例和来源网站发起的网络请求在服务器支持时使用标准 HTTPS 加密。"
+          }
+        }
+      }
+    },
+    "Your Rights" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ihre Rechte"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sus Derechos"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vos droits"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I Tuoi Diritti"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "お客様の権利"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "귀하의 권리"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seus Direitos"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您的权利"
           }
         }
       }
