@@ -101,7 +101,7 @@ enum SystemPrompt {
         "pt": "Portuguese"
     ]
 
-    private static func languageInstruction(for code: String) -> String {
+    static func languageInstruction(for code: String) -> String {
         guard code != "en", let name = languageNames[code] else { return "" }
         return "- IMPORTANT: Respond entirely in \(name). The user's language is \(name)."
     }

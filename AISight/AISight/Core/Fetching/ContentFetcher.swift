@@ -53,7 +53,7 @@ actor ContentFetcher {
 
     // MARK: - HTML Stripping
 
-    private func stripHTML(_ html: String) -> String {
+    func stripHTML(_ html: String) -> String {
         var text = html
 
         // Remove script tags and their content
@@ -88,14 +88,14 @@ actor ContentFetcher {
         return text.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
-    private func removeTagBlock(from text: String, tag: String) -> String {
+    func removeTagBlock(from text: String, tag: String) -> String {
         guard let regex = try? Regex("<\(tag)[^>]*>[\\s\\S]*?</\(tag)>").ignoresCase() else {
             return text
         }
         return text.replacing(regex, with: "")
     }
 
-    private func truncate(_ text: String, to maxLength: Int) -> String {
+    func truncate(_ text: String, to maxLength: Int) -> String {
         guard text.count > maxLength else { return text }
         return String(text.prefix(maxLength))
     }

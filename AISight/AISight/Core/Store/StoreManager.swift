@@ -10,6 +10,7 @@ final class StoreManager {
     static let productID = "com.aisight.pro"
 
     private var transactionListener: Task<Void, Never>?
+    private let defaults: UserDefaults
 
     var canSearch: Bool {
         isPro || remainingQueries > 0
@@ -19,7 +20,8 @@ final class StoreManager {
         isPro ? .max : max(0, Self.dailyLimit - dailyQueriesUsed)
     }
 
-    init() {
+    init(defaults: UserDefaults = .standard) {
+        self.defaults = defaults
         loadDailyCounter()
         #if SETAPP
         isPro = true
@@ -110,19 +112,19 @@ final class StoreManager {
 
     private func loadDailyCounter() {
         let today = todayString()
-        let storedDate = UserDefaults.standard.string(forKey: "daily_queries_date") ?? ""
+        let storedDate = defaults.string(forKey: "daily_queries_date") ?? ""
         if storedDate == today {
-            dailyQueriesUsed = UserDefaults.standard.integer(forKey: "daily_queries_used")
+            dailyQueriesUsed = defaults.integer(forKey: "daily_queries_used")
         } else {
             dailyQueriesUsed = 0
-            UserDefaults.standard.set(today, forKey: "daily_queries_date")
-            UserDefaults.standard.set(0, forKey: "daily_queries_used")
+            defaults.set(today, forKey: "daily_queries_date")
+            defaults.set(0, forKey: "daily_queries_used")
         }
     }
 
     private func saveDailyCounter() {
-        UserDefaults.standard.set(dailyQueriesUsed, forKey: "daily_queries_used")
-        UserDefaults.standard.set(todayString(), forKey: "daily_queries_date")
+        defaults.set(dailyQueriesUsed, forKey: "daily_queries_used")
+        defaults.set(todayString(), forKey: "daily_queries_date")
     }
 
     private static let dayFormatter: DateFormatter = {

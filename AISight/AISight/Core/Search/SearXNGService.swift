@@ -145,7 +145,7 @@ final class SearXNGService: SearchService, Sendable {
     // MARK: - Result Processing
 
     /// Filter, deduplicate, and rank results using Reciprocal Rank Fusion.
-    private func processResults(_ raw: [SearXNGResult]) -> [SearXNGResult] {
+    func processResults(_ raw: [SearXNGResult]) -> [SearXNGResult] {
         // 1. Filter out results with too-short or empty snippets
         let filtered = raw.filter { $0.snippetLength >= AppConfig.minSnippetLength }
 
@@ -187,7 +187,7 @@ final class SearXNGService: SearchService, Sendable {
 
     /// Build a dictionary of [engine: [normalizedURL: rank]] from the result set.
     /// Each engine's results are sorted by their SearXNG score to determine rank.
-    private func buildEngineRankings(_ results: [SearXNGResult]) -> [String: [String: Int]] {
+    func buildEngineRankings(_ results: [SearXNGResult]) -> [String: [String: Int]] {
         // Group results by engine
         var byEngine: [String: [(url: String, score: Double)]] = [:]
         for result in results {
@@ -218,7 +218,7 @@ final class SearXNGService: SearchService, Sendable {
     }
 
     /// Normalize URL for deduplication — strip scheme, www, trailing slash, tracking params.
-    private func normalizeURL(_ urlString: String) -> String {
+    func normalizeURL(_ urlString: String) -> String {
         guard var components = URLComponents(string: urlString.lowercased()) else {
             return urlString.lowercased()
         }

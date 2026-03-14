@@ -12,8 +12,8 @@ struct CitationText: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
-            ForEach(Array(blocks.enumerated()), id: \.offset) { _, block in
-                renderBlock(block)
+            ForEach(blocks.indices, id: \.self) { index in
+                renderBlock(blocks[index])
             }
         }
         .textSelection(.enabled)
@@ -30,7 +30,7 @@ struct CitationText: View {
 
     // MARK: - Block Parsing
 
-    private static func parseBlocks(_ text: String) -> [Block] {
+    static func parseBlocks(_ text: String) -> [Block] {
         var blocks: [Block] = []
         let lines = text.split(separator: "\n", omittingEmptySubsequences: false).map(String.init)
         var i = 0
@@ -204,7 +204,7 @@ struct CitationText: View {
     private let attrSuffix = "\u{FFFC}"
 
     /// Escape `(via domain.com)` patterns into placeholders before markdown parsing.
-    private func escapeAttributions(_ text: String) -> (String, [String]) {
+    func escapeAttributions(_ text: String) -> (String, [String]) {
         var result = ""
         var domains: [String] = []
         var currentIndex = text.startIndex
