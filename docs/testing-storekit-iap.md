@@ -197,10 +197,16 @@ In the StoreKit Configuration file editor:
 
 ## SETAPP Build Variant
 
-To test the Setapp compile-time flag:
+To test the Setapp compile-time flag, use the Claude Code command:
 
-1. In the target's Build Settings, add `SETAPP` to **Swift Compiler > Active Compilation Conditions**
-2. Build and run
+```
+/build ios setapp
+/build mac setapp
+/run ios setapp
+/run mac setapp
+```
+
+Or build manually: pass `SWIFT_ACTIVE_COMPILATION_CONDITIONS='$(inherited) SETAPP'` to xcodebuild.
 
 **Expected:**
 - `isPro` is `true` immediately on launch
@@ -210,7 +216,7 @@ To test the Setapp compile-time flag:
 - Settings shows "AISight Pro Active"
 - No "Restore Purchases" buttons visible anywhere
 
-**Remember to remove the `SETAPP` flag after testing.**
+To switch back to the App Store build, just use `/build` or `/run` without `setapp`.
 
 ## Production Checklist
 
