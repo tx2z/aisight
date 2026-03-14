@@ -55,10 +55,12 @@ let searchSuggestions: [Suggestion] = [
 private struct SearchContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(AppState.self) private var appState
+    @Environment(StoreManager.self) private var storeManager
 
     @State private var viewModel = SearchViewModel()
     @State private var isDeepSearchEnabled: Bool = false
     @State private var currentPairIndex: Int = 0
+    @State private var showPaywall = false
     @FocusState private var isInputFocused: Bool
 
     private var currentSuggestions: [Suggestion] {
@@ -156,9 +158,10 @@ private struct SearchContentView: View {
                     currentSuggestions: currentSuggestions,
                     currentPairIndex: $currentPairIndex,
                     hasResults: hasResults,
+                    remaining: storeManager.remainingQueries,
                     onSuggestionTapped: { query in
                         viewModel.query = query
-                        viewModel.performSearch(modelContext: modelContext)
+                        handleSearch()
                     }
                 )
             }
@@ -184,14 +187,24 @@ private struct SearchContentView: View {
                     query: $viewModel.query,
                     isDeepSearchEnabled: $isDeepSearchEnabled,
                     isInputFocused: $isInputFocused,
-                    onSearch: {
-                        viewModel.performSearch(modelContext: modelContext)
-                    },
+                    onSearch: handleSearch,
                     onDeepSearchToggled: { enabled in
                         viewModel.isDeepSearch = enabled
                     }
                 )
             }
+        }
+        .sheet(isPresented: $showPaywall) {
+            PaywallView()
+        }
+    }
+
+    private func handleSearch() {
+        if storeManager.canSearch {
+            storeManager.recordQuery()
+            viewModel.performSearch(modelContext: modelContext)
+        } else {
+            showPaywall = true
         }
     }
 }
@@ -204,6 +217,7 @@ private struct SearchEmptyStateView: View {
     let currentSuggestions: [Suggestion]
     @Binding var currentPairIndex: Int
     let hasResults: Bool
+    let remaining: Int
     let onSuggestionTapped: (String) -> Void
 
     var body: some View {
@@ -234,6 +248,10 @@ private struct SearchEmptyStateView: View {
                     .font(.caption)
             }
             .foregroundStyle(.tertiary)
+
+            if remaining <= 5 && remaining > 0 {
+                QueryLimitBannerView(remaining: remaining)
+            }
 
             VStack(spacing: 10) {
                 ForEach(currentSuggestions) { suggestion in
@@ -417,5 +435,6 @@ private struct SuggestionChip: View {
         SearchView()
     }
     .environment(AppState())
+    .environment(StoreManager())
     .modelContainer(for: QueryEntry.self, inMemory: true)
 }

@@ -4,6 +4,7 @@ import SwiftData
 struct SettingsView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(AppState.self) private var appState
+    @Environment(StoreManager.self) private var storeManager
 
     @State private var serverURL: String = AppConfig.effectiveSearXNGBaseURL
     @State private var isTesting = false
@@ -46,65 +47,77 @@ struct SettingsView: View {
 
     var body: some View {
         Form {
+            ProSettingsSection()
+
             Section("Search Server") {
-                TextField("SearXNG Server URL", text: $serverURL, prompt: Text("https://search.yourdomain.com"))
-                    .autocorrectionDisabled()
-                    #if os(iOS)
-                    .textInputAutocapitalization(.never)
-                    .keyboardType(.URL)
-                    #endif
-                    .onSubmit {
-                        if validateAndSaveURL(serverURL) {
-                            testResult = nil
-                        } else {
-                            testResult = TestResult(success: false, message: String(localized: "Invalid URL. Use http:// or https://."))
-                        }
-                    }
-
-                HStack(spacing: 12) {
-                    Button {
-                        Task { await testConnection() }
-                    } label: {
-                        HStack(spacing: 6) {
-                            if isTesting {
-                                ProgressView()
-                                    .controlSize(.small)
+                if storeManager.isPro {
+                    TextField("SearXNG Server URL", text: $serverURL, prompt: Text("https://search.yourdomain.com"))
+                        .autocorrectionDisabled()
+                        #if os(iOS)
+                        .textInputAutocapitalization(.never)
+                        .keyboardType(.URL)
+                        #endif
+                        .onSubmit {
+                            if validateAndSaveURL(serverURL) {
+                                testResult = nil
+                            } else {
+                                testResult = TestResult(success: false, message: String(localized: "Invalid URL. Use http:// or https://."))
                             }
-                            Text("Test Connection")
+                        }
+
+                    HStack(spacing: 12) {
+                        Button {
+                            Task { await testConnection() }
+                        } label: {
+                            HStack(spacing: 6) {
+                                if isTesting {
+                                    ProgressView()
+                                        .controlSize(.small)
+                                }
+                                Text("Test Connection")
+                            }
+                        }
+                        .disabled(isTesting || serverURL.isEmpty)
+
+                        Spacer()
+
+                        Button("Reset to Default") {
+                            serverURL = AppConfig.defaultSearXNGBaseURL
+                            UserDefaults.standard.removeObject(forKey: "searxng_base_url")
+                            testResult = nil
+                        }
+                        .foregroundStyle(.secondary)
+                        .font(.callout)
+                    }
+
+                    if isTesting {
+                        HStack(spacing: 8) {
+                            Image(systemName: "arrow.trianglehead.2.counterclockwise")
+                                .foregroundStyle(.secondary)
+                                .symbolEffect(.pulse)
+                            Text("Testing...")
+                                .font(.callout)
+                                .foregroundStyle(.secondary)
+                        }
+                    } else if let testResult {
+                        HStack(spacing: 8) {
+                            Image(systemName: testResult.success ? "checkmark.circle.fill" : "xmark.circle.fill")
+                                .foregroundStyle(testResult.success ? .green : .red)
+                                .symbolEffect(.appear)
+
+                            Text(testResult.message)
+                                .font(.callout)
+                                .foregroundStyle(testResult.success ? .green : .red)
                         }
                     }
-                    .disabled(isTesting || serverURL.isEmpty)
+                } else {
+                    TextField("SearXNG Server URL", text: .constant(AppConfig.defaultSearXNGBaseURL))
+                        .disabled(true)
+                        .foregroundStyle(.secondary)
 
-                    Spacer()
-
-                    Button("Reset to Default") {
-                        serverURL = AppConfig.defaultSearXNGBaseURL
-                        UserDefaults.standard.removeObject(forKey: "searxng_base_url")
-                        testResult = nil
-                    }
-                    .foregroundStyle(.secondary)
-                    .font(.callout)
-                }
-
-                if isTesting {
-                    HStack(spacing: 8) {
-                        Image(systemName: "arrow.trianglehead.2.counterclockwise")
-                            .foregroundStyle(.secondary)
-                            .symbolEffect(.pulse)
-                        Text("Testing...")
-                            .font(.callout)
-                            .foregroundStyle(.secondary)
-                    }
-                } else if let testResult {
-                    HStack(spacing: 8) {
-                        Image(systemName: testResult.success ? "checkmark.circle.fill" : "xmark.circle.fill")
-                            .foregroundStyle(testResult.success ? .green : .red)
-                            .symbolEffect(.appear)
-
-                        Text(testResult.message)
-                            .font(.callout)
-                            .foregroundStyle(testResult.success ? .green : .red)
-                    }
+                    Text("Upgrade to AISight Pro to use a custom search server")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
                 }
             }
 
@@ -252,5 +265,6 @@ private struct TestResult {
         SettingsView()
     }
     .environment(AppState())
+    .environment(StoreManager())
     .modelContainer(for: QueryEntry.self, inMemory: true)
 }

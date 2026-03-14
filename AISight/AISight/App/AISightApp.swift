@@ -4,6 +4,7 @@ import SwiftData
 @main
 struct AISightApp: App {
     @State private var appState = AppState()
+    @State private var storeManager = StoreManager()
 
     var body: some Scene {
         WindowGroup {
@@ -16,6 +17,7 @@ struct AISightApp: App {
             }
             .animation(.easeIn(duration: 0.3), value: appState.hasSeenOnboarding)
             .environment(appState)
+            .environment(storeManager)
         }
         .modelContainer(for: QueryEntry.self)
     }
