@@ -10,7 +10,8 @@ AISight uses SwiftData for query history persistence and UserDefaults for lightw
 
 | File | Key Types | Location |
 |------|-----------|----------|
-| QueryEntry.swift | `QueryEntry` (@Model), `SourceInfo` | `AISight/AISight/Core/Persistence/` |
+| QueryEntry.swift | `QueryEntry` (@Model) | `AISight/AISight/Core/Persistence/` |
+| SourceInfo.swift | `SourceInfo` | `AISight/AISight/Core/Persistence/` |
 | QueryHistoryStore.swift | `QueryHistoryStore` | `AISight/AISight/Core/Persistence/` |
 
 ## Models
@@ -76,3 +77,9 @@ All operations catch errors and `print()` to console. **Non-blocking** — save 
 **Adding search within history:** Use `Predicate` in FetchDescriptor to filter by query text.
 
 **Pagination for large history:** Add `fetchLimit` and offset to FetchDescriptor.
+
+## Recent Changes (2026-03-13)
+
+- **Single-type-per-file refactor:** `SourceInfo` extracted from `QueryEntry.swift` into its own file.
+- **QueryHistoryStore:** Modernized with Swift 6 concurrency improvements.
+- **Settings "Delete All Data":** Renamed from "Clear Cache" with stronger confirmation dialog.

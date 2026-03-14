@@ -10,7 +10,9 @@ AISight uses Apple's FoundationModels framework (iOS 26+) for on-device answer g
 
 | File | Key Types | Location |
 |------|-----------|----------|
-| AnswerSession.swift | `AnswerSession`, `AnswerError` | `AISight/AISight/Core/AI/` |
+| AnswerSession.swift | `AnswerSession` | `AISight/AISight/Core/AI/` |
+| AnswerError.swift | `AnswerError` | `AISight/AISight/Core/AI/` |
+| GenerationErrorMessages.swift | `GenerationErrorMessages` | `AISight/AISight/Core/AI/` |
 | SystemPrompt.swift | `SystemPrompt` | `AISight/AISight/Core/AI/` |
 | DeepSearchPipeline.swift | `DeepSearchPipeline` | `AISight/AISight/Core/AI/` |
 | QueryReformulator.swift | `QueryReformulator` | `AISight/AISight/Core/AI/` |
@@ -174,3 +176,10 @@ Content: ...
 **Adjusting deep search researcher count:** Change `AppConfig.deepSearchResearcherCount`. More researchers = more thorough but slower.
 
 **Modifying researcher/synthesizer prompts:** Edit `DeepSearchPipeline.runResearcher()` and `runSynthesizer()` instructions strings.
+
+## Recent Changes (2026-03-13)
+
+- **Single-type-per-file refactor:** `AnswerError` extracted from `AnswerSession.swift` into its own file. `GenerationErrorMessages` added for localized error strings across all 9 supported languages.
+- **QueryReformulator:** Removed branded example from prompt to avoid bias.
+- **DeepSearchPipeline:** Modernized with Swift 6 concurrency improvements.
+- **SystemPrompt:** Refined instruction structure for better answer quality.

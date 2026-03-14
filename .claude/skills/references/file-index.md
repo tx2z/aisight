@@ -14,15 +14,21 @@
 
 | File | Path | Key Types | Responsibility |
 |------|------|-----------|---------------|
-| AnswerSession.swift | `AISight/AISight/Core/AI/` | `AnswerSession`, `AnswerError` | @MainActor @Observable: orchestrates content fetch, prompt build, FoundationModels streaming. Maps GenerationError to AnswerError |
+| AnswerSession.swift | `AISight/AISight/Core/AI/` | `AnswerSession` | @MainActor @Observable: orchestrates content fetch, prompt build, FoundationModels streaming |
+| AnswerError.swift | `AISight/AISight/Core/AI/` | `AnswerError` | Error enum for AI generation failures |
+| GenerationErrorMessages.swift | `AISight/AISight/Core/AI/` | `GenerationErrorMessages` | Localized error messages for generation errors |
 | SystemPrompt.swift | `AISight/AISight/Core/AI/` | `SystemPrompt` (enum) | Builds LLM instruction text with rules, direct answers, infoboxes, numbered sources, and user query |
+| DeepSearchPipeline.swift | `AISight/AISight/Core/AI/` | `DeepSearchPipeline` | @MainActor @Observable: multi-step research pipeline (reformulate → search → research → synthesize) |
+| QueryReformulator.swift | `AISight/AISight/Core/AI/` | `QueryReformulator` | Generates optimized keyword queries from conversational questions via LLM |
 
 ## Core/Search
 
 | File | Path | Key Types | Responsibility |
 |------|------|-----------|---------------|
 | SearXNGService.swift | `AISight/AISight/Core/Search/` | `SearXNGService` | Sendable: SearXNG API client, RRF ranking, URL normalization, dedup, availability check |
-| SearXNGResult.swift | `AISight/AISight/Core/Search/` | `SearXNGResult`, `SearXNGResponse`, `SearXNGInfobox`, `SearXNGInfoboxURL` | Codable models for SearXNG JSON response |
+| SearXNGResult.swift | `AISight/AISight/Core/Search/` | `SearXNGResult` | Codable model for individual search result |
+| SearXNGResponse.swift | `AISight/AISight/Core/Search/` | `SearXNGResponse` | Codable model for SearXNG API response |
+| SearXNGInfobox.swift | `AISight/AISight/Core/Search/` | `SearXNGInfobox`, `SearXNGInfoboxURL` | Codable model for knowledge panel infoboxes |
 | SearchService.swift | `AISight/AISight/Core/Search/` | `SearchOutput`, `SearchService` (protocol) | Aggregated search output struct and protocol definition |
 | SearchError.swift | `AISight/AISight/Core/Search/` | `SearchError` | Error enum: serverUnavailable, timeout, noResults, invalidResponse |
 
@@ -36,7 +42,8 @@
 
 | File | Path | Key Types | Responsibility |
 |------|------|-----------|---------------|
-| QueryEntry.swift | `AISight/AISight/Core/Persistence/` | `QueryEntry` (@Model), `SourceInfo` | SwiftData model: id, query, answer, sources, timestamp |
+| QueryEntry.swift | `AISight/AISight/Core/Persistence/` | `QueryEntry` (@Model) | SwiftData model: id, query, answer, sources, timestamp |
+| SourceInfo.swift | `AISight/AISight/Core/Persistence/` | `SourceInfo` | Codable source metadata (url, title, engine) |
 | QueryHistoryStore.swift | `AISight/AISight/Core/Persistence/` | `QueryHistoryStore` | @Observable: save/fetch/delete/clearAll via ModelContext |
 
 ## Features
@@ -48,8 +55,11 @@
 | StreamingAnswerView.swift | `AISight/AISight/Features/Search/` | `StreamingAnswerView` | Displays answer text as it streams from the model |
 | HistoryView.swift | `AISight/AISight/Features/History/` | `HistoryView` | List of past queries, swipe-delete, clear all |
 | HistoryViewModel.swift | `AISight/AISight/Features/History/` | `HistoryViewModel` | History data management |
-| SettingsView.swift | `AISight/AISight/Features/Settings/` | `SettingsView` | SearXNG URL config, Test Connection, server status |
-| OnboardingView.swift | `AISight/AISight/Features/Onboarding/` | `OnboardingView` | First-launch flow, sets hasSeenOnboarding |
+| SettingsView.swift | `AISight/AISight/Features/Settings/` | `SettingsView` | SearXNG URL config, Test Connection, Legal section, Contact Support |
+| PrivacyPolicyView.swift | `AISight/AISight/Features/Settings/` | `PrivacyPolicyView` | Privacy policy legal document (12 sections) |
+| TermsOfUseView.swift | `AISight/AISight/Features/Settings/` | `TermsOfUseView` | Terms of use legal document (15 sections, includes Apple EULA) |
+| OnboardingView.swift | `AISight/AISight/Features/Onboarding/` | `OnboardingView` | First-launch flow with legal consent, sets hasSeenOnboarding |
+| HistoryDetailView.swift | `AISight/AISight/Features/History/` | `HistoryDetailView` | Detail view for a single history entry |
 
 ## UI Components
 
@@ -59,9 +69,12 @@
 | SourceCardView.swift | `AISight/AISight/UI/Components/` | `SourceCardView` | Source card: favicon with letter fallback, domain, title, expandable snippet, scroll transitions |
 | CitationBadge.swift | `AISight/AISight/UI/Components/` | `CitationBadge` | Individual numbered citation badge |
 | LoadingDots.swift | `AISight/AISight/UI/Components/` | `LoadingDots` | 3 bouncing dots with staggered spring animations |
-| ShimmerEffect.swift | `AISight/AISight/UI/Components/` | `ShimmerModifier`, `SkeletonBlock`, `SearchSkeletonView` | Shimmer gradient mask modifier and skeleton loading views |
+| ShimmerEffect.swift | `AISight/AISight/UI/Components/` | `ShimmerModifier` | Shimmer gradient mask animation modifier |
+| SearchSkeletonView.swift | `AISight/AISight/UI/Components/` | `SearchSkeletonView` | Skeleton loading placeholder for search results |
+| SkeletonBlock.swift | `AISight/AISight/UI/Components/` | `SkeletonBlock` | Individual skeleton block component |
 | TypingCursor.swift | `AISight/AISight/UI/Components/` | `TypingCursor` | Blinking cursor (PhaseAnimator) appended to streaming text |
-| ServerStatusView.swift | `AISight/AISight/UI/Components/` | `ServerStatusView` | Server status with SF Symbol indicators and symbol effects |
+| LegalSectionView.swift | `AISight/AISight/UI/Components/` | `LegalSectionView` | Reusable legal text section with LocalizedStringKey title/content |
+| ~~ServerStatusView.swift~~ | ~~`AISight/AISight/UI/Components/`~~ | — | **REMOVED** — Settings simplified, server status section deleted |
 
 ## Theme
 

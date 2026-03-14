@@ -1,8 +1,8 @@
 {
   "version": "2.0.0",
   "created": "2026-03-12",
-  "lastUpdate": "2026-03-12",
-  "lastCommitAnalyzed": "7ad2e78",
+  "lastUpdate": "2026-03-13",
+  "lastCommitAnalyzed": "fb33883",
   "project": {
     "name": "AISight",
     "stack": "Swift 6 / SwiftUI / FoundationModels / SwiftData",
@@ -51,6 +51,15 @@
     ]
   },
   "updateHistory": [
+    {
+      "date": "2026-03-13",
+      "commit": "fb33883",
+      "action": "update",
+      "changes": {
+        "skills": ["domains/ui-features.md", "domains/ai-foundation-models.md", "domains/search-searxng.md", "domains/persistence.md", "references/file-index.md"],
+        "humanDocs": []
+      }
+    },
     {
       "date": "2026-03-12",
       "commit": "7ad2e78",

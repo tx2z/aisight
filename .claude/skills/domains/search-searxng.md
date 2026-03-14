@@ -11,7 +11,9 @@ AISight searches the web via a self-hosted SearXNG instance. `SearXNGService` se
 | File | Key Types | Location |
 |------|-----------|----------|
 | SearXNGService.swift | `SearXNGService` | `AISight/AISight/Core/Search/` |
-| SearXNGResult.swift | `SearXNGResult`, `SearXNGResponse`, `SearXNGInfobox` | `AISight/AISight/Core/Search/` |
+| SearXNGResult.swift | `SearXNGResult` | `AISight/AISight/Core/Search/` |
+| SearXNGResponse.swift | `SearXNGResponse` | `AISight/AISight/Core/Search/` |
+| SearXNGInfobox.swift | `SearXNGInfobox` | `AISight/AISight/Core/Search/` |
 | SearchService.swift | `SearchOutput`, `SearchService` protocol | `AISight/AISight/Core/Search/` |
 | SearchError.swift | `SearchError` | `AISight/AISight/Core/Search/` |
 
@@ -97,3 +99,8 @@ Sends test query (`q=test`) to search endpoint. Returns true if HTTP 2xx.
 **Adding pagination:** Add `pageno` query param. Currently hardcoded to page 1.
 
 **Adding search categories:** Modify `AppConfig.searchCategories` or make it configurable.
+
+## Recent Changes (2026-03-13)
+
+- **Single-type-per-file refactor:** `SearXNGResponse` and `SearXNGInfobox` extracted from `SearXNGResult.swift` into their own files.
+- **SearchError:** Updated with localized error messages for all 9 supported languages.

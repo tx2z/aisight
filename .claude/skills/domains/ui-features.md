@@ -18,7 +18,10 @@ AISight follows MVVM with SwiftUI views and `@Observable` view models. The app h
 | HistoryView.swift | `HistoryView` | `Features/History/` |
 | HistoryViewModel.swift | `HistoryViewModel` | `Features/History/` |
 | SettingsView.swift | `SettingsView` | `Features/Settings/` |
+| PrivacyPolicyView.swift | `PrivacyPolicyView` | `Features/Settings/` |
+| TermsOfUseView.swift | `TermsOfUseView` | `Features/Settings/` |
 | OnboardingView.swift | `OnboardingView` | `Features/Onboarding/` |
+| HistoryDetailView.swift | `HistoryDetailView` | `Features/History/` |
 
 ### UI Components
 
@@ -28,8 +31,10 @@ AISight follows MVVM with SwiftUI views and `@Observable` view models. The app h
 | SourceCardView.swift | `SourceCardView` | `UI/Components/` |
 | CitationBadge.swift | `CitationBadge` | `UI/Components/` |
 | LoadingDots.swift | `LoadingDots` | `UI/Components/` |
-| ServerStatusView.swift | `ServerStatusView` | `UI/Components/` |
-| ShimmerEffect.swift | `ShimmerModifier`, `SkeletonBlock`, `SearchSkeletonView` | `UI/Components/` |
+| ShimmerEffect.swift | `ShimmerModifier` | `UI/Components/` |
+| SearchSkeletonView.swift | `SearchSkeletonView` | `UI/Components/` |
+| SkeletonBlock.swift | `SkeletonBlock` | `UI/Components/` |
+| LegalSectionView.swift | `LegalSectionView` | `UI/Components/` |
 | TypingCursor.swift | `TypingCursor` | `UI/Components/` |
 | AppTheme.swift | (empty) | `UI/Theme/` |
 
@@ -132,3 +137,33 @@ Parses markdown and `(via domain.com)` attribution markers, rendering formatted 
 **Adding loading states:** Use the Apple Intelligence breathing icon pattern from SearchView's `loadingState`, or `LoadingDots` for inline indicators.
 
 **Enabling/disabling Deep Search:** `SearchViewModel.isDeepSearch` toggled via pill button in SearchView. Deep Search description text appears below when active.
+
+## Legal Documents (App Store Compliance)
+
+Added for Apple App Store submission compliance:
+
+- **PrivacyPolicyView** — 12 sections covering data practices, on-device AI, children's privacy, GDPR/CCPA rights. Contact: jesus@perezpaz.es
+- **TermsOfUseView** — 15 sections including Apple EULA requirements (section 12), governing law (Spain). Contact: jesus@perezpaz.es
+- **LegalSectionView** — Reusable component with `LocalizedStringKey` title and content parameters for automatic localization
+- **Settings integration** — Legal section with NavigationLinks to both views, plus Contact Support (mailto:) link
+- **Onboarding consent** — "By continuing, you agree to our Terms of Use and Privacy Policy" with tappable links using `aisight://` custom URL scheme and `.sheet(item:)` presentation
+- **Delete All Data** — Renamed from "Clear Cache" with stronger confirmation dialog
+- **AI disclaimer** — "AI-generated answers may be inaccurate..." shown after every completed answer
+
+## Localization
+
+- **9 languages:** en, de, fr, es, it, ja, ko, zh, pt
+- **199 translated keys** in `Localizable.xcstrings` (Xcode String Catalogs)
+- Legal views use `LocalizedStringKey` parameters so string literals auto-localize
+- All legal document sections translated and reviewed by language-specific agents
+- UI strings (Delete All Data, Legal, Contact Support, etc.) also translated
+
+## View Extraction (Refactor)
+
+Views extracted into dedicated structs following single-type-per-file pattern:
+
+- **SearchView** → `SearchContentView`, `SearchEmptyStateView`, `SearchLoadingView`, `SearchBarSection`, `SuggestionChip` (private subviews)
+- **OnboardingView** → `FeatureRow` (private subview)
+- **HistoryView** → `HistoryDetailView` (separate file)
+- **ShimmerEffect** → `SearchSkeletonView` and `SkeletonBlock` (separate files)
+- **ServerStatusView** — **REMOVED** (settings simplified)
