@@ -22,6 +22,9 @@ AISight follows MVVM with SwiftUI views and `@Observable` view models. The app h
 | TermsOfUseView.swift | `TermsOfUseView` | `Features/Settings/` |
 | OnboardingView.swift | `OnboardingView` | `Features/Onboarding/` |
 | HistoryDetailView.swift | `HistoryDetailView` | `Features/History/` |
+| PaywallView.swift | `PaywallView` | `Features/Store/` |
+| QueryLimitBannerView.swift | `QueryLimitBannerView` | `Features/Store/` |
+| ProSettingsSection.swift | `ProSettingsSection` | `Features/Settings/` |
 
 ### UI Components
 
@@ -44,6 +47,7 @@ AISight follows MVVM with SwiftUI views and `@Observable` view models. The app h
 |------|-----------|----------|
 | AISightApp.swift | `AISightApp` | `App/` |
 | AppState.swift | `AppState` | `App/` |
+| StoreManager.swift | `StoreManager` | `Core/Store/` |
 
 ## SearchViewModel
 
@@ -157,6 +161,19 @@ Added for Apple App Store submission compliance:
 - Legal views use `LocalizedStringKey` parameters so string literals auto-localize
 - All legal document sections translated and reviewed by language-specific agents
 - UI strings (Delete All Data, Legal, Contact Support, etc.) also translated
+
+## AISight Pro (Freemium)
+
+- **Free tier:** 20 searches/day, default SearXNG instance
+- **AISight Pro** ($4.99 one-time): Unlimited searches, custom SearXNG URL, future features
+- **StoreManager** (`Core/Store/`): Single `@Observable` source of truth for `isPro`, daily counter, StoreKit 2 purchase/restore
+- **Paywall:** Non-aggressive sheet shown only when daily limit is hit. Auto-dismisses on purchase.
+- **QueryLimitBannerView:** Small banner in search empty state when ≤ 5 searches remain
+- **ProSettingsSection:** First section in Settings Form, shows Pro status or upgrade/restore buttons
+- **Search Server gating:** Free users see disabled URL field with upgrade hint; Pro users get full editing
+- **Search gating:** `handleSearch()` in `SearchContentView` checks `storeManager.canSearch` before calling `viewModel.performSearch()`
+- **Setapp-ready:** `#if SETAPP` compile-time flag unlocks Pro with zero runtime changes. All StoreKit code wrapped in `#if !SETAPP`.
+- See `domains/store-iap.md` for full architecture details.
 
 ## View Extraction (Refactor)
 

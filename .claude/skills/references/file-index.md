@@ -6,7 +6,7 @@
 
 | File | Path | Key Types | Responsibility |
 |------|------|-----------|---------------|
-| AISightApp.swift | `AISight/AISight/App/` | `AISightApp` | @main entry point, SwiftData container setup, TabView (Search/History/Settings) |
+| AISightApp.swift | `AISight/AISight/App/` | `AISightApp` | @main entry point, SwiftData container setup, TabView (Search/History/Settings), StoreManager environment injection |
 | AppConfig.swift | `AISight/AISight/App/` | `AppConfig` (enum) | Centralized config: SearXNG URL, search params, RRF constant, snippet limits, tracking params |
 | AppState.swift | `AISight/AISight/App/` | `AppState` | @MainActor @Observable: server availability, onboarding flag, Apple Intelligence availability check |
 
@@ -32,6 +32,12 @@
 | SearchService.swift | `AISight/AISight/Core/Search/` | `SearchOutput`, `SearchService` (protocol) | Aggregated search output struct and protocol definition |
 | SearchError.swift | `AISight/AISight/Core/Search/` | `SearchError` | Error enum: serverUnavailable, timeout, noResults, invalidResponse |
 
+## Core/Store
+
+| File | Path | Key Types | Responsibility |
+|------|------|-----------|---------------|
+| StoreManager.swift | `AISight/AISight/Core/Store/` | `StoreManager` | @MainActor @Observable: Pro status (StoreKit 2), daily query limit (UserDefaults), SETAPP compile-time flag |
+
 ## Core/Fetching
 
 | File | Path | Key Types | Responsibility |
@@ -50,16 +56,19 @@
 
 | File | Path | Key Types | Responsibility |
 |------|------|-----------|---------------|
-| SearchView.swift | `AISight/AISight/Features/Search/` | `SearchView` | Main search UI: text field, source cards, streaming answer |
+| SearchView.swift | `AISight/AISight/Features/Search/` | `SearchView` | Main search UI: text field, source cards, streaming answer, search gating (Pro/daily limit) |
 | SearchViewModel.swift | `AISight/AISight/Features/Search/` | `SearchViewModel` | @MainActor @Observable: orchestrates search, generate, save pipeline with cancellation |
 | StreamingAnswerView.swift | `AISight/AISight/Features/Search/` | `StreamingAnswerView` | Displays answer text as it streams from the model |
 | HistoryView.swift | `AISight/AISight/Features/History/` | `HistoryView` | List of past queries, swipe-delete, clear all |
 | HistoryViewModel.swift | `AISight/AISight/Features/History/` | `HistoryViewModel` | History data management |
-| SettingsView.swift | `AISight/AISight/Features/Settings/` | `SettingsView` | SearXNG URL config, Test Connection, Legal section, Contact Support |
+| SettingsView.swift | `AISight/AISight/Features/Settings/` | `SettingsView` | SearXNG URL config (Pro-gated), Test Connection, ProSettingsSection, Legal section, Contact Support |
+| ProSettingsSection.swift | `AISight/AISight/Features/Settings/` | `ProSettingsSection` | AISight Pro section: status display, upgrade button, restore purchases |
 | PrivacyPolicyView.swift | `AISight/AISight/Features/Settings/` | `PrivacyPolicyView` | Privacy policy legal document (12 sections) |
 | TermsOfUseView.swift | `AISight/AISight/Features/Settings/` | `TermsOfUseView` | Terms of use legal document (15 sections, includes Apple EULA) |
 | OnboardingView.swift | `AISight/AISight/Features/Onboarding/` | `OnboardingView` | First-launch flow with legal consent, sets hasSeenOnboarding |
 | HistoryDetailView.swift | `AISight/AISight/Features/History/` | `HistoryDetailView` | Detail view for a single history entry |
+| PaywallView.swift | `AISight/AISight/Features/Store/` | `PaywallView` | Pro upgrade paywall sheet: feature list, purchase button, restore, auto-dismiss |
+| QueryLimitBannerView.swift | `AISight/AISight/Features/Store/` | `QueryLimitBannerView` | Small banner showing remaining daily searches (≤ 5) |
 
 ## UI Components
 

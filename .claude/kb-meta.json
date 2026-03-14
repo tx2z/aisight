@@ -1,11 +1,11 @@
 {
   "version": "2.0.0",
   "created": "2026-03-12",
-  "lastUpdate": "2026-03-13",
+  "lastUpdate": "2026-03-14",
   "lastCommitAnalyzed": "fb33883",
   "project": {
     "name": "AISight",
-    "stack": "Swift 6 / SwiftUI / FoundationModels / SwiftData",
+    "stack": "Swift 6 / SwiftUI / FoundationModels / SwiftData / StoreKit 2",
     "language": "Swift",
     "framework": "SwiftUI + FoundationModels",
     "platforms": ["iOS 26", "macOS 26"]
@@ -15,7 +15,7 @@
     "humanDocs": "docs/knowledge_base/"
   },
   "structure": {
-    "domains": 5,
+    "domains": 6,
     "patterns": 4,
     "infrastructure": 1,
     "references": 2,
@@ -44,6 +44,16 @@
         "humanDoc": "systems/persistence-layer.md"
       },
       {
+        "glob": "AISight/AISight/Core/Store/*.swift",
+        "skill": "domains/store-iap.md",
+        "humanDoc": "features/store-iap.md"
+      },
+      {
+        "glob": "AISight/AISight/Features/Store/*.swift",
+        "skill": "domains/store-iap.md",
+        "humanDoc": "features/store-iap.md"
+      },
+      {
         "glob": "AISight/AISight/Features/**/*.swift",
         "skill": "domains/ui-features.md",
         "humanDoc": "features/*.md"
@@ -51,6 +61,15 @@
     ]
   },
   "updateHistory": [
+    {
+      "date": "2026-03-14",
+      "commit": "uncommitted",
+      "action": "update",
+      "changes": {
+        "skills": ["domains/store-iap.md", "domains/ui-features.md", "references/file-index.md"],
+        "humanDocs": ["testing-storekit-iap.md"]
+      }
+    },
     {
       "date": "2026-03-13",
       "commit": "fb33883",
