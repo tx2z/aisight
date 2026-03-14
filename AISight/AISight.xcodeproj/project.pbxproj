@@ -40,6 +40,11 @@
 			path = AISight;
 			sourceTree = "<group>";
 		};
+		3AAA72002F63000000000001 /* AISightTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = AISightTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				3AAA71A82F62B017008E126F /* AISight */,
+				3AAA72002F63000000000001 /* AISightTests */,
 				3ABD32312F62B33E00DD0F3F /* Frameworks */,
 				3AAA71A72F62B017008E126F /* Products */,
 			);
@@ -132,6 +138,9 @@
 			);
 			dependencies = (
 				3AAA71B52F62B019008E126F /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				3AAA72002F63000000000001 /* AISightTests */,
 			);
 			name = AISightTests;
 			packageProductDependencies = (
@@ -517,9 +526,10 @@
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AISight.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AISight";
 				XROS_DEPLOYMENT_TARGET = 26.2;
@@ -543,9 +553,10 @@
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AISight.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AISight";
 				XROS_DEPLOYMENT_TARGET = 26.2;
