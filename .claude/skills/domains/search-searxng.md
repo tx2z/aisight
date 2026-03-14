@@ -100,6 +100,14 @@ Sends test query (`q=test`) to search endpoint. Returns true if HTTP 2xx.
 
 **Adding search categories:** Modify `AppConfig.searchCategories` or make it configurable.
 
+## Testing
+
+`processResults()`, `buildEngineRankings()`, and `normalizeURL()` are `internal` (not private) for `@testable import` access. Test coverage in `SearXNGServiceTests` (16 tests), `SearXNGResultTests` (11 tests), `SearXNGResponseTests` (3 tests).
+
+## Recent Changes (2026-03-14)
+
+- **Testability:** `processResults()`, `buildEngineRankings()`, `normalizeURL()` changed from `private` to `internal` for unit test access.
+
 ## Recent Changes (2026-03-13)
 
 - **Single-type-per-file refactor:** `SearXNGResponse` and `SearXNGInfobox` extracted from `SearXNGResult.swift` into their own files.

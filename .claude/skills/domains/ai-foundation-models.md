@@ -177,6 +177,14 @@ Content: ...
 
 **Modifying researcher/synthesizer prompts:** Edit `DeepSearchPipeline.runResearcher()` and `runSynthesizer()` instructions strings.
 
+## Testing
+
+`SystemPrompt.languageInstruction(for:)` is `internal` (not private) for `@testable import` access. Test coverage in `SystemPromptTests` (14 tests) covering prompt building with/without sources, direct answers, infoboxes, and parameterized language instruction tests across all 9 supported language codes.
+
+## Recent Changes (2026-03-14)
+
+- **Testability:** `SystemPrompt.languageInstruction(for:)` changed from `private static` to `static` for unit test access.
+
 ## Recent Changes (2026-03-13)
 
 - **Single-type-per-file refactor:** `AnswerError` extracted from `AnswerSession.swift` into its own file. `GenerationErrorMessages` added for localized error strings across all 9 supported languages.

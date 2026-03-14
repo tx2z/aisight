@@ -77,6 +77,10 @@ Simple `String.prefix(maxLength)` — no sentence boundary detection. This can c
 - Sequential fetching in AnswerSession (for loop, not TaskGroup)
 - Max 5 pages fetched (controlled by `AppConfig.maxResults`)
 
+## Testing
+
+`stripHTML()`, `removeTagBlock()`, and `truncate()` are `internal` (not private) for `@testable import` access. Test coverage in `ContentFetcherTests` (17 tests) covering HTML stripping, entity decoding, tag block removal, truncation, and `shouldFetchFullContent` threshold.
+
 ## Common Modifications
 
 **Improving HTML stripping:** Replace regex approach with `AttributedString(html:)` or a proper parser. Keep it within system frameworks (no SwiftSoup).

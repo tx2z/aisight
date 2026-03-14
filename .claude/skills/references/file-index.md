@@ -91,9 +91,24 @@
 |------|------|-------|
 | AppTheme.swift | `AISight/AISight/UI/Theme/` | **Intentionally empty.** Uses system colors (.primary, .secondary), system fonts (.body), numeric spacing. No custom theme. |
 
+## Tests (AISightTests)
+
+| File | Path | Key Types | Responsibility |
+|------|------|-----------|---------------|
+| TestFixtures.swift | `AISight/AISightTests/` | `TestFixtures` (enum) | Factory methods: `makeResult()`, `makeInfobox()`, `decodeSearXNGResponse()` |
+| SearXNGServiceTests.swift | `AISight/AISightTests/` | `SearXNGServiceTests` | URL normalization, RRF ranking, deduplication (16 tests) |
+| SearXNGResultTests.swift | `AISight/AISightTests/` | `SearXNGResultTests` | Computed properties: engineCount, snippetLength, domain, id (11 tests) |
+| SearXNGResponseTests.swift | `AISight/AISightTests/` | `SearXNGResponseTests` | JSON decoding with snake_case mapping (3 tests) |
+| ContentFetcherTests.swift | `AISight/AISightTests/` | `ContentFetcherTests` | HTML stripping, entity decoding, truncation, fetch threshold (17 tests) |
+| SystemPromptTests.swift | `AISight/AISightTests/` | `SystemPromptTests` | Prompt building, language instruction parameterized tests (14 tests) |
+| CitationTextTests.swift | `AISight/AISightTests/` | `CitationTextTests` | Block parsing (headings, lists, code), attribution escaping (15 tests) |
+| StoreManagerTests.swift | `AISight/AISightTests/` | `StoreManagerTests` | Daily limit logic with isolated UserDefaults (5 tests) |
+
 ## Important Notes
 
 - `@available(iOS 26.0, macOS 26.0, *)` required on AnswerSession, SearchViewModel, and any code using FoundationModels
 - `#if canImport(FoundationModels)` used in SearchViewModel and AppState for SDK compatibility
 - `Package.swift` exists for syntax validation only — build via Xcode project
 - No external Swift packages — system frameworks only
+- Unit tests use Swift Testing framework (`@Test`, `#expect`) — not XCTest
+- Run tests: `/test` or `xcodebuild test -only-testing:AISightTests`

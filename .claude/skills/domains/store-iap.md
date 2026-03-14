@@ -50,6 +50,10 @@ Single source of truth for Pro status and daily query tracking.
 
 Uses UserDefaults keys `daily_queries_used` (Int) and `daily_queries_date` (String, `yyyy-MM-dd`). Resets automatically when the stored date differs from today. `DateFormatter` is cached as a static property to avoid repeated allocation.
 
+### Dependency Injection
+
+`StoreManager` accepts an optional `UserDefaults` parameter (`init(defaults: UserDefaults = .standard)`). Production code uses the default (`.standard`). Tests pass an isolated `UserDefaults(suiteName:)` to avoid shared state pollution between test runs.
+
 ### StoreKit 2 Integration
 
 - **Transaction listener:** `Task.detached` listening to `Transaction.updates` (detached to avoid blocking MainActor)
