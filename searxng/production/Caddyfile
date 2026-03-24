@@ -1,0 +1,33 @@
+search.private-search-intelligence.app {
+    log {
+        output discard
+    }
+
+    reverse_proxy searxng:8080 {
+        header_up -X-Forwarded-For
+        header_up -X-Forwarded-Proto
+        header_up -X-Forwarded-Host
+        header_up -X-Real-Ip
+    }
+
+    @notapi {
+        not path /search*
+        not path /healthz
+    }
+    respond @notapi 403
+
+    header {
+        -Server
+        -X-Powered-By
+        -Server-Timing
+        -Via
+        -X-Download-Options
+        X-Content-Type-Options nosniff
+        X-Frame-Options DENY
+        Referrer-Policy no-referrer
+        Permissions-Policy "interest-cohort=()"
+        X-Robots-Tag "noindex, nofollow, noarchive, nosnippet"
+        Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+        Content-Security-Policy "default-src 'none'"
+    }
+}

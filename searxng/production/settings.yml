@@ -1,0 +1,44 @@
+use_default_settings: true
+
+server:
+  secret_key: "REPLACE_WITH_openssl_rand_hex_32"
+  bind_address: "0.0.0.0"
+  port: 8080
+  limiter: true
+  public_instance: false
+  image_proxy: false
+  method: "POST"
+
+search:
+  safe_search: 0
+  autocomplete: ""
+  default_lang: "en"
+  formats:
+    - json
+
+outgoing:
+  request_timeout: 5.0
+  max_request_timeout: 10.0
+  useragent_suffix: ""
+  enable_http2: true
+
+engines:
+  - name: google
+    engine: google
+    shortcut: g
+    weight: 1.5
+
+  - name: bing
+    engine: bing
+    shortcut: b
+    weight: 1.0
+
+  - name: brave
+    engine: brave
+    shortcut: br
+    weight: 1.2
+
+  - name: wikipedia
+    engine: wikipedia
+    shortcut: wp
+    weight: 1.3
