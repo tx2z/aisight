@@ -1,0 +1,17 @@
+{
+  "name": "aisight-web",
+  "version": "1.0.0",
+  "description": "AISight marketing website",
+  "main": "src/worker.js",
+  "scripts": {
+    "dev": "hugo server --port 1315",
+    "build": "hugo",
+    "deploy": "hugo && npx wrangler deploy"
+  },
+  "keywords": [],
+  "author": "Jesus Perez Paz",
+  "license": "MIT",
+  "dependencies": {
+    "mimetext": "^3.0.28"
+  }
+}

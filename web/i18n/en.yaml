@@ -1,0 +1,101 @@
+# Navigation
+nav_features: "Features"
+nav_how: "How It Works"
+nav_server: "Infrastructure"
+nav_contact: "Contact"
+nav_privacy: "Privacy"
+
+# Hero
+hero_title: "Search privately."
+hero_title_2: "Answer intelligently."
+hero_subtitle: "AISight searches the web and generates answers entirely on your device using Apple Intelligence. No data leaves your phone. No cloud AI. No tracking."
+hero_cta: "Download on the App Store"
+hero_cta_soon: "Coming Soon on the App Store"
+
+# Badges
+badge_private: "100% Private"
+badge_ondevice: "On-Device AI"
+badge_notrack: "Zero Tracking"
+badge_eu: "Made in EU"
+badge_opensource: "Open Source"
+
+# Features section
+features_title: "Why AISight?"
+features_subtitle: "A Perplexity alternative that actually respects your privacy."
+
+feat_privacy_title: "True Privacy"
+feat_privacy_desc: "No analytics, no tracking, no accounts, no ads. Your searches stay on your device — period."
+
+feat_ai_title: "On-Device AI"
+feat_ai_desc: "Answers are generated locally using Apple Intelligence. Your queries never touch a cloud AI service."
+
+feat_search_title: "Private Search"
+feat_search_desc: "Searches go through SearXNG — an open-source metasearch engine that aggregates results without tracking you."
+
+feat_citations_title: "Cited Sources"
+feat_citations_desc: "Every answer includes numbered citations linking back to original sources, so you can verify the information."
+
+feat_universal_title: "iPhone, iPad & Mac"
+feat_universal_desc: "Native app built with SwiftUI. Runs on iPhone 15 Pro and later, iPad with M1+, and any Apple Silicon Mac."
+
+feat_fast_title: "Instant Answers"
+feat_fast_desc: "Results stream in real-time as the on-device model generates them. No waiting for cloud round-trips."
+
+# How it works
+how_title: "How It Works"
+how_subtitle: "From question to answer in seconds — all on your device."
+how_step1_title: "You ask a question"
+how_step1_desc: "Type any question. AISight sends it to a privacy-respecting SearXNG search server."
+how_step2_title: "Web results come back"
+how_step2_desc: "SearXNG queries Google, Bing, and Brave simultaneously. Results are ranked using Reciprocal Rank Fusion."
+how_step3_title: "AI reads & answers"
+how_step3_desc: "Apple Intelligence on your device reads the top sources and generates a comprehensive answer with citations."
+
+# Server / Infrastructure
+server_title: "Our Infrastructure"
+server_subtitle: "Everything is designed for privacy and transparency."
+server_searxng_title: "Self-Hosted SearXNG"
+server_searxng_desc: "Our search server runs on Hetzner in Helsinki, Finland. EU jurisdiction, GDPR-compliant hosting. No logs, no tracking."
+server_security_title: "Security Hardened"
+server_security_desc: "SSH key-only access, fail2ban, UFW firewall, automatic security updates. TLS certificates auto-provisioned by Caddy."
+server_privacy_title: "Zero Logging"
+server_privacy_desc: "Docker containers run with logging disabled. DNS queries go through Quad9. No request logs, no IP logging, no analytics."
+server_cost_title: "Transparent & Lean"
+server_cost_desc: "The entire infrastructure costs under €5/month. No venture capital, no growth metrics, no reason to monetize your data."
+server_open_title: "Open Source"
+server_open_desc: "AISight is fully open source under the MIT license. Inspect every line of code — nothing is hidden."
+server_eu_title: "EU-Based"
+server_eu_desc: "Server in Finland, developer in Spain. All data processing under EU jurisdiction and GDPR protection."
+
+# Deep Search
+deep_title: "Deep Search"
+deep_desc: "For complex questions, Deep Search uses multiple AI research passes to find better answers. It reformulates your query, runs parallel searches, and synthesizes results from multiple angles."
+
+# CTA
+cta_title: "Ready for private answers?"
+cta_desc: "Download AISight and take control of your search."
+
+# Contact
+contact_title: "Contact Us"
+contact_intro: "Have questions, feedback, or suggestions? We'd love to hear from you."
+contact_alt: "You can also reach us directly at"
+form_name: "Name"
+form_email: "Email"
+form_subject: "Subject"
+form_subject_default: "Select a subject..."
+form_subject_general: "General Question"
+form_subject_feedback: "Feedback"
+form_subject_bug: "Bug Report"
+form_subject_privacy: "Privacy Question"
+form_subject_other: "Other"
+form_message: "Message"
+form_send: "Send Message"
+form_sending: "Sending..."
+form_success: "Message sent! We'll get back to you soon."
+form_error: "Something went wrong. Please try again or email us directly."
+
+# Footer
+footer_privacy: "Privacy Policy"
+footer_terms: "Terms of Use"
+footer_contact: "Contact"
+footer_github: "GitHub"

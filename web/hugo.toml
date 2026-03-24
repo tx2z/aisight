@@ -1,0 +1,99 @@
+baseURL = "https://private-search-intelligence.app"
+title = "AISight"
+copyright = "© 2026 Jesus Perez Paz"
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+disableKinds = ["taxonomy", "term"]
+
+[params]
+  author = "Jesus Perez Paz"
+  email = "jesus@perezpaz.es"
+  ogImage = "/images/og-image.png"
+  tagline = "Private answers, powered by Apple Intelligence"
+
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+
+[outputs]
+  home = ["HTML", "RSS"]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+# --- Languages ---
+
+[languages]
+  [languages.en]
+    languageCode = "en"
+    languageName = "English"
+    weight = 1
+    title = "AISight — Private AI Answer Engine | Perplexity Alternative"
+    [languages.en.params]
+      description = "AISight is a private AI answer engine for iPhone, iPad, and Mac. Search the web and get answers on-device with Apple Intelligence. No tracking, no cloud AI. Made in EU."
+
+  [languages.es]
+    languageCode = "es"
+    languageName = "Español"
+    weight = 2
+    title = "AISight — Motor de respuestas con IA privada | Alternativa a Perplexity"
+    [languages.es.params]
+      description = "AISight es un motor de respuestas con IA privada para iPhone, iPad y Mac. Busca en la web y obtén respuestas en el dispositivo con Apple Intelligence. Sin rastreo, sin IA en la nube. Hecho en la UE."
+
+  [languages.fr]
+    languageCode = "fr"
+    languageName = "Français"
+    weight = 3
+    title = "AISight — Moteur de réponses IA privé | Alternative à Perplexity"
+    [languages.fr.params]
+      description = "AISight est un moteur de réponses IA privé pour iPhone, iPad et Mac. Recherchez sur le web et obtenez des réponses sur l'appareil avec Apple Intelligence. Sans tracking, sans IA cloud. Fait dans l'UE."
+
+  [languages.de]
+    languageCode = "de"
+    languageName = "Deutsch"
+    weight = 4
+    title = "AISight — Private KI-Antwortmaschine | Perplexity-Alternative"
+    [languages.de.params]
+      description = "AISight ist eine private KI-Antwortmaschine für iPhone, iPad und Mac. Suchen Sie im Web und erhalten Sie Antworten direkt auf dem Gerät mit Apple Intelligence. Kein Tracking, keine Cloud-KI. Made in EU."
+
+  [languages.it]
+    languageCode = "it"
+    languageName = "Italiano"
+    weight = 5
+    title = "AISight — Motore di risposte IA privato | Alternativa a Perplexity"
+    [languages.it.params]
+      description = "AISight è un motore di risposte IA privato per iPhone, iPad e Mac. Cerca nel web e ottieni risposte sul dispositivo con Apple Intelligence. Nessun tracciamento, nessuna IA cloud. Fatto nell'UE."
+
+  [languages.pt]
+    languageCode = "pt"
+    languageName = "Português"
+    weight = 6
+    title = "AISight — Motor de respostas IA privado | Alternativa ao Perplexity"
+    [languages.pt.params]
+      description = "AISight é um motor de respostas IA privado para iPhone, iPad e Mac. Pesquise na web e obtenha respostas no dispositivo com Apple Intelligence. Sem rastreamento, sem IA na nuvem. Feito na UE."
+
+  [languages.zh]
+    languageCode = "zh-Hans"
+    languageName = "中文"
+    weight = 7
+    title = "AISight — 私密AI问答引擎 | Perplexity替代方案"
+    [languages.zh.params]
+      description = "AISight是一款面向iPhone、iPad和Mac的私密AI问答引擎。通过Apple Intelligence在设备上搜索网页并获取答案。无追踪，无云端AI。欧盟制造。"
+
+  [languages.ja]
+    languageCode = "ja"
+    languageName = "日本語"
+    weight = 8
+    title = "AISight — プライベートAI回答エンジン | Perplexityの代替"
+    [languages.ja.params]
+      description = "AISightはiPhone、iPad、Mac向けのプライベートAI回答エンジンです。Apple Intelligenceでデバイス上でウェブ検索と回答を取得。トラッキングなし、クラウドAIなし。EU製。"
+
+  [languages.ko]
+    languageCode = "ko"
+    languageName = "한국어"
+    weight = 9
+    title = "AISight — 프라이빗 AI 답변 엔진 | Perplexity 대안"
+    [languages.ko.params]
+      description = "AISight는 iPhone, iPad, Mac을 위한 프라이빗 AI 답변 엔진입니다. Apple Intelligence로 기기에서 웹 검색과 답변을 받으세요. 추적 없음, 클라우드 AI 없음. EU 제작."

@@ -1,0 +1,80 @@
+{{ define "main" }}
+<section class="page-content contact-page">
+  <div class="container">
+    <h1>{{ i18n "contact_title" }}</h1>
+    <p class="contact-intro">{{ i18n "contact_intro" }}</p>
+
+    <form id="contact-form" class="contact-form" action="/api/contact" method="POST">
+      <div class="form-group">
+        <label for="name">{{ i18n "form_name" }}</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">{{ i18n "form_email" }}</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="subject">{{ i18n "form_subject" }}</label>
+        <select id="subject" name="subject" required>
+          <option value="">{{ i18n "form_subject_default" }}</option>
+          <option value="general">{{ i18n "form_subject_general" }}</option>
+          <option value="feedback">{{ i18n "form_subject_feedback" }}</option>
+          <option value="bug">{{ i18n "form_subject_bug" }}</option>
+          <option value="privacy">{{ i18n "form_subject_privacy" }}</option>
+          <option value="other">{{ i18n "form_subject_other" }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">{{ i18n "form_message" }}</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+      </div>
+      <button type="submit" class="btn-submit" data-send="{{ i18n "form_send" }}" data-sending="{{ i18n "form_sending" }}">{{ i18n "form_send" }}</button>
+      <div id="form-status" class="form-status" hidden data-success="{{ i18n "form_success" }}" data-error="{{ i18n "form_error" }}"></div>
+    </form>
+
+    <div class="contact-alt">
+      <p>{{ i18n "contact_alt" }} <a href="mailto:jesus@perezpaz.es">jesus@perezpaz.es</a></p>
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ define "scripts" }}
+<script>
+document.getElementById('contact-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const status = document.getElementById('form-status');
+  const btn = form.querySelector('button[type="submit"]');
+
+  btn.disabled = true;
+  btn.textContent = btn.dataset.sending;
+  status.hidden = true;
+
+  try {
+    const data = Object.fromEntries(new FormData(form));
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
+    if (res.ok) {
+      status.textContent = status.dataset.success;
+      status.className = 'form-status success';
+      status.hidden = false;
+      form.reset();
+    } else {
+      throw new Error('Failed to send');
+    }
+  } catch {
+    status.textContent = status.dataset.error;
+    status.className = 'form-status error';
+    status.hidden = false;
+  } finally {
+    btn.disabled = false;
+    btn.textContent = btn.dataset.send;
+  }
+});
+</script>
+{{ end }}
