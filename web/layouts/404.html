@@ -1,0 +1,7 @@
+{{ define "main" }}
+<section class="page-content" style="text-align: center; padding: 120px 20px;">
+  <h1>{{ i18n "404_title" | default "Page not found" }}</h1>
+  <p style="color: var(--gray-500); margin: 16px 0 32px;">{{ i18n "404_desc" | default "The page you're looking for doesn't exist." }}</p>
+  <a href="{{ .Site.Home.RelPermalink }}" class="btn-primary">{{ i18n "404_back" | default "Back to Home" }}</a>
+</section>
+{{ end }}

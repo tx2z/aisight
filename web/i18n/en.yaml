@@ -6,11 +6,12 @@ nav_contact: "Contact"
 nav_privacy: "Privacy"
 
 # Hero
-hero_title: "Search privately."
-hero_title_2: "Answer intelligently."
+hero_title: "The private alternative"
+hero_title_2: "to Perplexity."
 hero_subtitle: "AISight searches the web and generates answers entirely on your device using Apple Intelligence. No data leaves your phone. No cloud AI. No tracking."
 hero_cta: "Download on the App Store"
 hero_cta_soon: "Coming Soon on the App Store"
+hero_github: "View on GitHub"
 
 # Badges
 badge_private: "100% Private"
@@ -19,9 +20,12 @@ badge_notrack: "Zero Tracking"
 badge_eu: "Made in EU"
 badge_opensource: "Open Source"
 
+# Social proof
+proof_line: "Open source under MIT license. Built independently in Spain, EU."
+
 # Features section
-features_title: "Why AISight?"
-features_subtitle: "A Perplexity alternative that actually respects your privacy."
+features_title: "Why choose a private AI search engine?"
+features_subtitle: "Everything Perplexity does, without anyone watching."
 
 feat_privacy_title: "True Privacy"
 feat_privacy_desc: "No analytics, no tracking, no accounts, no ads. Your searches stay on your device — period."
@@ -41,6 +45,33 @@ feat_universal_desc: "Native app built with SwiftUI. Runs on iPhone 15 Pro and l
 feat_fast_title: "Instant Answers"
 feat_fast_desc: "Results stream in real-time as the on-device model generates them. No waiting for cloud round-trips."
 
+# Comparison
+compare_title: "How AISight compares"
+compare_subtitle: "See exactly what makes AISight different."
+compare_feature: "Feature"
+compare_ai_processing: "AI processing"
+compare_ai_ondevice: "On your device"
+compare_ai_cloud: "Cloud servers"
+compare_queries_tracked: "Queries tracked"
+compare_no: "No"
+compare_yes: "Yes"
+compare_account: "Account required"
+compare_none: "None"
+compare_required: "Required"
+compare_price: "Price"
+compare_price_aisight: "Free / $4.99 once"
+compare_price_perplexity: "Free / $20/month"
+compare_price_chatgpt: "Free / $20/month"
+compare_opensource: "Open source"
+compare_mit: "Yes (MIT)"
+compare_data_jurisdiction: "Data jurisdiction"
+compare_eu: "EU (Finland)"
+compare_us: "US"
+compare_search_engine: "Search engine"
+compare_searxng: "SearXNG (open)"
+compare_proprietary: "Proprietary"
+compare_bing: "Bing"
+
 # How it works
 how_title: "How It Works"
 how_subtitle: "From question to answer in seconds — all on your device."
@@ -51,8 +82,30 @@ how_step2_desc: "SearXNG queries Google, Bing, and Brave simultaneously. Results
 how_step3_title: "AI reads & answers"
 how_step3_desc: "Apple Intelligence on your device reads the top sources and generates a comprehensive answer with citations."
 
+# Pricing
+pricing_title: "Simple, honest pricing"
+pricing_subtitle: "No subscriptions. No recurring charges. Pay once, own it forever."
+pricing_free: "Free"
+pricing_free_desc: "20 searches per day"
+pricing_free_f1: "On-device AI answers"
+pricing_free_f2: "Source citations"
+pricing_free_f3: "Search history"
+pricing_free_f4: "Deep Search mode"
+pricing_pro: "Pro"
+pricing_pro_price: "$4.99"
+pricing_pro_once: "one-time purchase"
+pricing_pro_desc: "Unlimited searches"
+pricing_pro_f1: "Everything in Free"
+pricing_pro_f2: "Unlimited daily searches"
+pricing_pro_f3: "Custom SearXNG server"
+pricing_pro_f4: "Support development"
+
+# Trade-offs
+tradeoffs_title: "An honest trade-off"
+tradeoffs_desc: "AISight uses Apple Intelligence, a ~3B parameter model that runs entirely on your device. It won't match GPT-4 on complex reasoning or creative writing — but for everyday questions, research, and fact-checking, it delivers fast, sourced answers without anyone watching. We believe that trade-off is worth it."
+
 # Server / Infrastructure
-server_title: "Our Infrastructure"
+server_title: "Privacy-first infrastructure"
 server_subtitle: "Everything is designed for privacy and transparency."
 server_searxng_title: "Self-Hosted SearXNG"
 server_searxng_desc: "Our search server runs on Hetzner in Helsinki, Finland. EU jurisdiction, GDPR-compliant hosting. No logs, no tracking."
@@ -67,13 +120,30 @@ server_open_desc: "AISight is fully open source under the MIT license. Inspect e
 server_eu_title: "EU-Based"
 server_eu_desc: "Server in Finland, developer in Spain. All data processing under EU jurisdiction and GDPR protection."
 
-# Deep Search
-deep_title: "Deep Search"
-deep_desc: "For complex questions, Deep Search uses multiple AI research passes to find better answers. It reformulates your query, runs parallel searches, and synthesizes results from multiple angles."
+# FAQ
+faq_title: "Frequently Asked Questions"
+faq_q1: "Is AISight really private?"
+faq_a1: "Yes. All AI processing happens on your device using Apple Intelligence (FoundationModels framework). Your queries, search results, and generated answers never leave your device. There are no analytics, no tracking, no user accounts, and no cloud AI services involved."
+faq_q2: "How is AISight different from Perplexity?"
+faq_a2: "Unlike Perplexity, AISight processes everything on-device. Your queries never reach a cloud AI service. Search goes through SearXNG (a privacy-respecting open-source metasearch engine) instead of proprietary search APIs. The entire app is open source under the MIT license, and all infrastructure is EU-based."
+faq_q3: "What devices does AISight support?"
+faq_a3: "AISight requires iPhone 15 Pro or later, iPad with M1 chip or later, or any Mac with Apple Silicon. You need iOS 26 / macOS 26 or later with Apple Intelligence enabled."
+faq_q4: "What is SearXNG?"
+faq_a4: "SearXNG is a free, open-source metasearch engine that aggregates results from multiple search engines (Google, Bing, Brave, Wikipedia, and more) without tracking users. AISight ships with a default SearXNG server hosted in Helsinki, Finland (EU jurisdiction)."
+faq_q5: "Is AISight free?"
+faq_a5: "AISight offers 20 free searches per day. AISight Pro ($4.99, one-time purchase) removes this limit and allows you to configure a custom SearXNG server."
+faq_q6: "What is Deep Search?"
+faq_a6: "Deep Search is an advanced mode that uses multiple AI research passes to find better answers for complex questions. It reformulates your query, runs parallel searches from different angles, and synthesizes the results into a comprehensive answer."
+faq_q7: "Where is the server located?"
+faq_a7: "Our SearXNG search server runs on Hetzner in Helsinki, Finland. EU jurisdiction, GDPR-compliant hosting. The server has zero logging enabled — no request logs, no IP logs, no analytics of any kind."
+faq_q8: "Is the AI quality good enough?"
+faq_a8: "Apple Intelligence is a capable ~3B parameter model optimized for on-device use. It handles everyday questions, research, and fact-checking well. For complex reasoning or creative tasks, cloud models like GPT-4 may be stronger — but your queries stay private, which we think is a worthwhile trade-off."
+faq_q9: "Is AISight available on Android?"
+faq_a9: "AISight is currently available for Apple devices only (iPhone, iPad, Mac) as it relies on Apple Intelligence for on-device AI processing. There is no Android equivalent of this technology at this time."
 
 # CTA
 cta_title: "Ready for private answers?"
-cta_desc: "Download AISight and take control of your search."
+cta_desc: "No account needed. No data collected. Just answers."
 
 # Contact
 contact_title: "Contact Us"
@@ -93,6 +163,11 @@ form_send: "Send Message"
 form_sending: "Sending..."
 form_success: "Message sent! We'll get back to you soon."
 form_error: "Something went wrong. Please try again or email us directly."
+
+# 404
+404_title: "Page not found"
+404_desc: "The page you're looking for doesn't exist."
+404_back: "Back to Home"
 
 # Footer
 footer_privacy: "Privacy Policy"

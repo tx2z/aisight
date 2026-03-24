@@ -4,7 +4,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "AISight",
-  "applicationCategory": "UtilitiesApplication",
+  "applicationCategory": "SearchApplication",
   "operatingSystem": "iOS 26, macOS 26",
   "description": "{{ .Site.Params.description }}",
   "url": "{{ .Site.Home.Permalink }}",
@@ -17,11 +17,6 @@
     "@type": "Offer",
     "price": "0",
     "priceCurrency": "USD"
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5",
-    "ratingCount": "1"
   }
 }
 </script>
@@ -46,43 +41,48 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "Is AISight really private?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. All AI processing happens on your device using Apple Intelligence. Your queries, search results, and generated answers never leave your device. There are no analytics, no tracking, and no cloud AI services."
-      }
+      "name": "{{ i18n "faq_q1" }}",
+      "acceptedAnswer": { "@type": "Answer", "text": "{{ i18n "faq_a1" }}" }
     },
     {
       "@type": "Question",
-      "name": "How is AISight different from Perplexity?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Unlike Perplexity, AISight processes everything on-device using Apple Intelligence. Your queries never reach a cloud AI service. Search goes through SearXNG (a privacy-respecting metasearch engine) instead of proprietary search APIs. The app is open source and the infrastructure is EU-based."
-      }
+      "name": "{{ i18n "faq_q2" }}",
+      "acceptedAnswer": { "@type": "Answer", "text": "{{ i18n "faq_a2" }}" }
     },
     {
       "@type": "Question",
-      "name": "What devices does AISight support?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "AISight requires iPhone 15 Pro or later, iPad with M1 chip or later, or any Mac with Apple Silicon, running iOS 26 / macOS 26 or later with Apple Intelligence enabled."
-      }
+      "name": "{{ i18n "faq_q3" }}",
+      "acceptedAnswer": { "@type": "Answer", "text": "{{ i18n "faq_a3" }}" }
     },
     {
       "@type": "Question",
-      "name": "What is SearXNG?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "SearXNG is a free, open-source metasearch engine that aggregates results from multiple search engines (Google, Bing, Brave, etc.) without tracking users. AISight includes a default SearXNG server hosted in Finland, EU."
-      }
+      "name": "{{ i18n "faq_q4" }}",
+      "acceptedAnswer": { "@type": "Answer", "text": "{{ i18n "faq_a4" }}" }
     },
     {
       "@type": "Question",
-      "name": "Is AISight free?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "AISight offers 20 free searches per day. AISight Pro removes this limit and allows custom SearXNG server configuration."
-      }
+      "name": "{{ i18n "faq_q5" }}",
+      "acceptedAnswer": { "@type": "Answer", "text": "{{ i18n "faq_a5" }}" }
+    },
+    {
+      "@type": "Question",
+      "name": "{{ i18n "faq_q6" }}",
+      "acceptedAnswer": { "@type": "Answer", "text": "{{ i18n "faq_a6" }}" }
+    },
+    {
+      "@type": "Question",
+      "name": "{{ i18n "faq_q7" }}",
+      "acceptedAnswer": { "@type": "Answer", "text": "{{ i18n "faq_a7" }}" }
+    },
+    {
+      "@type": "Question",
+      "name": "{{ i18n "faq_q8" }}",
+      "acceptedAnswer": { "@type": "Answer", "text": "{{ i18n "faq_a8" }}" }
+    },
+    {
+      "@type": "Question",
+      "name": "{{ i18n "faq_q9" }}",
+      "acceptedAnswer": { "@type": "Answer", "text": "{{ i18n "faq_a9" }}" }
     }
   ]
 }
@@ -93,7 +93,7 @@
 
 <!-- Hero -->
 <section class="hero">
-  <div class="hero-content">
+  <div class="hero-content fade-in-up">
     <h1>{{ i18n "hero_title" }}<br><span class="highlight">{{ i18n "hero_title_2" }}</span></h1>
     <p class="hero-subtitle">{{ i18n "hero_subtitle" }}</p>
     <div class="hero-badges">
@@ -103,68 +103,74 @@
       <span class="badge badge-eu">{{ i18n "badge_eu" }}</span>
       <span class="badge badge-open">{{ i18n "badge_opensource" }}</span>
     </div>
-    <div class="hero-cta">
-      <a href="#" class="btn-primary">{{ i18n "hero_cta_soon" }}</a>
+    <div class="hero-ctas">
+      <span class="btn-primary btn-disabled">{{ i18n "hero_cta_soon" }}</span>
+      <a href="https://github.com/nicoboga/aisight" class="btn-secondary" target="_blank" rel="noopener">{{ i18n "hero_github" }}</a>
     </div>
   </div>
 </section>
 
+<!-- Social proof -->
+<div class="proof-strip fade-in-up">
+  <p>{{ i18n "proof_line" }}</p>
+</div>
+
 <!-- Screenshots -->
 <section class="screenshots-section">
   <div class="screenshots-scroll">
-    <img src="/images/screenshots/home.png" alt="AISight home screen" width="390" height="844" loading="lazy">
-    <img src="/images/screenshots/answer.png" alt="AISight answer with citations" width="390" height="844" loading="lazy">
-    <img src="/images/screenshots/history.png" alt="AISight search history" width="390" height="844" loading="lazy">
-    <img src="/images/screenshots/settings.png" alt="AISight settings" width="390" height="844" loading="lazy">
+    <img src="/images/screenshots/home.png" alt="AISight private AI search app — home screen" width="390" height="844" loading="lazy">
+    <img src="/images/screenshots/answer.png" alt="AISight AI answer with cited sources" width="390" height="844" loading="lazy">
+    <img src="/images/screenshots/history.png" alt="AISight search history — all data stored on device" width="390" height="844" loading="lazy">
+    <img src="/images/screenshots/settings.png" alt="AISight settings — SearXNG server configuration" width="390" height="844" loading="lazy">
   </div>
   <div class="screenshots-mac">
-    <img src="/images/screenshots/mac-answer.png" alt="AISight on Mac — answer view" loading="lazy">
-    <img src="/images/screenshots/mac-history.png" alt="AISight on Mac — history view" loading="lazy">
+    <img src="/images/screenshots/mac-answer.png" alt="AISight on Mac — AI-generated answer with citations" width="1040" height="680" loading="lazy">
+    <img src="/images/screenshots/mac-history.png" alt="AISight on Mac — private search history" width="1040" height="680" loading="lazy">
   </div>
 </section>
 
 <!-- Features -->
 <section class="features-section" id="features">
-  <h2>{{ i18n "features_title" }}</h2>
-  <p class="section-subtitle">{{ i18n "features_subtitle" }}</p>
+  <h2 class="fade-in-up">{{ i18n "features_title" }}</h2>
+  <p class="section-subtitle fade-in-up">{{ i18n "features_subtitle" }}</p>
   <div class="features-grid">
-    <div class="feature-card">
+    <div class="feature-card fade-in-up">
       <div class="feature-icon">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
       </div>
       <h3>{{ i18n "feat_privacy_title" }}</h3>
       <p>{{ i18n "feat_privacy_desc" }}</p>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon">
+    <div class="feature-card fade-in-up">
+      <div class="feature-icon icon-purple">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
       </div>
       <h3>{{ i18n "feat_ai_title" }}</h3>
       <p>{{ i18n "feat_ai_desc" }}</p>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon">
+    <div class="feature-card fade-in-up">
+      <div class="feature-icon icon-green">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       </div>
       <h3>{{ i18n "feat_search_title" }}</h3>
       <p>{{ i18n "feat_search_desc" }}</p>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon">
+    <div class="feature-card fade-in-up">
+      <div class="feature-icon icon-orange">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
       </div>
       <h3>{{ i18n "feat_citations_title" }}</h3>
       <p>{{ i18n "feat_citations_desc" }}</p>
     </div>
-    <div class="feature-card">
+    <div class="feature-card fade-in-up">
       <div class="feature-icon">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
       </div>
       <h3>{{ i18n "feat_universal_title" }}</h3>
       <p>{{ i18n "feat_universal_desc" }}</p>
     </div>
-    <div class="feature-card">
-      <div class="feature-icon">
+    <div class="feature-card fade-in-up">
+      <div class="feature-icon icon-yellow">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
       </div>
       <h3>{{ i18n "feat_fast_title" }}</h3>
@@ -173,12 +179,74 @@
   </div>
 </section>
 
+<!-- Comparison -->
+<section class="compare-section" id="compare">
+  <h2 class="fade-in-up">{{ i18n "compare_title" }}</h2>
+  <p class="section-subtitle fade-in-up">{{ i18n "compare_subtitle" }}</p>
+  <div class="compare-table-wrap fade-in-up">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>{{ i18n "compare_feature" }}</th>
+          <th class="compare-highlight">AISight</th>
+          <th>Perplexity</th>
+          <th>ChatGPT Search</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ i18n "compare_ai_processing" }}</td>
+          <td class="compare-highlight compare-good">{{ i18n "compare_ai_ondevice" }}</td>
+          <td>{{ i18n "compare_ai_cloud" }}</td>
+          <td>{{ i18n "compare_ai_cloud" }}</td>
+        </tr>
+        <tr>
+          <td>{{ i18n "compare_queries_tracked" }}</td>
+          <td class="compare-highlight compare-good">{{ i18n "compare_no" }}</td>
+          <td class="compare-bad">{{ i18n "compare_yes" }}</td>
+          <td class="compare-bad">{{ i18n "compare_yes" }}</td>
+        </tr>
+        <tr>
+          <td>{{ i18n "compare_account" }}</td>
+          <td class="compare-highlight compare-good">{{ i18n "compare_none" }}</td>
+          <td>{{ i18n "compare_required" }}</td>
+          <td>{{ i18n "compare_required" }}</td>
+        </tr>
+        <tr>
+          <td>{{ i18n "compare_price" }}</td>
+          <td class="compare-highlight compare-good">{{ i18n "compare_price_aisight" }}</td>
+          <td>{{ i18n "compare_price_perplexity" }}</td>
+          <td>{{ i18n "compare_price_chatgpt" }}</td>
+        </tr>
+        <tr>
+          <td>{{ i18n "compare_opensource" }}</td>
+          <td class="compare-highlight compare-good">{{ i18n "compare_mit" }}</td>
+          <td class="compare-bad">{{ i18n "compare_no" }}</td>
+          <td class="compare-bad">{{ i18n "compare_no" }}</td>
+        </tr>
+        <tr>
+          <td>{{ i18n "compare_data_jurisdiction" }}</td>
+          <td class="compare-highlight compare-good">{{ i18n "compare_eu" }}</td>
+          <td>{{ i18n "compare_us" }}</td>
+          <td>{{ i18n "compare_us" }}</td>
+        </tr>
+        <tr>
+          <td>{{ i18n "compare_search_engine" }}</td>
+          <td class="compare-highlight">{{ i18n "compare_searxng" }}</td>
+          <td>{{ i18n "compare_proprietary" }}</td>
+          <td>{{ i18n "compare_bing" }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
 <!-- How it works -->
 <section class="how-section" id="how">
-  <h2>{{ i18n "how_title" }}</h2>
-  <p class="section-subtitle">{{ i18n "how_subtitle" }}</p>
+  <h2 class="fade-in-up">{{ i18n "how_title" }}</h2>
+  <p class="section-subtitle fade-in-up">{{ i18n "how_subtitle" }}</p>
   <div class="steps-grid">
-    <div class="step-card">
+    <div class="step-card fade-in-up">
       <div class="step-number">1</div>
       <h3>{{ i18n "how_step1_title" }}</h3>
       <p>{{ i18n "how_step1_desc" }}</p>
@@ -186,7 +254,7 @@
     <div class="step-arrow">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </div>
-    <div class="step-card">
+    <div class="step-card fade-in-up">
       <div class="step-number">2</div>
       <h3>{{ i18n "how_step2_title" }}</h3>
       <p>{{ i18n "how_step2_desc" }}</p>
@@ -194,7 +262,7 @@
     <div class="step-arrow">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </div>
-    <div class="step-card">
+    <div class="step-card fade-in-up">
       <div class="step-number">3</div>
       <h3>{{ i18n "how_step3_title" }}</h3>
       <p>{{ i18n "how_step3_desc" }}</p>
@@ -202,78 +270,100 @@
   </div>
 </section>
 
+<!-- Pricing -->
+<section class="pricing-section" id="pricing">
+  <h2 class="fade-in-up">{{ i18n "pricing_title" }}</h2>
+  <p class="section-subtitle fade-in-up">{{ i18n "pricing_subtitle" }}</p>
+  <div class="pricing-grid fade-in-up">
+    <div class="pricing-card">
+      <h3>{{ i18n "pricing_free" }}</h3>
+      <div class="pricing-price">$0</div>
+      <p class="pricing-desc">{{ i18n "pricing_free_desc" }}</p>
+      <ul>
+        <li>{{ i18n "pricing_free_f1" }}</li>
+        <li>{{ i18n "pricing_free_f2" }}</li>
+        <li>{{ i18n "pricing_free_f3" }}</li>
+        <li>{{ i18n "pricing_free_f4" }}</li>
+      </ul>
+    </div>
+    <div class="pricing-card pricing-card-pro">
+      <h3>{{ i18n "pricing_pro" }}</h3>
+      <div class="pricing-price">{{ i18n "pricing_pro_price" }} <span class="pricing-once">{{ i18n "pricing_pro_once" }}</span></div>
+      <p class="pricing-desc">{{ i18n "pricing_pro_desc" }}</p>
+      <ul>
+        <li>{{ i18n "pricing_pro_f1" }}</li>
+        <li>{{ i18n "pricing_pro_f2" }}</li>
+        <li>{{ i18n "pricing_pro_f3" }}</li>
+        <li>{{ i18n "pricing_pro_f4" }}</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Trade-offs -->
+<section class="tradeoffs-section fade-in-up">
+  <div class="tradeoffs-card">
+    <h2>{{ i18n "tradeoffs_title" }}</h2>
+    <p>{{ i18n "tradeoffs_desc" }}</p>
+  </div>
+</section>
+
 <!-- Infrastructure -->
 <section class="server-section" id="infrastructure">
-  <h2>{{ i18n "server_title" }}</h2>
-  <p class="section-subtitle">{{ i18n "server_subtitle" }}</p>
+  <h2 class="fade-in-up">{{ i18n "server_title" }}</h2>
+  <p class="section-subtitle fade-in-up">{{ i18n "server_subtitle" }}</p>
   <div class="server-grid">
-    <div class="server-card">
+    <div class="server-card fade-in-up">
       <h3>{{ i18n "server_searxng_title" }}</h3>
       <p>{{ i18n "server_searxng_desc" }}</p>
     </div>
-    <div class="server-card">
+    <div class="server-card fade-in-up">
       <h3>{{ i18n "server_security_title" }}</h3>
       <p>{{ i18n "server_security_desc" }}</p>
     </div>
-    <div class="server-card">
+    <div class="server-card fade-in-up">
       <h3>{{ i18n "server_privacy_title" }}</h3>
       <p>{{ i18n "server_privacy_desc" }}</p>
     </div>
-    <div class="server-card">
+    <div class="server-card fade-in-up">
       <h3>{{ i18n "server_eu_title" }}</h3>
       <p>{{ i18n "server_eu_desc" }}</p>
     </div>
-    <div class="server-card">
+    <div class="server-card fade-in-up">
       <h3>{{ i18n "server_open_title" }}</h3>
       <p>{{ i18n "server_open_desc" }}</p>
     </div>
-    <div class="server-card">
+    <div class="server-card fade-in-up">
       <h3>{{ i18n "server_cost_title" }}</h3>
       <p>{{ i18n "server_cost_desc" }}</p>
     </div>
   </div>
 </section>
 
-<!-- FAQ (for SEO — hidden in section but accessible) -->
+<!-- FAQ -->
 <section class="faq-section" id="faq">
-  <h2>Frequently Asked Questions</h2>
-  <div class="faq-list">
-    <details class="faq-item">
-      <summary>Is AISight really private?</summary>
-      <p>Yes. All AI processing happens on your device using Apple Intelligence (FoundationModels framework). Your queries, search results, and generated answers never leave your device. There are no analytics, no tracking, no user accounts, and no cloud AI services involved.</p>
-    </details>
-    <details class="faq-item">
-      <summary>How is AISight different from Perplexity?</summary>
-      <p>Unlike Perplexity, AISight processes everything on-device. Your queries never reach a cloud AI service. Search goes through SearXNG (a privacy-respecting open-source metasearch engine) instead of proprietary search APIs. The entire app is open source under the MIT license, and all infrastructure is EU-based.</p>
-    </details>
-    <details class="faq-item">
-      <summary>What devices does AISight support?</summary>
-      <p>AISight requires iPhone 15 Pro or later, iPad with M1 chip or later, or any Mac with Apple Silicon. You need iOS 26 / macOS 26 or later with Apple Intelligence enabled.</p>
-    </details>
-    <details class="faq-item">
-      <summary>What is SearXNG?</summary>
-      <p>SearXNG is a free, open-source metasearch engine that aggregates results from multiple search engines (Google, Bing, Brave, Wikipedia, and more) without tracking users. AISight ships with a default SearXNG server hosted in Helsinki, Finland (EU jurisdiction).</p>
-    </details>
-    <details class="faq-item">
-      <summary>Is AISight free?</summary>
-      <p>AISight offers 20 free searches per day. AISight Pro removes this limit and allows you to configure a custom SearXNG server.</p>
-    </details>
-    <details class="faq-item">
-      <summary>What is Deep Search?</summary>
-      <p>Deep Search is an advanced mode that uses multiple AI research passes to find better answers for complex questions. It reformulates your query, runs parallel searches from different angles, and synthesizes the results into a comprehensive answer.</p>
-    </details>
-    <details class="faq-item">
-      <summary>Where is the server located?</summary>
-      <p>Our SearXNG search server runs on Hetzner in Helsinki, Finland. EU jurisdiction, GDPR-compliant hosting. The server has zero logging enabled — no request logs, no IP logs, no analytics of any kind.</p>
-    </details>
+  <h2 class="fade-in-up">{{ i18n "faq_title" }}</h2>
+  <div class="faq-list fade-in-up">
+    <details class="faq-item"><summary>{{ i18n "faq_q1" }}</summary><p>{{ i18n "faq_a1" }}</p></details>
+    <details class="faq-item"><summary>{{ i18n "faq_q2" }}</summary><p>{{ i18n "faq_a2" }}</p></details>
+    <details class="faq-item"><summary>{{ i18n "faq_q3" }}</summary><p>{{ i18n "faq_a3" }}</p></details>
+    <details class="faq-item"><summary>{{ i18n "faq_q4" }}</summary><p>{{ i18n "faq_a4" }}</p></details>
+    <details class="faq-item"><summary>{{ i18n "faq_q5" }}</summary><p>{{ i18n "faq_a5" }}</p></details>
+    <details class="faq-item"><summary>{{ i18n "faq_q6" }}</summary><p>{{ i18n "faq_a6" }}</p></details>
+    <details class="faq-item"><summary>{{ i18n "faq_q7" }}</summary><p>{{ i18n "faq_a7" }}</p></details>
+    <details class="faq-item"><summary>{{ i18n "faq_q8" }}</summary><p>{{ i18n "faq_a8" }}</p></details>
+    <details class="faq-item"><summary>{{ i18n "faq_q9" }}</summary><p>{{ i18n "faq_a9" }}</p></details>
   </div>
 </section>
 
 <!-- CTA -->
-<section class="cta-section">
+<section class="cta-section fade-in-up">
   <h2>{{ i18n "cta_title" }}</h2>
   <p>{{ i18n "cta_desc" }}</p>
-  <a href="#" class="btn-primary btn-large">{{ i18n "hero_cta_soon" }}</a>
+  <div class="hero-ctas">
+    <span class="btn-primary btn-large btn-disabled">{{ i18n "hero_cta_soon" }}</span>
+    <a href="https://github.com/nicoboga/aisight" class="btn-secondary" target="_blank" rel="noopener">{{ i18n "hero_github" }}</a>
+  </div>
 </section>
 
 {{ end }}
