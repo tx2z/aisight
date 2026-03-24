@@ -79,12 +79,16 @@ private struct SearchContentView: View {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 16) {
                         if !viewModel.query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                            Text(viewModel.query)
-                                .font(.body.weight(.semibold))
-                                .padding(.horizontal, 14)
-                                .padding(.vertical, 10)
-                                .background(.quaternary.opacity(0.5), in: .rect(cornerRadius: 16))
-                                .frame(maxWidth: .infinity, alignment: .trailing)
+                            HStack {
+                                Spacer()
+                                Text(viewModel.query)
+                                    .font(.body.weight(.semibold))
+                                    .foregroundStyle(.white)
+                                    .padding(.horizontal, 14)
+                                    .padding(.vertical, 10)
+                                    .background(.blue, in: .rect(cornerRadius: 18))
+                            }
+                            .padding(.bottom, 4)
                         }
 
                         if let error = viewModel.errorMessage {

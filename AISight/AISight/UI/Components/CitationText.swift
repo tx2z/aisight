@@ -11,7 +11,7 @@ struct CitationText: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 14) {
+        VStack(alignment: .leading, spacing: 18) {
             ForEach(blocks.indices, id: \.self) { index in
                 renderBlock(blocks[index])
             }
@@ -150,7 +150,7 @@ struct CitationText: View {
 
         case .paragraph(let text):
             renderInline(text)
-                .lineSpacing(3)
+                .lineSpacing(5)
 
         case .codeBlock(let code):
             Text(code)
