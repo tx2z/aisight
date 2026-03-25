@@ -16,6 +16,11 @@
   <img src="https://img.shields.io/badge/dependencies-zero-green.svg" alt="Zero Dependencies">
 </p>
 
+<p align="center">
+  <!-- TODO: Replace with App Store link when available -->
+  <img src="https://img.shields.io/badge/App%20Store-Coming%20Soon-black?style=for-the-badge&logo=apple&logoColor=white" alt="Coming Soon on the App Store">
+</p>
+
 ---
 
 A native iOS 26 / macOS 26 answer engine that combines web search with on-device AI. AISight searches the web via a self-hosted [SearXNG](https://github.com/searxng/searxng) instance and synthesizes answers using Apple's FoundationModels framework (Apple Intelligence) — all AI processing happens privately on your device. Zero external dependencies.
