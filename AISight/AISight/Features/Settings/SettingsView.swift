@@ -25,8 +25,12 @@ struct SettingsView: View {
 
     // swiftlint:disable:next force_unwrapping
     private static let searxngURL = URL(string: "https://github.com/searxng/searxng")!
-    // swiftlint:disable:next force_unwrapping
-    private static let supportURL = URL(string: "mailto:jesus@perezpaz.es")!
+    private static var supportURL: URL {
+        let locale = Locale.current.language.languageCode?.identifier ?? "en"
+        let path = locale == "en" ? "" : "\(locale)/"
+        // swiftlint:disable:next force_unwrapping
+        return URL(string: "https://private-search-intelligence.app/\(path)contact/")!
+    }
 
     private let supportedLanguages: [(code: String, name: String)] = [
         ("en", "English"),
