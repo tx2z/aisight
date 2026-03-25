@@ -92,7 +92,7 @@ server_privacy_desc: "Docker 컨테이너는 로깅 비활성화로 실행. DNS 
 server_cost_title: "투명하고 가벼운"
 server_cost_desc: "전체 인프라 비용 월 5유로 미만. 벤처 캐피탈 없음, 성장 지표 없음."
 server_open_title: "오픈소스"
-server_open_desc: "AISight는 MIT 라이선스로 완전 오픈소스입니다. 모든 코드 라인을 검사하세요."
+server_open_desc: 'AISight는 MIT 라이선스로 완전 오픈소스입니다. <a href="https://github.com/tx2z/aisight" target="_blank" rel="noopener">모든 코드 라인을 검사하세요</a>.'
 server_eu_title: "EU 기반"
 server_eu_desc: "서버는 핀란드, 개발자는 스페인. EU 관할권과 GDPR 보호 하의 모든 데이터 처리."
 deep_title: "딥 서치"
@@ -101,7 +101,7 @@ faq_title: "자주 묻는 질문"
 faq_q1: "AISight는 정말 프라이빗한가요?"
 faq_a1: "네. 모든 AI 처리는 Apple Intelligence(FoundationModels 프레임워크)를 사용하여 기기에서 이루어집니다. 쿼리, 검색 결과, 생성된 답변은 기기를 떠나지 않습니다. 분석, 추적, 사용자 계정, 클라우드 AI 서비스가 전혀 관여하지 않습니다."
 faq_q2: "AISight는 Perplexity와 어떻게 다른가요?"
-faq_a2: "Perplexity와 달리 AISight는 모든 것을 기기에서 처리합니다. 쿼리가 클라우드 AI 서비스에 도달하지 않습니다. 검색은 독점 검색 API가 아닌 SearXNG(프라이버시를 존중하는 오픈소스 메타검색엔진)를 통해 이루어집니다. 전체 앱이 MIT 라이선스로 오픈소스이며, 모든 인프라는 EU에 기반합니다."
+faq_a2: 'Perplexity와 달리 AISight는 모든 것을 기기에서 처리합니다. 쿼리가 클라우드 AI 서비스에 도달하지 않습니다. 검색은 독점 검색 API가 아닌 SearXNG(프라이버시를 존중하는 오픈소스 메타검색엔진)를 통해 이루어집니다. 전체 앱이 <a href="https://github.com/tx2z/aisight" target="_blank" rel="noopener">MIT 라이선스로 오픈소스</a>이며, 모든 인프라는 EU에 기반합니다.'
 faq_q3: "AISight는 어떤 기기를 지원하나요?"
 faq_a3: "AISight는 iPhone 15 Pro 이상, M1 칩 이상의 iPad, 또는 Apple Silicon이 탑재된 모든 Mac이 필요합니다. Apple Intelligence가 활성화된 iOS 26 / macOS 26 이상이 필요합니다."
 faq_q4: "SearXNG란 무엇인가요?"

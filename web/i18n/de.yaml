@@ -92,7 +92,7 @@ server_privacy_desc: "Docker-Container laufen ohne Logging. DNS-Anfragen über Q
 server_cost_title: "Transparent & schlank"
 server_cost_desc: "Die gesamte Infrastruktur kostet unter 5€/Monat. Kein Risikokapital, keine Wachstumsmetriken."
 server_open_title: "Open Source"
-server_open_desc: "AISight ist vollständig Open Source unter MIT-Lizenz. Prüfen Sie jede Zeile Code."
+server_open_desc: 'AISight ist vollständig Open Source unter MIT-Lizenz. <a href="https://github.com/tx2z/aisight" target="_blank" rel="noopener">Prüfen Sie jede Zeile Code</a>.'
 server_eu_title: "EU-basiert"
 server_eu_desc: "Server in Finnland, Entwickler in Spanien. Gesamte Datenverarbeitung unter EU-Recht und DSGVO-Schutz."
 deep_title: "Tiefensuche"
@@ -101,7 +101,7 @@ faq_title: "Häufig gestellte Fragen"
 faq_q1: "Ist AISight wirklich privat?"
 faq_a1: "Ja. Die gesamte KI-Verarbeitung findet auf Ihrem Gerät mit Apple Intelligence (FoundationModels-Framework) statt. Ihre Anfragen, Suchergebnisse und generierten Antworten verlassen nie Ihr Gerät. Es gibt keine Analytik, kein Tracking, keine Benutzerkonten und keine Cloud-KI-Dienste."
 faq_q2: "Wie unterscheidet sich AISight von Perplexity?"
-faq_a2: "Anders als Perplexity verarbeitet AISight alles auf dem Gerät. Ihre Anfragen erreichen nie einen Cloud-KI-Dienst. Die Suche läuft über SearXNG (eine datenschutzfreundliche Open-Source-Metasuchmaschine) statt über proprietäre Such-APIs. Die gesamte App ist Open Source unter MIT-Lizenz, und die gesamte Infrastruktur befindet sich in der EU."
+faq_a2: 'Anders als Perplexity verarbeitet AISight alles auf dem Gerät. Ihre Anfragen erreichen nie einen Cloud-KI-Dienst. Die Suche läuft über SearXNG (eine datenschutzfreundliche Open-Source-Metasuchmaschine) statt über proprietäre Such-APIs. Die gesamte App ist <a href="https://github.com/tx2z/aisight" target="_blank" rel="noopener">Open Source unter MIT-Lizenz</a>, und die gesamte Infrastruktur befindet sich in der EU.'
 faq_q3: "Welche Geräte unterstützt AISight?"
 faq_a3: "AISight erfordert iPhone 15 Pro oder neuer, iPad mit M1-Chip oder neuer, oder jeden Mac mit Apple Silicon. Sie benötigen iOS 26 / macOS 26 oder neuer mit aktivierter Apple Intelligence."
 faq_q4: "Was ist SearXNG?"

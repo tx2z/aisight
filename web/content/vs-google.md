@@ -44,7 +44,7 @@ Both provide AI-synthesized answers with source citations. Google's answers may 
 
 - You don't want your searches building an advertising profile
 - You want AI answers without being tracked across the web
-- You prefer independent, open-source software over big tech platforms
+- You prefer independent, [open-source software](https://github.com/tx2z/aisight) over big tech platforms
 - You value EU data jurisdiction and GDPR protection
 - You're in the Apple ecosystem
 

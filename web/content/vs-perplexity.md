@@ -67,6 +67,6 @@ AISight uses Apple Intelligence (~3B parameters), which runs entirely on your de
 
 ## Summary
 
-If privacy matters to you, AISight is the clear choice. Everything stays on your device, the code is open source, and the infrastructure is EU-based with zero logging. If you need the most powerful AI regardless of privacy, Perplexity offers that — at the cost of your search data.
+If privacy matters to you, AISight is the clear choice. Everything stays on your device, the code is [open source](https://github.com/tx2z/aisight), and the infrastructure is EU-based with zero logging. If you need the most powerful AI regardless of privacy, Perplexity offers that — at the cost of your search data.
 
 **AISight is coming soon to the App Store.**

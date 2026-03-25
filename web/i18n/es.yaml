@@ -92,7 +92,7 @@ server_privacy_desc: "Los contenedores Docker funcionan sin registro de logs. La
 server_cost_title: "Transparente y ligero"
 server_cost_desc: "Toda la infraestructura cuesta menos de 5€/mes. Sin capital riesgo, sin métricas de crecimiento."
 server_open_title: "Código abierto"
-server_open_desc: "AISight es totalmente de código abierto bajo licencia MIT. Inspecciona cada línea de código."
+server_open_desc: 'AISight es totalmente de código abierto bajo licencia MIT. <a href="https://github.com/tx2z/aisight" target="_blank" rel="noopener">Inspecciona cada línea de código</a>.'
 server_eu_title: "Basado en la UE"
 server_eu_desc: "Servidor en Finlandia, desarrollador en España. Todo el procesamiento bajo jurisdicción de la UE y protección del RGPD."
 deep_title: "Búsqueda profunda"
@@ -101,7 +101,7 @@ faq_title: "Preguntas frecuentes"
 faq_q1: "¿AISight es realmente privado?"
 faq_a1: "Sí. Todo el procesamiento de IA ocurre en tu dispositivo usando Apple Intelligence (framework FoundationModels). Tus consultas, resultados de búsqueda y respuestas generadas nunca salen de tu dispositivo. No hay analíticas, ni rastreo, ni cuentas de usuario, ni servicios de IA en la nube involucrados."
 faq_q2: "¿En qué se diferencia AISight de Perplexity?"
-faq_a2: "A diferencia de Perplexity, AISight procesa todo en el dispositivo. Tus consultas nunca llegan a un servicio de IA en la nube. Las búsquedas pasan por SearXNG (un metabuscador de código abierto que respeta la privacidad) en lugar de APIs de búsqueda propietarias. Toda la app es código abierto bajo licencia MIT, y toda la infraestructura está en la UE."
+faq_a2: 'A diferencia de Perplexity, AISight procesa todo en el dispositivo. Tus consultas nunca llegan a un servicio de IA en la nube. Las búsquedas pasan por SearXNG (un metabuscador de código abierto que respeta la privacidad) en lugar de APIs de búsqueda propietarias. Toda la app es <a href="https://github.com/tx2z/aisight" target="_blank" rel="noopener">código abierto bajo licencia MIT</a>, y toda la infraestructura está en la UE.'
 faq_q3: "¿Qué dispositivos soporta AISight?"
 faq_a3: "AISight requiere iPhone 15 Pro o posterior, iPad con chip M1 o posterior, o cualquier Mac con Apple Silicon. Necesitas iOS 26 / macOS 26 o posterior con Apple Intelligence activado."
 faq_q4: "¿Qué es SearXNG?"

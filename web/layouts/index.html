@@ -101,6 +101,7 @@
       <span class="badge badge-ai">{{ i18n "badge_ondevice" }}</span>
       <span class="badge badge-notrack">{{ i18n "badge_notrack" }}</span>
       <span class="badge badge-eu">{{ i18n "badge_eu" }}</span>
+      <a href="https://github.com/tx2z/aisight" class="badge badge-open" target="_blank" rel="noopener">{{ i18n "badge_opensource" }}</a>
     </div>
     <div class="hero-ctas">
       <span class="btn-primary btn-disabled">{{ i18n "hero_cta_soon" }}</span>
@@ -330,7 +331,7 @@
     </div>
     <div class="server-card fade-in-up">
       <h3>{{ i18n "server_open_title" }}</h3>
-      <p>{{ i18n "server_open_desc" }}</p>
+      <p>{{ i18n "server_open_desc" | safeHTML }}</p>
     </div>
     <div class="server-card fade-in-up">
       <h3>{{ i18n "server_cost_title" }}</h3>
@@ -344,7 +345,7 @@
   <h2 class="fade-in-up">{{ i18n "faq_title" }}</h2>
   <div class="faq-list fade-in-up">
     <details class="faq-item"><summary>{{ i18n "faq_q1" }}</summary><p>{{ i18n "faq_a1" }}</p></details>
-    <details class="faq-item"><summary>{{ i18n "faq_q2" }}</summary><p>{{ i18n "faq_a2" }}</p></details>
+    <details class="faq-item"><summary>{{ i18n "faq_q2" }}</summary><p>{{ i18n "faq_a2" | safeHTML }}</p></details>
     <details class="faq-item"><summary>{{ i18n "faq_q3" }}</summary><p>{{ i18n "faq_a3" }}</p></details>
     <details class="faq-item"><summary>{{ i18n "faq_q4" }}</summary><p>{{ i18n "faq_a4" }}</p></details>
     <details class="faq-item"><summary>{{ i18n "faq_q5" }}</summary><p>{{ i18n "faq_a5" }}</p></details>
