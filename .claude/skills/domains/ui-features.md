@@ -22,6 +22,7 @@ AISight follows MVVM with SwiftUI views and `@Observable` view models. The app h
 | TermsOfUseView.swift | `TermsOfUseView` | `Features/Settings/` |
 | OnboardingView.swift | `OnboardingView` | `Features/Onboarding/` |
 | HistoryDetailView.swift | `HistoryDetailView` | `Features/History/` |
+| PaywallReason.swift | `PaywallReason` | `Features/Store/` |
 | PaywallView.swift | `PaywallView` | `Features/Store/` |
 | QueryLimitBannerView.swift | `QueryLimitBannerView` | `Features/Store/` |
 | ProSettingsSection.swift | `ProSettingsSection` | `Features/Settings/` |
@@ -39,6 +40,7 @@ AISight follows MVVM with SwiftUI views and `@Observable` view models. The app h
 | SkeletonBlock.swift | `SkeletonBlock` | `UI/Components/` |
 | LegalSectionView.swift | `LegalSectionView` | `UI/Components/` |
 | TypingCursor.swift | `TypingCursor` | `UI/Components/` |
+| AppIconView.swift | `AppIconView` | `UI/Components/` |
 | AppTheme.swift | (empty) | `UI/Theme/` |
 
 ### App
@@ -167,7 +169,8 @@ Added for Apple App Store submission compliance:
 - **Free tier:** 10 searches/day, default SearXNG instance
 - **AISight Pro** ($4.99 one-time): Unlimited searches, Deep Search, custom SearXNG URL, future features
 - **StoreManager** (`Core/Store/`): Single `@Observable` source of truth for `isPro`, daily counter, StoreKit 2 purchase/restore
-- **Paywall:** Non-aggressive sheet shown only when daily limit is hit. Auto-dismisses on purchase.
+- **PaywallReason:** Enum (`.dailyLimitReached`, `.deepSearchRequiresPro`) customizes paywall messaging.
+- **Paywall:** Non-aggressive sheet shown when daily limit hit or Deep Search toggled by free user. Auto-dismisses on purchase.
 - **QueryLimitBannerView:** Small banner in search empty state when ≤ 5 searches remain
 - **ProSettingsSection:** First section in Settings Form, shows Pro status or upgrade/restore buttons
 - **Search Server gating:** Free users see disabled URL field with upgrade hint; Pro users get full editing
@@ -184,3 +187,18 @@ Views extracted into dedicated structs following single-type-per-file pattern:
 - **HistoryView** → `HistoryDetailView` (separate file)
 - **ShimmerEffect** → `SearchSkeletonView` and `SkeletonBlock` (separate files)
 - **ServerStatusView** — **REMOVED** (settings simplified)
+
+## Recent Changes (2026-03-25)
+
+- **Auto-focus search:** Search input auto-focuses on appear and after reset for faster UX.
+- **App Store rating prompt:** `requestReview()` triggered after 3rd successful search (non-SETAPP builds only).
+- **Deep Search gating:** Free users see paywall with `.deepSearchRequiresPro` when toggling Deep Search.
+- **Copy Answer:** Both `StreamingAnswerView` and `HistoryDetailView` have "Copy Answer" button (platform-aware iOS/macOS clipboard).
+- **AppIconView:** New `UI/Components/AppIconView.swift` — centralized app icon display with parameterized size and responsive corner radius. Used in loading/empty states and onboarding.
+- **History deep search indicators:** Purple badge and colored accent bar distinguish deep search vs normal queries. Source count shows "X of Y sources" when some were unused.
+- **HistoryDetailView:** Sources split into "Sources" (used) and "More Results" (expandable, unused).
+- **SourceCardView:** Improved truncation detection via `onGeometryChange`, `.scrollTransition` for opacity/scale.
+- **SettingsView:** Locale-aware Contact Support URL (e.g., `/es/contact/` for Spanish).
+- **ProSettingsSection:** Shows "X / 10" daily query usage display.
+- **OnboardingView:** Streamlined with `AppIconView(size: 80)` and simplified feature rows.
+- **macOS app icon:** Properly sized macOS icon assets added (16–512px).

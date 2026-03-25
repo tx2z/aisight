@@ -11,6 +11,7 @@ AISight uses a freemium model: free users get 10 searches/day, AISight Pro ($4.9
 | File | Key Types | Location |
 |------|-----------|----------|
 | StoreManager.swift | `StoreManager` | `Core/Store/` |
+| PaywallReason.swift | `PaywallReason` | `Features/Store/` |
 | PaywallView.swift | `PaywallView` | `Features/Store/` |
 | QueryLimitBannerView.swift | `QueryLimitBannerView` | `Features/Store/` |
 | ProSettingsSection.swift | `ProSettingsSection` | `Features/Settings/` |
@@ -29,13 +30,14 @@ Single source of truth for Pro status and daily query tracking.
 | `dailyQueriesUsed` | `Int` | Counter for today's searches |
 | `errorMessage` | `String?` | User-facing purchase error |
 | `canSearch` | `Bool` (computed) | `isPro \|\| remainingQueries > 0` |
-| `remainingQueries` | `Int` (computed) | `isPro ? .max : max(0, 20 - dailyQueriesUsed)` |
+| `canDeepSearch` | `Bool` (computed) | `isPro` — Deep Search requires Pro |
+| `remainingQueries` | `Int` (computed) | `isPro ? .max : max(0, 10 - dailyQueriesUsed)` |
 
 ### Constants
 
 | Constant | Value | Description |
 |----------|-------|-------------|
-| `dailyLimit` | `20` | Free tier daily search cap |
+| `dailyLimit` | `10` | Free tier daily search cap |
 | `productID` | `"com.aisight.pro"` | App Store product identifier |
 
 ### Methods
@@ -94,11 +96,20 @@ private func handleSearch() {
 
 Both search triggers (search bar submit and suggestion chip tap) call `handleSearch()`.
 
+## PaywallReason
+
+`enum PaywallReason` — determines paywall messaging context:
+
+| Case | Trigger | Subtitle |
+|------|---------|----------|
+| `.dailyLimitReached` | Free user exhausts 10 daily searches | "10 free searches exhausted today" + "come back tomorrow" |
+| `.deepSearchRequiresPro` | Free user toggles Deep Search | "Deep Search is a Pro feature" |
+
 ## Paywall
 
-Shown as a `.sheet` when free user hits the daily limit. Non-aggressive design:
-- Star icon, feature list (3 `Label` rows), purchase button, restore link
-- "Or come back tomorrow" caption
+Shown as a `.sheet` with `reason: PaywallReason` parameter. Non-aggressive design:
+- Star icon, feature list (Unlimited searches, Deep Search, Custom search server, Future features), purchase button, restore link
+- "Or come back tomorrow" shown only for `.dailyLimitReached` reason
 - Auto-dismisses via `.onChange(of: storeManager.isPro)` on successful purchase
 - All purchase UI wrapped in `#if !SETAPP`
 
@@ -111,3 +122,10 @@ Shown as a `.sheet` when free user hits the daily limit. Non-aggressive design:
 **Adding Pro features:** Check `storeManager.isPro` in the relevant view. The gate pattern is always in the view layer via `@Environment(StoreManager.self)`.
 
 **Adding Setapp support:** Add `SETAPP` to build settings, add Setapp SDK init in the `#if SETAPP` block of `StoreManager.init()`.
+
+## Recent Changes (2026-03-25)
+
+- **Daily limit reduced:** 20 → 10 free searches/day.
+- **Deep Search gating:** New `canDeepSearch` computed property — returns `true` only for Pro users.
+- **PaywallReason enum:** New `PaywallReason.swift` with `.dailyLimitReached` and `.deepSearchRequiresPro` cases for contextual paywall messaging.
+- **PaywallView:** Now accepts `reason: PaywallReason` parameter. Feature list expanded to 4 items. "Come back tomorrow" only shown for daily limit reason.

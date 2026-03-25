@@ -25,6 +25,7 @@ AISight uses SwiftData for query history persistence and UserDefaults for lightw
 | `answer` | `String` | Complete generated answer |
 | `sources` | `[SourceInfo]` | Array of source metadata |
 | `timestamp` | `Date` | When the query was made |
+| `isDeepSearch` | `Bool` | Whether this query used Deep Search pipeline (default: `false`) |
 
 ### SourceInfo (Codable, Hashable, Sendable)
 
@@ -33,6 +34,7 @@ AISight uses SwiftData for query history persistence and UserDefaults for lightw
 | `url` | `String` | Source page URL |
 | `title` | `String` | Source page title |
 | `engine` | `String?` | Search engine that found this source |
+| `wasUsed` | `Bool` | Whether this source was used in the AI answer (default: `true`, backwards-compatible decoder) |
 
 ## QueryHistoryStore
 
@@ -44,7 +46,7 @@ Takes `ModelContext` in init. All operations are synchronous (SwiftData main-thr
 
 | Method | Description |
 |--------|-------------|
-| `save(query:answer:sources:)` | Creates QueryEntry, inserts into context, saves |
+| `save(query:answer:sources:isDeepSearch:)` | Creates QueryEntry, inserts into context, saves |
 | `fetchHistory() -> [QueryEntry]` | Fetches all entries sorted by timestamp descending |
 | `deleteEntry(_:)` | Deletes single entry and saves |
 | `clearAll()` | Fetches all entries, deletes each, saves |
@@ -77,6 +79,12 @@ All operations catch errors and `print()` to console. **Non-blocking** — save 
 **Adding search within history:** Use `Predicate` in FetchDescriptor to filter by query text.
 
 **Pagination for large history:** Add `fetchLimit` and offset to FetchDescriptor.
+
+## Recent Changes (2026-03-25)
+
+- **Deep Search tracking:** `QueryEntry.isDeepSearch` field records whether query used Deep Search pipeline.
+- **Source attribution:** `SourceInfo.wasUsed` field distinguishes sources used in AI answer from unused results. Decoder handles backwards compatibility.
+- **QueryHistoryStore:** `save()` now accepts `isDeepSearch` parameter.
 
 ## Recent Changes (2026-03-13)
 

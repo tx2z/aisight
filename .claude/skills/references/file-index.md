@@ -48,8 +48,8 @@
 
 | File | Path | Key Types | Responsibility |
 |------|------|-----------|---------------|
-| QueryEntry.swift | `AISight/AISight/Core/Persistence/` | `QueryEntry` (@Model) | SwiftData model: id, query, answer, sources, timestamp |
-| SourceInfo.swift | `AISight/AISight/Core/Persistence/` | `SourceInfo` | Codable source metadata (url, title, engine) |
+| QueryEntry.swift | `AISight/AISight/Core/Persistence/` | `QueryEntry` (@Model) | SwiftData model: id, query, answer, sources, timestamp, isDeepSearch |
+| SourceInfo.swift | `AISight/AISight/Core/Persistence/` | `SourceInfo` | Codable source metadata (url, title, engine, wasUsed) |
 | QueryHistoryStore.swift | `AISight/AISight/Core/Persistence/` | `QueryHistoryStore` | @Observable: save/fetch/delete/clearAll via ModelContext |
 
 ## Features
@@ -67,7 +67,8 @@
 | TermsOfUseView.swift | `AISight/AISight/Features/Settings/` | `TermsOfUseView` | Terms of use legal document (15 sections, includes Apple EULA) |
 | OnboardingView.swift | `AISight/AISight/Features/Onboarding/` | `OnboardingView` | First-launch flow with legal consent, sets hasSeenOnboarding |
 | HistoryDetailView.swift | `AISight/AISight/Features/History/` | `HistoryDetailView` | Detail view for a single history entry |
-| PaywallView.swift | `AISight/AISight/Features/Store/` | `PaywallView` | Pro upgrade paywall sheet: feature list, purchase button, restore, auto-dismiss |
+| PaywallReason.swift | `AISight/AISight/Features/Store/` | `PaywallReason` | Enum: dailyLimitReached, deepSearchRequiresPro — customizes paywall messaging |
+| PaywallView.swift | `AISight/AISight/Features/Store/` | `PaywallView` | Pro upgrade paywall sheet: reason-based messaging, feature list, purchase button, restore, auto-dismiss |
 | QueryLimitBannerView.swift | `AISight/AISight/Features/Store/` | `QueryLimitBannerView` | Small banner showing remaining daily searches (≤ 5) |
 
 ## UI Components
@@ -83,6 +84,7 @@
 | SkeletonBlock.swift | `AISight/AISight/UI/Components/` | `SkeletonBlock` | Individual skeleton block component |
 | TypingCursor.swift | `AISight/AISight/UI/Components/` | `TypingCursor` | Blinking cursor (PhaseAnimator) appended to streaming text |
 | LegalSectionView.swift | `AISight/AISight/UI/Components/` | `LegalSectionView` | Reusable legal text section with LocalizedStringKey title/content |
+| AppIconView.swift | `AISight/AISight/UI/Components/` | `AppIconView` | Centralized app icon display with parameterized size and responsive corner radius |
 | ~~ServerStatusView.swift~~ | ~~`AISight/AISight/UI/Components/`~~ | — | **REMOVED** — Settings simplified, server status section deleted |
 
 ## Theme
