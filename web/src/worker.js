@@ -5,6 +5,12 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
+    if (url.pathname === '/api/turnstile-key' && request.method === 'GET') {
+      return new Response(JSON.stringify({ siteKey: env.TURNSTILE_SITE_KEY }), {
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
     if (url.pathname === '/api/contact' && request.method === 'POST') {
       return handleContact(request, env);
     }
@@ -13,12 +19,40 @@ export default {
   },
 };
 
+async function verifyTurnstile(token, ip, secret) {
+  const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams({ secret, response: token, remoteip: ip }),
+  });
+  const result = await res.json();
+  return result.success === true;
+}
+
 async function handleContact(request, env) {
   const headers = { 'Content-Type': 'application/json' };
 
   try {
     const body = await request.json();
     const { name, email, subject, message } = body;
+    const turnstileToken = body['cf-turnstile-response'];
+
+    // Verify Turnstile
+    if (!turnstileToken) {
+      return new Response(JSON.stringify({ error: 'Verification required' }), {
+        status: 400,
+        headers,
+      });
+    }
+
+    const clientIP = request.headers.get('CF-Connecting-IP') || '';
+    const isHuman = await verifyTurnstile(turnstileToken, clientIP, env.TURNSTILE_SECRET);
+    if (!isHuman) {
+      return new Response(JSON.stringify({ error: 'Verification failed' }), {
+        status: 403,
+        headers,
+      });
+    }
 
     if (!name || !email || !subject || !message) {
       return new Response(JSON.stringify({ error: 'All fields are required' }), {

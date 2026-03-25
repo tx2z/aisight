@@ -169,7 +169,8 @@ h1, h2, h3 { font-weight: 700; color: var(--gray-900); letter-spacing: -0.02em; 
 .badge-ai { background: var(--purple-pale); color: var(--purple); }
 .badge-notrack { background: var(--green-pale); color: #059669; }
 .badge-eu { background: var(--blue-pale); color: var(--blue); }
-.badge-open { background: var(--gray-100); color: var(--gray-700); }
+.badge-open { background: var(--gray-100); color: var(--gray-700); text-decoration: none; }
+.badge-open:hover { background: var(--gray-200); color: var(--gray-900); }
 
 .hero-ctas {
   display: flex;
@@ -764,7 +765,7 @@ h1, h2, h3 { font-weight: 700; color: var(--gray-900); letter-spacing: -0.02em; 
 .footer-copy { font-size: 0.8rem; color: var(--gray-300); }
 
 /* === Skip Link === */
-.skip-link { position: absolute; top: -40px; left: 0; padding: 8px; background: var(--blue); color: white; z-index: 1000; }
+.skip-link { position: absolute; top: -100%; left: 0; padding: 8px; background: var(--blue); color: white; z-index: 1000; }
 .skip-link:focus { top: 0; }
 
 /* === Responsive: Tablet === */

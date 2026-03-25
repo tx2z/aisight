@@ -30,6 +30,10 @@ Package.resolved
 # Claude Code (track skills/KB, ignore local state)
 .claude/settings.local.json
 
+# Environment files (API tokens)
+.env
+web/.env
+
 # Docker data and local SearXNG config (contains secret_key)
 searxng/data/
 searxng/settings.yml
