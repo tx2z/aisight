@@ -13,9 +13,25 @@ struct StreamingAnswerView: View {
                     TypingCursor()
                 }
             }
+
+            if !isGenerating && !streamingText.isEmpty {
+                Button("Copy Answer", systemImage: "doc.on.doc", action: copyAnswer)
+                    .font(.caption)
+                    .buttonStyle(.plain)
+                    .foregroundStyle(.secondary)
+            }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .transition(.opacity)
+    }
+
+    private func copyAnswer() {
+        #if os(iOS)
+        UIPasteboard.general.string = streamingText
+        #else
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.setString(streamingText, forType: .string)
+        #endif
     }
 }
 

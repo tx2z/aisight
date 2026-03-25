@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ProSettingsSection: View {
     @Environment(StoreManager.self) private var storeManager
-    @State private var showPaywall = false
+    @Binding var showPaywall: Bool
 
     var body: some View {
         Section("AISight Pro") {
@@ -17,7 +17,9 @@ struct ProSettingsSection: View {
                         .foregroundStyle(.secondary)
                 }
 
-                Button("Upgrade to AISight Pro", action: showUpgrade)
+                Button("Upgrade to AISight Pro") {
+                    showPaywall = true
+                }
 
                 #if !SETAPP
                 Button("Restore Purchases", action: handleRestore)
@@ -25,13 +27,6 @@ struct ProSettingsSection: View {
                 #endif
             }
         }
-        .sheet(isPresented: $showPaywall) {
-            PaywallView()
-        }
-    }
-
-    private func showUpgrade() {
-        showPaywall = true
     }
 
     #if !SETAPP
@@ -44,8 +39,9 @@ struct ProSettingsSection: View {
 }
 
 #Preview {
+    @Previewable @State var show = false
     Form {
-        ProSettingsSection()
+        ProSettingsSection(showPaywall: $show)
     }
     .environment(StoreManager())
 }

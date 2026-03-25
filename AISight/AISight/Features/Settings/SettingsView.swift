@@ -21,6 +21,7 @@ struct SettingsView: View {
     @State private var showRestartAlert = false
     @State private var showClearConfirmation = false
     @State private var showClearError = false
+    @State private var showPaywall = false
 
     // swiftlint:disable:next force_unwrapping
     private static let searxngURL = URL(string: "https://github.com/searxng/searxng")!
@@ -47,7 +48,7 @@ struct SettingsView: View {
 
     var body: some View {
         Form {
-            ProSettingsSection()
+            ProSettingsSection(showPaywall: $showPaywall)
 
             Section("Search Server") {
                 if storeManager.isPro {
@@ -203,6 +204,9 @@ struct SettingsView: View {
         .alert("Failed to Clear Data", isPresented: $showClearError) {
         } message: {
             Text("Your search history could not be deleted. Please try again.")
+        }
+        .sheet(isPresented: $showPaywall) {
+            PaywallView()
         }
         .confirmationDialog("Delete All Data?", isPresented: $showClearConfirmation, titleVisibility: .visible) {
             Button("Delete All Data", role: .destructive) {

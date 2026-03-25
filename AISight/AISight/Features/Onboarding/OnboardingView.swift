@@ -14,10 +14,7 @@ struct OnboardingView: View {
             Spacer()
 
             VStack(spacing: 12) {
-                Image(systemName: "brain.head.profile.fill")
-                    .font(.system(size: 64))
-                    .foregroundStyle(.accent)
-                    .symbolRenderingMode(.hierarchical)
+                AppIconView(size: 80)
 
                 Text("AISight")
                     .font(.largeTitle.bold())
@@ -40,19 +37,19 @@ struct OnboardingView: View {
                 FeatureRow(
                     icon: "lock.shield.fill",
                     title: "Privacy First",
-                    description: "AI runs entirely on your device. Nothing is sent to external AI services."
+                    description: "AI runs entirely on your device."
                 )
 
                 FeatureRow(
                     icon: "bolt.fill",
                     title: "Fast Answers",
-                    description: "Get concise, cited answers from multiple search engines in seconds."
+                    description: "Cited answers from multiple sources."
                 )
 
                 FeatureRow(
                     icon: "doc.text.magnifyingglass",
                     title: "Sourced Information",
-                    description: "Every answer includes citations so you can verify the information."
+                    description: "Verify answers with linked sources."
                 )
             }
             .padding(.horizontal, 16)
@@ -60,11 +57,7 @@ struct OnboardingView: View {
             Spacer()
 
             VStack(spacing: 12) {
-                Button {
-                    withAnimation {
-                        appState.hasSeenOnboarding = true
-                    }
-                } label: {
+                Button(action: completeOnboarding) {
                     Text("Start Searching")
                         .font(.headline)
                         .foregroundStyle(.white)
@@ -109,6 +102,11 @@ struct OnboardingView: View {
         }
     }
 
+    private func completeOnboarding() {
+        withAnimation {
+            appState.hasSeenOnboarding = true
+        }
+    }
 }
 
 private struct FeatureRow: View {

@@ -3,6 +3,7 @@ import SwiftUI
 struct SourceCardView: View {
     let result: SearXNGResult
     var index: Int? = nil
+    var isUsed: Bool = true
 
     @State private var isExpanded = false
 
@@ -39,6 +40,7 @@ private struct SourceCardContent: View {
     var index: Int? = nil
     @Binding var isExpanded: Bool
     @State private var isTruncated = false
+    @ScaledMetric(relativeTo: .caption2) private var badgeSize: Double = 14
 
     private var domainInitial: String {
         String(domain.prefix(1)).uppercased()
@@ -68,9 +70,9 @@ private struct SourceCardContent: View {
 
                 if let index {
                     Text("\(index)")
-                        .font(.system(size: 9, weight: .bold))
+                        .font(.system(size: badgeSize * 0.64, weight: .bold))
                         .foregroundStyle(.white)
-                        .frame(width: 14, height: 14)
+                        .frame(width: badgeSize, height: badgeSize)
                         .background(.accent, in: .circle)
                         .offset(x: 4, y: 4)
                 }
