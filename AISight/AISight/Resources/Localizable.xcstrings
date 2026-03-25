@@ -3855,6 +3855,58 @@
         }
       }
     },
+    "Deep Search is a Pro feature" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiefensuche ist eine Pro-Funktion"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La Búsqueda Profunda es una función Pro"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La Recherche Approfondie est une fonctionnalité Pro"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La Ricerca Profonda è una funzionalità Pro"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ディープサーチはPro機能です"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "딥 서치는 Pro 기능입니다"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A Pesquisa Profunda é um recurso Pro"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "深度搜索是Pro功能"
+          }
+        }
+      }
+    },
     "Deep search analysis failed. Try again or disable Deep Search." : {
       "localizations" : {
         "de" : {

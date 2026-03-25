@@ -6,7 +6,7 @@ final class StoreManager {
     private(set) var dailyQueriesUsed: Int = 0
     private(set) var errorMessage: String?
 
-    static let dailyLimit = 20
+    static let dailyLimit = 10
     static let productID = "com.aisight.pro"
 
     private var transactionListener: Task<Void, Never>?
@@ -14,6 +14,10 @@ final class StoreManager {
 
     var canSearch: Bool {
         isPro || remainingQueries > 0
+    }
+
+    var canDeepSearch: Bool {
+        isPro
     }
 
     var remainingQueries: Int {

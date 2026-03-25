@@ -61,6 +61,7 @@ private struct SearchContentView: View {
     @State private var isDeepSearchEnabled: Bool = false
     @State private var currentPairIndex: Int = 0
     @State private var showPaywall = false
+    @State private var paywallReason: PaywallReason = .dailyLimitReached
     @FocusState private var isInputFocused: Bool
 
     private var currentSuggestions: [Suggestion] {
@@ -199,15 +200,21 @@ private struct SearchContentView: View {
             }
         }
         .sheet(isPresented: $showPaywall) {
-            PaywallView()
+            PaywallView(reason: paywallReason)
         }
     }
 
     private func handleSearch() {
+        if isDeepSearchEnabled && !storeManager.canDeepSearch {
+            paywallReason = .deepSearchRequiresPro
+            showPaywall = true
+            return
+        }
         if storeManager.canSearch {
             storeManager.recordQuery()
             viewModel.performSearch(modelContext: modelContext)
         } else {
+            paywallReason = .dailyLimitReached
             showPaywall = true
         }
     }
@@ -329,6 +336,7 @@ private struct SearchLoadingView: View {
 // MARK: - Search Bar
 
 private struct SearchBarSection: View {
+    @Environment(StoreManager.self) private var storeManager
     @Binding var query: String
     @Binding var isDeepSearchEnabled: Bool
     var isInputFocused: FocusState<Bool>.Binding
@@ -358,18 +366,27 @@ private struct SearchBarSection: View {
                     onDeepSearchToggled(isDeepSearchEnabled)
                 }
             } label: {
-                Label("Deep Search", systemImage: "sparkle.magnifyingglass")
-                    .font(.subheadline.weight(.medium))
-                    .padding(.horizontal, 14)
-                    .padding(.vertical, 6)
-                    .background {
-                        if isDeepSearchEnabled {
-                            Capsule().fill(.accent.opacity(0.15))
-                        } else {
-                            Capsule().fill(.regularMaterial)
-                        }
+                HStack(spacing: 4) {
+                    Label("Deep Search", systemImage: "sparkle.magnifyingglass")
+                    if !storeManager.canDeepSearch {
+                        Text("PRO")
+                            .font(.caption2.bold())
+                            .padding(.horizontal, 4)
+                            .padding(.vertical, 1)
+                            .background(.accent.opacity(0.2), in: .capsule)
                     }
-                    .foregroundStyle(isDeepSearchEnabled ? .accent : .secondary)
+                }
+                .font(.subheadline.weight(.medium))
+                .padding(.horizontal, 14)
+                .padding(.vertical, 6)
+                .background {
+                    if isDeepSearchEnabled {
+                        Capsule().fill(.accent.opacity(0.15))
+                    } else {
+                        Capsule().fill(.regularMaterial)
+                    }
+                }
+                .foregroundStyle(isDeepSearchEnabled ? .accent : .secondary)
             }
             .buttonStyle(.plain)
 

@@ -4,6 +4,17 @@ struct PaywallView: View {
     @Environment(StoreManager.self) private var storeManager
     @Environment(\.dismiss) private var dismiss
 
+    var reason: PaywallReason = .dailyLimitReached
+
+    private var subtitle: String {
+        switch reason {
+        case .dailyLimitReached:
+            return String(localized: "You've used all \(StoreManager.dailyLimit) free searches today")
+        case .deepSearchRequiresPro:
+            return String(localized: "Deep Search is a Pro feature")
+        }
+    }
+
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -20,7 +31,7 @@ struct PaywallView: View {
                         Text("AISight Pro")
                             .font(.title.bold())
 
-                        Text("You've used all \(StoreManager.dailyLimit) free searches today")
+                        Text(subtitle)
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
                             .multilineTextAlignment(.center)
@@ -28,6 +39,7 @@ struct PaywallView: View {
 
                     VStack(alignment: .leading, spacing: 16) {
                         FeatureRow(icon: "magnifyingglass", title: String(localized: "Unlimited searches"))
+                        FeatureRow(icon: "sparkle.magnifyingglass", title: String(localized: "Deep Search"))
                         FeatureRow(icon: "server.rack", title: String(localized: "Custom search server"))
                         FeatureRow(icon: "gift", title: String(localized: "Future features included"))
                     }
@@ -56,9 +68,11 @@ struct PaywallView: View {
                             .foregroundStyle(.orange)
                     }
 
-                    Text("Or come back tomorrow")
-                        .font(.caption)
-                        .foregroundStyle(.tertiary)
+                    if reason == .dailyLimitReached {
+                        Text("Or come back tomorrow")
+                            .font(.caption)
+                            .foregroundStyle(.tertiary)
+                    }
                 }
                 .padding(.horizontal, 24)
                 .padding(.bottom, 40)
