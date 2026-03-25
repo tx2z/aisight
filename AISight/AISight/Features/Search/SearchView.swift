@@ -196,6 +196,10 @@ private struct SearchContentView: View {
                 )
             }
         }
+        .onAppear { isInputFocused = true }
+        .onChange(of: hasResults) { _, hasResults in
+            if !hasResults { isInputFocused = true }
+        }
         .sheet(isPresented: $showPaywall) {
             PaywallView(reason: paywallReason)
         }
