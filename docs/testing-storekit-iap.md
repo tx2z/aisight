@@ -27,9 +27,9 @@
 3. After each search, note the counter in **Settings > AISight Pro** section shows `N / 20`
 
 **Expected:**
-- Searches 1–20 succeed normally
-- On the 21st search attempt, a paywall sheet appears instead of searching
-- The paywall shows "You've used all 20 free searches today"
+- Searches 1–10 succeed normally
+- On the 11th search attempt, a paywall sheet appears instead of searching
+- The paywall shows "You've used all 10 free searches today"
 - Dismissing the paywall returns to the search screen without searching
 
 ### 2. Query Limit Banner (≤ 5 remaining)
@@ -123,8 +123,8 @@
 
 **Expected:**
 - Counter resets to 0
-- Settings shows "0 / 20"
-- All 20 searches available again
+- Settings shows "0 / 10"
+- All 10 searches available again
 
 ### 9. Paywall UI
 
@@ -132,9 +132,10 @@
 - [ ] Navigation title "AISight Pro"
 - [ ] Close button (top-left, cancellation placement)
 - [ ] Star icon header
-- [ ] "You've used all 20 free searches today" subtitle
+- [ ] "You've used all 10 free searches today" subtitle
 - [ ] Three feature rows with icons:
   - Magnifying glass + "Unlimited searches"
+  - Sparkle magnifying glass + "Deep Search"
   - Server rack + "Custom search server"
   - Gift + "Future features included"
 - [ ] "Unlock for $4.99" prominent button

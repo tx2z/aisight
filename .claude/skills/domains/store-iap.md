@@ -4,7 +4,7 @@
 
 ## Overview
 
-AISight uses a freemium model: free users get 20 searches/day, AISight Pro ($4.99 one-time) unlocks unlimited searches and custom SearXNG URL. Built with StoreKit 2 (non-consumable). Setapp-ready via `#if SETAPP` compile-time flag.
+AISight uses a freemium model: free users get 10 searches/day, AISight Pro ($4.99 one-time) unlocks unlimited searches, Deep Search, and custom SearXNG URL. Built with StoreKit 2 (non-consumable). Setapp-ready via `#if SETAPP` compile-time flag.
 
 ## Key Files
 

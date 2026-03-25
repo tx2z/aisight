@@ -164,8 +164,8 @@ Added for Apple App Store submission compliance:
 
 ## AISight Pro (Freemium)
 
-- **Free tier:** 20 searches/day, default SearXNG instance
-- **AISight Pro** ($4.99 one-time): Unlimited searches, custom SearXNG URL, future features
+- **Free tier:** 10 searches/day, default SearXNG instance
+- **AISight Pro** ($4.99 one-time): Unlimited searches, Deep Search, custom SearXNG URL, future features
 - **StoreManager** (`Core/Store/`): Single `@Observable` source of truth for `isPro`, daily counter, StoreKit 2 purchase/restore
 - **Paywall:** Non-aggressive sheet shown only when daily limit is hit. Auto-dismisses on purchase.
 - **QueryLimitBannerView:** Small banner in search empty state when ≤ 5 searches remain

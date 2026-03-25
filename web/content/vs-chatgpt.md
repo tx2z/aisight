@@ -19,7 +19,7 @@ layout: "single"
 | Open source | Yes (MIT license) | No |
 | Search engine | SearXNG (open, multi-engine) | Bing |
 | Data jurisdiction | EU (Finland) | US |
-| Free tier | 20 searches/day | Limited |
+| Free tier | 10 searches/day | Limited |
 | Pro price | **$4.99 one-time** | **$20/month** |
 
 ## Privacy: The Core Difference

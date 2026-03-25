@@ -30,9 +30,9 @@ layout: "single"
 
 | | AISight | Perplexity |
 |---|---|---|
-| Free tier | 20 searches/day | Limited |
+| Free tier | 10 searches/day | Limited |
 | Pro price | **$4.99 one-time** | **$20/month ($240/year)** |
-| Pro features | Unlimited searches, custom server | GPT-4, unlimited, file upload |
+| Pro features | Unlimited searches, Deep Search, custom server | GPT-4, unlimited, file upload |
 
 AISight Pro is a one-time purchase. No subscriptions, no recurring charges. Perplexity Pro costs $20 per month — that's $240 per year, every year.
 
