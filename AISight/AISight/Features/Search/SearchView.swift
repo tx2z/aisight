@@ -1,5 +1,6 @@
 import SwiftUI
 import SwiftData
+import StoreKit
 
 struct SearchView: View {
     @Environment(\.modelContext) private var modelContext
@@ -54,6 +55,9 @@ let searchSuggestions: [Suggestion] = [
 @available(iOS 26.0, macOS 26.0, *)
 private struct SearchContentView: View {
     @Environment(\.modelContext) private var modelContext
+    #if !SETAPP
+    @Environment(\.requestReview) private var requestReview
+    #endif
     @Environment(AppState.self) private var appState
     @Environment(StoreManager.self) private var storeManager
 
@@ -87,9 +91,17 @@ private struct SearchContentView: View {
                                     .foregroundStyle(.white)
                                     .padding(.horizontal, 14)
                                     .padding(.vertical, 10)
-                                    .background(.blue, in: .rect(cornerRadius: 18))
+                                    .background(viewModel.isDeepSearch ? .purple : .blue, in: .rect(cornerRadius: 18))
                             }
-                            .padding(.bottom, 4)
+
+                            if viewModel.isDeepSearch {
+                                HStack {
+                                    Spacer()
+                                    Label("Deep Search", systemImage: "sparkle.magnifyingglass")
+                                        .font(.caption.weight(.medium))
+                                        .foregroundStyle(.purple)
+                                }
+                            }
                         }
 
                         if let error = viewModel.errorMessage {
@@ -111,23 +123,30 @@ private struct SearchContentView: View {
                         }
 
                         if !viewModel.queryGroups.isEmpty {
-                            ForEach(viewModel.queryGroups) { group in
+                            let allResults = deduplicatedResults(from: viewModel.queryGroups)
+                            let used = allResults.filter { viewModel.usedSourceURLs.contains($0.url) }
+                            let unused = allResults.filter { !viewModel.usedSourceURLs.contains($0.url) }
+
+                            if !used.isEmpty {
                                 Section {
-                                    ForEach(group.results) { result in
-                                        SourceCardView(result: result)
+                                    ForEach(used.enumerated(), id: \.element.id) { index, result in
+                                        SourceCardView(result: result, index: index + 1)
                                             .transition(.asymmetric(
                                                 insertion: .opacity.combined(with: .move(edge: .bottom)),
                                                 removal: .opacity
                                             ))
                                     }
                                 } header: {
-                                    HStack(spacing: 6) {
-                                        Image(systemName: "magnifyingglass")
-                                            .font(.caption)
-                                            .foregroundStyle(.tertiary)
-                                        Text(group.query)
-                                            .font(.footnote)
-                                            .foregroundStyle(.tertiary)
+                                    Label("Sources", systemImage: "doc.text")
+                                        .font(.footnote)
+                                        .foregroundStyle(.secondary)
+                                }
+                            }
+
+                            if !unused.isEmpty {
+                                MoreResultsToggle(count: unused.count) {
+                                    ForEach(unused) { result in
+                                        SourceCardView(result: result, isUsed: false)
                                     }
                                 }
                             }
@@ -178,11 +197,7 @@ private struct SearchContentView: View {
         .toolbar {
             if hasResults {
                 ToolbarItem(placement: .automatic) {
-                    Button {
-                        viewModel.resetSearch()
-                    } label: {
-                        Label("New Search", systemImage: "square.and.pencil")
-                    }
+                    Button("New Search", systemImage: "square.and.pencil", action: viewModel.resetSearch)
                 }
             }
         }
@@ -202,7 +217,28 @@ private struct SearchContentView: View {
         .sheet(isPresented: $showPaywall) {
             PaywallView(reason: paywallReason)
         }
+        #if !SETAPP
+        .onChange(of: viewModel.isGenerating) { wasGenerating, isGenerating in
+            // Request review when the 3rd search starts generating
+            if !wasGenerating && isGenerating {
+                requestReviewIfNeeded()
+            }
+        }
+        #endif
     }
+
+    #if !SETAPP
+    private func requestReviewIfNeeded() {
+        let key = "completedSearchCount"
+        let count = UserDefaults.standard.integer(forKey: key) + 1
+        UserDefaults.standard.set(count, forKey: key)
+
+        // Ask on the 3rd successful search
+        if count == 3 {
+            requestReview()
+        }
+    }
+    #endif
 
     private func handleSearch() {
         if isDeepSearchEnabled && !storeManager.canDeepSearch {
@@ -235,10 +271,7 @@ private struct SearchEmptyStateView: View {
         VStack(spacing: 16) {
             Spacer()
 
-            Image(systemName: "apple.intelligence")
-                .font(.system(size: 48))
-                .foregroundStyle(.secondary)
-                .symbolEffect(.breathe.pulse.byLayer)
+            AppIconView(size: 64)
 
             Text("AISight")
                 .font(.title.bold())
@@ -252,15 +285,18 @@ private struct SearchEmptyStateView: View {
             .foregroundStyle(.secondary)
             .multilineTextAlignment(.center)
 
-            HStack(spacing: 4) {
-                Image(systemName: "apple.intelligence")
-                    .font(.caption)
-                Text("Powered by Apple Intelligence")
-                    .font(.caption)
-            }
-            .foregroundStyle(.tertiary)
+            Text("Powered by Apple Intelligence")
+                .font(.caption)
+                .foregroundStyle(.tertiary)
 
-            if remaining <= 5 && remaining > 0 {
+            if remaining == 0 {
+                Label(
+                    String(localized: "Daily search limit reached"),
+                    systemImage: "clock.badge.exclamationmark"
+                )
+                .font(.caption)
+                .foregroundStyle(.orange)
+            } else if remaining <= 5 {
                 QueryLimitBannerView(remaining: remaining)
             }
 
@@ -309,10 +345,7 @@ private struct SearchLoadingView: View {
 
     var body: some View {
         VStack(spacing: 12) {
-            Image(systemName: "apple.intelligence")
-                .font(.system(size: 32))
-                .foregroundStyle(.secondary)
-                .symbolEffect(.breathe.pulse.byLayer)
+            AppIconView(size: 48)
 
             if let step = stepDescription {
                 Text(step)
@@ -350,9 +383,7 @@ private struct SearchBarSection: View {
     var body: some View {
         VStack(spacing: 8) {
             if isDeepSearchEnabled {
-                Text("Deep Search uses multiple AI research passes to find better answers. " +
-                     "This takes longer (15-25 seconds vs 5-10 seconds) and uses more " +
-                     "on-device processing. Best for complex questions that need thorough research.")
+                Text("Deep Search uses multiple AI research passes to find better answers. This takes longer (15-25 seconds vs 5-10 seconds) and uses more on-device processing. Best for complex questions that need thorough research.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
@@ -370,7 +401,7 @@ private struct SearchBarSection: View {
                     Label("Deep Search", systemImage: "sparkle.magnifyingglass")
                     if !storeManager.canDeepSearch {
                         Text("PRO")
-                            .font(.caption2.bold())
+                            .font(.caption.bold())
                             .padding(.horizontal, 4)
                             .padding(.vertical, 1)
                             .background(.accent.opacity(0.2), in: .capsule)
@@ -449,6 +480,45 @@ private struct SuggestionChip: View {
         }
         .buttonStyle(.plain)
     }
+}
+
+// MARK: - More Results Toggle
+
+private struct MoreResultsToggle<Content: View>: View {
+    let count: Int
+    @ViewBuilder let content: Content
+    @State private var isExpanded = false
+
+    var body: some View {
+        Button {
+            withAnimation(.spring(duration: 0.3)) { isExpanded.toggle() }
+        } label: {
+            HStack {
+                Label("\(count) more results", systemImage: isExpanded ? "minus.circle" : "plus.circle")
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+                Spacer()
+            }
+        }
+        .buttonStyle(.plain)
+
+        if isExpanded {
+            content
+        }
+    }
+}
+
+// MARK: - Helpers
+
+private func deduplicatedResults(from groups: [SearchQueryGroup]) -> [SearXNGResult] {
+    var seen = Set<String>()
+    var results: [SearXNGResult] = []
+    for result in groups.flatMap(\.results) {
+        if seen.insert(result.url).inserted {
+            results.append(result)
+        }
+    }
+    return results
 }
 
 #Preview {
