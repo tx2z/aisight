@@ -5,17 +5,17 @@ A native iOS 26 / macOS 26 answer engine that combines web search with on-device
 ## Features
 
 - Answer factual, encyclopedic, and "how-to" questions with cited sources
+- **Deep Search** — multiple AI research passes for complex questions (Pro)
 - Search the web via SearXNG (aggregates Google, Bing, Brave, and more)
 - On-device AI synthesis — your data never leaves to a cloud AI service
 - Stream responses token by token with inline citations
 - Reciprocal Rank Fusion (RRF) for multi-engine result ranking
 - Persist query history locally via SwiftData
 - Universal app — runs natively on iPhone, iPad, and Mac
-- Point at your own SearXNG instance for full control
 
 ## What it cannot do
 
-- Deep research or multi-hop reasoning (on-device model is ~3B parameters)
+- Multi-hop reasoning beyond Deep Search (on-device model is ~3B parameters)
 - Real-time news with high freshness guarantees
 - Complex math or coding assistance
 - Image understanding (text-only)
@@ -63,7 +63,7 @@ User Query → SearXNG (search) → ContentFetcher (HTML→text) → FoundationM
 | Layer | Path | Responsibility |
 |-------|------|---------------|
 | App | `AISight/App/` | Entry point, config, global state |
-| Core/AI | `AISight/Core/AI/` | FoundationModels session, system prompt |
+| Core/AI | `AISight/Core/AI/` | FoundationModels session, Deep Search pipeline |
 | Core/Search | `AISight/Core/Search/` | SearXNG API client, RRF ranking, models |
 | Core/Fetching | `AISight/Core/Fetching/` | URL → clean text extraction |
 | Core/Persistence | `AISight/Core/Persistence/` | SwiftData models and store |
@@ -82,8 +82,4 @@ No analytics. No tracking. No third-party AI services.
 
 ## License
 
-MIT
-
----
-
-Built with Apple Intelligence | On-device AI | Self-hosted search via SearXNG
+[MIT](LICENSE)

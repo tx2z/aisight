@@ -8,7 +8,7 @@ nav_privacy: "Privacy"
 # Hero
 hero_title: "The private alternative"
 hero_title_2: "to Perplexity."
-hero_subtitle: "AISight searches the web and generates answers entirely on your device using Apple Intelligence. No data leaves your phone. No cloud AI. No tracking."
+hero_subtitle: "AISight searches the web and generates answers entirely <strong>on your device</strong> using Apple Intelligence. No data leaves your phone. No cloud AI. No tracking."
 hero_cta: "Download on the App Store"
 hero_cta_soon: "Coming Soon on the App Store"
 hero_github: "View on GitHub"

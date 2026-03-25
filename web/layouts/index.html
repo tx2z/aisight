@@ -95,17 +95,15 @@
 <section class="hero">
   <div class="hero-content fade-in-up">
     <h1>{{ i18n "hero_title" }}<br><span class="highlight">{{ i18n "hero_title_2" }}</span></h1>
-    <p class="hero-subtitle">{{ i18n "hero_subtitle" }}</p>
+    <p class="hero-subtitle">{{ i18n "hero_subtitle" | safeHTML }}</p>
     <div class="hero-badges">
       <span class="badge badge-private">{{ i18n "badge_private" }}</span>
       <span class="badge badge-ai">{{ i18n "badge_ondevice" }}</span>
       <span class="badge badge-notrack">{{ i18n "badge_notrack" }}</span>
       <span class="badge badge-eu">{{ i18n "badge_eu" }}</span>
-      <span class="badge badge-open">{{ i18n "badge_opensource" }}</span>
     </div>
     <div class="hero-ctas">
       <span class="btn-primary btn-disabled">{{ i18n "hero_cta_soon" }}</span>
-      <a href="https://github.com/nicoboga/aisight" class="btn-secondary" target="_blank" rel="noopener">{{ i18n "hero_github" }}</a>
     </div>
   </div>
 </section>
@@ -363,7 +361,6 @@
   <p>{{ i18n "cta_desc" }}</p>
   <div class="hero-ctas">
     <span class="btn-primary btn-large btn-disabled">{{ i18n "hero_cta_soon" }}</span>
-    <a href="https://github.com/nicoboga/aisight" class="btn-secondary" target="_blank" rel="noopener">{{ i18n "hero_github" }}</a>
   </div>
 </section>
 
