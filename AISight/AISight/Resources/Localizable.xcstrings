@@ -120,6 +120,16 @@
         }
       }
     },
+    "%lld of %lld sources" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld of %2$lld sources"
+          }
+        }
+      }
+    },
     "%lld searches remaining today" : {
       "localizations" : {
         "de" : {
@@ -4823,7 +4833,6 @@
       }
     },
     "Details" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
