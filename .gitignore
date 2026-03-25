@@ -38,6 +38,9 @@ searxng/settings.yml
 docs/production-server.md
 security-reports/
 
+# Raw screenshots (processed versions are in web/static/images/)
+docs/screenshots/
+
 # Claude Code agent skills (third-party, not project code)
 .agents/
 skills-lock.json

@@ -1,4 +1,22 @@
-# AISight
+<p align="center">
+  <img src="docs/icons/app-icon.png" alt="AISight" width="128" height="128">
+</p>
+
+<h1 align="center">AISight</h1>
+
+<p align="center">
+  <em>The private alternative to Perplexity.</em><br>
+  Search the web. Get answers on-device.
+</p>
+
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License"></a>
+  <img src="https://img.shields.io/badge/platform-iOS%2026%20%7C%20macOS%2026-lightgrey.svg" alt="Platform">
+  <img src="https://img.shields.io/badge/swift-6-orange.svg" alt="Swift 6">
+  <img src="https://img.shields.io/badge/dependencies-zero-green.svg" alt="Zero Dependencies">
+</p>
+
+---
 
 A native iOS 26 / macOS 26 answer engine that combines web search with on-device AI. AISight searches the web via a self-hosted [SearXNG](https://github.com/searxng/searxng) instance and synthesizes answers using Apple's FoundationModels framework (Apple Intelligence) — all AI processing happens privately on your device. Zero external dependencies.
 
