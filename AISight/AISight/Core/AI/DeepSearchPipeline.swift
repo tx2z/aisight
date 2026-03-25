@@ -50,7 +50,7 @@ final class DeepSearchPipeline {
 
         // Step 1: Reformulate query
         let reformulator = QueryReformulator()
-        let searchQueries = await reformulator.reformulate(query)
+        let searchQueries = await reformulator.reformulate(query, language: language)
         guard !Task.isCancelled else { return nil }
 
         // Step 2: Parallel search

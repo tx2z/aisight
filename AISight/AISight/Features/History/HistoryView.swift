@@ -75,6 +75,16 @@ private struct HistoryRowView: View {
 
     private let strippedAnswer: String
 
+    private var sourceCountLabel: String {
+        let usedCount = entry.sources.count(where: \.wasUsed)
+        let totalCount = entry.sources.count
+        guard totalCount > 0 else { return "" }
+        if usedCount < totalCount {
+            return "\(usedCount) of \(totalCount) sources"
+        }
+        return "\(totalCount) sources"
+    }
+
     init(entry: QueryEntry, onTap: @escaping () -> Void) {
         self.entry = entry
         self.onTap = onTap
@@ -85,7 +95,7 @@ private struct HistoryRowView: View {
         Button(action: onTap) {
             HStack(spacing: 10) {
                 RoundedRectangle(cornerRadius: 2)
-                    .fill(.accent)
+                    .fill(entry.isDeepSearch ? Color.purple : .accent)
                     .frame(width: 3, height: 44)
 
                 VStack(alignment: .leading, spacing: 6) {
@@ -99,14 +109,20 @@ private struct HistoryRowView: View {
                         .foregroundStyle(.secondary)
                         .lineLimit(2)
 
-                    HStack {
+                    HStack(spacing: 6) {
                         Text(entry.timestamp, format: .relative(presentation: .named))
                             .font(.caption)
                             .foregroundStyle(.secondary)
 
+                        if entry.isDeepSearch {
+                            Label("Deep", systemImage: "sparkle.magnifyingglass")
+                                .font(.caption.weight(.medium))
+                                .foregroundStyle(.purple)
+                        }
+
                         Spacer()
 
-                        Text("\(entry.sources.count) sources")
+                        Text(sourceCountLabel)
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     }

@@ -8,7 +8,7 @@ final class QueryReformulator {
     /// Generates multiple optimized search queries from a conversational user question.
     /// Uses a fresh, lightweight on-device LLM session (no shared context).
     /// Returns 1-3 keyword-based queries for parallel search.
-    func reformulate(_ query: String) async -> [String] {
+    func reformulate(_ query: String, language: String = "en") async -> [String] {
         let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines)
 
         // Very short queries are already keyword-like — use as-is
@@ -32,6 +32,8 @@ final class QueryReformulator {
         specific name, include it in every query
         - Include the current year if the question is about recent/latest things
         - No numbering, no bullets, no explanations — just the queries
+        - IMPORTANT: Generate all queries in the same language as the user's question. \
+        Never translate queries into a different language.
         """
 
         do {

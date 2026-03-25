@@ -11,8 +11,8 @@ final class QueryHistoryStore {
         self.modelContext = modelContext
     }
 
-    func save(query: String, answer: String, sources: [SourceInfo]) {
-        let entry = QueryEntry(query: query, answer: answer, sources: sources)
+    func save(query: String, answer: String, sources: [SourceInfo], isDeepSearch: Bool = false) {
+        let entry = QueryEntry(query: query, answer: answer, sources: sources, isDeepSearch: isDeepSearch)
         modelContext.insert(entry)
         do {
             try modelContext.save()

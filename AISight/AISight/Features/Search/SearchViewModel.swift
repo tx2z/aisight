@@ -34,6 +34,7 @@ final class SearchViewModel {
     var isSearching: Bool = false
 
     var isDeepSearch: Bool = false
+    var usedSourceURLs: Set<String> = []
 
     /// Current deep search step description, nil when not in deep search or idle.
     var searchStepDescription: String? {
@@ -100,12 +101,20 @@ final class SearchViewModel {
                 errorMessage = String(localized: "The model returned an empty response. Try rephrasing your question.")
             }
 
+            // Track which sources were used by the researchers
+            if let searchOutput {
+                let groupsResearched = searchOutput.queryGroups.prefix(AppConfig.deepSearchResearcherCount)
+                self.usedSourceURLs = Set(groupsResearched.flatMap { $0.results.prefix(AppConfig.maxResults) }.map(\.url))
+            }
+
             // Save to history on success
             if deepSearchPipeline.error == nil && !deepSearchPipeline.streamingText.isEmpty {
                 let allSources = queryGroups.flatMap(\.results)
-                let sourceInfos = allSources.map { SourceInfo(url: $0.url, title: $0.title, engine: $0.engine) }
+                let sourceInfos = allSources.map {
+                    SourceInfo(url: $0.url, title: $0.title, engine: $0.engine, wasUsed: self.usedSourceURLs.contains($0.url))
+                }
                 let store = QueryHistoryStore(modelContext: modelContext)
-                store.save(query: trimmedQuery, answer: deepSearchPipeline.streamingText, sources: sourceInfos)
+                store.save(query: trimmedQuery, answer: deepSearchPipeline.streamingText, sources: sourceInfos, isDeepSearch: true)
             }
         }
     }
@@ -118,7 +127,7 @@ final class SearchViewModel {
             errorMessage = nil
 
             // 1. Reformulate query into optimized search keywords (fresh LLM session)
-            let searchQueries = await reformulator.reformulate(trimmedQuery)
+            let searchQueries = await reformulator.reformulate(trimmedQuery, language: language)
 
             guard !Task.isCancelled else { return }
 
@@ -149,6 +158,9 @@ final class SearchViewModel {
 
             guard !Task.isCancelled else { return }
 
+            // Track which sources the AI actually uses
+            self.usedSourceURLs = Set(searchOutput.results.prefix(AppConfig.maxResults).map(\.url))
+
             // 3. Generate answer via AnswerSession with pre-fetched results
             await answerSession.generateAnswer(for: trimmedQuery, with: searchOutput, language: language)
 
@@ -166,7 +178,9 @@ final class SearchViewModel {
             // 5. Save to history on success
             if answerSession.error == nil && !answerSession.streamingText.isEmpty {
                 let allSources = queryGroups.flatMap(\.results)
-                let sourceInfos = allSources.map { SourceInfo(url: $0.url, title: $0.title, engine: $0.engine) }
+                let sourceInfos = allSources.map {
+                    SourceInfo(url: $0.url, title: $0.title, engine: $0.engine, wasUsed: self.usedSourceURLs.contains($0.url))
+                }
                 let store = QueryHistoryStore(modelContext: modelContext)
                 store.save(query: trimmedQuery, answer: answerSession.streamingText, sources: sourceInfos)
             }
@@ -183,6 +197,7 @@ final class SearchViewModel {
         queryGroups = []
         errorMessage = nil
         isSearching = false
+        usedSourceURLs = []
         answerSession.reset()
         deepSearchPipeline.reset()
     }
