@@ -74,6 +74,10 @@ private struct SearchContentView: View {
         return [all[startIndex], all[(startIndex + 1) % all.count]]
     }
 
+    private var trimmedQuery: String {
+        viewModel.query.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
     private var hasResults: Bool {
         !viewModel.streamingText.isEmpty || viewModel.isGenerating || viewModel.isSearching || !viewModel.queryGroups.isEmpty || viewModel.errorMessage != nil
     }
@@ -83,7 +87,7 @@ private struct SearchContentView: View {
             if hasResults {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 16) {
-                        if !viewModel.query.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                        if !trimmedQuery.isEmpty {
                             HStack {
                                 Spacer()
                                 Text(viewModel.query)
@@ -123,33 +127,10 @@ private struct SearchContentView: View {
                         }
 
                         if !viewModel.queryGroups.isEmpty {
-                            let allResults = deduplicatedResults(from: viewModel.queryGroups)
-                            let used = allResults.filter { viewModel.usedSourceURLs.contains($0.url) }
-                            let unused = allResults.filter { !viewModel.usedSourceURLs.contains($0.url) }
-
-                            if !used.isEmpty {
-                                Section {
-                                    ForEach(used.enumerated(), id: \.element.id) { index, result in
-                                        SourceCardView(result: result, index: index + 1)
-                                            .transition(.asymmetric(
-                                                insertion: .opacity.combined(with: .move(edge: .bottom)),
-                                                removal: .opacity
-                                            ))
-                                    }
-                                } header: {
-                                    Label("Sources", systemImage: "doc.text")
-                                        .font(.footnote)
-                                        .foregroundStyle(.secondary)
-                                }
-                            }
-
-                            if !unused.isEmpty {
-                                MoreResultsToggle(count: unused.count) {
-                                    ForEach(unused) { result in
-                                        SourceCardView(result: result, isUsed: false)
-                                    }
-                                }
-                            }
+                            SourceResultsSection(
+                                queryGroups: viewModel.queryGroups,
+                                usedSourceURLs: viewModel.usedSourceURLs
+                            )
                         }
 
                         if !viewModel.streamingText.isEmpty && !viewModel.isGenerating {
@@ -158,6 +139,7 @@ private struct SearchContentView: View {
                                     Image(systemName: "apple.intelligence")
                                         .font(.caption)
                                         .symbolEffect(.appear)
+                                        .accessibilityHidden(true)
                                     Text("Generated on-device")
                                         .font(.caption)
                                 }
@@ -410,13 +392,9 @@ private struct SearchBarSection: View {
                 .font(.subheadline.weight(.medium))
                 .padding(.horizontal, 14)
                 .padding(.vertical, 6)
-                .background {
-                    if isDeepSearchEnabled {
-                        Capsule().fill(.accent.opacity(0.15))
-                    } else {
-                        Capsule().fill(.regularMaterial)
-                    }
-                }
+                .background(
+                    Capsule().fill(isDeepSearchEnabled ? AnyShapeStyle(.accent.opacity(0.15)) : AnyShapeStyle(.regularMaterial))
+                )
                 .foregroundStyle(isDeepSearchEnabled ? .accent : .secondary)
             }
             .buttonStyle(.plain)
@@ -504,6 +482,46 @@ private struct MoreResultsToggle<Content: View>: View {
 
         if isExpanded {
             content
+        }
+    }
+}
+
+// MARK: - Source Results
+
+private struct SourceResultsSection: View {
+    let queryGroups: [SearchQueryGroup]
+    let usedSourceURLs: Set<String>
+
+    private var allResults: [SearXNGResult] {
+        deduplicatedResults(from: queryGroups)
+    }
+
+    var body: some View {
+        let used = allResults.filter { usedSourceURLs.contains($0.url) }
+        let unused = allResults.filter { !usedSourceURLs.contains($0.url) }
+
+        if !used.isEmpty {
+            Section {
+                ForEach(used.enumerated(), id: \.element.id) { index, result in
+                    SourceCardView(result: result, index: index + 1)
+                        .transition(.asymmetric(
+                            insertion: .opacity.combined(with: .move(edge: .bottom)),
+                            removal: .opacity
+                        ))
+                }
+            } header: {
+                Label("Sources", systemImage: "doc.text")
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+            }
+        }
+
+        if !unused.isEmpty {
+            MoreResultsToggle(count: unused.count) {
+                ForEach(unused) { result in
+                    SourceCardView(result: result, isUsed: false)
+                }
+            }
         }
     }
 }

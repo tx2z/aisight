@@ -41,7 +41,7 @@ struct HistoryDetailView: View {
                         Text("Sources")
                             .font(.title2.weight(.semibold))
 
-                        ForEach(usedSources.enumerated(), id: \.offset) { index, source in
+                        ForEach(usedSources.enumerated(), id: \.element) { index, source in
                             SourceCardView(
                                 result: SearXNGResult(
                                     url: source.url,
@@ -72,9 +72,7 @@ struct HistoryDetailView: View {
         #endif
         .toolbar {
             ToolbarItem(placement: .automatic) {
-                Button("Done") {
-                    dismiss()
-                }
+                Button("Done", action: dismiss.callAsFunction)
             }
         }
     }
@@ -107,7 +105,7 @@ private struct MoreResultsSection: View {
         .buttonStyle(.plain)
 
         if isExpanded {
-            ForEach(sources.enumerated(), id: \.offset) { _, source in
+            ForEach(sources.enumerated(), id: \.element) { _, source in
                 SourceCardView(
                     result: SearXNGResult(
                         url: source.url,

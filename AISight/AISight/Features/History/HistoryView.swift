@@ -80,9 +80,9 @@ private struct HistoryRowView: View {
         let totalCount = entry.sources.count
         guard totalCount > 0 else { return "" }
         if usedCount < totalCount {
-            return "\(usedCount) of \(totalCount) sources"
+            return String(localized: "\(usedCount) of \(totalCount) sources")
         }
-        return "\(totalCount) sources"
+        return String(localized: "\(totalCount) sources")
     }
 
     init(entry: QueryEntry, onTap: @escaping () -> Void) {

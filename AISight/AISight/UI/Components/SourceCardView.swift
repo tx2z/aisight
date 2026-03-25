@@ -40,7 +40,7 @@ private struct SourceCardContent: View {
     var index: Int? = nil
     @Binding var isExpanded: Bool
     @State private var isTruncated = false
-    @ScaledMetric(relativeTo: .caption2) private var badgeSize: Double = 14
+    @ScaledMetric(relativeTo: .caption) private var badgeSize: Double = 14
 
     private var domainInitial: String {
         String(domain.prefix(1)).uppercased()
@@ -90,41 +90,41 @@ private struct SourceCardContent: View {
                     .lineLimit(2)
 
                 if let snippet = result.content, !snippet.isEmpty {
-                    HStack(alignment: .top, spacing: 4) {
-                        Text(snippet)
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                            .lineLimit(isExpanded ? nil : 2)
-                            .background {
-                                Text(snippet)
-                                    .font(.caption)
-                                    .lineLimit(nil)
-                                    .hidden()
-                                    .onGeometryChange(for: CGFloat.self) { proxy in
-                                        proxy.size.height
-                                    } action: { fullHeight in
-                                        // Caption font at 2 lines is ~32pt; if full height exceeds that, text is truncated
-                                        isTruncated = fullHeight > 34
-                                    }
-                            }
-
-                        if isTruncated || isExpanded {
-                            Spacer(minLength: 0)
-
-                            Image(systemName: "chevron.down")
+                    Button {
+                        withAnimation(.spring(duration: 0.3)) { isExpanded.toggle() }
+                    } label: {
+                        HStack(alignment: .top, spacing: 4) {
+                            Text(snippet)
                                 .font(.caption)
-                                .foregroundStyle(.tertiary)
-                                .rotationEffect(.degrees(isExpanded ? 180 : 0))
-                                .animation(.spring(duration: 0.3), value: isExpanded)
+                                .foregroundStyle(.secondary)
+                                .lineLimit(isExpanded ? nil : 2)
+                                .background {
+                                    Text(snippet)
+                                        .font(.caption)
+                                        .lineLimit(nil)
+                                        .hidden()
+                                        .onGeometryChange(for: CGFloat.self) { proxy in
+                                            proxy.size.height
+                                        } action: { fullHeight in
+                                            // Caption font at 2 lines is ~32pt; if full height exceeds that, text is truncated
+                                            isTruncated = fullHeight > 34
+                                        }
+                                }
+
+                            if isTruncated || isExpanded {
+                                Spacer(minLength: 0)
+
+                                Image(systemName: "chevron.down")
+                                    .font(.caption)
+                                    .foregroundStyle(.tertiary)
+                                    .rotationEffect(.degrees(isExpanded ? 180 : 0))
+                                    .animation(.spring(duration: 0.3), value: isExpanded)
+                            }
                         }
                     }
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        guard isTruncated || isExpanded else { return }
-                        withAnimation(.spring(duration: 0.3)) { isExpanded.toggle() }
-                    }
-                    .accessibilityAddTraits(isTruncated ? .isButton : [])
-                    .accessibilityLabel(isTruncated ? (isExpanded ? "Collapse snippet" : "Expand snippet") : "")
+                    .buttonStyle(.plain)
+                    .disabled(!isTruncated && !isExpanded)
+                    .accessibilityLabel(isExpanded ? "Collapse snippet" : "Expand snippet")
                 }
             }
         }
