@@ -33,3 +33,11 @@ Package.resolved
 # Docker data and local SearXNG config (contains secret_key)
 searxng/data/
 searxng/settings.yml
+
+# Sensitive docs (infrastructure details, security reports)
+docs/production-server.md
+security-reports/
+
+# Claude Code agent skills (third-party, not project code)
+.agents/
+skills-lock.json
