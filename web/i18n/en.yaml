@@ -121,6 +121,10 @@ server_open_desc: 'AISight is fully open source under the MIT license. <a href="
 server_eu_title: "EU-Based"
 server_eu_desc: "Server in Finland, developer in Spain. All data processing under EU jurisdiction and GDPR protection."
 
+# Deep Search
+deep_title: "Deep Search"
+deep_desc: "For complex questions, Deep Search uses multiple AI research passes to find better answers."
+
 # FAQ
 faq_title: "Frequently Asked Questions"
 faq_q1: "Is AISight really private?"
