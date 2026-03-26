@@ -52,11 +52,14 @@ Powered by Apple Intelligence. Your questions are processed locally — no data 
 ● TRULY PRIVATE SEARCH
 No account. No tracking. No ads. No data sold or shared. Web results come from a private, open-source metasearch engine that does not profile you.
 
-● DEEP SEARCH (PRO)
+● DEEP SEARCH
 Go beyond surface results. Deep Search expands your query across more sources for comprehensive answers on complex topics.
 
 ● YOUR HISTORY, YOUR DEVICE
 All your past searches and answers are stored securely on your device. Browse, search, and revisit — nothing synced to any server.
+
+● BRING YOUR OWN SERVER
+Connect your own SearXNG instance and unlock every feature for free — unlimited searches, Deep Search, everything. Your server, your rules, zero cost.
 
 HOW IT WORKS
 1. You ask a question
@@ -67,8 +70,9 @@ HOW IT WORKS
 Perfect for: researching without leaving a trail, getting quick sourced answers while studying, comparing products without being retargeted with ads, or just searching the way it should be — private.
 
 FREE vs PRO
-Free: Daily searches with full AI answers and citations.
-Pro: Unlimited searches + Deep Search. One-time purchase. No subscription. Pay once, own it forever.
+Free: 10 searches per day with full AI answers and citations.
+Pro ($4.99, one-time): Unlimited searches + Deep Search on our server. Support indie development.
+Self-hosted: Connect your own SearXNG server → all features free, no purchase needed.
 
 Built by an indie developer. No venture capital. No data monetization. Zero external SDKs, analytics, or trackers. Just a native app that respects your privacy.
 
@@ -85,14 +89,14 @@ What's inside:
 ● AI-powered answers with numbered citations you can verify
 ● Private web search — no tracking, no account, no ads
 ● 100% on-device AI processing via Apple Intelligence
-● Deep Search for comprehensive, multi-source answers (Pro)
+● Deep Search for comprehensive, multi-source answers
 ● Full search history stored securely on your device
 ● Available in 9 languages
 
 What to try first:
 → Ask any question and watch AI write your answer in real time
 → Tap a citation to verify the source
-→ Try Deep Search for multi-source research (Pro)
+→ Try Deep Search for multi-source research
 
 Coming soon: expanded source types and custom search engines.
 
@@ -125,7 +129,7 @@ https://private-search-intelligence.app/privacy
 ```
 AISight uses Apple's FoundationModels framework (Apple Intelligence) to generate answers on-device. No user data is sent to third-party AI services.
 
-Web search results are fetched from a SearXNG instance (open-source metasearch engine). The app ships with a default production server (search.private-search-intelligence.app) that is always operational. Pro users can also configure their own self-hosted SearXNG instance if preferred.
+Web search results are fetched from a SearXNG instance (open-source metasearch engine). The app ships with a default production server (search.private-search-intelligence.app) that is always operational. Any user can configure their own self-hosted SearXNG instance in Settings.
 
 No user account is required. The app requires a device that supports Apple Intelligence (iPhone 16+, iPad with M-series, Mac with M-series) running iOS 26.0 / macOS 26.0 or later.
 
@@ -133,9 +137,11 @@ If Apple Intelligence is unavailable on the review device, the app displays a cl
 
 If the SearXNG server is unreachable, the app displays a user-friendly error state and does not crash.
 
-Free tier: 10 searches per day with full AI answers and citations. When the daily limit is reached, a screen explains the Pro upgrade option. The limit resets at midnight local time.
+Free tier: 10 searches per day with full AI answers and citations on the default server. When the daily limit is reached, a screen explains the Pro upgrade option. The limit resets at midnight local time.
 
-Pro unlock (non-consumable IAP, com.aisight.pro): Unlimited searches + Deep Search. One-time purchase. For testing, you can use the sandbox StoreKit environment to verify the purchase flow.
+Users who configure their own SearXNG server get all features for free (unlimited searches, Deep Search) since they are using their own infrastructure.
+
+Pro unlock (non-consumable IAP, com.aisight.pro): Unlimited searches + Deep Search on the default server. One-time purchase. For testing, you can use the sandbox StoreKit environment to verify the purchase flow.
 
 Key differentiators from existing search/AI apps:
 - AI processing happens entirely on-device (no cloud AI dependency)
@@ -166,7 +172,7 @@ AISight Pro — Unlimited Search
 
 ### Description (user-visible, localizable)
 ```
-Remove the daily limit. Unlimited AI-powered searches and Deep Search for complex topics. Pay once, own it forever — no monthly fees, no subscription. The private answer engine, unlocked for life.
+Remove the daily limit. Unlimited AI-powered searches and Deep Search for complex topics. Support independent development. Pay once, own it forever — no monthly fees, no subscription. Or bring your own SearXNG server and get everything for free.
 ```
 
 ---

@@ -242,7 +242,7 @@ Standard App Store tiers: **4+, 9+, 12+, 17+**.
 
 ## 5. In-App Purchases
 
-AISight has a non-consumable IAP (`com.aisight.pro`) that unlocks Pro features (unlimited queries, deep search).
+AISight has a non-consumable IAP (`com.aisight.pro`) that unlocks Pro features (unlimited queries, deep search) on the default server. Users who configure their own SearXNG server get all features for free.
 
 ### IAP Metadata Fields in App Store Connect
 
@@ -259,7 +259,7 @@ AISight has a non-consumable IAP (`com.aisight.pro`) that unlocks Pro features (
 
 ### Compliance Notes
 - **Guideline 3.1.1**: All digital features must use Apple's IAP system (already done via StoreKit).
-- **Description must disclose freemium model**: Clearly explain free tier (10 queries/day) vs. Pro tier in the App Store description.
+- **Description must disclose freemium model**: Clearly explain free tier (10 queries/day), Pro tier, and self-hosted server option in the App Store description.
 - IAP display names are indexed — use relevant keywords.
 
 ---

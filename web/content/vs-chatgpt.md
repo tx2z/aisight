@@ -42,7 +42,7 @@ For everyday questions and research, both deliver good answers with citations. F
 
 ## Pricing
 
-ChatGPT Plus costs **$20/month** ($240/year). AISight Pro is a **one-time $4.99 purchase**. No subscriptions.
+ChatGPT Plus costs **$20/month** ($240/year). AISight Pro is a **one-time $4.99 purchase**. No subscriptions. Or bring your own SearXNG server and get every feature for free — no purchase needed.
 
 ## Who Should Choose AISight?
 

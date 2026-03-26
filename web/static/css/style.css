@@ -525,6 +525,37 @@ h1, h2, h3 { font-weight: 700; color: var(--gray-900); letter-spacing: -0.02em; 
 
 .pricing-card-pro h3 { color: var(--blue); }
 
+.pricing-or {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0 12px;
+}
+
+.pricing-or::before,
+.pricing-or::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--gray-200);
+}
+
+.pricing-or span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gray-400);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.pricing-byos-hook {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--green);
+  text-align: center;
+  margin: 0;
+}
+
 /* === Trade-offs === */
 .tradeoffs-section {
   padding: 48px 20px 96px;

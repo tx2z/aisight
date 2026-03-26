@@ -40,7 +40,7 @@ Every major answer engine — Perplexity, Google AI Overviews, Bing Copilot — 
 ## Features
 
 - Answer factual, encyclopedic, and "how-to" questions with cited sources
-- **Deep Search** — multiple AI research passes for complex questions (Pro)
+- **Deep Search** — multiple AI research passes for complex questions
 - Search the web via SearXNG (aggregates Google, Bing, Brave, and more)
 - On-device AI synthesis — your data is never sent to a cloud AI service
 - Stream responses token by token with inline citations
@@ -48,7 +48,9 @@ Every major answer engine — Perplexity, Google AI Overviews, Bing Copilot — 
 - Persist query history locally via SwiftData
 - Universal app — runs natively on iPhone, iPad, and Mac
 
-**AISight Pro** ($4.99, one-time) unlocks unlimited searches, Deep Search, and custom SearXNG server.
+**Bring your own SearXNG server → everything is free.** Unlimited searches, Deep Search, all features — no purchase needed. You're running your own infrastructure, so there's nothing to pay for.
+
+**AISight Pro** ($4.99, one-time) unlocks unlimited searches and Deep Search on our default server — and supports indie development.
 
 ## What it cannot do
 

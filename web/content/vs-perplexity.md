@@ -32,9 +32,10 @@ layout: "single"
 |---|---|---|
 | Free tier | 10 searches/day | Limited |
 | Pro price | **$4.99 one-time** | **$20/month ($240/year)** |
-| Pro features | Unlimited searches, Deep Search, custom server | GPT-4, unlimited, file upload |
+| Pro features | Unlimited searches, Deep Search (on default server) | GPT-4, unlimited, file upload |
+| Self-hosted option | **All features free** with your own server | None |
 
-AISight Pro is a one-time purchase. No subscriptions, no recurring charges. Perplexity Pro costs $20 per month — that's $240 per year, every year.
+AISight Pro is a one-time purchase. No subscriptions, no recurring charges. Or bring your own SearXNG server and get everything for free. Perplexity Pro costs $20 per month — that's $240 per year, every year.
 
 ## Search Technology
 

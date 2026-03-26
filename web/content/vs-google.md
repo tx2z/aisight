@@ -26,7 +26,7 @@ layout: "single"
 
 Google's business model is advertising. Every search you make builds your profile, which is used to serve targeted ads. Google AI Overviews are an extension of this model — they may reduce clicks to source websites while keeping you in Google's ecosystem longer.
 
-AISight has no ads, no tracking, no user profiles. The business model is simple: a one-time $4.99 purchase for unlimited searches. There is no incentive to track you.
+AISight has no ads, no tracking, no user profiles. The business model is transparent: a one-time $4.99 purchase for unlimited searches and Deep Search on our default server, or bring your own SearXNG instance and get everything for free. There is no incentive to track you.
 
 ## Search Quality
 
