@@ -159,17 +159,33 @@ private struct SearchContentView: View {
                     .frame(maxWidth: .infinity)
                     #endif
                 }
+                #if os(iOS)
+                .scrollDismissesKeyboard(.interactively)
+                #endif
             } else {
-                SearchEmptyStateView(
-                    currentSuggestions: currentSuggestions,
-                    currentPairIndex: $currentPairIndex,
-                    hasResults: hasResults,
-                    remaining: storeManager.remainingQueries,
-                    onSuggestionTapped: { query in
-                        viewModel.query = query
-                        handleSearch()
-                    }
-                )
+                VStack(spacing: 0) {
+                    SearchEmptyStateView(
+                        currentSuggestions: currentSuggestions,
+                        currentPairIndex: $currentPairIndex,
+                        hasResults: hasResults,
+                        remaining: storeManager.remainingQueries,
+                        isInputFocused: isInputFocused,
+                        onSuggestionTapped: { query in
+                            viewModel.query = query
+                            handleSearch()
+                        }
+                    )
+
+                    SearchBarSection(
+                        query: $viewModel.query,
+                        isDeepSearchEnabled: $isDeepSearchEnabled,
+                        isInputFocused: $isInputFocused,
+                        onSearch: handleSearch,
+                        onDeepSearchToggled: { enabled in
+                            viewModel.isDeepSearch = enabled
+                        }
+                    )
+                }
             }
         }
         .navigationTitle(hasResults ? "AISight" : "")
@@ -182,19 +198,13 @@ private struct SearchContentView: View {
                     Button("New Search", systemImage: "square.and.pencil", action: viewModel.resetSearch)
                 }
             }
-        }
-        .safeAreaInset(edge: .bottom) {
-            if !hasResults {
-                SearchBarSection(
-                    query: $viewModel.query,
-                    isDeepSearchEnabled: $isDeepSearchEnabled,
-                    isInputFocused: $isInputFocused,
-                    onSearch: handleSearch,
-                    onDeepSearchToggled: { enabled in
-                        viewModel.isDeepSearch = enabled
-                    }
-                )
+            #if os(iOS)
+            if !hasResults && isInputFocused {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Dismiss", systemImage: "keyboard.chevron.compact.down", action: { isInputFocused = false })
+                }
             }
+            #endif
         }
         .onAppear { isInputFocused = true }
         .onChange(of: hasResults) { _, hasResults in
@@ -251,60 +261,81 @@ private struct SearchEmptyStateView: View {
     @Binding var currentPairIndex: Int
     let hasResults: Bool
     let remaining: Int
+    let isInputFocused: Bool
     let onSuggestionTapped: (String) -> Void
 
     var body: some View {
-        VStack(spacing: 16) {
-            Spacer()
+        ScrollView {
+            VStack(spacing: 16) {
+                AppIconView(size: 64)
 
-            AppIconView(size: 64)
+                Text("AISight")
+                    .font(.title.bold())
+                    .fixedSize()
 
-            Text("AISight")
-                .font(.title.bold())
-                .fixedSize()
-
-            VStack(spacing: 4) {
-                Text("Search the web.")
-                Text("Get answers on-device.")
-            }
-            .font(.subheadline)
-            .foregroundStyle(.secondary)
-            .multilineTextAlignment(.center)
-
-            Text("Powered by Apple Intelligence")
-                .font(.caption)
-                .foregroundStyle(.tertiary)
-
-            if remaining == 0 {
-                Label(
-                    String(localized: "Daily search limit reached"),
-                    systemImage: "clock.badge.exclamationmark"
-                )
-                .font(.caption)
-                .foregroundStyle(.orange)
-            } else if remaining <= 5 {
-                QueryLimitBannerView(remaining: remaining)
-            }
-
-            VStack(spacing: 10) {
-                ForEach(currentSuggestions) { suggestion in
-                    SuggestionChip(suggestion.title) {
-                        onSuggestionTapped(suggestion.query)
-                    }
-                    .id(suggestion.id)
-                    .transition(.asymmetric(
-                        insertion: .opacity.combined(with: .move(edge: .bottom)).combined(with: .scale(scale: 0.95)),
-                        removal: .opacity.combined(with: .move(edge: .top)).combined(with: .scale(scale: 0.95))
-                    ))
+                VStack(spacing: 4) {
+                    Text("Search the web.")
+                    Text("Get answers on-device.")
                 }
-            }
-            .padding(.top, 8)
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
 
-            Spacer()
-            Spacer()
+                Text("Powered by Apple Intelligence")
+                    .font(.caption)
+                    .foregroundStyle(.tertiary)
+
+                if remaining == 0 {
+                    Label(
+                        String(localized: "Daily search limit reached"),
+                        systemImage: "clock.badge.exclamationmark"
+                    )
+                    .font(.caption)
+                    .foregroundStyle(.orange)
+                } else if remaining <= 5 {
+                    QueryLimitBannerView(remaining: remaining)
+                }
+
+                #if os(iOS)
+                if !isInputFocused {
+                    VStack(spacing: 10) {
+                        ForEach(currentSuggestions) { suggestion in
+                            SuggestionChip(suggestion.title) {
+                                onSuggestionTapped(suggestion.query)
+                            }
+                            .id(suggestion.id)
+                            .transition(.asymmetric(
+                                insertion: .opacity.combined(with: .move(edge: .bottom)).combined(with: .scale(scale: 0.95)),
+                                removal: .opacity.combined(with: .move(edge: .top)).combined(with: .scale(scale: 0.95))
+                            ))
+                        }
+                    }
+                    .padding(.top, 8)
+                }
+                #else
+                VStack(spacing: 10) {
+                    ForEach(currentSuggestions) { suggestion in
+                        SuggestionChip(suggestion.title) {
+                            onSuggestionTapped(suggestion.query)
+                        }
+                        .id(suggestion.id)
+                        .transition(.asymmetric(
+                            insertion: .opacity.combined(with: .move(edge: .bottom)).combined(with: .scale(scale: 0.95)),
+                            removal: .opacity.combined(with: .move(edge: .top)).combined(with: .scale(scale: 0.95))
+                        ))
+                    }
+                }
+                .padding(.top, 8)
+                #endif
+            }
+            .frame(maxWidth: .infinity)
+            .padding()
         }
-        .frame(maxWidth: .infinity)
-        .padding()
+        .contentMargins(.top, 40, for: .scrollContent)
+        #if os(iOS)
+        .scrollDismissesKeyboard(.interactively)
+        #endif
+        .scrollBounceBehavior(.basedOnSize)
         .onAppear {
             currentPairIndex = Int.random(in: 0..<AISight.searchSuggestions.count / 2)
         }
