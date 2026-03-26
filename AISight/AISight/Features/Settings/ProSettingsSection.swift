@@ -15,6 +15,13 @@ struct ProSettingsSection: View {
                 Text("Using your own search server")
                     .font(.caption)
                     .foregroundStyle(.secondary)
+
+                #if !SETAPP
+                Button(String(localized: "Support AISight — Get Pro")) {
+                    showPaywall = true
+                }
+                .foregroundStyle(.secondary)
+                #endif
             } else {
                 HStack {
                     Text("Searches used today")

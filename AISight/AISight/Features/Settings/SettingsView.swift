@@ -44,6 +44,10 @@ struct SettingsView: View {
         ("pt", "Portugu\u{00EA}s")
     ]
 
+    private var hasURLChanged: Bool {
+        serverURL != AppConfig.effectiveSearXNGBaseURL
+    }
+
     private var appVersion: String {
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0"
         let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "1"
@@ -55,48 +59,28 @@ struct SettingsView: View {
             ProSettingsSection(showPaywall: $showPaywall)
 
             Section {
-                TextField("SearXNG Server URL", text: $serverURL, prompt: Text("https://search.yourdomain.com"))
+                TextField("SearXNG Server URL", text: $serverURL, prompt: Text("https://search.yourdomain.com").foregroundStyle(.secondary))
                     .autocorrectionDisabled()
                     #if os(iOS)
                     .textInputAutocapitalization(.never)
                     .keyboardType(.URL)
                     #endif
                     .onSubmit {
-                        if validateAndSaveURL(serverURL) {
-                            testResult = nil
-                            storeManager.refreshCustomServerStatus()
-                        } else {
-                            testResult = TestResult(success: false, message: String(localized: "Invalid URL. Use http:// or https://."))
-                        }
-                    }
-
-                HStack(spacing: 12) {
-                    Button {
                         Task { await testConnection() }
-                    } label: {
-                        HStack(spacing: 6) {
-                            if isTesting {
-                                ProgressView()
-                                    .controlSize(.small)
-                            }
-                            Text("Test Connection")
-                        }
                     }
-                    .disabled(isTesting || serverURL.isEmpty)
 
-                    Spacer()
-
-                    if storeManager.isUsingCustomServer {
-                        Button("Reset to Default") {
-                            serverURL = AppConfig.defaultSearXNGBaseURL
-                            UserDefaults.standard.removeObject(forKey: "searxng_base_url")
-                            testResult = nil
-                            storeManager.refreshCustomServerStatus()
+                Button {
+                    Task { await testConnection() }
+                } label: {
+                    HStack(spacing: 6) {
+                        if isTesting {
+                            ProgressView()
+                                .controlSize(.small)
                         }
-                        .foregroundStyle(.secondary)
-                        .font(.callout)
+                        Text(hasURLChanged ? "Activate and Test" : "Test Connection")
                     }
                 }
+                .disabled(isTesting || serverURL.isEmpty)
 
                 if isTesting {
                     HStack(spacing: 8) {
@@ -126,6 +110,11 @@ struct SettingsView: View {
                 } else if !storeManager.isPro {
                     Text("Use your own SearXNG server to unlock all features for free")
                         .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+
+                if serverURL != AppConfig.defaultSearXNGBaseURL {
+                    Button("Use Default Server", action: resetToDefaultServer)
                         .foregroundStyle(.secondary)
                 }
             } header: {
@@ -227,35 +216,54 @@ struct SettingsView: View {
         }
     }
 
-    @discardableResult
-    private func validateAndSaveURL(_ urlString: String) -> Bool {
+    private func resetToDefaultServer() {
+        serverURL = AppConfig.defaultSearXNGBaseURL
+        UserDefaults.standard.removeObject(forKey: "searxng_base_url")
+        testResult = nil
+        storeManager.refreshCustomServerStatus()
+    }
+
+    private func isValidURL(_ urlString: String) -> Bool {
         guard let url = URL(string: urlString),
               let scheme = url.scheme?.lowercased(),
               scheme == "http" || scheme == "https",
               url.host() != nil else {
             return false
         }
-        UserDefaults.standard.set(urlString, forKey: "searxng_base_url")
         return true
     }
 
     private func testConnection() async {
-        guard validateAndSaveURL(serverURL) else {
+        guard isValidURL(serverURL) else {
             testResult = TestResult(success: false, message: String(localized: "Invalid URL. Use http:// or https://."))
             return
         }
+
+        // Temporarily set the URL so SearXNGService uses it for the test
+        let previousURL = UserDefaults.standard.string(forKey: "searxng_base_url")
+        UserDefaults.standard.set(serverURL, forKey: "searxng_base_url")
+
         isTesting = true
         let start = Date.now
         let service = SearXNGService()
         let available = await service.checkAvailability()
         let latency = Date.now.timeIntervalSince(start)
-
         isTesting = false
+
         if available {
+            // Test passed — keep the URL saved, activate
+            storeManager.refreshCustomServerStatus()
             let ms = Int(latency * 1000)
             testResult = TestResult(success: true, message: String(localized: "Connected (\(ms)ms)"))
         } else {
-            testResult = TestResult(success: false, message: String(localized: "Connection failed"))
+            // Test failed — roll back to previous URL
+            if let previousURL {
+                UserDefaults.standard.set(previousURL, forKey: "searxng_base_url")
+            } else {
+                UserDefaults.standard.removeObject(forKey: "searxng_base_url")
+            }
+            storeManager.refreshCustomServerStatus()
+            testResult = TestResult(success: false, message: String(localized: "Connection failed. Server not activated."))
         }
     }
 
