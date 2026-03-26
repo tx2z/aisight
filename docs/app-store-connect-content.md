@@ -174,7 +174,7 @@ AISight Pro — Unlimited Search
 
 ### Description (user-visible, localizable)
 ```
-Unlimited AI-powered searches and Deep Search for complex topics. Support a solo indie developer. Pay once, own it forever — no subscription. Or bring your own server in Settings and get everything for free.
+Unlimited AI searches & Deep Search. Pay once.
 ```
 
 ---
@@ -348,7 +348,7 @@ AISight Pro: Unbegrenzte Suche
 
 ### IAP Description
 ```
-Unbegrenzte KI-Suchen und Deep Search für komplexe Themen. Unterstütze einen unabhängigen Indie-Entwickler. Einmalkauf, für immer — kein Abo. Oder verbinde deinen eigenen Server in den Einstellungen und erhalte alles kostenlos.
+Unbegrenzte KI-Suchen & Deep Search. Einmalkauf.
 ```
 </details>
 
@@ -452,7 +452,7 @@ AISight Pro — Búsqueda Ilimitada
 
 ### IAP Description
 ```
-Búsquedas ilimitadas con IA y Deep Search para temas complejos. Apoya a un desarrollador indie. Paga una vez, es tuyo para siempre — sin suscripción. O conecta tu propio servidor en Ajustes y obtén todo gratis.
+Búsquedas IA ilimitadas y Deep Search. Pago único.
 ```
 </details>
 
@@ -556,7 +556,7 @@ AISight Pro — Recherche illimitée
 
 ### IAP Description
 ```
-Recherches IA illimitées et Deep Search pour les sujets complexes. Soutenez un développeur indépendant. Payez une fois, c'est à vous pour toujours — pas d'abonnement. Ou connectez votre propre serveur dans Réglages et obtenez tout gratuitement.
+Recherches IA illimitées & Deep Search. Achat unique.
 ```
 </details>
 
@@ -660,7 +660,7 @@ AISight Pro — Ricerca Illimitata
 
 ### IAP Description
 ```
-Ricerche IA illimitate e Deep Search per argomenti complessi. Sostieni uno sviluppatore indie. Paghi una volta, tuo per sempre — nessun abbonamento. Oppure collega il tuo server nelle Impostazioni e ottieni tutto gratis.
+Ricerche IA illimitate & Deep Search. Acquisto unico.
 ```
 </details>
 
@@ -764,7 +764,7 @@ AISight Pro — 無制限検索
 
 ### IAP Description
 ```
-無制限のAI検索とDeep Searchで複雑なトピックも徹底調査。個人開発者を応援してください。買い切り型、サブスクなし。または設定で自分のサーバーを接続すれば、すべて無料で利用できます。
+無制限AI検索とDeep Search。買い切り型。
 ```
 </details>
 
@@ -868,7 +868,7 @@ AISight Pro — 무제한 검색
 
 ### IAP Description
 ```
-무제한 AI 검색과 복잡한 주제를 위한 Deep Search. 인디 개발자를 응원해 주세요. 한 번만 결제하면 영원히 내 것 — 구독 없음. 또는 설정에서 나만의 서버를 연결하면 모든 기능을 무료로 이용할 수 있어요.
+무제한 AI 검색 & Deep Search. 한 번만 결제.
 ```
 </details>
 
@@ -972,7 +972,7 @@ AISight Pro — Busca Ilimitada
 
 ### IAP Description
 ```
-Buscas ilimitadas com IA e Deep Search para temas complexos. Apoie um desenvolvedor indie. Pague uma vez, use para sempre — sem assinatura. Ou conecte seu próprio servidor em Ajustes e tenha tudo de graça.
+Buscas IA ilimitadas & Deep Search. Compra única.
 ```
 </details>
 
@@ -1076,6 +1076,6 @@ AISight Pro — 无限搜索
 
 ### IAP Description
 ```
-无限AI搜索及Deep Search功能，轻松应对复杂话题。支持独立开发者。一次购买，永久拥有——无订阅。或在设置中连接你自己的服务器，免费获取所有功能。
+无限AI搜索及Deep Search。一次购买，永久拥有。
 ```
 </details>
