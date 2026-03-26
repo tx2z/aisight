@@ -17,7 +17,6 @@
 </p>
 
 <p align="center">
-  <!-- TODO: Replace with App Store link when available -->
   <img src="https://img.shields.io/badge/App%20Store-Coming%20Soon-black?style=for-the-badge&logo=apple&logoColor=white" alt="Coming Soon on the App Store">
 </p>
 
@@ -32,7 +31,7 @@
 
 ---
 
-A native iOS 26 / macOS 26 answer engine that combines web search with on-device AI. AISight searches the web via a self-hosted [SearXNG](https://github.com/searxng/searxng) instance and synthesizes answers using Apple's FoundationModels framework (Apple Intelligence) — all AI processing happens privately on your device. Zero external dependencies.
+A native iOS 26 / macOS 26 answer engine that combines web search with on-device AI. AISight searches the web via a privacy-respecting [SearXNG](https://github.com/searxng/searxng) instance (default provided, or self-host your own) and synthesizes answers using Apple's FoundationModels framework (Apple Intelligence) — all AI processing happens privately on your device. Zero external dependencies.
 
 ## Why?
 
@@ -43,11 +42,13 @@ Every major answer engine — Perplexity, Google AI Overviews, Bing Copilot — 
 - Answer factual, encyclopedic, and "how-to" questions with cited sources
 - **Deep Search** — multiple AI research passes for complex questions (Pro)
 - Search the web via SearXNG (aggregates Google, Bing, Brave, and more)
-- On-device AI synthesis — your data never leaves to a cloud AI service
+- On-device AI synthesis — your data is never sent to a cloud AI service
 - Stream responses token by token with inline citations
 - Reciprocal Rank Fusion (RRF) for multi-engine result ranking
 - Persist query history locally via SwiftData
 - Universal app — runs natively on iPhone, iPad, and Mac
+
+**AISight Pro** ($4.99, one-time) unlocks unlimited searches, Deep Search, and custom SearXNG server.
 
 ## What it cannot do
 
@@ -60,7 +61,7 @@ Every major answer engine — Perplexity, Google AI Overviews, Bing Copilot — 
 
 ## Requirements
 
-- **Xcode 26+** (beta)
+- **Xcode 26+**
 - iOS 26.0 / macOS 26.0 deployment target
 - Apple Intelligence enabled on device
 - A SearXNG instance (local Docker or remote)
@@ -83,7 +84,7 @@ For production, deploy your own instance following the [SearXNG Docker guide](ht
 ### 2. Configure and build
 
 1. Open `AISight/AISight.xcodeproj` in Xcode 26
-2. The default SearXNG URL is `http://localhost:8888` — change it in `AISight/App/AppConfig.swift` if needed
+2. The app ships with a default SearXNG instance — for local development, change the URL to `http://localhost:8888` in the app's Settings tab or in `AISight/App/AppConfig.swift`
 3. Select your target (iPhone simulator or My Mac) and **Cmd+R**
 
 > **macOS note:** Add the "Outgoing Connections (Client)" capability in Signing & Capabilities for network access.
@@ -111,14 +112,18 @@ User Query → SearXNG (search) → ContentFetcher (HTML→text) → FoundationM
 ## Privacy
 
 All AI inference runs on-device via Apple Intelligence. Data that leaves your device:
-1. Search queries sent to your SearXNG instance
+1. Search queries sent to a SearXNG instance
 2. HTTP requests to source URLs for content fetching
 
 No analytics. No tracking. No third-party AI services.
 
-## Topics
+## Contributing
 
-`privacy-first` `perplexity-alternative` `local-ai` `no-tracking` `on-device-ai` `apple-intelligence` `searxng` `answer-engine` `swiftui` `ios` `macos` `swift`
+Contributions welcome. Open an issue before submitting large PRs.
+
+---
+
+Built by a solo developer in Spain. Entire infrastructure costs under €5/month.
 
 ## License
 
