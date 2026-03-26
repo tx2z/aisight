@@ -166,14 +166,15 @@ Added for Apple App Store submission compliance:
 
 ## AISight Pro (Freemium)
 
-- **Free tier:** 10 searches/day, default SearXNG instance
-- **AISight Pro** ($4.99 one-time): Unlimited searches, Deep Search, custom SearXNG URL, future features
-- **StoreManager** (`Core/Store/`): Single `@Observable` source of truth for `isPro`, daily counter, StoreKit 2 purchase/restore
+- **Free tier:** 10 searches/day on default SearXNG instance
+- **AISight Pro** ($4.99 one-time): Unlimited searches, Deep Search on default server, support development
+- **Self-hosted:** Users who configure their own SearXNG server get all features free (unlimited searches, Deep Search) — no purchase needed
+- **StoreManager** (`Core/Store/`): Single `@Observable` source of truth for `isPro`, `isUsingCustomServer`, daily counter, StoreKit 2 purchase/restore
 - **PaywallReason:** Enum (`.dailyLimitReached`, `.deepSearchRequiresPro`) customizes paywall messaging.
-- **Paywall:** Non-aggressive sheet shown when daily limit hit or Deep Search toggled by free user. Auto-dismisses on purchase.
+- **Paywall:** Non-aggressive sheet shown when daily limit hit or Deep Search toggled by free user. Includes "Or use your own SearXNG server" option. Auto-dismisses on purchase.
 - **QueryLimitBannerView:** Small banner in search empty state when ≤ 5 searches remain
-- **ProSettingsSection:** First section in Settings Form, shows Pro status or upgrade/restore buttons
-- **Search Server gating:** Free users see disabled URL field with upgrade hint; Pro users get full editing
+- **ProSettingsSection:** First section in Settings Form, shows Pro status, custom server status, or upgrade/restore buttons. Custom server users see "Support AISight — Get Pro" option.
+- **Search Server:** Available to all users. "Activate and Test" saves and tests URL. "Use Default Server" resets. Only activates on successful connection test.
 - **Search gating:** `handleSearch()` in `SearchContentView` checks `storeManager.canSearch` before calling `viewModel.performSearch()`
 - **Setapp-ready:** `#if SETAPP` compile-time flag unlocks Pro with zero runtime changes. All StoreKit code wrapped in `#if !SETAPP`.
 - See `domains/store-iap.md` for full architecture details.

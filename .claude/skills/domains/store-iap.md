@@ -4,7 +4,7 @@
 
 ## Overview
 
-AISight uses a freemium model: free users get 10 searches/day, AISight Pro ($4.99 one-time) unlocks unlimited searches, Deep Search, and custom SearXNG URL. Built with StoreKit 2 (non-consumable). Setapp-ready via `#if SETAPP` compile-time flag.
+AISight uses a freemium model: free users get 10 searches/day on the default server. AISight Pro ($4.99 one-time) unlocks unlimited searches and Deep Search on the default server. Users who configure their own SearXNG server get all features for free (unlimited searches, Deep Search) — no purchase needed. Built with StoreKit 2 (non-consumable). Setapp-ready via `#if SETAPP` compile-time flag.
 
 ## Key Files
 
@@ -29,9 +29,10 @@ Single source of truth for Pro status and daily query tracking.
 | `isPro` | `Bool` | True if purchased or `#if SETAPP` |
 | `dailyQueriesUsed` | `Int` | Counter for today's searches |
 | `errorMessage` | `String?` | User-facing purchase error |
-| `canSearch` | `Bool` (computed) | `isPro \|\| remainingQueries > 0` |
-| `canDeepSearch` | `Bool` (computed) | `isPro` — Deep Search requires Pro |
-| `remainingQueries` | `Int` (computed) | `isPro ? .max : max(0, 10 - dailyQueriesUsed)` |
+| `isUsingCustomServer` | `Bool` | True if user has configured a non-default SearXNG URL |
+| `canSearch` | `Bool` (computed) | `isUsingCustomServer \|\| isPro \|\| remainingQueries > 0` |
+| `canDeepSearch` | `Bool` (computed) | `isUsingCustomServer \|\| isPro` |
+| `remainingQueries` | `Int` (computed) | `(isUsingCustomServer \|\| isPro) ? .max : max(0, 10 - dailyQueriesUsed)` |
 
 ### Constants
 
@@ -44,7 +45,8 @@ Single source of truth for Pro status and daily query tracking.
 
 | Method | Description |
 |--------|-------------|
-| `recordQuery()` | Increments daily counter, no-op if Pro |
+| `refreshCustomServerStatus()` | Re-checks if user has a custom server URL. Call after saving/resetting the URL |
+| `recordQuery()` | Increments daily counter, no-op if Pro or custom server |
 | `purchase()` | StoreKit 2 `Product.purchase()` flow |
 | `restorePurchases()` | Refreshes from `Transaction.currentEntitlements` |
 
@@ -108,7 +110,8 @@ Both search triggers (search bar submit and suggestion chip tap) call `handleSea
 ## Paywall
 
 Shown as a `.sheet` with `reason: PaywallReason` parameter. Non-aggressive design:
-- Star icon, feature list (Unlimited searches, Deep Search, Custom search server, Future features), purchase button, restore link
+- Star icon, feature list (Unlimited searches, Deep Search, Support development, Future features), purchase button, restore link
+- "Or use your own SearXNG server" section with self-hosted option explanation
 - "Or come back tomorrow" shown only for `.dailyLimitReached` reason
 - Auto-dismisses via `.onChange(of: storeManager.isPro)` on successful purchase
 - All purchase UI wrapped in `#if !SETAPP`
