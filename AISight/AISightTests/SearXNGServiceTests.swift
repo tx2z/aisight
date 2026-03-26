@@ -57,6 +57,31 @@ struct SearXNGServiceTests {
         #expect(result == "not a url")
     }
 
+    @Test func normalizeURL_emptyString() {
+        let result = service.normalizeURL("")
+        #expect(result == "")
+    }
+
+    @Test func normalizeURL_rootDomain() {
+        let result = service.normalizeURL("https://example.com")
+        #expect(result == "example.com")
+    }
+
+    @Test func normalizeURL_allTrackingParams_resultsInCleanURL() {
+        let result = service.normalizeURL("https://example.com/page?utm_source=a&utm_medium=b&utm_campaign=c&utm_term=d&utm_content=e")
+        #expect(result == "example.com/page")
+    }
+
+    @Test func normalizeURL_httpScheme() {
+        let result = service.normalizeURL("http://example.com/page")
+        #expect(result == "example.com/page")
+    }
+
+    @Test func normalizeURL_deepPath() {
+        let result = service.normalizeURL("https://docs.example.com/en/stable/api/v2/reference")
+        #expect(result == "docs.example.com/en/stable/api/v2/reference")
+    }
+
     // MARK: - processResults
 
     @Test func processResults_filtersShortSnippets() {
@@ -95,6 +120,52 @@ struct SearXNGServiceTests {
     @Test func processResults_emptyInputReturnsEmpty() {
         let processed = service.processResults([])
         #expect(processed.isEmpty)
+    }
+
+    @Test func processResults_allFilteredOut_returnsEmpty() {
+        // All results have snippets below minSnippetLength
+        let results = [
+            TestFixtures.makeResult(url: "https://a.com", content: "tiny"),
+            TestFixtures.makeResult(url: "https://b.com", content: "also tiny"),
+        ]
+        let processed = service.processResults(results)
+        #expect(processed.isEmpty)
+    }
+
+    @Test func processResults_dedup_keepsLongerSnippet() {
+        let short = TestFixtures.makeResult(
+            url: "https://example.com/page",
+            content: String(repeating: "a", count: 40),
+            score: 10.0,
+            engines: ["google"]
+        )
+        let long = TestFixtures.makeResult(
+            url: "https://www.example.com/page",
+            content: String(repeating: "b", count: 200),
+            score: 1.0,
+            engines: ["bing"]
+        )
+        let processed = service.processResults([short, long])
+        #expect(processed.count == 1)
+        #expect(processed[0].snippetLength == 200)
+    }
+
+    @Test func processResults_nilScores_doesNotCrash() {
+        let results = [
+            TestFixtures.makeResult(url: "https://a.com", content: String(repeating: "x", count: 50), score: nil, engines: ["google"]),
+            TestFixtures.makeResult(url: "https://b.com", content: String(repeating: "y", count: 50), score: nil, engines: ["bing"]),
+        ]
+        let processed = service.processResults(results)
+        #expect(!processed.isEmpty)
+    }
+
+    @Test func processResults_singleResult_returnsIt() {
+        let results = [
+            TestFixtures.makeResult(url: "https://a.com", content: String(repeating: "x", count: 50), engines: ["google"]),
+        ]
+        let processed = service.processResults(results)
+        #expect(processed.count == 1)
+        #expect(processed[0].url == "https://a.com")
     }
 
     @Test func processResults_multiEngineResultsRankHigher() {
@@ -147,5 +218,33 @@ struct SearXNGServiceTests {
         ]
         let rankings = service.buildEngineRankings(results)
         #expect(rankings["duckduckgo"] != nil)
+    }
+
+    @Test func buildEngineRankings_emptyInput() {
+        let rankings = service.buildEngineRankings([])
+        #expect(rankings.isEmpty)
+    }
+
+    @Test func buildEngineRankings_duplicateURLsInSameEngine_keepsBestScore() {
+        let results = [
+            TestFixtures.makeResult(url: "https://a.com", score: 2.0, engines: ["google"]),
+            TestFixtures.makeResult(url: "https://a.com", score: 8.0, engines: ["google"]),
+            TestFixtures.makeResult(url: "https://b.com", score: 5.0, engines: ["google"]),
+        ]
+        let rankings = service.buildEngineRankings(results)
+        // a.com has best score 8.0, b.com has 5.0 → a.com should rank 1st
+        #expect(rankings["google"]?["a.com"] == 1)
+        #expect(rankings["google"]?["b.com"] == 2)
+    }
+
+    @Test func buildEngineRankings_nilScores_treatedAsZero() {
+        let results = [
+            TestFixtures.makeResult(url: "https://a.com", score: nil, engines: ["google"]),
+            TestFixtures.makeResult(url: "https://b.com", score: 5.0, engines: ["google"]),
+        ]
+        let rankings = service.buildEngineRankings(results)
+        // b.com has higher score, should rank first
+        #expect(rankings["google"]?["b.com"] == 1)
+        #expect(rankings["google"]?["a.com"] == 2)
     }
 }

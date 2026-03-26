@@ -60,6 +60,114 @@ struct StoreManagerTests {
         #expect(manager.canSearch == true)
     }
 
+    // MARK: - Custom Server Tests
+
+    @Test func customServer_unlockesAllFeatures() {
+        let defaults = makeDefaults()
+        defaults.set("https://my-searxng.example.com", forKey: "searxng_base_url")
+        let manager = StoreManager(defaults: defaults)
+
+        #expect(manager.isUsingCustomServer == true)
+        #expect(manager.canSearch == true)
+        #expect(manager.canDeepSearch == true)
+        #expect(manager.remainingQueries == .max)
+    }
+
+    @Test func customServer_doesNotCountQueries() {
+        let defaults = makeDefaults()
+        defaults.set("https://my-searxng.example.com", forKey: "searxng_base_url")
+        let manager = StoreManager(defaults: defaults)
+
+        manager.recordQuery()
+        manager.recordQuery()
+        #expect(manager.dailyQueriesUsed == 0)
+    }
+
+    @Test func defaultServer_isNotCustom() {
+        let defaults = makeDefaults()
+        let manager = StoreManager(defaults: defaults)
+        #expect(manager.isUsingCustomServer == false)
+    }
+
+    @Test func defaultServerURL_isNotCustom() {
+        let defaults = makeDefaults()
+        // Setting the default URL explicitly should not count as custom
+        defaults.set("https://search.private-search-intelligence.app", forKey: "searxng_base_url")
+        let manager = StoreManager(defaults: defaults)
+        #expect(manager.isUsingCustomServer == false)
+    }
+
+    @Test func invalidURL_isNotCustomServer() {
+        let defaults = makeDefaults()
+        defaults.set("not-a-url", forKey: "searxng_base_url")
+        let manager = StoreManager(defaults: defaults)
+        #expect(manager.isUsingCustomServer == false)
+        #expect(manager.canDeepSearch == false)
+    }
+
+    @Test func ftpURL_isNotCustomServer() {
+        let defaults = makeDefaults()
+        defaults.set("ftp://searxng.example.com", forKey: "searxng_base_url")
+        let manager = StoreManager(defaults: defaults)
+        #expect(manager.isUsingCustomServer == false)
+    }
+
+    @Test func refreshCustomServerStatus_detectsChange() {
+        let defaults = makeDefaults()
+        let manager = StoreManager(defaults: defaults)
+        #expect(manager.isUsingCustomServer == false)
+
+        // Simulate user saving a custom URL (what SettingsView does)
+        defaults.set("https://my-searxng.example.com", forKey: "searxng_base_url")
+        manager.refreshCustomServerStatus()
+
+        #expect(manager.isUsingCustomServer == true)
+        #expect(manager.canDeepSearch == true)
+        #expect(manager.remainingQueries == .max)
+    }
+
+    @Test func refreshCustomServerStatus_detectsReset() {
+        let defaults = makeDefaults()
+        defaults.set("https://my-searxng.example.com", forKey: "searxng_base_url")
+        let manager = StoreManager(defaults: defaults)
+        #expect(manager.isUsingCustomServer == true)
+
+        // Simulate user resetting to default
+        defaults.removeObject(forKey: "searxng_base_url")
+        manager.refreshCustomServerStatus()
+
+        #expect(manager.isUsingCustomServer == false)
+        #expect(manager.canDeepSearch == false)
+    }
+
+    @Test func resetToDefault_afterCustomServer_preservesFullQuota() {
+        let defaults = makeDefaults()
+        defaults.set("https://my-searxng.example.com", forKey: "searxng_base_url")
+        let manager = StoreManager(defaults: defaults)
+
+        // Searches on custom server don't count
+        manager.recordQuery()
+        manager.recordQuery()
+        manager.recordQuery()
+        #expect(manager.dailyQueriesUsed == 0)
+
+        // Switch back to default server
+        defaults.removeObject(forKey: "searxng_base_url")
+        manager.refreshCustomServerStatus()
+
+        // Should still have full quota since nothing was counted
+        #expect(manager.remainingQueries == 10)
+        #expect(manager.canSearch == true)
+    }
+
+    @Test func remainingQueries_neverGoesNegative() {
+        let manager = StoreManager(defaults: makeDefaults())
+        for _ in 0..<15 {
+            manager.recordQuery()
+        }
+        #expect(manager.remainingQueries == 0)
+    }
+
     @Test func sameDate_preservesCounter() {
         let defaults = makeDefaults()
         let formatter = DateFormatter()
