@@ -680,6 +680,40 @@ h1, h2, h3 { font-weight: 700; color: var(--gray-900); letter-spacing: -0.02em; 
 .page-content p, .page-content li { margin-bottom: 8px; font-size: 1rem; color: var(--gray-700); line-height: 1.7; }
 .page-content ul { padding-left: 24px; margin-bottom: 16px; }
 .page-content em { color: var(--gray-500); }
+.page-content table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  margin: 16px 0 24px;
+  overflow-x: auto;
+  display: block;
+  -webkit-overflow-scrolling: touch;
+}
+.page-content thead th {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 12px 20px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.page-content thead th:nth-child(2) { color: var(--blue); }
+.page-content tbody td {
+  padding: 14px 20px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  color: var(--gray-700);
+}
+.page-content tbody td:nth-child(2) {
+  font-weight: 600;
+  color: var(--gray-900);
+  background: rgba(0, 122, 255, 0.04);
+}
+.page-content tbody tr:last-child td { border-bottom: none; }
+.page-content tbody tr:hover td { background: rgba(0, 122, 255, 0.02); }
+.page-content tbody tr:hover td:nth-child(2) { background: rgba(0, 122, 255, 0.06); }
 
 /* === Contact Form === */
 .contact-page { max-width: 600px; margin: 0 auto; }
@@ -930,6 +964,16 @@ h1, h2, h3 { font-weight: 700; color: var(--gray-900); letter-spacing: -0.02em; 
     background: rgba(10, 132, 255, 0.04);
   }
   .compare-table tbody tr:hover td.compare-highlight {
+    background: rgba(10, 132, 255, 0.1);
+  }
+
+  .page-content tbody td:nth-child(2) {
+    background: rgba(10, 132, 255, 0.08);
+  }
+  .page-content tbody tr:hover td {
+    background: rgba(10, 132, 255, 0.04);
+  }
+  .page-content tbody tr:hover td:nth-child(2) {
     background: rgba(10, 132, 255, 0.1);
   }
 
