@@ -2123,6 +2123,12 @@
         }
       }
     },
+    "All features unlocked" : {
+
+    },
+    "All features unlocked with your own server" : {
+
+    },
     "An error occurred while generating the answer: %@" : {
       "localizations" : {
         "de" : {
@@ -3844,6 +3850,9 @@
         }
       }
     },
+    "Connect your own server in Settings to unlock all features for free." : {
+
+    },
     "Connected (%lldms)" : {
       "localizations" : {
         "de" : {
@@ -4105,6 +4114,7 @@
       }
     },
     "Custom search server" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -7546,6 +7556,9 @@
         }
       }
     },
+    "Or use your own SearXNG server" : {
+
+    },
     "Our Commitment to Privacy" : {
       "localizations" : {
         "de" : {
@@ -9577,6 +9590,9 @@
         }
       }
     },
+    "Support AISight development" : {
+
+    },
     "Swift concurrency patterns" : {
       "localizations" : {
         "de" : {
@@ -11035,6 +11051,7 @@
       }
     },
     "Upgrade to AISight Pro to use a custom search server" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -11085,6 +11102,12 @@
           }
         }
       }
+    },
+    "Use your own SearXNG server to unlock all features for free" : {
+
+    },
+    "Using your own search server" : {
+
     },
     "Verify answers with linked sources." : {
       "localizations" : {

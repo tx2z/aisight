@@ -9,6 +9,12 @@ struct ProSettingsSection: View {
             if storeManager.isPro {
                 Label("AISight Pro Active", systemImage: "checkmark.seal.fill")
                     .foregroundStyle(.accent)
+            } else if storeManager.isUsingCustomServer {
+                Label(String(localized: "All features unlocked"), systemImage: "checkmark.seal.fill")
+                    .foregroundStyle(.accent)
+                Text("Using your own search server")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
             } else {
                 HStack {
                     Text("Searches used today")

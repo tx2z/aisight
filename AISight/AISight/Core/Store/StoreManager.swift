@@ -6,27 +6,33 @@ final class StoreManager {
     private(set) var dailyQueriesUsed: Int = 0
     private(set) var errorMessage: String?
 
+    /// Whether the user has configured a custom SearXNG server (not using the default).
+    private(set) var isUsingCustomServer: Bool = false
+
     static let dailyLimit = 10
     static let productID = "com.aisight.pro"
 
     private var transactionListener: Task<Void, Never>?
     private let defaults: UserDefaults
 
+    /// Users with a custom server or PRO can always search.
     var canSearch: Bool {
-        isPro || remainingQueries > 0
+        isUsingCustomServer || isPro || remainingQueries > 0
     }
 
+    /// Deep Search is available to PRO users or anyone using their own server.
     var canDeepSearch: Bool {
-        isPro
+        isUsingCustomServer || isPro
     }
 
     var remainingQueries: Int {
-        isPro ? .max : max(0, Self.dailyLimit - dailyQueriesUsed)
+        (isUsingCustomServer || isPro) ? .max : max(0, Self.dailyLimit - dailyQueriesUsed)
     }
 
     init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
         loadDailyCounter()
+        refreshCustomServerStatus()
         #if SETAPP
         isPro = true
         #else
@@ -37,8 +43,20 @@ final class StoreManager {
         #endif
     }
 
+    /// Re-evaluates whether the user has a custom server configured. Call after saving or resetting the server URL.
+    func refreshCustomServerStatus() {
+        guard let stored = defaults.string(forKey: "searxng_base_url"),
+              let url = URL(string: stored),
+              let scheme = url.scheme?.lowercased(),
+              scheme == "http" || scheme == "https" else {
+            isUsingCustomServer = false
+            return
+        }
+        isUsingCustomServer = stored != AppConfig.defaultSearXNGBaseURL
+    }
+
     func recordQuery() {
-        guard !isPro else { return }
+        guard !isPro && !isUsingCustomServer else { return }
         dailyQueriesUsed += 1
         saveDailyCounter()
     }

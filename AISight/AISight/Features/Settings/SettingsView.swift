@@ -54,76 +54,82 @@ struct SettingsView: View {
         Form {
             ProSettingsSection(showPaywall: $showPaywall)
 
-            Section("Search Server") {
-                if storeManager.isPro {
-                    TextField("SearXNG Server URL", text: $serverURL, prompt: Text("https://search.yourdomain.com"))
-                        .autocorrectionDisabled()
-                        #if os(iOS)
-                        .textInputAutocapitalization(.never)
-                        .keyboardType(.URL)
-                        #endif
-                        .onSubmit {
-                            if validateAndSaveURL(serverURL) {
-                                testResult = nil
-                            } else {
-                                testResult = TestResult(success: false, message: String(localized: "Invalid URL. Use http:// or https://."))
-                            }
+            Section {
+                TextField("SearXNG Server URL", text: $serverURL, prompt: Text("https://search.yourdomain.com"))
+                    .autocorrectionDisabled()
+                    #if os(iOS)
+                    .textInputAutocapitalization(.never)
+                    .keyboardType(.URL)
+                    #endif
+                    .onSubmit {
+                        if validateAndSaveURL(serverURL) {
+                            testResult = nil
+                            storeManager.refreshCustomServerStatus()
+                        } else {
+                            testResult = TestResult(success: false, message: String(localized: "Invalid URL. Use http:// or https://."))
                         }
+                    }
 
-                    HStack(spacing: 12) {
-                        Button {
-                            Task { await testConnection() }
-                        } label: {
-                            HStack(spacing: 6) {
-                                if isTesting {
-                                    ProgressView()
-                                        .controlSize(.small)
-                                }
-                                Text("Test Connection")
+                HStack(spacing: 12) {
+                    Button {
+                        Task { await testConnection() }
+                    } label: {
+                        HStack(spacing: 6) {
+                            if isTesting {
+                                ProgressView()
+                                    .controlSize(.small)
                             }
+                            Text("Test Connection")
                         }
-                        .disabled(isTesting || serverURL.isEmpty)
+                    }
+                    .disabled(isTesting || serverURL.isEmpty)
 
-                        Spacer()
+                    Spacer()
 
+                    if storeManager.isUsingCustomServer {
                         Button("Reset to Default") {
                             serverURL = AppConfig.defaultSearXNGBaseURL
                             UserDefaults.standard.removeObject(forKey: "searxng_base_url")
                             testResult = nil
+                            storeManager.refreshCustomServerStatus()
                         }
                         .foregroundStyle(.secondary)
                         .font(.callout)
                     }
+                }
 
-                    if isTesting {
-                        HStack(spacing: 8) {
-                            Image(systemName: "arrow.trianglehead.2.counterclockwise")
-                                .foregroundStyle(.secondary)
-                                .symbolEffect(.pulse)
-                            Text("Testing...")
-                                .font(.callout)
-                                .foregroundStyle(.secondary)
-                        }
-                    } else if let testResult {
-                        HStack(spacing: 8) {
-                            Image(systemName: testResult.success ? "checkmark.circle.fill" : "xmark.circle.fill")
-                                .foregroundStyle(testResult.success ? .green : .red)
-                                .symbolEffect(.appear)
-
-                            Text(testResult.message)
-                                .font(.callout)
-                                .foregroundStyle(testResult.success ? .green : .red)
-                        }
+                if isTesting {
+                    HStack(spacing: 8) {
+                        Image(systemName: "arrow.trianglehead.2.counterclockwise")
+                            .foregroundStyle(.secondary)
+                            .symbolEffect(.pulse)
+                        Text("Testing...")
+                            .font(.callout)
+                            .foregroundStyle(.secondary)
                     }
-                } else {
-                    TextField("SearXNG Server URL", text: .constant(AppConfig.defaultSearXNGBaseURL))
-                        .disabled(true)
-                        .foregroundStyle(.secondary)
+                } else if let testResult {
+                    HStack(spacing: 8) {
+                        Image(systemName: testResult.success ? "checkmark.circle.fill" : "xmark.circle.fill")
+                            .foregroundStyle(testResult.success ? .green : .red)
+                            .symbolEffect(.appear)
 
-                    Text("Upgrade to AISight Pro to use a custom search server")
+                        Text(testResult.message)
+                            .font(.callout)
+                            .foregroundStyle(testResult.success ? .green : .red)
+                    }
+                }
+
+                if storeManager.isUsingCustomServer {
+                    Label(String(localized: "All features unlocked with your own server"), systemImage: "checkmark.seal.fill")
+                        .font(.caption)
+                        .foregroundStyle(.accent)
+                } else if !storeManager.isPro {
+                    Text("Use your own SearXNG server to unlock all features for free")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
+            } header: {
+                Text("Search Server")
             }
 
             Section("Preferences") {
