@@ -1,0 +1,20 @@
+name = "aisight-web"
+account_id = "YOUR_CLOUDFLARE_ACCOUNT_ID"
+compatibility_date = "2024-12-01"
+compatibility_flags = ["nodejs_compat"]
+main = "src/worker.js"
+
+[assets]
+directory = "public"
+
+[vars]
+TURNSTILE_SITE_KEY = "YOUR_TURNSTILE_SITE_KEY"
+# TURNSTILE_SECRET is set via `wrangler secret put TURNSTILE_SECRET`
+
+[env.dev.vars]
+TURNSTILE_SITE_KEY = "1x00000000000000000000AA"
+TURNSTILE_SECRET = "1x0000000000000000000000000000000AA"
+
+[[send_email]]
+name = "EMAIL"
+destination_address = "your-email@example.com"

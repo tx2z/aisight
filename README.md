@@ -21,9 +21,22 @@
   <img src="https://img.shields.io/badge/App%20Store-Coming%20Soon-black?style=for-the-badge&logo=apple&logoColor=white" alt="Coming Soon on the App Store">
 </p>
 
+<p align="center">
+  <img src="web/static/images/screenshots/home.png" alt="AISight on iPhone — home screen" width="220">
+  &nbsp;&nbsp;
+  <img src="web/static/images/screenshots/answer.png" alt="AISight on iPhone — answer with citations" width="220">
+</p>
+<p align="center">
+  <img src="web/static/images/screenshots/mac-answer.png" alt="AISight on Mac — answer with source cards" width="600">
+</p>
+
 ---
 
 A native iOS 26 / macOS 26 answer engine that combines web search with on-device AI. AISight searches the web via a self-hosted [SearXNG](https://github.com/searxng/searxng) instance and synthesizes answers using Apple's FoundationModels framework (Apple Intelligence) — all AI processing happens privately on your device. Zero external dependencies.
+
+## Why?
+
+Every major answer engine — Perplexity, Google AI Overviews, Bing Copilot — sends your queries to cloud AI services, building a profile of what you search. AISight takes a different approach: the AI runs entirely on your device via Apple Intelligence, so your questions never leave your phone or Mac. You control the search backend too (self-hosted SearXNG), meaning no single company sees both what you search and what you ask about it. It's the answer engine for people who think privacy shouldn't be a premium feature.
 
 ## Features
 
@@ -102,6 +115,10 @@ All AI inference runs on-device via Apple Intelligence. Data that leaves your de
 2. HTTP requests to source URLs for content fetching
 
 No analytics. No tracking. No third-party AI services.
+
+## Topics
+
+`privacy-first` `perplexity-alternative` `local-ai` `no-tracking` `on-device-ai` `apple-intelligence` `searxng` `answer-engine` `swiftui` `ios` `macos` `swift`
 
 ## License
 

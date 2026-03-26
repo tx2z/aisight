@@ -1,7 +1,7 @@
 import Foundation
 
 enum AppConfig: Sendable {
-    // Production SearXNG instance (Hetzner Helsinki, Caddy auto-HTTPS)
+    // Default SearXNG instance — override in Settings or set your own
     // For local dev: docker-compose up in /searxng folder → http://localhost:8888
     static let defaultSearXNGBaseURL = "https://search.private-search-intelligence.app"
 
