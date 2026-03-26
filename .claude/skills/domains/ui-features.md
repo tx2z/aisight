@@ -61,6 +61,8 @@ AISight follows MVVM with SwiftUI views and `@Observable` view models. The app h
 |----------|------|-------------|
 | `query` | `String` | Current query text (bound to TextField) |
 | `sources` | `[SearXNGResult]` | Current search results for display |
+| `queryGroups` | `[SearchQueryGroup]` | Query groups from multi-search/deep search, organized by query |
+| `usedSourceURLs` | `Set<String>` | URLs of sources the AI cited in the answer (for highlighting used vs unused) |
 | `errorMessage` | `String?` | User-facing error message |
 | `answerSession` | `AnswerSession` | Owned answer session |
 | `isSearching` | `Bool` | True during SearXNG search |
@@ -75,7 +77,7 @@ AISight follows MVVM with SwiftUI views and `@Observable` view models. The app h
 Branches based on `isDeepSearch`:
 
 **Normal mode:**
-1. Reformulate → multiSearch → AnswerSession.generateAnswer() → save to history
+1. Reformulate → multiSearch → populate `sources`/`queryGroups` for UI → AnswerSession.generateAnswer() → track `usedSourceURLs` → save to history
 
 **Deep Search mode:**
 1. Reset deep search pipeline
@@ -188,6 +190,14 @@ Views extracted into dedicated structs following single-type-per-file pattern:
 - **HistoryView** → `HistoryDetailView` (separate file)
 - **ShimmerEffect** → `SearchSkeletonView` and `SkeletonBlock` (separate files)
 - **ServerStatusView** — **REMOVED** (settings simplified)
+
+## Recent Changes (2026-03-26)
+
+- **Custom server = all features free:** Server URL field unlocked for all users. "Activate and Test" saves URL only on successful connection test (rolls back on failure). "Use Default Server" resets to default and re-enables paywall.
+- **ProSettingsSection:** Three states: PRO active, custom server active (with "Support AISight — Get Pro" button), and free user (upgrade/restore).
+- **PaywallView:** "Custom search server" replaced with "Support AISight development". New "Or use your own SearXNG server" section explains the self-hosted option.
+- **SettingsView:** `hasURLChanged` computed property drives button label ("Activate and Test" vs "Test Connection"). `testConnection()` uses temp URL save + rollback pattern. `resetToDefaultServer()` extracted method.
+- **Placeholder styling:** TextField prompt uses `.foregroundStyle(.secondary)` for standard grey placeholder.
 
 ## Recent Changes (2026-03-25)
 

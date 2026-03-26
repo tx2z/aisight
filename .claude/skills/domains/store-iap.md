@@ -126,6 +126,14 @@ Shown as a `.sheet` with `reason: PaywallReason` parameter. Non-aggressive desig
 
 **Adding Setapp support:** Add `SETAPP` to build settings, add Setapp SDK init in the `#if SETAPP` block of `StoreManager.init()`.
 
+## Recent Changes (2026-03-26)
+
+- **Custom server = all features free:** Users who configure their own SearXNG server get unlimited searches and Deep Search without purchasing PRO. New `isUsingCustomServer` stored property on `StoreManager`, with `refreshCustomServerStatus()` method called after URL save/reset.
+- **Server URL unlocked for all users:** No longer PRO-gated. "Activate and Test" button saves URL only on successful connection (rolls back on failure). "Use Default Server" button resets to default.
+- **Support purchase for custom server users:** "Support AISight — Get Pro" button in ProSettingsSection for custom server users who want to support development.
+- **PaywallView updated:** "Custom search server" replaced with "Support AISight development". New "Or use your own SearXNG server" section.
+- **Test coverage expanded:** 18 StoreManager tests (custom server unlock/reset, invalid URL rejection, refresh reactivity), 29 SearXNGService tests (edge cases), 7 AppConfig tests. Total ~90 tests.
+
 ## Recent Changes (2026-03-25)
 
 - **Daily limit reduced:** 20 → 10 free searches/day.

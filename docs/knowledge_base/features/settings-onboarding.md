@@ -4,26 +4,28 @@
 
 ### SearXNG URL Configuration
 
-- Text field for entering SearXNG instance URL
+- Text field for entering SearXNG instance URL — **available to all users** (not PRO-gated)
 - Stored in UserDefaults key `"searxng_base_url"`
-- Falls back to `AppConfig.defaultSearXNGBaseURL` (`http://localhost:8888`)
-- Changes take effect immediately for subsequent searches
+- Falls back to `AppConfig.defaultSearXNGBaseURL` (`https://search.private-search-intelligence.app`)
+- **Custom server unlocks all features for free** (unlimited searches, Deep Search) — no purchase needed
 
-### Test Connection
+### Activate and Test / Use Default Server
 
-- Button that pings the configured SearXNG instance
-- Sends a test search query to verify the server responds
-- On success: shows "Connected" with response latency (e.g., "Connected - 120ms")
-- On failure: shows error message
+- **"Activate and Test"** button appears when URL differs from saved value
+  - Temporarily sets URL, tests connection
+  - On success: saves URL permanently, activates custom server features via `storeManager.refreshCustomServerStatus()`
+  - On failure: rolls back to previous URL, shows "Connection failed. Server not activated."
+- **"Test Connection"** button appears when URL matches saved value (re-test existing server)
+- **"Use Default Server"** button appears when URL differs from default — resets URL and re-enables paywall
+- Pressing Return in the text field triggers the same action as the button
 
-### Server Status Indicator
+### AISight Pro Section (ProSettingsSection)
 
 | State | Display |
 |-------|---------|
-| Reachable | Green circle, "Connected" |
-| Unreachable | Red circle, "Unreachable" |
-| Checking | Gray spinner, "Checking..." |
-| Not configured | Orange circle, "Not set" |
+| PRO purchased | "AISight Pro Active" with checkmark seal |
+| Custom server (not PRO) | "All features unlocked" + "Using your own search server" + "Support AISight — Get Pro" button |
+| Free user (default server) | "Searches used today: X / 10" + "Upgrade to AISight Pro" + "Restore Purchases" |
 
 ### Apple Intelligence Status
 

@@ -36,7 +36,7 @@
 
 | File | Path | Key Types | Responsibility |
 |------|------|-----------|---------------|
-| StoreManager.swift | `AISight/AISight/Core/Store/` | `StoreManager` | @MainActor @Observable: Pro status (StoreKit 2), daily query limit (UserDefaults), SETAPP compile-time flag |
+| StoreManager.swift | `AISight/AISight/Core/Store/` | `StoreManager` | @MainActor @Observable: Pro status (StoreKit 2), custom server detection, daily query limit (UserDefaults), SETAPP compile-time flag |
 
 ## Core/Fetching
 
@@ -61,14 +61,14 @@
 | StreamingAnswerView.swift | `AISight/AISight/Features/Search/` | `StreamingAnswerView` | Displays answer text as it streams from the model |
 | HistoryView.swift | `AISight/AISight/Features/History/` | `HistoryView` | List of past queries, swipe-delete, clear all |
 | HistoryViewModel.swift | `AISight/AISight/Features/History/` | `HistoryViewModel` | History data management |
-| SettingsView.swift | `AISight/AISight/Features/Settings/` | `SettingsView` | SearXNG URL config (Pro-gated), Test Connection, ProSettingsSection, Legal section, Contact Support |
-| ProSettingsSection.swift | `AISight/AISight/Features/Settings/` | `ProSettingsSection` | AISight Pro section: status display, upgrade button, restore purchases |
+| SettingsView.swift | `AISight/AISight/Features/Settings/` | `SettingsView` | SearXNG URL config (all users), Activate and Test / Use Default Server, ProSettingsSection, Legal section, Contact Support |
+| ProSettingsSection.swift | `AISight/AISight/Features/Settings/` | `ProSettingsSection` | AISight Pro section: Pro status, custom server status, "Support AISight — Get Pro" for custom server users, upgrade/restore buttons |
 | PrivacyPolicyView.swift | `AISight/AISight/Features/Settings/` | `PrivacyPolicyView` | Privacy policy legal document (12 sections) |
 | TermsOfUseView.swift | `AISight/AISight/Features/Settings/` | `TermsOfUseView` | Terms of use legal document (15 sections, includes Apple EULA) |
 | OnboardingView.swift | `AISight/AISight/Features/Onboarding/` | `OnboardingView` | First-launch flow with legal consent, sets hasSeenOnboarding |
 | HistoryDetailView.swift | `AISight/AISight/Features/History/` | `HistoryDetailView` | Detail view for a single history entry |
 | PaywallReason.swift | `AISight/AISight/Features/Store/` | `PaywallReason` | Enum: dailyLimitReached, deepSearchRequiresPro — customizes paywall messaging |
-| PaywallView.swift | `AISight/AISight/Features/Store/` | `PaywallView` | Pro upgrade paywall sheet: reason-based messaging, feature list, purchase button, restore, auto-dismiss |
+| PaywallView.swift | `AISight/AISight/Features/Store/` | `PaywallView` | Pro upgrade paywall sheet: reason-based messaging, feature list, "Or use your own server" option, purchase button, restore, auto-dismiss |
 | QueryLimitBannerView.swift | `AISight/AISight/Features/Store/` | `QueryLimitBannerView` | Small banner showing remaining daily searches (≤ 5) |
 
 ## UI Components
@@ -98,13 +98,14 @@
 | File | Path | Key Types | Responsibility |
 |------|------|-----------|---------------|
 | TestFixtures.swift | `AISight/AISightTests/` | `TestFixtures` (enum) | Factory methods: `makeResult()`, `makeInfobox()`, `decodeSearXNGResponse()` |
-| SearXNGServiceTests.swift | `AISight/AISightTests/` | `SearXNGServiceTests` | URL normalization, RRF ranking, deduplication (16 tests) |
+| SearXNGServiceTests.swift | `AISight/AISightTests/` | `SearXNGServiceTests` | URL normalization, RRF ranking, deduplication, edge cases (29 tests) |
 | SearXNGResultTests.swift | `AISight/AISightTests/` | `SearXNGResultTests` | Computed properties: engineCount, snippetLength, domain, id (11 tests) |
 | SearXNGResponseTests.swift | `AISight/AISightTests/` | `SearXNGResponseTests` | JSON decoding with snake_case mapping (3 tests) |
 | ContentFetcherTests.swift | `AISight/AISightTests/` | `ContentFetcherTests` | HTML stripping, entity decoding, truncation, fetch threshold (17 tests) |
 | SystemPromptTests.swift | `AISight/AISightTests/` | `SystemPromptTests` | Prompt building, language instruction parameterized tests (14 tests) |
 | CitationTextTests.swift | `AISight/AISightTests/` | `CitationTextTests` | Block parsing (headings, lists, code), attribution escaping (15 tests) |
-| StoreManagerTests.swift | `AISight/AISightTests/` | `StoreManagerTests` | Daily limit logic with isolated UserDefaults (5 tests) |
+| StoreManagerTests.swift | `AISight/AISightTests/` | `StoreManagerTests` | Daily limit, custom server unlock/reset, invalid URL rejection (18 tests) |
+| AppConfigTests.swift | `AISight/AISightTests/` | `AppConfigTests` | Config constants, snippet threshold ordering, tracking params (7 tests) |
 
 ## Important Notes
 

@@ -1,6 +1,6 @@
 # Manual Test Plan
 
-Run through these 16 scenarios before each release. All tests require a physical device with iPhone 15 Pro+ and Apple Intelligence enabled unless noted otherwise.
+Run through these 21 scenarios before each release. All tests require a physical device with iPhone 15 Pro+ and Apple Intelligence enabled unless noted otherwise.
 
 ---
 
@@ -138,6 +138,46 @@ Run through these 16 scenarios before each release. All tests require a physical
 **Steps:** Navigate to scrollable content. Scroll down, then back up.
 
 **Expected:** Tab bar minimizes on scroll down, reappears on scroll up (standard iOS 26 behavior).
+
+---
+
+## 17. Custom Server — Feature Unlock
+
+**Steps:** Enter a valid custom SearXNG URL → tap "Activate and Test" → wait for success.
+
+**Expected:** "Connected (Xms)" shown. ProSettingsSection shows "All features unlocked" + "Using your own search server". Deep Search toggle no longer shows "PRO" badge. Daily search counter hidden. "Use Default Server" button visible.
+
+---
+
+## 18. Custom Server — Failed Connection
+
+**Steps:** Enter an invalid URL (e.g., `https://not-real.example.com`) → tap "Activate and Test".
+
+**Expected:** "Connection failed. Server not activated." shown. Previous server URL restored. Features NOT unlocked. No state change.
+
+---
+
+## 19. Custom Server — Reset to Default
+
+**Steps:** After activating a custom server → tap "Use Default Server".
+
+**Expected:** URL resets to default. Daily limit re-activates. ProSettingsSection shows upgrade prompt again. Deep Search shows "PRO" badge.
+
+---
+
+## 20. Custom Server — Unlimited Searches
+
+**Steps:** Activate a custom server → perform 15+ searches.
+
+**Expected:** No daily limit warning. No paywall shown. All searches succeed. Counter stays at 0.
+
+---
+
+## 21. Support Purchase (Custom Server User)
+
+**Steps:** With custom server active → tap "Support AISight — Get Pro" in Settings.
+
+**Expected:** Paywall opens with "Or use your own SearXNG server" messaging. Can purchase or dismiss. Features remain unlocked regardless.
 
 ---
 

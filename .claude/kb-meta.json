@@ -1,8 +1,8 @@
 {
   "version": "2.0.0",
   "created": "2026-03-12",
-  "lastUpdate": "2026-03-25",
-  "lastCommitAnalyzed": "9fdd5bf",
+  "lastUpdate": "2026-03-26",
+  "lastCommitAnalyzed": "458302b",
   "project": {
     "name": "AISight",
     "stack": "Swift 6 / SwiftUI / FoundationModels / SwiftData / StoreKit 2",
@@ -61,6 +61,15 @@
     ]
   },
   "updateHistory": [
+    {
+      "date": "2026-03-26",
+      "commit": "458302b",
+      "action": "update",
+      "changes": {
+        "skills": ["domains/store-iap.md", "domains/ui-features.md", "references/file-index.md"],
+        "humanDocs": ["features/settings-onboarding.md", "testing/manual-test-plan.md"]
+      }
+    },
     {
       "date": "2026-03-25",
       "commit": "9fdd5bf",
