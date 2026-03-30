@@ -126,6 +126,15 @@ private struct SearchContentView: View {
                             .animation(.easeIn(duration: 0.2), value: viewModel.streamingText.isEmpty)
                         }
 
+                        if !viewModel.streamingText.isEmpty && !viewModel.isGenerating {
+                            AnswerActionsView(
+                                wasRegenerated: viewModel.wasRegenerated,
+                                canRegenerate: viewModel.canRegenerate,
+                                onRegenerate: { viewModel.regenerateAnswer(modelContext: modelContext) },
+                                onSearchAgain: handleSearch
+                            )
+                        }
+
                         if !viewModel.queryGroups.isEmpty {
                             SourceResultsSection(
                                 queryGroups: viewModel.queryGroups,
@@ -156,7 +165,7 @@ private struct SearchContentView: View {
                     .padding()
                     #if os(macOS)
                     .frame(maxWidth: 720)
-                    .frame(maxWidth: .infinity)
+                    .frame(maxWidth: .infinity, alignment: .center)
                     #endif
                 }
                 #if os(iOS)

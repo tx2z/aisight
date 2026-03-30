@@ -22,6 +22,7 @@ final class SearchViewModel {
     private let searchService: SearXNGService
     private let reformulator: QueryReformulator
     private var currentTask: Task<Void, Never>?
+    private var lastSearchOutput: SearchOutput?
 
     /// Convenience accessors forwarded from the active pipeline.
     var streamingText: String {
@@ -35,6 +36,16 @@ final class SearchViewModel {
 
     var isDeepSearch: Bool = false
     var usedSourceURLs: Set<String> = []
+
+    /// Whether the last answer was auto-regenerated due to a failed grounding check.
+    var wasRegenerated: Bool {
+        isDeepSearch ? deepSearchPipeline.wasRegenerated : answerSession.wasRegenerated
+    }
+
+    /// Whether a regeneration (same sources, new LLM pass) is possible.
+    var canRegenerate: Bool {
+        lastSearchOutput != nil && !isGenerating && !isSearching
+    }
 
     /// Current deep search step description, nil when not in deep search or idle.
     var searchStepDescription: String? {
@@ -91,6 +102,7 @@ final class SearchViewModel {
             if let searchOutput {
                 self.sources = searchOutput.results
                 self.queryGroups = searchOutput.queryGroups
+                self.lastSearchOutput = searchOutput
             }
 
             if let pipelineError = deepSearchPipeline.error {
@@ -109,12 +121,7 @@ final class SearchViewModel {
 
             // Save to history on success
             if deepSearchPipeline.error == nil && !deepSearchPipeline.streamingText.isEmpty {
-                let allSources = queryGroups.flatMap(\.results)
-                let sourceInfos = allSources.map {
-                    SourceInfo(url: $0.url, title: $0.title, engine: $0.engine, wasUsed: self.usedSourceURLs.contains($0.url))
-                }
-                let store = QueryHistoryStore(modelContext: modelContext)
-                store.save(query: trimmedQuery, answer: deepSearchPipeline.streamingText, sources: sourceInfos, isDeepSearch: true)
+                saveToHistory(query: trimmedQuery, answer: deepSearchPipeline.streamingText, modelContext: modelContext, isDeepSearch: true)
             }
         }
     }
@@ -138,6 +145,7 @@ final class SearchViewModel {
                 guard !Task.isCancelled else { return }
                 self.sources = searchOutput.results
                 self.queryGroups = searchOutput.queryGroups
+                self.lastSearchOutput = searchOutput
                 self.isSearching = false
             } catch let error as SearchError {
                 guard !Task.isCancelled else { return }
@@ -177,12 +185,49 @@ final class SearchViewModel {
 
             // 5. Save to history on success
             if answerSession.error == nil && !answerSession.streamingText.isEmpty {
-                let allSources = queryGroups.flatMap(\.results)
-                let sourceInfos = allSources.map {
-                    SourceInfo(url: $0.url, title: $0.title, engine: $0.engine, wasUsed: self.usedSourceURLs.contains($0.url))
-                }
-                let store = QueryHistoryStore(modelContext: modelContext)
-                store.save(query: trimmedQuery, answer: answerSession.streamingText, sources: sourceInfos)
+                saveToHistory(query: trimmedQuery, answer: answerSession.streamingText, modelContext: modelContext)
+            }
+        }
+    }
+
+    // MARK: - History
+
+    private func saveToHistory(query: String, answer: String, modelContext: ModelContext, isDeepSearch: Bool = false) {
+        let allSources = queryGroups.flatMap(\.results)
+        let sourceInfos = allSources.map {
+            SourceInfo(url: $0.url, title: $0.title, engine: $0.engine, wasUsed: self.usedSourceURLs.contains($0.url))
+        }
+        let store = QueryHistoryStore(modelContext: modelContext)
+        store.save(query: query, answer: answer, sources: sourceInfos, isDeepSearch: isDeepSearch)
+    }
+
+    // MARK: - Regenerate (same sources, new LLM pass)
+
+    func regenerateAnswer(modelContext: ModelContext) {
+        guard let searchOutput = lastSearchOutput else { return }
+        let trimmedQuery = query.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmedQuery.isEmpty else { return }
+
+        currentTask?.cancel()
+        currentTask = Task {
+            answerSession.reset()
+            errorMessage = nil
+
+            await answerSession.generateAnswer(for: trimmedQuery, with: searchOutput, language: language)
+
+            guard !Task.isCancelled else { return }
+
+            if let answerError = answerSession.error {
+                errorMessage = userFacingMessage(for: answerError)
+            }
+
+            if answerSession.error == nil && answerSession.streamingText.isEmpty {
+                errorMessage = String(localized: "The model returned an empty response. Try rephrasing your question.")
+            }
+
+            // Update history with new answer
+            if answerSession.error == nil && !answerSession.streamingText.isEmpty {
+                saveToHistory(query: trimmedQuery, answer: answerSession.streamingText, modelContext: modelContext)
             }
         }
     }
@@ -198,6 +243,7 @@ final class SearchViewModel {
         errorMessage = nil
         isSearching = false
         usedSourceURLs = []
+        lastSearchOutput = nil
         answerSession.reset()
         deepSearchPipeline.reset()
     }
