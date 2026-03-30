@@ -36,24 +36,32 @@ final class AnswerSession {
         defer { isGenerating = false }
 
         do {
-            // 1. Optionally fetch full content for short snippets
-            var sources: [(index: Int, title: String, snippet: String, url: String)] = []
-            for (i, result) in searchOutput.results.prefix(AppConfig.maxResults).enumerated() {
-                var snippet = result.content ?? ""
-                if await contentFetcher.shouldFetchFullContent(snippet: snippet) {
-                    if let fullContent = try? await contentFetcher.fetchContent(from: result.url) {
-                        snippet = fullContent
+            // 1. Fetch full content for short snippets (concurrent)
+            let results = Array(searchOutput.results.prefix(AppConfig.maxResults))
+            let maxSnippet = AppConfig.maxSnippetLength
+            let fetcher = contentFetcher
+            let sources: [(index: Int, title: String, snippet: String, url: String)]
+            sources = await withTaskGroup(of: (Int, String, String, String).self) { group in
+                for (i, result) in results.enumerated() {
+                    group.addTask {
+                        var snippet = result.content ?? ""
+                        if await fetcher.shouldFetchFullContent(snippet: snippet) {
+                            if let fullContent = try? await fetcher.fetchContent(from: result.url) {
+                                snippet = fullContent
+                            }
+                        }
+                        if snippet.count > maxSnippet {
+                            snippet = String(snippet.prefix(maxSnippet))
+                        }
+                        return (i + 1, result.title, snippet, result.url)
                     }
                 }
-                if snippet.count > AppConfig.maxSnippetLength {
-                    snippet = String(snippet.prefix(AppConfig.maxSnippetLength))
+                var collected: [(Int, String, String, String)] = []
+                for await result in group {
+                    collected.append(result)
                 }
-                sources.append((
-                    index: i + 1,
-                    title: result.title,
-                    snippet: snippet,
-                    url: result.url
-                ))
+                return collected.sorted { $0.0 < $1.0 }
+                    .map { (index: $0.0, title: $0.1, snippet: $0.2, url: $0.3) }
             }
 
             guard !Task.isCancelled else { return }
