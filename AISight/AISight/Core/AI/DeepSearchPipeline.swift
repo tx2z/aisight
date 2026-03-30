@@ -9,6 +9,7 @@ final class DeepSearchPipeline {
     var isGenerating: Bool = false
     var currentStep: DeepSearchStep = .idle
     var error: AnswerError? = nil
+    private(set) var wasRegenerated: Bool = false
 
     enum DeepSearchStep: Equatable {
         case idle
@@ -35,6 +36,7 @@ final class DeepSearchPipeline {
         isGenerating = false
         currentStep = .idle
         error = nil
+        wasRegenerated = false
     }
 
     /// Execute the full deep search pipeline: reformulate → search → research → synthesize.
@@ -209,6 +211,12 @@ final class DeepSearchPipeline {
             for try await partial in stream {
                 guard !Task.isCancelled else { break }
                 streamingText = partial.content
+
+                // Stop generation if model starts looping
+                if let trimmed = AnswerValidator.detectAndTrimRepetition(streamingText) {
+                    streamingText = trimmed
+                    break
+                }
             }
         } catch let genError as LanguageModelSession.GenerationError {
             self.error = generationErrorToAnswerError(genError)

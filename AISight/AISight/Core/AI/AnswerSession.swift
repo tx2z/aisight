@@ -8,6 +8,7 @@ final class AnswerSession {
     var streamingText: String = ""
     var isGenerating: Bool = false
     private(set) var error: AnswerError? = nil
+    private(set) var wasRegenerated: Bool = false
 
     private let contentFetcher: ContentFetcher
 
@@ -23,6 +24,7 @@ final class AnswerSession {
         streamingText = ""
         isGenerating = false
         error = nil
+        wasRegenerated = false
     }
 
     static var availabilityStatus: SystemLanguageModel.Availability {
@@ -33,6 +35,7 @@ final class AnswerSession {
         streamingText = ""
         isGenerating = true
         error = nil
+        wasRegenerated = false
         defer { isGenerating = false }
 
         do {
@@ -66,23 +69,25 @@ final class AnswerSession {
 
             guard !Task.isCancelled else { return }
 
-            // 2. Build prompt and create session
-            let systemPromptText = SystemPrompt.build(
-                query: query,
-                sources: sources,
-                directAnswers: searchOutput.directAnswers,
-                infoboxes: searchOutput.infoboxes,
-                language: language
-            )
-            let session = LanguageModelSession(
-                instructions: systemPromptText
+            // 2. Build prompt and generate answer
+            try await streamAnswer(
+                query: query, sources: sources, searchOutput: searchOutput,
+                language: language, strict: false
             )
 
-            // 3. Stream response
-            let stream = session.streamResponse(to: query)
-            for try await partial in stream {
-                guard !Task.isCancelled else { break }
-                streamingText = partial.content
+            guard !Task.isCancelled else { return }
+
+            // 3. Source grounding check — regenerate if answer is poorly grounded
+            let groundingScore = AnswerValidator.checkSourceGrounding(
+                answer: streamingText, sources: sources
+            )
+            if groundingScore < 0.3 && !streamingText.isEmpty {
+                wasRegenerated = true
+                streamingText = ""
+                try await streamAnswer(
+                    query: query, sources: sources, searchOutput: searchOutput,
+                    language: language, strict: true
+                )
             }
 
             guard !Task.isCancelled else { return }
@@ -91,6 +96,39 @@ final class AnswerSession {
             self.error = generationErrorToAnswerError(genError)
         } catch {
             self.error = .generationFailed(error.localizedDescription)
+        }
+    }
+
+    /// Stream a response from a fresh LLM session with repetition detection.
+    private func streamAnswer(
+        query: String,
+        sources: [(index: Int, title: String, snippet: String, url: String)],
+        searchOutput: SearchOutput,
+        language: String,
+        strict: Bool
+    ) async throws {
+        let systemPromptText = strict
+            ? SystemPrompt.buildStrict(
+                query: query, sources: sources,
+                directAnswers: searchOutput.directAnswers,
+                infoboxes: searchOutput.infoboxes, language: language
+            )
+            : SystemPrompt.build(
+                query: query, sources: sources,
+                directAnswers: searchOutput.directAnswers,
+                infoboxes: searchOutput.infoboxes, language: language
+            )
+
+        let session = LanguageModelSession(instructions: systemPromptText)
+        let stream = session.streamResponse(to: query)
+        for try await partial in stream {
+            guard !Task.isCancelled else { break }
+            streamingText = partial.content
+
+            if let trimmed = AnswerValidator.detectAndTrimRepetition(streamingText) {
+                streamingText = trimmed
+                break
+            }
         }
     }
 }

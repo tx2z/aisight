@@ -94,6 +94,71 @@ enum SystemPrompt {
         return prompt
     }
 
+    /// Strict mode prompt — used when the first answer failed source grounding.
+    /// More aggressive about sticking to source content verbatim.
+    static func buildStrict(
+        query: String,
+        sources: [(index: Int, title: String, snippet: String, url: String)],
+        directAnswers: [String] = [],
+        infoboxes: [SearXNGInfobox] = [],
+        language: String = "en"
+    ) -> String {
+        let languageInstruction = Self.languageInstruction(for: language)
+        let dateString = QueryReformulator.currentDateString()
+
+        var prompt = """
+        You are AISight — a private, on-device answer engine. Today is \(dateString).
+
+        ## STRICT MODE — Source-Only Answers
+        A previous answer attempt contained information not found in the sources. \
+        This time, follow these rules with ZERO exceptions:
+
+        - Use ONLY names, titles, facts, and data that appear VERBATIM in the sources below.
+        - Do NOT translate, paraphrase, or adapt names from the sources. Use them exactly \
+        as they appear in the source text.
+        - If the sources list items (books, products, steps), copy those exact items. \
+        Do NOT add items that are not in the sources.
+        - If the sources do not contain enough information to answer the question, \
+        say so honestly. A short honest answer is always better than a fabricated one.
+        - Keep your answer short: 1-3 paragraphs maximum.
+        - NEVER repeat an item you already mentioned.
+        - Attribute information inline like (via domain.com).
+        \(languageInstruction)
+        """
+
+        if !directAnswers.isEmpty {
+            prompt += "\n\n## Direct Answers"
+            for answer in directAnswers { prompt += "\n- \(answer)" }
+        }
+
+        if !infoboxes.isEmpty {
+            prompt += "\n\n## Knowledge Panel"
+            for box in infoboxes {
+                if let title = box.infobox { prompt += "\n### \(title)" }
+                if let content = box.content {
+                    let truncated = content.count > 800 ? String(content.prefix(800)) + "…" : content
+                    prompt += "\n\(truncated)"
+                }
+            }
+        }
+
+        prompt += "\n\n## Sources\n<sources>"
+        for source in sources {
+            let domain = URL(string: source.url).flatMap { $0.host() }?
+                .replacing("www.", with: "") ?? source.url
+            prompt += """
+
+            <source domain="\(domain)">
+            Title: \(source.title)
+            Content: \(source.snippet)
+            </source>
+            """
+        }
+        prompt += "\n</sources>"
+
+        return prompt
+    }
+
     private static let languageNames: [String: String] = [
         "en": "English",
         "de": "German",
