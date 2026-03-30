@@ -39,6 +39,11 @@ enum SystemPrompt {
         - If the sources are relevant but incomplete, you may supplement with widely known \
         general knowledge without attribution.
         - NEVER invent specific statistics, quotes, dates, or claims that aren't in the sources.
+        - When listing items (books, steps, products, etc.), ONLY include items explicitly \
+        mentioned in the sources. Never pad a list with guessed or fabricated items.
+        - It is better to give a shorter, accurate answer than a longer one with invented details. \
+        If sources don't fully cover the question, say what you found and note the gap.
+        - NEVER repeat items you have already mentioned. If you notice you're looping, stop.
         - Use **bold** for key terms and bullet lists when listing items.
         - Write in clear, accessible language.
         - NEVER end with follow-up invitations like "Let me know if you have more questions" \

@@ -48,7 +48,7 @@ final class SearXNGService: SearchService, Sendable {
             throw SearchError.invalidResponse
         }
 
-        let processed = processResults(searxResponse.results)
+        let processed = processResults(searxResponse.results, query: query)
 
         guard !processed.isEmpty else {
             throw SearchError.noResults
@@ -100,7 +100,8 @@ final class SearXNGService: SearchService, Sendable {
         }
 
         // Deduplicate and rank the merged results for the answer session
-        let merged = processResults(allResults)
+        // Use first query (original) for relevance boosting
+        let merged = processResults(allResults, query: queries.first)
 
         guard !merged.isEmpty else {
             throw SearchError.noResults
@@ -144,8 +145,9 @@ final class SearXNGService: SearchService, Sendable {
 
     // MARK: - Result Processing
 
-    /// Filter, deduplicate, and rank results using Reciprocal Rank Fusion.
-    func processResults(_ raw: [SearXNGResult]) -> [SearXNGResult] {
+    /// Filter, deduplicate, and rank results using Reciprocal Rank Fusion
+    /// with title relevance boosting.
+    func processResults(_ raw: [SearXNGResult], query: String? = nil) -> [SearXNGResult] {
         // 1. Filter out results with too-short or empty snippets
         let filtered = raw.filter { $0.snippetLength >= AppConfig.minSnippetLength }
 
@@ -168,8 +170,9 @@ final class SearXNGService: SearchService, Sendable {
             }
         }
 
-        // 4. Compute RRF scores and rank
+        // 4. Compute RRF scores with title relevance boost
         let k = AppConfig.rrfK
+        let queryTerms = query.map { tokenize($0) } ?? []
         var scored: [(result: SearXNGResult, rrfScore: Double)] = []
         for (normalizedURL, result) in bestByURL {
             var rrfScore: Double = 0
@@ -177,6 +180,14 @@ final class SearXNGService: SearchService, Sendable {
                 if let rank = rankedURLs[normalizedURL] {
                     rrfScore += 1.0 / (k + Double(rank))
                 }
+            }
+            // Boost results whose title closely matches query terms
+            if !queryTerms.isEmpty {
+                let titleTerms = tokenize(result.title)
+                let overlap = queryTerms.filter { titleTerms.contains($0) }
+                let relevance = Double(overlap.count) / Double(queryTerms.count)
+                // Up to 50% boost for perfect title match
+                rrfScore *= (1.0 + relevance * 0.5)
             }
             scored.append((result, rrfScore))
         }
@@ -215,6 +226,15 @@ final class SearXNGService: SearchService, Sendable {
         }
 
         return rankings
+    }
+
+    /// Tokenize text into lowercase words for relevance matching.
+    func tokenize(_ text: String) -> Set<String> {
+        Set(
+            text.lowercased()
+                .components(separatedBy: .alphanumerics.inverted)
+                .filter { $0.count >= 3 }
+        )
     }
 
     /// Normalize URL for deduplication — strip scheme, www, trailing slash, tracking params.

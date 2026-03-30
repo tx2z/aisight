@@ -5,7 +5,7 @@ actor ContentFetcher {
     private let snippetThreshold: Int
     private let maxSnippetLength: Int
 
-    init(timeout: TimeInterval = 10, snippetThreshold: Int = 150, maxSnippetLength: Int = 1600) {
+    init(timeout: TimeInterval = 10, snippetThreshold: Int = 150, maxSnippetLength: Int = 1200) {
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = timeout
         self.urlSession = URLSession(configuration: configuration)
@@ -97,6 +97,14 @@ actor ContentFetcher {
 
     func truncate(_ text: String, to maxLength: Int) -> String {
         guard text.count > maxLength else { return text }
-        return String(text.prefix(maxLength))
+        let truncated = String(text.prefix(maxLength))
+        // Cut at last sentence boundary to avoid incomplete thoughts
+        if let lastSentenceEnd = truncated.lastIndex(where: { $0 == "." || $0 == "?" || $0 == "!" }) {
+            let afterEnd = truncated.index(after: lastSentenceEnd)
+            if afterEnd > truncated.startIndex {
+                return String(truncated[..<afterEnd])
+            }
+        }
+        return truncated
     }
 }

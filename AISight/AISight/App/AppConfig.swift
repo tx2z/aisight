@@ -21,7 +21,7 @@ enum AppConfig: Sendable {
     static let maxResults = 5
     static let defaultSearchLanguage = "en"
     static let searchTimeoutSeconds: TimeInterval = 10
-    static let maxSnippetLength = 1600 // ~400 tokens
+    static let maxSnippetLength = 1200 // ~300 tokens — leaves more generation room on 4K context models
     static let snippetThreshold = 150 // chars; skip full fetch if snippet > this
     static let minSnippetLength = 30 // discard results with shorter snippets
 
