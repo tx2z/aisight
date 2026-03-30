@@ -12,6 +12,7 @@ struct TypingCursor: View {
         } animation: { _ in
             reduceMotion ? nil : .easeInOut(duration: 0.5)
         }
+        .accessibilityLabel(Text("Generating response"))
     }
 }
 
