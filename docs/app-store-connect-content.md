@@ -81,28 +81,17 @@ AISight — Search smarter. Stay private.
 
 ### What's New (4,000 chars)
 ```
-The first answer engine that's 100% on your device.
+Smarter search, better answers.
 
-Ask any question — AISight searches the web, reads the results, and writes a clear answer with real citations. All powered by Apple Intelligence. Nothing leaves your device for AI processing.
+This update significantly improves answer quality:
 
-What's inside:
-● AI-powered answers with numbered citations you can verify
-● Private web search — no tracking, no account, no ads
-● 100% on-device AI processing via Apple Intelligence
-● Deep Search for comprehensive, multi-source answers
-● Bring your own SearXNG server → all features free
-● Full search history stored securely on your device
-● Available in 9 languages
+● Smarter search ranking — results that closely match your question now rank higher, so the AI works with better sources
+● More accurate answers — stronger guardrails prevent the AI from inventing items in lists, repeating itself, or padding answers with guessed information
+● Better query understanding — your specific terms and qualifiers are preserved across all search queries, so you get results about exactly what you asked
+● Faster source loading — content from web pages is now fetched in parallel instead of one at a time
+● Cleaner source content — text from web pages is now cut at sentence boundaries instead of mid-word
 
-What to try first:
-→ Ask any question and watch AI write your answer in real time
-→ Tap a citation to verify the source
-→ Try Deep Search for multi-source research
-→ Connect your own server in Settings — everything unlocks
-
-Our promise: bring your own server and every feature is free. No catch. We don't want your data — we want to prove that private search can work.
-
-Love it? A rating on the App Store goes a long way for a solo indie developer. Found a bug? Tap Settings → Contact Support. We read everything.
+The result: more precise, more reliable answers — especially for specific questions like book series reading orders, step-by-step instructions, and detailed lists.
 ```
 
 ### Copyright
@@ -317,24 +306,17 @@ AISight — Schlauer suchen. Privat bleiben.
 
 ### What's New (4,000 chars)
 ```
-Die erste Antwort-Suchmaschine, die zu 100 % auf deinem Gerät läuft.
+Intelligentere Suche, bessere Antworten.
 
-Stell eine Frage — AISight durchsucht das Web, liest die Ergebnisse und schreibt eine klare Antwort mit echten Quellenangaben. Alles mit Apple Intelligence. Nichts verlässt dein Gerät für KI-Verarbeitung.
+Dieses Update verbessert die Antwortqualität deutlich:
 
-Das steckt drin:
-● KI-Antworten mit nummerierten Quellenangaben zum Überprüfen
-● Private Websuche — kein Tracking, kein Konto, keine Werbung
-● 100 % On-Device-KI-Verarbeitung mit Apple Intelligence
-● Deep Search für umfassende Antworten aus mehreren Quellen
-● Eigenen SearXNG-Server verbinden → alle Funktionen kostenlos
-● Kompletter Suchverlauf sicher auf deinem Gerät gespeichert
-● Verfügbar in 9 Sprachen
+● Intelligenteres Such-Ranking — Ergebnisse, die genau zu deiner Frage passen, werden jetzt höher eingestuft, damit die KI mit besseren Quellen arbeitet
+● Genauere Antworten — stärkere Leitplanken verhindern, dass die KI Einträge in Listen erfindet, sich wiederholt oder Antworten mit geratenen Informationen auffüllt
+● Besseres Anfrageverständnis — deine spezifischen Begriffe und Einschränkungen bleiben in allen Suchanfragen erhalten, damit du Ergebnisse genau zu deinem Thema bekommst
+● Schnelleres Laden der Quellen — Inhalte von Webseiten werden jetzt parallel statt nacheinander abgerufen
+● Sauberere Quelleninhalte — Texte von Webseiten werden jetzt an Satzgrenzen gekürzt statt mitten im Wort
 
-Probier das zuerst:
-→ Stell eine Frage und schau zu, wie die KI deine Antwort in Echtzeit schreibt
-→ Tippe auf eine Quellenangabe, um die Quelle zu prüfen
-→ Teste Deep Search für umfassende Recherche
-→ Verbinde deinen eigenen Server in den Einstellungen — alles wird freigeschaltet
+Das Ergebnis: präzisere, zuverlässigere Antworten — besonders bei spezifischen Fragen wie Lesereihenfolgen von Buchserien, Schritt-für-Schritt-Anleitungen und detaillierten Listen.
 
 Unser Versprechen: Verbinde deinen eigenen Server und alle Funktionen sind kostenlos. Kein Haken. Wir wollen deine Daten nicht — wir möchten beweisen, dass private Suche funktioniert.
 
@@ -421,26 +403,17 @@ AISight — Busca mejor. Mantente en privado.
 
 ### What's New (4,000 chars)
 ```
-El primer motor de respuestas 100% en tu dispositivo.
+Búsqueda más inteligente, mejores respuestas.
 
-Haz cualquier pregunta — AISight busca en la web, lee los resultados y redacta una respuesta clara con citas reales. Todo con Apple Intelligence. Nada sale de tu dispositivo para el procesamiento de IA.
+Esta actualización mejora significativamente la calidad de las respuestas:
 
-Qué incluye:
-● Respuestas con IA y citas numeradas que puedes verificar
-● Búsqueda web privada — sin rastreo, sin cuenta, sin anuncios
-● Procesamiento de IA 100% en tu dispositivo con Apple Intelligence
-● Deep Search para respuestas completas de múltiples fuentes
-● Conecta tu propio servidor SearXNG → todas las funciones gratis
-● Historial completo guardado de forma segura en tu dispositivo
-● Disponible en 9 idiomas
+● Ranking de búsqueda más inteligente — los resultados que coinciden mejor con tu pregunta ahora aparecen primero, para que la IA trabaje con mejores fuentes
+● Respuestas más precisas — nuevas protecciones evitan que la IA invente elementos en listas, se repita o rellene respuestas con información inventada
+● Mejor comprensión de consultas — tus términos específicos y matices se preservan en todas las búsquedas, para que obtengas resultados exactamente sobre lo que preguntaste
+● Carga de fuentes más rápida — el contenido de las páginas web ahora se obtiene en paralelo en lugar de una por una
+● Contenido de fuentes más limpio — los textos de páginas web ahora se cortan en límites de oración en lugar de a mitad de palabra
 
-Qué probar primero:
-→ Haz cualquier pregunta y mira cómo la IA escribe tu respuesta en tiempo real
-→ Toca una cita para verificar la fuente
-→ Prueba Deep Search para investigación de múltiples fuentes
-→ Conecta tu propio servidor en Ajustes — todo se desbloquea
-
-Nuestra promesa: conecta tu propio servidor y todas las funciones son gratis. Sin trampas. No queremos tus datos — queremos demostrar que la búsqueda privada funciona.
+El resultado: respuestas más precisas y fiables — especialmente para preguntas específicas como órdenes de lectura de sagas, instrucciones paso a paso y listas detalladas.
 
 ¿Te gusta? Una reseña en la App Store ayuda mucho a un desarrollador indie. ¿Encontraste un error? Toca Ajustes → Contactar Soporte. Leemos todo.
 ```
@@ -525,26 +498,17 @@ AISight — Cherchez mieux. Protégez votre vie privée.
 
 ### What's New (4,000 chars)
 ```
-Le premier moteur de réponse 100% sur votre appareil.
+Recherche plus intelligente, meilleures réponses.
 
-Posez n'importe quelle question — AISight recherche le web, lit les résultats et rédige une réponse claire avec de vraies citations. Le tout propulsé par Apple Intelligence. Rien ne quitte votre appareil pour le traitement IA.
+Cette mise à jour améliore considérablement la qualité des réponses :
 
-Contenu de cette version :
-● Réponses IA avec citations numérotées vérifiables
-● Recherche web privée — sans pistage, sans compte, sans pub
-● Traitement IA 100% sur appareil via Apple Intelligence
-● Deep Search pour des réponses complètes multi-sources
-● Connectez votre propre serveur SearXNG → toutes les fonctionnalités gratuites
-● Historique de recherche complet stocké sur votre appareil
-● Disponible en 9 langues
+● Classement de recherche plus intelligent — les résultats qui correspondent le mieux à votre question sont désormais mieux classés, pour que l'IA travaille avec de meilleures sources
+● Réponses plus précises — des garde-fous renforcés empêchent l'IA d'inventer des éléments dans les listes, de se répéter ou de compléter les réponses avec des informations devinées
+● Meilleure compréhension des requêtes — vos termes spécifiques et qualificatifs sont préservés dans toutes les recherches, pour des résultats exactement sur votre sujet
+● Chargement des sources plus rapide — le contenu des pages web est désormais récupéré en parallèle au lieu d'un par un
+● Contenu des sources plus propre — les textes des pages web sont désormais coupés aux limites de phrase au lieu d'en plein milieu d'un mot
 
-À essayer en premier :
-→ Posez une question et regardez l'IA rédiger votre réponse en temps réel
-→ Touchez une citation pour vérifier la source
-→ Essayez Deep Search pour une recherche multi-sources
-→ Connectez votre propre serveur dans Réglages — tout se débloque
-
-Notre promesse : amenez votre propre serveur et toutes les fonctionnalités sont gratuites. Sans piège. Nous ne voulons pas vos données — nous voulons prouver que la recherche privée fonctionne.
+Le résultat : des réponses plus précises et plus fiables — surtout pour les questions spécifiques comme les ordres de lecture de séries, les instructions étape par étape et les listes détaillées.
 
 Vous aimez AISight ? Une note sur l'App Store aide énormément une petite équipe indépendante. Un bug ? Allez dans Réglages → Contacter le support. Nous lisons tout.
 ```
@@ -629,26 +593,17 @@ AISight — Cerca meglio. Resta privato.
 
 ### What's New (4,000 chars)
 ```
-Il primo motore di risposte 100% sul tuo dispositivo.
+Ricerca più intelligente, risposte migliori.
 
-Fai qualsiasi domanda — AISight cerca sul web, legge i risultati e scrive una risposta chiara con citazioni reali. Tutto con Apple Intelligence. Nulla lascia il tuo dispositivo per l'elaborazione IA.
+Questo aggiornamento migliora significativamente la qualità delle risposte:
 
-Cosa troverai:
-● Risposte IA con citazioni numerate che puoi verificare
-● Ricerca web privata — nessun tracciamento, nessun account, nessuna pubblicità
-● Elaborazione IA 100% sul dispositivo con Apple Intelligence
-● Deep Search per risposte complete e multi-fonte
-● Collega il tuo server SearXNG → tutte le funzionalità gratis
-● Cronologia completa archiviata in modo sicuro sul dispositivo
-● Disponibile in 9 lingue
+● Classificazione dei risultati più intelligente — i risultati che corrispondono meglio alla tua domanda ora hanno la priorità, così l'IA lavora con fonti migliori
+● Risposte più accurate — protezioni più forti impediscono all'IA di inventare voci nelle liste, ripetersi o completare le risposte con informazioni indovinate
+● Migliore comprensione delle ricerche — i tuoi termini specifici e le sfumature vengono preservati in tutte le ricerche, per risultati esattamente su ciò che hai chiesto
+● Caricamento delle fonti più rapido — i contenuti delle pagine web vengono ora recuperati in parallelo anziché uno alla volta
+● Contenuti delle fonti più puliti — i testi delle pagine web vengono ora tagliati ai confini di frase anziché a metà parola
 
-Da provare subito:
-→ Fai una domanda e guarda l'IA scrivere la risposta in tempo reale
-→ Tocca una citazione per verificare la fonte
-→ Prova Deep Search per ricerche approfondite
-→ Collega il tuo server nelle Impostazioni — tutto si sblocca
-
-La nostra promessa: porta il tuo server e tutte le funzionalità sono gratis. Nessun trucco. Non vogliamo i tuoi dati — vogliamo dimostrare che la ricerca privata funziona.
+Il risultato: risposte più precise e affidabili — soprattutto per domande specifiche come ordini di lettura di saghe, istruzioni passo per passo e liste dettagliate.
 
 Ti piace? Una recensione sull'App Store aiuta tantissimo un piccolo team indipendente. Hai trovato un bug? Tocca Impostazioni → Contatta il Supporto. Leggiamo tutto.
 ```
@@ -733,26 +688,17 @@ AISight — もっと賢く検索。プライバシーを守ろう。
 
 ### What's New (4,000 chars)
 ```
-デバイス上で100%完結する、初めての回答エンジンです。
+よりスマートな検索、より良い回答。
 
-何でも質問してください。AISightがウェブを検索し、結果を読み取り、出典付きの明確な回答を作成します。すべてApple Intelligenceで動作。AI処理のためにデータがデバイスの外に出ることはありません。
+このアップデートでは回答の品質が大幅に向上しました：
 
-主な機能：
-● 番号付き引用で確認できるAI回答
-● プライベートウェブ検索 — 追跡なし、アカウント不要、広告なし
-● Apple Intelligenceによる100%オンデバイスAI処理
-● Deep Searchで包括的なマルチソース回答
-● 自分のSearXNGサーバーを接続 → すべての機能が無料に
-● 検索履歴はデバイス上に安全に保存
-● 9言語に対応
+● よりスマートな検索ランキング — あなたの質問に正確に一致する結果が上位に表示され、AIがより良いソースで回答を作成します
+● より正確な回答 — 強化されたガードレールにより、AIがリスト内の項目を捏造したり、繰り返したり、推測した情報で回答を埋めることを防ぎます
+● より良いクエリ理解 — あなたの具体的な用語や条件がすべての検索クエリで保持され、まさに聞きたいことについての結果が得られます
+● より高速なソース読み込み — ウェブページのコンテンツが順次ではなく並列で取得されるようになりました
+● よりクリーンなソースコンテンツ — ウェブページのテキストが単語の途中ではなく文の区切りでカットされるようになりました
 
-まずはこれを試してください：
-→ 何でも質問して、AIがリアルタイムで回答を作成する様子をご覧ください
-→ 引用をタップして元の情報源を確認
-→ Deep Searchでマルチソースリサーチを体験
-→ 設定で自分のサーバーを接続 — すべてがアンロック
-
-私たちの約束：自分のサーバーを接続すれば、すべての機能が無料です。裏はありません。あなたのデータは求めていません。プライベート検索が機能することを証明したいのです。
+結果：より正確で信頼性の高い回答 — 特にシリーズの読書順序、ステップバイステップの手順、詳細なリストなどの具体的な質問に効果的です。
 
 気に入っていただけましたか？App Storeでのレビューは、個人開発者にとって大きな力になります。バグを見つけた場合は、設定 → お問い合わせからご連絡ください。すべて目を通しています。
 ```
@@ -837,26 +783,17 @@ AISight — 더 스마트하게 검색하고, 프라이버시를 지키세요.
 
 ### What's New (4,000 chars)
 ```
-여러분의 기기에서 100% 작동하는 최초의 답변 엔진이에요.
+더 스마트한 검색, 더 나은 답변.
 
-무엇이든 질문하세요. AISight가 웹을 검색하고 결과를 읽은 뒤, 실제 출처가 포함된 명확한 답변을 작성해요. 모두 Apple Intelligence로 구동돼요. AI 처리를 위해 기기 밖으로 나가는 데이터는 없어요.
+이번 업데이트는 답변 품질을 크게 개선했어요:
 
-주요 기능:
-● 번호가 매겨진 인용으로 확인 가능한 AI 답변
-● 추적, 계정, 광고 없는 프라이빗 웹 검색
-● Apple Intelligence를 통한 100% 온디바이스 AI 처리
-● 포괄적인 다중 출처 답변을 위한 Deep Search
-● 나만의 SearXNG 서버 연결 → 모든 기능 무료
-● 기기에 안전하게 저장되는 전체 검색 기록
-● 9개 언어 지원
+● 더 스마트한 검색 랭킹 — 질문과 정확히 일치하는 결과가 더 높은 순위로 표시되어, AI가 더 좋은 출처로 답변을 작성해요
+● 더 정확한 답변 — 강화된 가드레일이 AI가 목록에 항목을 지어내거나, 반복하거나, 추측한 정보로 답변을 채우는 것을 방지해요
+● 더 나은 쿼리 이해 — 여러분의 구체적인 용어와 조건이 모든 검색 쿼리에서 보존되어, 정확히 질문한 내용에 대한 결과를 얻을 수 있어요
+● 더 빠른 출처 로딩 — 웹 페이지 콘텐츠가 하나씩이 아닌 병렬로 가져와져요
+● 더 깔끔한 출처 콘텐츠 — 웹 페이지 텍스트가 단어 중간이 아닌 문장 경계에서 잘려요
 
-먼저 이렇게 해보세요:
-→ 아무 질문이나 하고 AI가 실시간으로 답변을 작성하는 걸 지켜보세요
-→ 인용을 탭해서 출처를 확인해 보세요
-→ 다중 출처 리서치를 위해 Deep Search를 사용해 보세요
-→ 설정에서 나만의 서버를 연결하세요 — 모든 기능이 잠금 해제돼요
-
-우리의 약속: 나만의 서버를 연결하면 모든 기능이 무료예요. 꼼수 없어요. 여러분의 데이터를 원하지 않아요 — 프라이빗 검색이 가능하다는 걸 증명하고 싶을 뿐이에요.
+결과: 더 정확하고 신뢰할 수 있는 답변 — 특히 시리즈 읽기 순서, 단계별 안내, 상세한 목록 같은 구체적인 질문에 효과적이에요.
 
 마음에 드셨나요? App Store 평가 하나가 작은 인디 개발자에게 큰 힘이 돼요. 버그를 발견하셨나요? 설정 → 지원 문의를 탭해 주세요. 모든 피드백을 읽고 있어요.
 ```
@@ -941,26 +878,17 @@ AISight — Busque melhor. Mantenha sua privacidade.
 
 ### What's New (4,000 chars)
 ```
-O primeiro motor de respostas 100% no seu aparelho.
+Busca mais inteligente, respostas melhores.
 
-Faça qualquer pergunta — o AISight pesquisa a web, lê os resultados e escreve uma resposta clara com citações reais. Tudo via Apple Intelligence. Nada sai do seu aparelho para processamento de IA.
+Esta atualização melhora significativamente a qualidade das respostas:
 
-O que tem dentro:
-● Respostas com IA e citações numeradas que você pode verificar
-● Busca privada na web — sem rastreamento, sem conta, sem anúncios
-● Processamento de IA 100% no aparelho via Apple Intelligence
-● Deep Search para respostas completas de múltiplas fontes
-● Conecte seu próprio servidor SearXNG → todas as funcionalidades grátis
-● Histórico completo armazenado com segurança no seu aparelho
-● Disponível em 9 idiomas
+● Ranking de busca mais inteligente — resultados que correspondem melhor à sua pergunta agora aparecem primeiro, para que a IA trabalhe com fontes melhores
+● Respostas mais precisas — proteções reforçadas impedem que a IA invente itens em listas, se repita ou preencha respostas com informações inventadas
+● Melhor compreensão das consultas — seus termos específicos e qualificadores são preservados em todas as buscas, para que você obtenha resultados exatamente sobre o que perguntou
+● Carregamento de fontes mais rápido — o conteúdo das páginas web agora é obtido em paralelo em vez de um por um
+● Conteúdo das fontes mais limpo — os textos das páginas web agora são cortados nos limites de frase em vez de no meio de uma palavra
 
-O que experimentar primeiro:
-→ Faça qualquer pergunta e veja a IA escrevendo sua resposta em tempo real
-→ Toque em uma citação para verificar a fonte
-→ Experimente o Deep Search para pesquisas aprofundadas
-→ Conecte seu próprio servidor em Ajustes — tudo se desbloqueia
-
-Nossa promessa: traga seu próprio servidor e todas as funcionalidades são grátis. Sem pegadinha. Não queremos seus dados — queremos provar que busca privada funciona.
+O resultado: respostas mais precisas e confiáveis — especialmente para perguntas específicas como ordens de leitura de séries, instruções passo a passo e listas detalhadas.
 
 Gostou? Uma avaliação na App Store ajuda muito um pequeno time indie. Encontrou um bug? Toque em Ajustes → Fale Conosco. Lemos tudo.
 ```
@@ -1045,26 +973,17 @@ AISight——更智能地搜索，更安心地使用。
 
 ### What's New (4,000 chars)
 ```
-首款100%在设备端运行的AI解答引擎。
+更智能的搜索，更好的回答。
 
-提出任何问题——AISight搜索网络、解读结果，并撰写附带真实引用来源的清晰回答。全部由Apple Intelligence驱动，AI处理绝不离开你的设备。
+此次更新显著提升了回答质量：
 
-功能亮点：
-● AI驱动的回答，附带可验证的编号引用
-● 隐私网页搜索——无追踪、无需账号、无广告
-● 100%端侧AI处理，由Apple Intelligence提供支持
-● Deep Search提供全面的多来源深度回答
-● 连接你自己的SearXNG服务器 → 所有功能免费
-● 完整搜索历史安全存储在你的设备上
-● 支持9种语言
+● 更智能的搜索排名——与您的问题更匹配的结果现在排名更高，让AI使用更好的来源生成回答
+● 更准确的回答——增强的防护机制防止AI在列表中编造条目、重复内容或用猜测的信息填充回答
+● 更好的查询理解——您的具体术语和限定词在所有搜索查询中都得到保留，确保您获得与所问内容完全匹配的结果
+● 更快的来源加载——网页内容现在并行获取，而不是逐个加载
+● 更干净的来源内容——网页文本现在在句子边界处截断，而不是在单词中间截断
 
-先试试这些：
-→ 提出任何问题，实时观看AI为你撰写回答
-→ 点击引用编号验证来源原文
-→ 尝试Deep Search进行多来源深度研究
-→ 在设置中连接你自己的服务器——所有功能即刻解锁
-
-我们的承诺：连接你自己的服务器，所有功能完全免费。没有套路。我们不想要你的数据——我们想证明隐私搜索是可行的。
+结果：更精确、更可靠的回答——尤其适用于系列阅读顺序、分步说明和详细列表等具体问题。
 
 喜欢AISight吗？在App Store留个好评，对独立开发者意义重大。发现问题？前往设置 → 联系支持，我们会认真阅读每条反馈。
 ```
