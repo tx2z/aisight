@@ -1214,16 +1214,16 @@
             "value": "활성화 및 테스트"
           }
         },
-        "zh": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "激活并测试"
-          }
-        },
         "pt": {
           "stringUnit": {
             "state": "translated",
             "value": "Ativar e testar"
+          }
+        },
+        "zh": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "激活并测试"
           }
         }
       }
@@ -2203,16 +2203,16 @@
             "value": "모든 기능 잠금 해제됨"
           }
         },
-        "zh": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "所有功能已解锁"
-          }
-        },
         "pt": {
           "stringUnit": {
             "state": "translated",
             "value": "Todas as funcionalidades desbloqueadas"
+          }
+        },
+        "zh": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "所有功能已解锁"
           }
         }
       }
@@ -2255,16 +2255,16 @@
             "value": "자체 서버로 모든 기능이 잠금 해제됨"
           }
         },
-        "zh": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "使用自己的服务器已解锁所有功能"
-          }
-        },
         "pt": {
           "stringUnit": {
             "state": "translated",
             "value": "Todas as funcionalidades desbloqueadas com o seu próprio servidor"
+          }
+        },
+        "zh": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用自己的服务器已解锁所有功能"
           }
         }
       }
@@ -4028,16 +4028,16 @@
             "value": "설정에서 자체 서버를 연결하여 모든 기능을 무료로 잠금 해제하세요."
           }
         },
-        "zh": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "在设置中连接自己的服务器，免费解锁所有功能。"
-          }
-        },
         "pt": {
           "stringUnit": {
             "state": "translated",
             "value": "Ligue o seu próprio servidor nas Definições para desbloquear todas as funcionalidades gratuitamente."
+          }
+        },
+        "zh": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "在设置中连接自己的服务器，免费解锁所有功能。"
           }
         }
       }
@@ -4185,16 +4185,16 @@
             "value": "연결 실패. 서버가 활성화되지 않았습니다."
           }
         },
-        "zh": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "连接失败。服务器未激活。"
-          }
-        },
         "pt": {
           "stringUnit": {
             "state": "translated",
             "value": "Falha na ligação. Servidor não ativado."
+          }
+        },
+        "zh": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "连接失败。服务器未激活。"
           }
         }
       }
@@ -5710,6 +5710,7 @@
         }
       }
     },
+    "Generating response": {},
     "Get answers on-device.": {
       "localizations": {
         "de": {
@@ -7832,16 +7833,16 @@
             "value": "또는 자체 SearXNG 서버 사용"
           }
         },
-        "zh": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "或使用自己的SearXNG服务器"
-          }
-        },
         "pt": {
           "stringUnit": {
             "state": "translated",
             "value": "Ou use o seu próprio servidor SearXNG"
+          }
+        },
+        "zh": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "或使用自己的SearXNG服务器"
           }
         }
       }
@@ -8522,6 +8523,64 @@
         }
       }
     },
+    "Regenerate": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Regenerate"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neu generieren"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Regenerar"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Régénérer"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rigenera"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "再生成"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "다시 생성"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Regenerar"
+          }
+        },
+        "zh": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新生成"
+          }
+        }
+      }
+    },
     "Reset to Default": {
       "extractionState": "stale",
       "localizations": {
@@ -8779,6 +8838,64 @@
           "stringUnit": {
             "state": "translated",
             "value": "搜索"
+          }
+        }
+      }
+    },
+    "Search again": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "Search again"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erneut suchen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buscar de nuevo"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rechercher à nouveau"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cerca di nuovo"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "再検索"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "다시 검색"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buscar novamente"
+          }
+        },
+        "zh": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "重新搜索"
           }
         }
       }
@@ -9878,6 +9995,58 @@
         }
       }
     },
+    "Support AISight — Get Pro": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AISight unterstützen — Pro holen"
+          }
+        },
+        "es": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apoya AISight — Obtén Pro"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Soutenez AISight — Passez Pro"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Supporta AISight — Ottieni Pro"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AISightを支援 — Proを入手"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AISight 지원 — Pro 구매"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apoie o AISight — Obtenha Pro"
+          }
+        },
+        "zh": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "支持AISight — 获取Pro"
+          }
+        }
+      }
+    },
     "Support AISight development": {
       "localizations": {
         "de": {
@@ -9916,16 +10085,16 @@
             "value": "AISight 개발 지원"
           }
         },
-        "zh": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "支持AISight开发"
-          }
-        },
         "pt": {
           "stringUnit": {
             "state": "translated",
             "value": "Apoie o desenvolvimento do AISight"
+          }
+        },
+        "zh": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "支持AISight开发"
           }
         }
       }
@@ -10814,6 +10983,7 @@
         }
       }
     },
+    "This answer was automatically regenerated because the first attempt contained unverified information.": {},
     "This language is not supported by the on-device model.": {
       "localizations": {
         "de": {
@@ -11478,16 +11648,16 @@
             "value": "기본 서버 사용"
           }
         },
-        "zh": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "使用默认服务器"
-          }
-        },
         "pt": {
           "stringUnit": {
             "state": "translated",
             "value": "Usar servidor predefinido"
+          }
+        },
+        "zh": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用默认服务器"
           }
         }
       }
@@ -11530,16 +11700,16 @@
             "value": "자체 SearXNG 서버를 사용하여 모든 기능을 무료로 잠금 해제하세요"
           }
         },
-        "zh": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "使用自己的SearXNG服务器免费解锁所有功能"
-          }
-        },
         "pt": {
           "stringUnit": {
             "state": "translated",
             "value": "Use o seu próprio servidor SearXNG para desbloquear todas as funcionalidades gratuitamente"
+          }
+        },
+        "zh": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "使用自己的SearXNG服务器免费解锁所有功能"
           }
         }
       }
@@ -11582,16 +11752,16 @@
             "value": "자체 검색 서버 사용 중"
           }
         },
-        "zh": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "正在使用自己的搜索服务器"
-          }
-        },
         "pt": {
           "stringUnit": {
             "state": "translated",
             "value": "A usar o seu próprio servidor de pesquisa"
+          }
+        },
+        "zh": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "正在使用自己的搜索服务器"
           }
         }
       }
@@ -12636,54 +12806,60 @@
         }
       }
     },
-    "Support AISight — Get Pro": {
+    "The AI model produced inaccurate content on the first attempt. This answer was regenerated from the same sources.": {
       "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "new",
+            "value": "The AI model produced inaccurate content on the first attempt. This answer was regenerated from the same sources."
+          }
+        },
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "AISight unterstützen — Pro holen"
+            "value": "Das KI-Modell hat beim ersten Versuch ungenaue Inhalte erzeugt. Diese Antwort wurde aus denselben Quellen neu generiert."
           }
         },
         "es": {
           "stringUnit": {
             "state": "translated",
-            "value": "Apoya AISight — Obtén Pro"
+            "value": "El modelo de IA generó contenido inexacto en el primer intento. Esta respuesta fue regenerada a partir de las mismas fuentes."
           }
         },
         "fr": {
           "stringUnit": {
             "state": "translated",
-            "value": "Soutenez AISight — Passez Pro"
+            "value": "Le modèle IA a produit un contenu inexact lors de la première tentative. Cette réponse a été régénérée à partir des mêmes sources."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Supporta AISight — Ottieni Pro"
+            "value": "Il modello IA ha prodotto contenuti inaccurati al primo tentativo. Questa risposta è stata rigenerata dalle stesse fonti."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "AISightを支援 — Proを入手"
+            "value": "AIモデルが最初の試行で不正確な内容を生成しました。この回答は同じソースから再生成されました。"
           }
         },
         "ko": {
           "stringUnit": {
             "state": "translated",
-            "value": "AISight 지원 — Pro 구매"
-          }
-        },
-        "zh": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "支持AISight — 获取Pro"
+            "value": "AI 모델이 첫 번째 시도에서 부정확한 내용을 생성했습니다. 이 답변은 동일한 출처에서 다시 생성되었습니다."
           }
         },
         "pt": {
           "stringUnit": {
             "state": "translated",
-            "value": "Apoie o AISight — Obtenha Pro"
+            "value": "O modelo de IA produziu conteúdo impreciso na primeira tentativa. Esta resposta foi regenerada a partir das mesmas fontes."
+          }
+        },
+        "zh": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "AI模型在首次尝试中生成了不准确的内容。此回答已从相同来源重新生成。"
           }
         }
       }

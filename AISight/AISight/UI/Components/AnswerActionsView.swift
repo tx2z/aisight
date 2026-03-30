@@ -10,7 +10,7 @@ struct AnswerActionsView: View {
         VStack(alignment: .leading, spacing: 10) {
             if wasRegenerated {
                 Label(
-                    String(localized: "This answer was automatically regenerated because the first attempt contained unverified information."),
+                    String(localized: "The AI model produced inaccurate content on the first attempt. This answer was regenerated from the same sources."),
                     systemImage: "exclamationmark.arrow.trianglehead.counterclockwise.rotate.90"
                 )
                 .font(.caption)
