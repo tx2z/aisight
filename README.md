@@ -17,7 +17,13 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/App%20Store-Coming%20Soon-black?style=for-the-badge&logo=apple&logoColor=white" alt="Coming Soon on the App Store">
+  <a href="https://apps.apple.com/app/aisight-ai-search-answers/id6761124676?ct=github&mt=8">
+    <img src="web/static/img/badges/app-store-en.svg" alt="Download on the App Store" height="54">
+  </a>
+  &nbsp;
+  <a href="https://apps.apple.com/app/aisight-ai-search-answers/id6761124676?platform=mac&ct=github&mt=12">
+    <img src="web/static/img/badges/mac-app-store-en.svg" alt="Download on the Mac App Store" height="54">
+  </a>
 </p>
 
 <p align="center">
