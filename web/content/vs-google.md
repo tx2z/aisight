@@ -48,4 +48,4 @@ Both provide AI-synthesized answers with source citations. Google's answers may 
 - You value EU data jurisdiction and GDPR protection
 - You're in the Apple ecosystem
 
-**Download AISight on the App Store: [iPhone & iPad](https://apps.apple.com/us/app/aisight-ai-search-answers/id6761124676) · [Mac](https://apps.apple.com/us/app/aisight-ai-search-answers/id6761124676?platform=mac)**
+**Download AISight on the App Store: [iPhone & iPad](https://apps.apple.com/us/app/aisight-ai-search-answers/id6761124676?ct=website&mt=8) · [Mac](https://apps.apple.com/us/app/aisight-ai-search-answers/id6761124676?platform=mac&ct=website&mt=12)**
