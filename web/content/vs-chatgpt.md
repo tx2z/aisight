@@ -52,4 +52,4 @@ ChatGPT Plus costs **$20/month** ($240/year). AISight Pro is a **one-time $4.99 
 - You want to verify what the app does ([open source, MIT license](https://github.com/tx2z/aisight))
 - You prefer EU-based infrastructure with GDPR protection
 
-**AISight is coming soon to the App Store.**
+**Download AISight on the App Store: [iPhone & iPad](https://apps.apple.com/us/app/aisight-ai-search-answers/id6761124676) · [Mac](https://apps.apple.com/us/app/aisight-ai-search-answers/id6761124676?platform=mac)**

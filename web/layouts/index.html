@@ -90,6 +90,8 @@
 {{ end }}
 
 {{ define "main" }}
+{{ $storeCountry := dict "en" "us" "es" "es" "fr" "fr" "de" "de" "it" "it" "pt" "pt" "ja" "jp" "ko" "kr" "zh" "cn" }}
+{{ $country := index $storeCountry .Lang | default "us" }}
 
 <!-- Hero -->
 <section class="hero">
@@ -104,7 +106,12 @@
       <a href="https://github.com/tx2z/aisight" class="badge badge-open" target="_blank" rel="noopener">{{ i18n "badge_opensource" }}</a>
     </div>
     <div class="hero-ctas">
-      <span class="btn-primary btn-disabled">{{ i18n "hero_cta_soon" }}</span>
+      <a href="https://apps.apple.com/{{ $country }}/app/aisight-ai-search-answers/id6761124676" class="store-badge" target="_blank" rel="noopener">
+        <img src="/img/badges/app-store-{{ .Lang }}.svg" alt="{{ i18n "hero_cta_ios" }}" height="54">
+      </a>
+      <a href="https://apps.apple.com/{{ $country }}/app/aisight-ai-search-answers/id6761124676?platform=mac" class="store-badge" target="_blank" rel="noopener">
+        <img src="/img/badges/mac-app-store-{{ .Lang }}.svg" alt="{{ i18n "hero_cta_mac" }}" height="54">
+      </a>
     </div>
   </div>
 </section>
@@ -365,7 +372,12 @@
   <h2>{{ i18n "cta_title" }}</h2>
   <p>{{ i18n "cta_desc" }}</p>
   <div class="hero-ctas">
-    <span class="btn-primary btn-large btn-disabled">{{ i18n "hero_cta_soon" }}</span>
+    <a href="https://apps.apple.com/{{ $country }}/app/aisight-ai-search-answers/id6761124676" class="store-badge" target="_blank" rel="noopener">
+      <img src="/img/badges/app-store-{{ .Lang }}.svg" alt="{{ i18n "hero_cta_ios" }}" height="54">
+    </a>
+    <a href="https://apps.apple.com/{{ $country }}/app/aisight-ai-search-answers/id6761124676?platform=mac" class="store-badge" target="_blank" rel="noopener">
+      <img src="/img/badges/mac-app-store-{{ .Lang }}.svg" alt="{{ i18n "hero_cta_mac" }}" height="54">
+    </a>
   </div>
 </section>
 
