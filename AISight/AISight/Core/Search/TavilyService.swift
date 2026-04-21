@@ -7,6 +7,8 @@ final class TavilyService: SearchService, Sendable {
 
     private static let apiURL = "https://api.tavily.com/search"
 
+    // Tavily does not support a language filter in the basic search API,
+    // so the language parameter is accepted for protocol conformance but not forwarded.
     func search(query: String, language: String) async throws -> SearchOutput {
         let apiKey = AppConfig.tavilyAPIKey
         guard !apiKey.isEmpty else {
@@ -18,11 +20,11 @@ final class TavilyService: SearchService, Sendable {
         }
 
         let requestBody = TavilySearchRequest(
-            api_key: apiKey,
+            apiKey: apiKey,
             query: query,
-            search_depth: AppConfig.tavilySearchDepth,
-            max_results: AppConfig.tavilyMaxResults,
-            include_answer: false
+            searchDepth: AppConfig.tavilySearchDepth,
+            maxResults: AppConfig.tavilyMaxResults,
+            includeAnswer: false
         )
 
         var request = URLRequest(url: url)
@@ -148,16 +150,19 @@ final class TavilyService: SearchService, Sendable {
 
     func checkAvailability() async -> Bool {
         let apiKey = AppConfig.tavilyAPIKey
-        guard !apiKey.isEmpty else { return false }
+        guard !apiKey.isEmpty, apiKey.hasPrefix("tvly-") else { return false }
 
         guard let url = URL(string: Self.apiURL) else { return false }
 
+        // Intentionally uses "basic" depth and 1 result to minimize credit cost,
+        // regardless of the user's configured tavilySearchDepth.
+        // Note: this performs a live search and consumes 1 Tavily credit.
         let requestBody = TavilySearchRequest(
-            api_key: apiKey,
+            apiKey: apiKey,
             query: "test",
-            search_depth: "basic",
-            max_results: 1,
-            include_answer: false
+            searchDepth: "basic",
+            maxResults: 1,
+            includeAnswer: false
         )
 
         var request = URLRequest(url: url)
@@ -179,11 +184,19 @@ final class TavilyService: SearchService, Sendable {
 // MARK: - Tavily API Models
 
 private struct TavilySearchRequest: Encodable {
-    let api_key: String
+    let apiKey: String
     let query: String
-    let search_depth: String
-    let max_results: Int
-    let include_answer: Bool
+    let searchDepth: String
+    let maxResults: Int
+    let includeAnswer: Bool
+
+    enum CodingKeys: String, CodingKey {
+        case apiKey = "api_key"
+        case query
+        case searchDepth = "search_depth"
+        case maxResults = "max_results"
+        case includeAnswer = "include_answer"
+    }
 }
 
 private struct TavilySearchResponse: Decodable {

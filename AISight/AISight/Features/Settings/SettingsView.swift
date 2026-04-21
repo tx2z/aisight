@@ -118,7 +118,7 @@ struct SettingsView: View {
                         }
                     }
 
-                    Text("Get an API key at app.tavily.com (1,000 free credits/month)")
+                    Text("Get an API key at app.tavily.com (1,000 free credits/month). Testing uses 1 credit.")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 } header: {
@@ -314,6 +314,11 @@ struct SettingsView: View {
     private func testTavilyConnection() async {
         guard !tavilyAPIKey.isEmpty else {
             testResult = TestResult(success: false, message: String(localized: "Enter a Tavily API key."))
+            return
+        }
+
+        guard tavilyAPIKey.hasPrefix("tvly-") else {
+            testResult = TestResult(success: false, message: String(localized: "Invalid key format. Tavily keys start with \"tvly-\"."))
             return
         }
 

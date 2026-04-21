@@ -19,7 +19,6 @@ final class SearchViewModel {
     private(set) var answerSession: AnswerSession
     private(set) var deepSearchPipeline: DeepSearchPipeline
 
-    private let searchService: any SearchService
     private let reformulator: QueryReformulator
     private var currentTask: Task<Void, Never>?
     private var lastSearchOutput: SearchOutput?
@@ -55,13 +54,14 @@ final class SearchViewModel {
         return step.description
     }
 
-    init(searchService: (any SearchService)? = nil) {
-        self.searchService = searchService ?? Self.makeSearchService()
+    init() {
         self.answerSession = AnswerSession()
         self.deepSearchPipeline = DeepSearchPipeline()
         self.reformulator = QueryReformulator()
     }
 
+    /// Builds the correct search service based on the current provider setting.
+    /// Called at search time so that provider changes in Settings take effect immediately.
     private static func makeSearchService() -> any SearchService {
         switch AppConfig.effectiveSearchProvider {
         case .searxng:
@@ -101,7 +101,7 @@ final class SearchViewModel {
             let searchOutput = await deepSearchPipeline.execute(
                 query: trimmedQuery,
                 language: language,
-                searchService: searchService
+                searchService: Self.makeSearchService()
             )
 
             guard !Task.isCancelled else { return }
@@ -148,9 +148,10 @@ final class SearchViewModel {
             guard !Task.isCancelled else { return }
 
             // 2. Search with all reformulated queries in parallel, merge results
+            let activeService = Self.makeSearchService()
             var searchOutput: SearchOutput
             do {
-                searchOutput = try await searchService.multiSearch(queries: searchQueries, language: language)
+                searchOutput = try await activeService.multiSearch(queries: searchQueries, language: language)
                 guard !Task.isCancelled else { return }
                 self.sources = searchOutput.results
                 self.queryGroups = searchOutput.queryGroups
