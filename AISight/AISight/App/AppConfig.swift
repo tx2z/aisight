@@ -35,7 +35,24 @@ enum AppConfig: Sendable {
     }
 
     static var tavilyAPIKey: String {
-        UserDefaults.standard.string(forKey: "tavily_api_key")?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        get {
+            // Migrate from UserDefaults to Keychain if needed
+            if let legacy = UserDefaults.standard.string(forKey: "tavily_api_key"),
+               !legacy.isEmpty {
+                KeychainHelper.save(key: "tavily_api_key", value: legacy)
+                UserDefaults.standard.removeObject(forKey: "tavily_api_key")
+                return legacy.trimmingCharacters(in: .whitespacesAndNewlines)
+            }
+            return KeychainHelper.load(key: "tavily_api_key")?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        }
+        set {
+            let trimmed = newValue.trimmingCharacters(in: .whitespacesAndNewlines)
+            if trimmed.isEmpty {
+                KeychainHelper.delete(key: "tavily_api_key")
+            } else {
+                KeychainHelper.save(key: "tavily_api_key", value: trimmed)
+            }
+        }
     }
 
     // Tavily search parameters

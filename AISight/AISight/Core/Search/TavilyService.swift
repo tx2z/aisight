@@ -53,8 +53,15 @@ final class TavilyService: SearchService, Sendable {
             throw SearchError.serverUnavailable
         }
 
-        guard let httpResponse = response as? HTTPURLResponse,
-              (200...299).contains(httpResponse.statusCode) else {
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw SearchError.serverUnavailable
+        }
+
+        if httpResponse.statusCode == 401 || httpResponse.statusCode == 403 {
+            throw SearchError.authenticationFailed
+        }
+
+        guard (200...299).contains(httpResponse.statusCode) else {
             throw SearchError.serverUnavailable
         }
 

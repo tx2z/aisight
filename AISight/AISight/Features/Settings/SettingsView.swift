@@ -6,7 +6,7 @@ struct SettingsView: View {
     @Environment(AppState.self) private var appState
     @Environment(StoreManager.self) private var storeManager
 
-    @State private var selectedProvider: SearchProvider = AppConfig.effectiveSearchProvider
+    @State private var selectedProvider: SearchProvider = UserDefaults.standard.string(forKey: "search_provider").flatMap(SearchProvider.init(rawValue:)) ?? .searxng
     @State private var tavilyAPIKey: String = AppConfig.tavilyAPIKey
     @State private var serverURL: String = AppConfig.effectiveSearXNGBaseURL
     @State private var isTesting = false
@@ -81,7 +81,7 @@ struct SettingsView: View {
                         .textInputAutocapitalization(.never)
                         #endif
                         .onChange(of: tavilyAPIKey) { _, newValue in
-                            UserDefaults.standard.set(newValue, forKey: "tavily_api_key")
+                            AppConfig.tavilyAPIKey = newValue
                         }
 
                     Button {
