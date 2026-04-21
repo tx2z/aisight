@@ -19,7 +19,7 @@ final class SearchViewModel {
     private(set) var answerSession: AnswerSession
     private(set) var deepSearchPipeline: DeepSearchPipeline
 
-    private let searchService: SearXNGService
+    private let searchService: any SearchService
     private let reformulator: QueryReformulator
     private var currentTask: Task<Void, Never>?
     private var lastSearchOutput: SearchOutput?
@@ -55,11 +55,20 @@ final class SearchViewModel {
         return step.description
     }
 
-    init(searchService: SearXNGService = SearXNGService()) {
-        self.searchService = searchService
+    init(searchService: (any SearchService)? = nil) {
+        self.searchService = searchService ?? Self.makeSearchService()
         self.answerSession = AnswerSession()
         self.deepSearchPipeline = DeepSearchPipeline()
         self.reformulator = QueryReformulator()
+    }
+
+    private static func makeSearchService() -> any SearchService {
+        switch AppConfig.effectiveSearchProvider {
+        case .searxng:
+            return SearXNGService()
+        case .tavily:
+            return TavilyService()
+        }
     }
 
     var language: String {
