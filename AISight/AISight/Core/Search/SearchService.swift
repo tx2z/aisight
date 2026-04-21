@@ -18,5 +18,6 @@ struct SearchOutput: Sendable {
 
 protocol SearchService: Sendable {
     func search(query: String, language: String) async throws -> SearchOutput
+    func multiSearch(queries: [String], language: String) async throws -> SearchOutput
     func checkAvailability() async -> Bool
 }

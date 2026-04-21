@@ -41,7 +41,7 @@ final class DeepSearchPipeline {
 
     /// Execute the full deep search pipeline: reformulate → search → research → synthesize.
     /// Returns the SearchOutput for source display, or nil on failure.
-    func execute(query: String, language: String, searchService: SearXNGService) async -> SearchOutput? {
+    func execute(query: String, language: String, searchService: any SearchService) async -> SearchOutput? {
         streamingText = ""
         isGenerating = true
         error = nil

@@ -6,6 +6,8 @@ struct SettingsView: View {
     @Environment(AppState.self) private var appState
     @Environment(StoreManager.self) private var storeManager
 
+    @State private var selectedProvider: SearchProvider = UserDefaults.standard.string(forKey: "search_provider").flatMap(SearchProvider.init(rawValue:)) ?? .searxng
+    @State private var tavilyAPIKey: String = AppConfig.tavilyAPIKey
     @State private var serverURL: String = AppConfig.effectiveSearXNGBaseURL
     @State private var isTesting = false
     @State private var testResult: TestResult?
@@ -59,66 +61,134 @@ struct SettingsView: View {
             ProSettingsSection(showPaywall: $showPaywall)
 
             Section {
-                TextField("SearXNG Server URL", text: $serverURL, prompt: Text("https://search.yourdomain.com").foregroundStyle(.secondary))
-                    .autocorrectionDisabled()
-                    #if os(iOS)
-                    .textInputAutocapitalization(.never)
-                    .keyboardType(.URL)
-                    #endif
-                    .onSubmit {
-                        Task { await testConnection() }
-                    }
-
-                Button {
-                    Task { await testConnection() }
-                } label: {
-                    HStack(spacing: 6) {
-                        if isTesting {
-                            ProgressView()
-                                .controlSize(.small)
-                        }
-                        Text(hasURLChanged ? "Activate and Test" : "Test Connection")
-                    }
+                Picker("Search Provider", selection: $selectedProvider) {
+                    Text("SearXNG").tag(SearchProvider.searxng)
+                    Text("Tavily").tag(SearchProvider.tavily)
                 }
-                .disabled(isTesting || serverURL.isEmpty)
-
-                if isTesting {
-                    HStack(spacing: 8) {
-                        Image(systemName: "arrow.trianglehead.2.counterclockwise")
-                            .foregroundStyle(.secondary)
-                            .symbolEffect(.pulse)
-                        Text("Testing...")
-                            .font(.callout)
-                            .foregroundStyle(.secondary)
-                    }
-                } else if let testResult {
-                    HStack(spacing: 8) {
-                        Image(systemName: testResult.success ? "checkmark.circle.fill" : "xmark.circle.fill")
-                            .foregroundStyle(testResult.success ? .green : .red)
-                            .symbolEffect(.appear)
-
-                        Text(testResult.message)
-                            .font(.callout)
-                            .foregroundStyle(testResult.success ? .green : .red)
-                    }
-                }
-
-                if storeManager.isUsingCustomServer {
-                    Label(String(localized: "All features unlocked with your own server"), systemImage: "checkmark.seal.fill")
-                        .font(.caption)
-                        .foregroundStyle(.accent)
-                } else if !storeManager.isPro {
-                    Text("Use your own SearXNG server to unlock all features for free")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                }
-
-                if serverURL != AppConfig.defaultSearXNGBaseURL {
-                    Button("Use Default Server", action: resetToDefaultServer)
-                        .foregroundStyle(.secondary)
+                .onChange(of: selectedProvider) { _, newValue in
+                    UserDefaults.standard.set(newValue.rawValue, forKey: "search_provider")
+                    testResult = nil
                 }
             } header: {
-                Text("Search Server")
+                Text("Search Provider")
+            }
+
+            if selectedProvider == .tavily {
+                Section {
+                    SecureField("Tavily API Key", text: $tavilyAPIKey, prompt: Text("tvly-...").foregroundStyle(.secondary))
+                        .autocorrectionDisabled()
+                        #if os(iOS)
+                        .textInputAutocapitalization(.never)
+                        #endif
+                        .onChange(of: tavilyAPIKey) { _, newValue in
+                            AppConfig.tavilyAPIKey = newValue
+                        }
+
+                    Button {
+                        Task { await testConnection() }
+                    } label: {
+                        HStack(spacing: 6) {
+                            if isTesting {
+                                ProgressView()
+                                    .controlSize(.small)
+                            }
+                            Text("Test Connection")
+                        }
+                    }
+                    .disabled(isTesting || tavilyAPIKey.isEmpty)
+
+                    if isTesting {
+                        HStack(spacing: 8) {
+                            Image(systemName: "arrow.trianglehead.2.counterclockwise")
+                                .foregroundStyle(.secondary)
+                                .symbolEffect(.pulse)
+                            Text("Testing...")
+                                .font(.callout)
+                                .foregroundStyle(.secondary)
+                        }
+                    } else if let testResult {
+                        HStack(spacing: 8) {
+                            Image(systemName: testResult.success ? "checkmark.circle.fill" : "xmark.circle.fill")
+                                .foregroundStyle(testResult.success ? .green : .red)
+                                .symbolEffect(.appear)
+
+                            Text(testResult.message)
+                                .font(.callout)
+                                .foregroundStyle(testResult.success ? .green : .red)
+                        }
+                    }
+
+                    Text("Get an API key at app.tavily.com (1,000 free credits/month). Testing uses 1 credit.")
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                } header: {
+                    Text("Tavily API")
+                }
+            }
+
+            if selectedProvider == .searxng {
+                Section {
+                    TextField("SearXNG Server URL", text: $serverURL, prompt: Text("https://search.yourdomain.com").foregroundStyle(.secondary))
+                        .autocorrectionDisabled()
+                        #if os(iOS)
+                        .textInputAutocapitalization(.never)
+                        .keyboardType(.URL)
+                        #endif
+                        .onSubmit {
+                            Task { await testConnection() }
+                        }
+
+                    Button {
+                        Task { await testConnection() }
+                    } label: {
+                        HStack(spacing: 6) {
+                            if isTesting {
+                                ProgressView()
+                                    .controlSize(.small)
+                            }
+                            Text(hasURLChanged ? "Activate and Test" : "Test Connection")
+                        }
+                    }
+                    .disabled(isTesting || serverURL.isEmpty)
+
+                    if isTesting {
+                        HStack(spacing: 8) {
+                            Image(systemName: "arrow.trianglehead.2.counterclockwise")
+                                .foregroundStyle(.secondary)
+                                .symbolEffect(.pulse)
+                            Text("Testing...")
+                                .font(.callout)
+                                .foregroundStyle(.secondary)
+                        }
+                    } else if let testResult {
+                        HStack(spacing: 8) {
+                            Image(systemName: testResult.success ? "checkmark.circle.fill" : "xmark.circle.fill")
+                                .foregroundStyle(testResult.success ? .green : .red)
+                                .symbolEffect(.appear)
+
+                            Text(testResult.message)
+                                .font(.callout)
+                                .foregroundStyle(testResult.success ? .green : .red)
+                        }
+                    }
+
+                    if storeManager.isUsingCustomServer {
+                        Label(String(localized: "All features unlocked with your own server"), systemImage: "checkmark.seal.fill")
+                            .font(.caption)
+                            .foregroundStyle(.accent)
+                    } else if !storeManager.isPro {
+                        Text("Use your own SearXNG server to unlock all features for free")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+
+                    if serverURL != AppConfig.defaultSearXNGBaseURL {
+                        Button("Use Default Server", action: resetToDefaultServer)
+                            .foregroundStyle(.secondary)
+                    }
+                } header: {
+                    Text("Search Server")
+                }
             }
 
             Section("Preferences") {
@@ -234,6 +304,40 @@ struct SettingsView: View {
     }
 
     private func testConnection() async {
+        if selectedProvider == .tavily {
+            await testTavilyConnection()
+        } else {
+            await testSearXNGConnection()
+        }
+    }
+
+    private func testTavilyConnection() async {
+        guard !tavilyAPIKey.isEmpty else {
+            testResult = TestResult(success: false, message: String(localized: "Enter a Tavily API key."))
+            return
+        }
+
+        guard tavilyAPIKey.hasPrefix("tvly-") else {
+            testResult = TestResult(success: false, message: String(localized: "Invalid key format. Tavily keys start with \"tvly-\"."))
+            return
+        }
+
+        isTesting = true
+        let start = Date.now
+        let service = TavilyService()
+        let available = await service.checkAvailability()
+        let latency = Date.now.timeIntervalSince(start)
+        isTesting = false
+
+        if available {
+            let ms = Int(latency * 1000)
+            testResult = TestResult(success: true, message: String(localized: "Connected (\(ms)ms)"))
+        } else {
+            testResult = TestResult(success: false, message: String(localized: "Connection failed. Check your API key."))
+        }
+    }
+
+    private func testSearXNGConnection() async {
         guard isValidURL(serverURL) else {
             testResult = TestResult(success: false, message: String(localized: "Invalid URL. Use http:// or https://."))
             return

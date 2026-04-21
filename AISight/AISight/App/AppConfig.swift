@@ -1,5 +1,10 @@
 import Foundation
 
+enum SearchProvider: String, CaseIterable, Sendable {
+    case searxng
+    case tavily
+}
+
 enum AppConfig: Sendable {
     // Default SearXNG instance — override in Settings or set your own
     // For local dev: docker-compose up in /searxng folder → http://localhost:8888
@@ -14,6 +19,45 @@ enum AppConfig: Sendable {
         }
         return stored
     }
+
+    // MARK: - Search Provider Selection
+
+    static var effectiveSearchProvider: SearchProvider {
+        guard let raw = UserDefaults.standard.string(forKey: "search_provider"),
+              let provider = SearchProvider(rawValue: raw) else {
+            return .searxng
+        }
+        // Only allow Tavily if an API key is configured
+        if provider == .tavily && tavilyAPIKey.isEmpty {
+            return .searxng
+        }
+        return provider
+    }
+
+    static var tavilyAPIKey: String {
+        get {
+            // Migrate from UserDefaults to Keychain if needed
+            if let legacy = UserDefaults.standard.string(forKey: "tavily_api_key"),
+               !legacy.isEmpty {
+                KeychainHelper.save(key: "tavily_api_key", value: legacy)
+                UserDefaults.standard.removeObject(forKey: "tavily_api_key")
+                return legacy.trimmingCharacters(in: .whitespacesAndNewlines)
+            }
+            return KeychainHelper.load(key: "tavily_api_key")?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        }
+        set {
+            let trimmed = newValue.trimmingCharacters(in: .whitespacesAndNewlines)
+            if trimmed.isEmpty {
+                KeychainHelper.delete(key: "tavily_api_key")
+            } else {
+                KeychainHelper.save(key: "tavily_api_key", value: trimmed)
+            }
+        }
+    }
+
+    // Tavily search parameters
+    static let tavilySearchDepth = "basic"
+    static let tavilyMaxResults = 5
 
     // SearXNG search parameters
     static let searchEngines = "google,bing,brave"

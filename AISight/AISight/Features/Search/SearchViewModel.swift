@@ -19,7 +19,6 @@ final class SearchViewModel {
     private(set) var answerSession: AnswerSession
     private(set) var deepSearchPipeline: DeepSearchPipeline
 
-    private let searchService: SearXNGService
     private let reformulator: QueryReformulator
     private var currentTask: Task<Void, Never>?
     private var lastSearchOutput: SearchOutput?
@@ -55,11 +54,21 @@ final class SearchViewModel {
         return step.description
     }
 
-    init(searchService: SearXNGService = SearXNGService()) {
-        self.searchService = searchService
+    init() {
         self.answerSession = AnswerSession()
         self.deepSearchPipeline = DeepSearchPipeline()
         self.reformulator = QueryReformulator()
+    }
+
+    /// Builds the correct search service based on the current provider setting.
+    /// Called at search time so that provider changes in Settings take effect immediately.
+    private static func makeSearchService() -> any SearchService {
+        switch AppConfig.effectiveSearchProvider {
+        case .searxng:
+            return SearXNGService()
+        case .tavily:
+            return TavilyService()
+        }
     }
 
     var language: String {
@@ -92,7 +101,7 @@ final class SearchViewModel {
             let searchOutput = await deepSearchPipeline.execute(
                 query: trimmedQuery,
                 language: language,
-                searchService: searchService
+                searchService: Self.makeSearchService()
             )
 
             guard !Task.isCancelled else { return }
@@ -139,9 +148,10 @@ final class SearchViewModel {
             guard !Task.isCancelled else { return }
 
             // 2. Search with all reformulated queries in parallel, merge results
+            let activeService = Self.makeSearchService()
             var searchOutput: SearchOutput
             do {
-                searchOutput = try await searchService.multiSearch(queries: searchQueries, language: language)
+                searchOutput = try await activeService.multiSearch(queries: searchQueries, language: language)
                 guard !Task.isCancelled else { return }
                 self.sources = searchOutput.results
                 self.queryGroups = searchOutput.queryGroups
@@ -253,13 +263,15 @@ final class SearchViewModel {
     private func userFacingMessage(for error: SearchError) -> String {
         switch error {
         case .serverUnavailable:
-            return String(localized: "Search server is unavailable. Check your connection or update the server URL in Settings.")
+            return String(localized: "The search service is unavailable. Check your connection or settings.")
+        case .authenticationFailed:
+            return String(localized: "Invalid API key. Update it in Settings.")
         case .timeout:
             return String(localized: "Search took too long. The server may be overloaded \u{2014} try again in a moment.")
         case .noResults:
             return String(localized: "No sources found for this query. Try rephrasing.")
         case .invalidResponse:
-            return String(localized: "Search server is unavailable. Check your connection or update the server URL in Settings.")
+            return String(localized: "The search service is unavailable. Check your connection or settings.")
         }
     }
 
