@@ -5,7 +5,7 @@
 ## Pipeline
 
 ```
-User Query → SearXNG (search) → ContentFetcher (HTML→text) → FoundationModels (on-device AI) → Streamed Answer with Citations → SwiftData (history)
+User Query → SearXNG (search) → ContentFetcher (HTML→text) → FoundationModels (on-device AI by default) → Streamed Answer with Citations → SwiftData (history)
 ```
 
 ## Layer Map

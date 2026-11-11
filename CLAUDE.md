@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-AISight is a native iOS 26 / macOS 26 answer engine. It searches the web via a self-hosted SearXNG instance and synthesizes answers on-device using Apple's FoundationModels framework (Apple Intelligence). Zero external dependencies.
+AISight is a native iOS 26 / macOS 26 answer engine. It searches the web via a self-hosted SearXNG instance and synthesizes answers using Apple's FoundationModels framework (Apple Intelligence): on-device by default, on Apple Private Cloud Compute when a Pro user opts in (iOS/macOS 27+), or through a user-configured OpenAI-compatible provider (BYOK, iOS/macOS 27+). Zero external dependencies.
 
 ## Build & Run
 
@@ -17,11 +17,12 @@ AISight is a native iOS 26 / macOS 26 answer engine. It searches the web via a s
 ## Architecture
 
 ```
-User Query → SearXNGService (search) → ContentFetcher (HTML→text) → AnswerSession (on-device AI) → Streamed Answer with Citations → SwiftData (history)
+User Query → SearXNGService (search) → ContentFetcher (HTML→text) → AnswerSession (on-device AI by default) → Streamed Answer with Citations → SwiftData (history)
 ```
 
 ### Key design decisions
 
+- **One owner for model selection**: all LLM sessions come from `LanguageModelProvider` (`resolve(canUseCloudModel:)` once per request, then `ResolvedLanguageModel.makeSession`; the pure `select(...)` decides the model and the fallback reason). Never construct `LanguageModelSession` directly; `QueryReformulator` uses `makeOnDeviceSession` so it never spends cloud quota. The preference is the `language_model` UserDefaults key (`LanguageModelKind`: `onDevice`, `appleCloud` (Pro only, via `StoreManager.canUseCloudModel`) or `custom`). `custom` is BYOK: an OpenAI-compatible Chat Completions endpoint via `ChatCompletionsLanguageModel`; base URL, model name and context size live in UserDefaults, the API key only in the Keychain (bound to its host), and each host needs a one-time user confirmation. Unusable choices fall back to on-device.
 - **Single search, no duplication**: `SearchViewModel` fetches results once, passes them to `AnswerSession.generateAnswer(for:with:)`. The AI never re-searches.
 - **@MainActor on all @Observable classes**: `AnswerSession`, `SearchViewModel`, and `AppState` are all `@MainActor` to satisfy Swift 6 strict concurrency. Don't remove this.
 - **SearXNGService is Sendable**: Uses `URLSession.shared` with per-request timeouts (no stored session). This is intentional for Swift 6 compliance.
@@ -60,7 +61,7 @@ User Query → SearXNGService (search) → ContentFetcher (HTML→text) → Answ
 - **No external Swift packages** — system frameworks only.
 - **SearXNG URL stored in UserDefaults** (not Keychain — it's not a secret).
 - **SearXNG timeout is 8 seconds** — it queries multiple engines in parallel and can be slow.
-- **Context window is ~4096 tokens** — max 5 sources, each truncated to 1600 chars (~400 tokens).
+- **Context budget comes from the active model** (`ResolvedLanguageModel.contextSize`) — max 5 sources, each truncated to `AppConfig.snippetLength(forContextSize:)`.
 
 ## FoundationModels API (iOS 26)
 

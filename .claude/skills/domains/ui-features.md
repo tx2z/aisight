@@ -150,7 +150,7 @@ Parses markdown and `(via domain.com)` attribution markers, rendering formatted 
 
 Added for Apple App Store submission compliance:
 
-- **PrivacyPolicyView** — 12 sections covering data practices, on-device AI, children's privacy, GDPR/CCPA rights. Contact: jesus@perezpaz.es
+- **PrivacyPolicyView** — 12 sections covering data practices, AI processing (on-device by default, opt-in Apple Private Cloud Compute), children's privacy, GDPR/CCPA rights. Contact: jesus@perezpaz.es
 - **TermsOfUseView** — 15 sections including Apple EULA requirements (section 12), governing law (Spain). Contact: jesus@perezpaz.es
 - **LegalSectionView** — Reusable component with `LocalizedStringKey` title and content parameters for automatic localization
 - **Settings integration** — Legal section with NavigationLinks to both views, plus Contact Support (mailto:) link

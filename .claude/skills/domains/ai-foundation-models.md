@@ -4,7 +4,7 @@
 
 ## Overview
 
-AISight uses Apple's FoundationModels framework (iOS 26+) for on-device answer generation. A ~3B parameter model with ~4096 token context window runs entirely on-device via `LanguageModelSession`. Each query creates a fresh session — no conversation history is carried between queries.
+AISight uses Apple's FoundationModels framework (iOS 26+) for answer generation. By default a ~3B parameter on-device model with ~4096 token context window runs entirely on-device; if the user enables it (iOS/macOS 27+), Apple Private Cloud Compute is used instead. All sessions come from `LanguageModelProvider` (never construct `LanguageModelSession` directly). Each query creates a fresh session — no conversation history is carried between queries.
 
 ## Key Files
 
@@ -132,7 +132,7 @@ Multi-step research pipeline for complex queries. Uses 5 sequential LLM sessions
 
 **With sources:**
 ```
-You are AISight — a private, on-device answer engine...
+You are AISight — a private answer engine...
 
 ## Rules
 - Answer concisely in 2-4 paragraphs

@@ -62,7 +62,7 @@ SearchViewModel reads answerSession.error → userFacingMessage(for: AnswerError
 | timeout | "Search took too long. The server may be overloaded — try again in a moment." |
 | noResults | "No sources found for this query. Try rephrasing." |
 | modelUnavailable | "AISight requires Apple Intelligence. Enable it in Settings → Apple Intelligence & Siri." |
-| contentPolicy | "This query can't be answered on-device. Try a different question." |
+| contentPolicy | "This query can't be answered. Try a different question." |
 | URLError.notConnectedToInternet | "Connect to the internet to search. Previously answered questions are available in History." |
 | Empty model response | "The model returned an empty response. Try rephrasing your question." |
 | generationFailed(msg) | "An error occurred while generating the answer: {msg}" |

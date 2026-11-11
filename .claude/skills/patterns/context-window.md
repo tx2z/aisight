@@ -4,7 +4,7 @@
 
 ## Overview
 
-The on-device ~3B model has a ~4096 token context window. This is the primary architectural constraint. The system prompt, user query, source content, and generated answer must all fit. AISight uses fixed budget allocation with aggressive source truncation.
+The on-device ~3B model has a ~4096 token context window (`AppConfig.baselineContextSize`); with Apple Private Cloud Compute the per-source snippet length scales with the model context via `AppConfig.snippetLength(forContextSize:)`. The 4096 window is the primary architectural constraint. The system prompt, user query, source content, and generated answer must all fit. AISight uses fixed budget allocation with aggressive source truncation.
 
 ## Token Budget
 
