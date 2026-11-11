@@ -1,6 +1,6 @@
 ---
 title: "AISight vs ChatGPT Search — Private AI Search Alternative"
-description: "Compare AISight and ChatGPT Search. On-device AI with zero tracking vs cloud-based search. Privacy, pricing, and features compared."
+description: "Compare AISight and ChatGPT Search. On-device-first AI with zero tracking vs cloud-based search. Privacy, pricing, and features compared."
 layout: "single"
 ---
 
@@ -12,7 +12,7 @@ layout: "single"
 
 | | AISight | ChatGPT Search |
 |---|---|---|
-| AI processing | On your device | OpenAI cloud servers |
+| AI processing | On your device (opt-in: Apple Private Cloud Compute) | OpenAI cloud servers |
 | Queries tracked | No | Yes |
 | Account required | None | Required |
 | Data used for training | Never | Opt-out available |
@@ -26,7 +26,7 @@ layout: "single"
 
 **ChatGPT Search** processes your queries on OpenAI's cloud servers. Your searches are logged, your conversations are stored, and by default your data may be used to train future models. You can opt out, but you're trusting OpenAI to honor that.
 
-**AISight** never sends your queries to any cloud AI service. Apple Intelligence runs locally on your device's neural engine. There's nothing to opt out of — your data simply never leaves.
+**AISight** does not send your queries to any third-party AI service. By default, Apple Intelligence runs locally on your device's neural engine, so there's nothing to opt out of. Only if you choose it in Settings, answers are generated on Apple's Private Cloud Compute instead.
 
 ## Search Quality
 
@@ -34,15 +34,15 @@ ChatGPT Search uses Bing as its sole search backend. AISight uses SearXNG, which
 
 ## AI Quality
 
-ChatGPT has access to GPT-4o and GPT-4, which are among the most capable AI models available. AISight uses Apple Intelligence (~3B parameters), which is smaller but runs entirely on-device with zero latency to cloud services.
+ChatGPT has access to GPT-4o and GPT-4, which are among the most capable AI models available. AISight uses Apple Intelligence (~3B parameters), which is smaller but runs on-device by default with zero latency to cloud services.
 
 For everyday questions and research, both deliver good answers with citations. For complex reasoning or creative tasks, ChatGPT's larger models have an edge.
 
-**The trade-off:** ChatGPT is more capable but sends everything through OpenAI's servers. AISight is private by design — nothing leaves your device.
+**The trade-off:** ChatGPT is more capable but sends everything through OpenAI's servers. AISight is private by design — AI runs on your device unless you opt in to Apple Private Cloud Compute.
 
 ## Pricing
 
-ChatGPT Plus costs **$20/month** ($240/year). AISight Pro is a **one-time $4.99 purchase**. No subscriptions. Or bring your own SearXNG server and get every feature for free — no purchase needed.
+ChatGPT Plus costs **$20/month** ($240/year). AISight Pro is a **one-time $4.99 purchase**. No subscriptions. Or bring your own SearXNG server and get unlimited searches and Deep Search for free — no purchase needed.
 
 ## Who Should Choose AISight?
 

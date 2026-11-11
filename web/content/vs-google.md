@@ -1,6 +1,6 @@
 ---
 title: "AISight vs Google AI Overviews — Private Search Alternative"
-description: "Compare AISight and Google AI Overviews. On-device AI with zero tracking vs Google's ad-supported AI search. Privacy and features compared."
+description: "Compare AISight and Google AI Overviews. On-device-first AI with zero tracking vs Google's ad-supported AI search. Privacy and features compared."
 layout: "single"
 ---
 
@@ -12,7 +12,7 @@ layout: "single"
 
 | | AISight | Google AI Overviews |
 |---|---|---|
-| AI processing | On your device | Google cloud |
+| AI processing | On your device (opt-in: Apple Private Cloud Compute) | Google cloud |
 | Queries tracked | No | Yes (tied to Google account) |
 | Account required | None | Google account |
 | Advertising | None | Ad-supported |
@@ -36,7 +36,7 @@ AISight uses SearXNG, which aggregates results from Google, Bing, Brave, and mor
 
 ## AI Answers
 
-Google AI Overviews use Google's Gemini models, which are highly capable. AISight uses Apple Intelligence running locally on your device.
+Google AI Overviews use Google's Gemini models, which are highly capable. AISight uses Apple Intelligence running locally on your device by default, or on Apple Private Cloud Compute if you opt in.
 
 Both provide AI-synthesized answers with source citations. Google's answers may be more detailed for complex topics, but they come at the cost of your search privacy.
 

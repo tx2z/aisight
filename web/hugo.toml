@@ -32,7 +32,7 @@ disableKinds = ["taxonomy", "term"]
     weight = 1
     title = "AISight — Private AI Answer Engine | Perplexity Alternative"
     [languages.en.params]
-      description = "AISight is a private AI answer engine for iPhone, iPad, and Mac. Search the web and get answers on-device with Apple Intelligence. No tracking, no cloud AI. Made in EU."
+      description = "AISight is a private AI answer engine for iPhone, iPad, and Mac. Search the web and get private answers, on-device by default with Apple Intelligence. No tracking, no third-party AI. Made in EU."
 
   [languages.es]
     languageCode = "es"
@@ -40,7 +40,7 @@ disableKinds = ["taxonomy", "term"]
     weight = 2
     title = "AISight — Motor de respuestas con IA privada | Alternativa a Perplexity"
     [languages.es.params]
-      description = "AISight es un motor de respuestas con IA privada para iPhone, iPad y Mac. Busca en la web y obtén respuestas en el dispositivo con Apple Intelligence. Sin rastreo, sin IA en la nube. Hecho en la UE."
+      description = "AISight es un motor de respuestas con IA privada para iPhone, iPad y Mac. Busca en la web y obtén respuestas privadas, por defecto en el dispositivo con Apple Intelligence. Sin rastreo, sin IA de terceros. Hecho en la UE."
 
   [languages.fr]
     languageCode = "fr"
@@ -48,7 +48,7 @@ disableKinds = ["taxonomy", "term"]
     weight = 3
     title = "AISight — Moteur de réponses IA privé | Alternative à Perplexity"
     [languages.fr.params]
-      description = "AISight est un moteur de réponses IA privé pour iPhone, iPad et Mac. Recherchez sur le web et obtenez des réponses sur l'appareil avec Apple Intelligence. Sans tracking, sans IA cloud. Fait dans l'UE."
+      description = "AISight est un moteur de réponses IA privé pour iPhone, iPad et Mac. Recherchez sur le web et obtenez des réponses privées, par défaut sur l'appareil avec Apple Intelligence. Sans tracking, sans IA tierce. Fait dans l'UE."
 
   [languages.de]
     languageCode = "de"
@@ -56,7 +56,7 @@ disableKinds = ["taxonomy", "term"]
     weight = 4
     title = "AISight — Private KI-Antwortmaschine | Perplexity-Alternative"
     [languages.de.params]
-      description = "AISight ist eine private KI-Antwortmaschine für iPhone, iPad und Mac. Suchen Sie im Web und erhalten Sie Antworten direkt auf dem Gerät mit Apple Intelligence. Kein Tracking, keine Cloud-KI. Made in EU."
+      description = "AISight ist eine private KI-Antwortmaschine für iPhone, iPad und Mac. Suchen Sie im Web und erhalten Sie private Antworten, standardmäßig auf dem Gerät mit Apple Intelligence. Kein Tracking, keine KI von Drittanbietern. Made in EU."
 
   [languages.it]
     languageCode = "it"
@@ -64,7 +64,7 @@ disableKinds = ["taxonomy", "term"]
     weight = 5
     title = "AISight — Motore di risposte IA privato | Alternativa a Perplexity"
     [languages.it.params]
-      description = "AISight è un motore di risposte IA privato per iPhone, iPad e Mac. Cerca nel web e ottieni risposte sul dispositivo con Apple Intelligence. Nessun tracciamento, nessuna IA cloud. Fatto nell'UE."
+      description = "AISight è un motore di risposte IA privato per iPhone, iPad e Mac. Cerca nel web e ottieni risposte private, per impostazione predefinita sul dispositivo con Apple Intelligence. Nessun tracciamento, nessuna IA di terze parti. Fatto nell'UE."
 
   [languages.pt]
     languageCode = "pt"
@@ -72,7 +72,7 @@ disableKinds = ["taxonomy", "term"]
     weight = 6
     title = "AISight — Motor de respostas IA privado | Alternativa ao Perplexity"
     [languages.pt.params]
-      description = "AISight é um motor de respostas IA privado para iPhone, iPad e Mac. Pesquise na web e obtenha respostas no dispositivo com Apple Intelligence. Sem rastreamento, sem IA na nuvem. Feito na UE."
+      description = "AISight é um motor de respostas IA privado para iPhone, iPad e Mac. Pesquise na web e obtenha respostas privadas, por padrão no dispositivo com Apple Intelligence. Sem rastreamento, sem IA de terceiros. Feito na UE."
 
   [languages.zh]
     languageCode = "zh-Hans"

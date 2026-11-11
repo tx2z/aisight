@@ -1,16 +1,16 @@
 ---
 title: "Privacy Policy"
-description: "Privacy Policy for AISight. We do not collect, store, or transmit your personal data. All AI processing happens on your device."
+description: "Privacy Policy for AISight. We do not collect, store, or transmit your personal data. AI processing happens on your device by default."
 layout: "single"
 ---
 
 # Privacy Policy
 
-*Last updated: March 2026*
+*Last updated: November 11, 2026*
 
 ## Our Commitment to Privacy
 
-AISight is built with privacy as a core principle. We do not collect, store, or transmit your personal data to any external servers we operate. There are no analytics, no tracking, no advertising, and no user accounts. Your data stays on your device.
+AISight is built with privacy as a core principle. We do not collect, store, or transmit your personal data to any external servers we operate. There are no analytics, no tracking, no advertising, and no user accounts. Your data stays on your device. The only exceptions are the network requests and AI processing described below.
 
 ## Information We Do Not Collect
 
@@ -35,9 +35,11 @@ AISight stores the following data locally on your device only:
 
 You can delete all locally stored data at any time from Settings → Data → Delete All Data.
 
+Custom AI provider settings: If you configure a custom AI provider, its URL, model name and context size are stored in UserDefaults on your device, and its API key is stored in the device Keychain, on this device only. Deleting all data in Settings also removes them.
+
 ## Data Transmitted Over the Network
 
-AISight makes two types of network requests:
+AISight makes up to four types of network requests:
 
 1. **Search Queries:** When you perform a search, your query is sent to the SearXNG server you have configured. AISight does not operate this server — you provide and control it. The privacy of your search queries depends on the configuration of your SearXNG instance.
 
@@ -45,9 +47,13 @@ AISight makes two types of network requests:
 
 AISight does not add tracking parameters, custom headers, or identifying information to these requests beyond what is standard for URL loading on iOS/macOS.
 
-## On-Device AI Processing
+3. Apple Private Cloud Compute (optional): Only if you enable it in Settings, your question, the text extracted from web sources and the AI instructions are sent to Apple's Private Cloud Compute service to write the answer.
 
-All AI processing in AISight happens entirely on your device using Apple's FoundationModels framework (Apple Intelligence). Your queries, search results, and generated answers are never sent to any cloud AI service. The AI model runs locally on your device's neural engine.
+4. Custom AI provider (optional): Only if you configure one and confirm the prompt in Settings, your question, the text extracted from web sources and the AI instructions are sent to that provider's server. Deep Search sends several requests per question. The provider's own terms and privacy practices apply.
+
+## AI Processing
+
+By default, all AI processing in AISight happens entirely on your device using Apple's FoundationModels framework (Apple Intelligence). Your queries, search results, and generated answers are not sent to any cloud AI service. If you choose "Apple Private Cloud Compute" in Settings → AI Model, your query and the search results needed to write an answer are instead processed on Apple's Private Cloud Compute servers, under Apple's privacy protections for that service. You can switch back to on-device at any time. If you configure a custom AI provider in Settings → AI Model and confirm the prompt, your question, the text extracted from web sources and the AI instructions are sent to that provider under its own terms; Deep Search makes several requests. The API key is stored in your device's Keychain and is only sent to that provider.
 
 ## Third-Party Services
 
@@ -80,7 +86,7 @@ Network requests to your SearXNG instance and source websites use standard HTTPS
 
 ## Data Retention
 
-Search history is retained on your device until you explicitly delete it. No data is retained on any external server operated by us. When you delete the app, all locally stored data is removed.
+Search history is retained on your device until you explicitly delete it. No data is retained on any external server operated by us. When you delete the app, all locally stored data is removed. Deleting all data in Settings also removes your custom provider API key and settings.
 
 ## This Website
 

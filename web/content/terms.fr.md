@@ -6,7 +6,7 @@ layout: "single"
 
 # Conditions d'Utilisation
 
-*Dernière mise à jour : mars 2026*
+*Dernière mise à jour : 11 novembre 2026*
 
 En utilisant AISight, vous acceptez ces conditions. Veuillez les lire attentivement.
 
@@ -16,11 +16,11 @@ En téléchargeant, installant ou utilisant AISight (« l'Application »), vous 
 
 ## 2. Description du Service
 
-AISight est un moteur de réponses qui recherche sur le web via un serveur SearXNG configuré par l'utilisateur et génère des réponses sur l'appareil en utilisant Apple Intelligence (framework FoundationModels). L'Application est fournie gratuitement, sans achats intégrés ni abonnements.
+AISight est un moteur de réponses qui recherche sur le web via un serveur SearXNG configuré par l'utilisateur et génère des réponses en utilisant Apple Intelligence (framework FoundationModels), par défaut sur l'appareil ou, si vous l'activez, sur Private Cloud Compute d'Apple. L'Application est gratuite à télécharger. Un achat intégré unique et facultatif (AISight Pro) débloque des fonctionnalités supplémentaires ; il n'y a aucun abonnement. Si vous configurez un fournisseur d'IA personnalisé, vous utilisez votre propre compte et votre propre clé d'API ; les conditions du fournisseur s'appliquent, et les frais ou limites qu'il applique relèvent de votre responsabilité.
 
 ## 3. Avertissement sur le Contenu Généré par l'IA
 
-AISight utilise l'intelligence artificielle sur l'appareil pour générer des réponses basées sur les résultats de recherche web. Vous reconnaissez et acceptez que :
+AISight utilise l'intelligence artificielle pour générer des réponses basées sur les résultats de recherche web. Vous reconnaissez et acceptez que :
 
 - Les réponses générées par l'IA peuvent contenir des inexactitudes, des erreurs ou des informations obsolètes.
 - Les réponses ne se substituent pas aux conseils professionnels de quelque nature que ce soit, y compris mais sans s'y limiter, les conseils médicaux, juridiques, financiers ou de sécurité.
@@ -46,7 +46,7 @@ Vous acceptez de ne pas utiliser AISight pour :
 - Violer les lois ou réglementations applicables.
 - Générer du contenu nuisible, menaçant, abusif ou autrement répréhensible.
 - Porter atteinte aux droits de propriété intellectuelle d'autrui.
-- Tenter de contourner les mesures de sécurité de l'IA sur l'appareil.
+- Tenter de contourner les mesures de sécurité de l'IA.
 - Présenter un contenu généré par l'IA comme un travail d'auteur humain.
 
 ## 6. Propriété Intellectuelle

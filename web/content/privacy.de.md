@@ -1,16 +1,16 @@
 ---
 title: "Datenschutzrichtlinie"
-description: "Datenschutzrichtlinie für AISight. Wir erheben, speichern oder übermitteln Ihre personenbezogenen Daten nicht. Die gesamte KI-Verarbeitung findet auf Ihrem Gerät statt."
+description: "Datenschutzrichtlinie für AISight. Wir erheben, speichern oder übermitteln Ihre personenbezogenen Daten nicht. Die KI-Verarbeitung findet standardmäßig auf Ihrem Gerät statt."
 layout: "single"
 ---
 
 # Datenschutzrichtlinie
 
-*Letzte Aktualisierung: März 2026*
+*Letzte Aktualisierung: 11. November 2026*
 
 ## Unser Engagement für den Datenschutz
 
-AISight wurde mit Datenschutz als Grundprinzip entwickelt. Wir erheben, speichern oder übermitteln Ihre personenbezogenen Daten nicht an externe Server, die von uns betrieben werden. Es gibt keine Analysen, kein Tracking, keine Werbung und keine Benutzerkonten. Ihre Daten bleiben auf Ihrem Gerät.
+AISight wurde mit Datenschutz als Grundprinzip entwickelt. Wir erheben, speichern oder übermitteln Ihre personenbezogenen Daten nicht an externe Server, die von uns betrieben werden. Es gibt keine Analysen, kein Tracking, keine Werbung und keine Benutzerkonten. Ihre Daten bleiben auf Ihrem Gerät. Die einzigen Ausnahmen sind die unten beschriebenen Netzwerkanfragen und die KI-Verarbeitung.
 
 ## Informationen, Die Wir Nicht Erheben
 
@@ -35,9 +35,11 @@ AISight speichert die folgenden Daten ausschließlich lokal auf Ihrem Gerät:
 
 Sie können alle lokal gespeicherten Daten jederzeit unter Einstellungen → Daten → Alle Daten löschen entfernen.
 
+Einstellungen für benutzerdefinierte KI-Anbieter: Wenn Sie einen benutzerdefinierten KI-Anbieter konfigurieren, werden dessen URL, Modellname und Kontextgröße in UserDefaults auf Ihrem Gerät gespeichert, der API-Schlüssel im Schlüsselbund des Geräts – ausschließlich auf diesem Gerät. Das Löschen aller Daten in den Einstellungen entfernt sie ebenfalls.
+
 ## Über das Netzwerk Übertragene Daten
 
-AISight führt zwei Arten von Netzwerkanfragen durch:
+AISight führt bis zu vier Arten von Netzwerkanfragen durch:
 
 1. **Suchanfragen:** Wenn Sie eine Suche durchführen, wird Ihre Anfrage an den von Ihnen konfigurierten SearXNG-Server gesendet. AISight betreibt diesen Server nicht — Sie stellen ihn bereit und kontrollieren ihn. Der Datenschutz Ihrer Suchanfragen hängt von der Konfiguration Ihrer SearXNG-Instanz ab.
 
@@ -45,9 +47,13 @@ AISight führt zwei Arten von Netzwerkanfragen durch:
 
 AISight fügt diesen Anfragen keine Tracking-Parameter, benutzerdefinierten Header oder identifizierende Informationen hinzu, die über den Standard für das Laden von URLs unter iOS/macOS hinausgehen.
 
-## KI-Verarbeitung auf dem Gerät
+3. Apple Private Cloud Compute (optional): Nur wenn Sie es in den Einstellungen aktivieren, werden Ihre Frage, der aus Webquellen extrahierte Text und die KI-Anweisungen zum Verfassen der Antwort an den Dienst Private Cloud Compute von Apple gesendet.
 
-Die gesamte KI-Verarbeitung in AISight findet vollständig auf Ihrem Gerät statt, unter Verwendung von Apples FoundationModels-Framework (Apple Intelligence). Ihre Anfragen, Suchergebnisse und generierten Antworten werden niemals an einen Cloud-KI-Dienst gesendet. Das KI-Modell läuft lokal auf der Neural Engine Ihres Geräts.
+4. Benutzerdefinierter KI-Anbieter (optional): Nur wenn Sie einen konfigurieren und die Abfrage in den Einstellungen bestätigen, werden Ihre Frage, der aus Webquellen extrahierte Text und die KI-Anweisungen an den Server dieses Anbieters gesendet. Die Tiefensuche sendet mehrere Anfragen pro Frage. Es gelten die eigenen Bedingungen und Datenschutzpraktiken des Anbieters.
+
+## KI-Verarbeitung
+
+Standardmäßig findet die gesamte KI-Verarbeitung in AISight vollständig auf Ihrem Gerät statt, unter Verwendung von Apples FoundationModels-Framework (Apple Intelligence). Ihre Anfragen, Suchergebnisse und generierten Antworten werden an keinen Cloud-KI-Dienst gesendet. Wenn Sie in den Einstellungen → KI-Modell „Apple Private Cloud Compute“ wählen, werden Ihre Anfrage und die zum Verfassen einer Antwort benötigten Suchergebnisse stattdessen auf den Private-Cloud-Compute-Servern von Apple verarbeitet, unter Apples Datenschutzmaßnahmen für diesen Dienst. Sie können jederzeit wieder auf „Auf dem Gerät“ wechseln. Wenn Sie in den Einstellungen → KI-Modell einen benutzerdefinierten KI-Anbieter konfigurieren und die Abfrage bestätigen, werden Ihre Frage, der aus Webquellen extrahierte Text und die KI-Anweisungen zu dessen eigenen Bedingungen an diesen Anbieter gesendet; die Tiefensuche sendet mehrere Anfragen. Der API-Schlüssel wird im Schlüsselbund Ihres Geräts gespeichert und nur an diesen Anbieter gesendet.
 
 ## Drittanbieterdienste
 
@@ -80,7 +86,7 @@ Netzwerkanfragen an Ihre SearXNG-Instanz und Quellwebseiten verwenden standardm�
 
 ## Datenspeicherung
 
-Der Suchverlauf wird auf Ihrem Gerät aufbewahrt, bis Sie ihn ausdrücklich löschen. Es werden keine Daten auf einem von uns betriebenen externen Server gespeichert. Wenn Sie die App löschen, werden alle lokal gespeicherten Daten entfernt.
+Der Suchverlauf wird auf Ihrem Gerät aufbewahrt, bis Sie ihn ausdrücklich löschen. Es werden keine Daten auf einem von uns betriebenen externen Server gespeichert. Wenn Sie die App löschen, werden alle lokal gespeicherten Daten entfernt. Das Löschen aller Daten in den Einstellungen entfernt auch den API-Schlüssel und die Einstellungen Ihres benutzerdefinierten Anbieters.
 
 ## Diese Website
 

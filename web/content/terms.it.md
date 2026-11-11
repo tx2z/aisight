@@ -6,7 +6,7 @@ layout: "single"
 
 # Condizioni d'Uso
 
-*Ultimo aggiornamento: marzo 2026*
+*Ultimo aggiornamento: 11 novembre 2026*
 
 Utilizzando AISight, accetti queste condizioni. Ti preghiamo di leggerle attentamente.
 
@@ -16,11 +16,11 @@ Scaricando, installando o utilizzando AISight ("l'Applicazione"), accetti di ess
 
 ## 2. Descrizione del Servizio
 
-AISight è un motore di risposte che cerca nel web tramite un server SearXNG configurato dall'utente e genera risposte sul dispositivo utilizzando Apple Intelligence (framework FoundationModels). L'Applicazione è fornita gratuitamente, senza acquisti in-app né abbonamenti.
+AISight è un motore di risposte che cerca nel web tramite un server SearXNG configurato dall'utente e genera risposte utilizzando Apple Intelligence (framework FoundationModels), per impostazione predefinita sul dispositivo o, se lo attivi, su Private Cloud Compute di Apple. L'App è gratuita da scaricare. Un acquisto in-app opzionale una tantum (AISight Pro) sblocca funzioni aggiuntive; non ci sono abbonamenti. Se configuri un provider IA personalizzato, usi il tuo account e la tua chiave API; si applicano i termini del provider e gli eventuali costi o limiti che applica sono di tua responsabilità.
 
 ## 3. Avvertenza sui Contenuti Generati dall'IA
 
-AISight utilizza l'intelligenza artificiale sul dispositivo per generare risposte basate sui risultati di ricerca web. Riconosci e accetti che:
+AISight utilizza l'intelligenza artificiale per generare risposte basate sui risultati di ricerca web. Riconosci e accetti che:
 
 - Le risposte generate dall'IA possono contenere inesattezze, errori o informazioni obsolete.
 - Le risposte non sostituiscono la consulenza professionale di alcun tipo, inclusa ma non limitata a consulenza medica, legale, finanziaria o sulla sicurezza.
@@ -46,7 +46,7 @@ Ti impegni a non utilizzare AISight per:
 - Violare leggi o regolamenti applicabili.
 - Generare contenuti dannosi, minacciosi, offensivi o altrimenti inaccettabili.
 - Violare i diritti di proprietà intellettuale di terzi.
-- Tentare di aggirare le misure di sicurezza dell'IA sul dispositivo.
+- Tentare di aggirare le misure di sicurezza dell'IA.
 - Presentare contenuti generati dall'IA come opera di autore umano.
 
 ## 6. Proprietà Intellettuale

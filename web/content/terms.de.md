@@ -6,7 +6,7 @@ layout: "single"
 
 # Nutzungsbedingungen
 
-*Letzte Aktualisierung: März 2026*
+*Letzte Aktualisierung: 11. November 2026*
 
 Durch die Nutzung von AISight stimmen Sie diesen Bedingungen zu. Bitte lesen Sie sie sorgfältig durch.
 
@@ -16,11 +16,11 @@ Durch das Herunterladen, Installieren oder Nutzen von AISight („die App") erkl
 
 ## 2. Beschreibung des Dienstes
 
-AISight ist eine Antwortmaschine, die über einen benutzerkonfigurierten SearXNG-Server im Web sucht und Antworten auf dem Gerät mithilfe von Apple Intelligence (FoundationModels-Framework) generiert. Die App wird kostenlos ohne In-App-Käufe oder Abonnements bereitgestellt.
+AISight ist eine Antwortmaschine, die über einen benutzerkonfigurierten SearXNG-Server im Web sucht und Antworten mithilfe von Apple Intelligence (FoundationModels-Framework) generiert, standardmäßig auf dem Gerät oder, wenn Sie es aktivieren, über Apples Private Cloud Compute. Die App ist kostenlos herunterladbar. Ein optionaler einmaliger In-App-Kauf (AISight Pro) schaltet zusätzliche Funktionen frei; es gibt keine Abonnements. Wenn Sie einen benutzerdefinierten KI-Anbieter konfigurieren, nutzen Sie Ihr eigenes Konto und Ihren eigenen API-Schlüssel; es gelten die Bedingungen des Anbieters, und alle von ihm erhobenen Kosten oder Limits liegen in Ihrer Verantwortung.
 
 ## 3. Haftungsausschluss für KI-generierte Inhalte
 
-AISight verwendet geräteinterne künstliche Intelligenz, um Antworten auf Basis von Web-Suchergebnissen zu generieren. Sie erkennen an und stimmen zu, dass:
+AISight verwendet künstliche Intelligenz, um Antworten auf Basis von Web-Suchergebnissen zu generieren. Sie erkennen an und stimmen zu, dass:
 
 - KI-generierte Antworten Ungenauigkeiten, Fehler oder veraltete Informationen enthalten können.
 - Antworten keinen Ersatz für professionelle Beratung jeglicher Art darstellen, einschließlich, aber nicht beschränkt auf medizinische, rechtliche, finanzielle oder sicherheitsbezogene Beratung.
@@ -46,7 +46,7 @@ Sie verpflichten sich, AISight nicht zu nutzen, um:
 - Gegen geltende Gesetze oder Vorschriften zu verstoßen.
 - Inhalte zu erzeugen, die schädlich, bedrohlich, missbräuchlich oder anderweitig anstößig sind.
 - Die geistigen Eigentumsrechte anderer zu verletzen.
-- Zu versuchen, die KI-Sicherheitsmaßnahmen auf dem Gerät zu umgehen.
+- Zu versuchen, die KI-Sicherheitsmaßnahmen zu umgehen.
 - KI-generierte Inhalte als von Menschen verfasste Werke auszugeben.
 
 ## 6. Geistiges Eigentum

@@ -1,6 +1,6 @@
 ---
 title: "AISight vs Perplexity — Private AI Search Compared"
-description: "Compare AISight and Perplexity AI. See how on-device AI with zero tracking compares to cloud-based search. Privacy, pricing, features side by side."
+description: "Compare AISight and Perplexity AI. See how on-device-first AI with zero tracking compares to cloud-based search. Privacy, pricing, features side by side."
 layout: "single"
 ---
 
@@ -12,13 +12,13 @@ layout: "single"
 
 **Perplexity** sends every query you type to cloud servers. Your questions are processed by remote AI models, stored on their servers, and potentially used to improve their service. You need an account to use it.
 
-**AISight** processes everything on your device using Apple Intelligence. Your queries never leave your phone or Mac. There are no accounts, no analytics, and no cloud AI services involved.
+**AISight** processes AI answers on your device by default using Apple Intelligence. Your questions don't leave your phone or Mac unless you opt in to Apple Private Cloud Compute in Settings. There are no accounts, no analytics, and no third-party AI services involved.
 
 ## Privacy Comparison
 
 | | AISight | Perplexity |
 |---|---|---|
-| AI processing | On your device | Cloud servers |
+| AI processing | On your device (opt-in: Apple Private Cloud Compute) | Cloud servers |
 | Queries tracked | No | Yes |
 | Account required | None | Required |
 | Analytics/tracking | None | Yes |
@@ -33,7 +33,7 @@ layout: "single"
 | Free tier | 10 searches/day | Limited |
 | Pro price | **$4.99 one-time** | **$20/month ($240/year)** |
 | Pro features | Unlimited searches, Deep Search (on default server) | GPT-4, unlimited, file upload |
-| Self-hosted option | **All features free** with your own server | None |
+| Self-hosted option | **Unlimited searches and Deep Search free** with your own server | None |
 
 AISight Pro is a one-time purchase. No subscriptions, no recurring charges. Or bring your own SearXNG server and get everything for free. Perplexity Pro costs $20 per month — that's $240 per year, every year.
 
@@ -47,7 +47,7 @@ AISight Pro is a one-time purchase. No subscriptions, no recurring charges. Or b
 
 Perplexity has access to GPT-4 and Claude, which are more capable for complex reasoning, creative writing, and nuanced analysis.
 
-AISight uses Apple Intelligence (~3B parameters), which runs entirely on your device. It handles everyday questions, research, and fact-checking very well. For complex multi-step reasoning, cloud models may produce better answers.
+AISight uses Apple Intelligence (~3B parameters), which runs on your device by default. It handles everyday questions, research, and fact-checking very well. For complex multi-step reasoning, cloud models may produce better answers.
 
 **The trade-off is clear:** Perplexity offers more powerful AI, but every query you make is tracked and stored. AISight offers privacy by design — your searches are yours alone.
 
@@ -68,6 +68,6 @@ AISight uses Apple Intelligence (~3B parameters), which runs entirely on your de
 
 ## Summary
 
-If privacy matters to you, AISight is the clear choice. Everything stays on your device, the code is [open source](https://github.com/tx2z/aisight), and the infrastructure is EU-based with zero logging. If you need the most powerful AI regardless of privacy, Perplexity offers that — at the cost of your search data.
+If privacy matters to you, AISight is the clear choice. AI runs on your device by default, the code is [open source](https://github.com/tx2z/aisight), and the infrastructure is EU-based with zero logging. If you need the most powerful AI regardless of privacy, Perplexity offers that — at the cost of your search data.
 
 **Download AISight on the App Store: [iPhone & iPad](https://apps.apple.com/us/app/aisight-ai-search-answers/id6761124676?ct=website&mt=8) · [Mac](https://apps.apple.com/us/app/aisight-ai-search-answers/id6761124676?platform=mac&ct=website&mt=12)**

@@ -1,16 +1,16 @@
 ---
 title: "Informativa sulla Privacy"
-description: "Informativa sulla Privacy di AISight. Non raccogliamo, memorizziamo o trasmettiamo i tuoi dati personali. Tutta l'elaborazione IA avviene sul tuo dispositivo."
+description: "Informativa sulla Privacy di AISight. Non raccogliamo, memorizziamo o trasmettiamo i tuoi dati personali. L'elaborazione IA avviene per impostazione predefinita sul tuo dispositivo."
 layout: "single"
 ---
 
 # Informativa sulla Privacy
 
-*Ultimo aggiornamento: marzo 2026*
+*Ultimo aggiornamento: 11 novembre 2026*
 
 ## Il Nostro Impegno per la Privacy
 
-AISight è progettato con la privacy come principio fondamentale. Non raccogliamo, memorizziamo o trasmettiamo i tuoi dati personali a server esterni da noi gestiti. Non ci sono analisi, tracciamento, pubblicità o account utente. I tuoi dati restano sul tuo dispositivo.
+AISight è progettato con la privacy come principio fondamentale. Non raccogliamo, memorizziamo o trasmettiamo i tuoi dati personali a server esterni da noi gestiti. Non ci sono analisi, tracciamento, pubblicità o account utente. I tuoi dati restano sul tuo dispositivo. Le uniche eccezioni sono le richieste di rete e l'elaborazione IA descritte di seguito.
 
 ## Informazioni Che Non Raccogliamo
 
@@ -35,9 +35,11 @@ AISight memorizza i seguenti dati localmente, solo sul tuo dispositivo:
 
 Puoi eliminare tutti i dati memorizzati localmente in qualsiasi momento da Impostazioni → Dati → Elimina tutti i dati.
 
+Impostazioni del provider IA personalizzato: se configuri un provider IA personalizzato, il suo URL, il nome del modello e la dimensione del contesto sono salvati in UserDefaults sul tuo dispositivo, mentre la chiave API è salvata nel portachiavi del dispositivo, solo su questo dispositivo. L'eliminazione di tutti i dati dalle Impostazioni li rimuove.
+
 ## Dati Trasmessi sulla Rete
 
-AISight effettua due tipi di richieste di rete:
+AISight effettua fino a quattro tipi di richieste di rete:
 
 1. **Query di ricerca:** Quando esegui una ricerca, la tua query viene inviata al server SearXNG che hai configurato. AISight non gestisce questo server — sei tu a fornirlo e controllarlo. La privacy delle tue query di ricerca dipende dalla configurazione della tua istanza SearXNG.
 
@@ -45,9 +47,13 @@ AISight effettua due tipi di richieste di rete:
 
 AISight non aggiunge parametri di tracciamento, intestazioni personalizzate o informazioni identificative a queste richieste oltre a quanto è standard per il caricamento di URL su iOS/macOS.
 
-## Elaborazione IA sul Dispositivo
+3. Apple Private Cloud Compute (facoltativo): Solo se lo attivi in Impostazioni, la tua domanda, il testo estratto dalle fonti web e le istruzioni per l'IA vengono inviati al servizio Private Cloud Compute di Apple per scrivere la risposta.
 
-Tutta l'elaborazione IA in AISight avviene interamente sul tuo dispositivo utilizzando il framework FoundationModels di Apple (Apple Intelligence). Le tue query, i risultati di ricerca e le risposte generate non vengono mai inviati a nessun servizio di IA cloud. Il modello di IA viene eseguito localmente sul motore neurale del tuo dispositivo.
+4. Provider IA personalizzato (facoltativo): Solo se ne configuri uno e confermi l'avviso in Impostazioni, la tua domanda, il testo estratto dalle fonti web e le istruzioni per l'IA vengono inviati al server di quel provider. La Ricerca approfondita invia più richieste per domanda. Si applicano i termini e le pratiche sulla privacy del provider.
+
+## Elaborazione IA
+
+Per impostazione predefinita, tutta l'elaborazione IA in AISight avviene interamente sul tuo dispositivo utilizzando il framework FoundationModels di Apple (Apple Intelligence). Le tue query, i risultati di ricerca e le risposte generate non vengono inviati a nessun servizio di IA cloud. Se scegli «Apple Private Cloud Compute» in Impostazioni → Modello IA, la tua query e i risultati di ricerca necessari per scrivere una risposta vengono invece elaborati sui server Private Cloud Compute di Apple, con le protezioni della privacy di Apple per quel servizio. Puoi tornare al dispositivo in qualsiasi momento. Se configuri un provider IA personalizzato in Impostazioni → Modello IA e confermi l'avviso, la tua domanda, il testo estratto dalle fonti web e le istruzioni per l'IA vengono inviati a tale provider secondo i suoi termini; la Ricerca approfondita invia più richieste. La chiave API è salvata nel portachiavi del tuo dispositivo e viene inviata solo a quel provider.
 
 ## Servizi di Terze Parti
 
@@ -80,7 +86,7 @@ Le richieste di rete alla tua istanza SearXNG e ai siti web di origine utilizzan
 
 ## Conservazione dei Dati
 
-La cronologia delle ricerche viene conservata sul tuo dispositivo fino a quando non la elimini esplicitamente. Nessun dato viene conservato su server esterni da noi gestiti. Quando elimini l'app, tutti i dati memorizzati localmente vengono rimossi.
+La cronologia delle ricerche viene conservata sul tuo dispositivo fino a quando non la elimini esplicitamente. Nessun dato viene conservato su server esterni da noi gestiti. Quando elimini l'app, tutti i dati memorizzati localmente vengono rimossi. L'eliminazione di tutti i dati dalle Impostazioni rimuove anche la chiave API e le impostazioni del tuo provider personalizzato.
 
 ## Questo Sito Web
 

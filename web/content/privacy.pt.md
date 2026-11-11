@@ -1,16 +1,16 @@
 ---
 title: "Política de Privacidade"
-description: "Política de Privacidade do AISight. Não recolhemos, armazenamos nem transmitimos os seus dados pessoais. Todo o processamento de IA acontece no seu dispositivo."
+description: "Política de Privacidade do AISight. Não recolhemos, armazenamos nem transmitimos os seus dados pessoais. O processamento de IA acontece por padrão no seu dispositivo."
 layout: "single"
 ---
 
 # Política de Privacidade
 
-*Última atualização: março de 2026*
+*Última atualização: 11 de novembro de 2026*
 
 ## O Nosso Compromisso com a Privacidade
 
-O AISight foi concebido com a privacidade como princípio fundamental. Não recolhemos, armazenamos nem transmitimos os seus dados pessoais para quaisquer servidores externos operados por nós. Não há análises, rastreamento, publicidade nem contas de utilizador. Os seus dados permanecem no seu dispositivo.
+O AISight foi concebido com a privacidade como princípio fundamental. Não recolhemos, armazenamos nem transmitimos os seus dados pessoais para quaisquer servidores externos operados por nós. Não há análises, rastreamento, publicidade nem contas de utilizador. Os seus dados permanecem no seu dispositivo. As únicas exceções são os pedidos de rede e o processamento de IA descritos abaixo.
 
 ## Informações Que Não Recolhemos
 
@@ -35,9 +35,11 @@ O AISight armazena os seguintes dados localmente, apenas no seu dispositivo:
 
 Pode eliminar todos os dados armazenados localmente a qualquer momento em Definições → Dados → Eliminar todos os dados.
 
+Definições do fornecedor de IA personalizado: se configurar um fornecedor de IA personalizado, o respetivo URL, nome do modelo e tamanho de contexto são guardados em UserDefaults no seu dispositivo, e a chave de API é guardada na Chave de Acesso do dispositivo, apenas neste dispositivo. Eliminar todos os dados nas Definições também os remove.
+
 ## Dados Transmitidos Pela Rede
 
-O AISight faz dois tipos de pedidos de rede:
+O AISight realiza até quatro tipos de pedidos de rede:
 
 1. **Consultas de pesquisa:** Quando efetua uma pesquisa, a sua consulta é enviada para o servidor SearXNG que configurou. O AISight não opera este servidor — é você que o fornece e controla. A privacidade das suas consultas de pesquisa depende da configuração da sua instância SearXNG.
 
@@ -45,9 +47,13 @@ O AISight faz dois tipos de pedidos de rede:
 
 O AISight não adiciona parâmetros de rastreamento, cabeçalhos personalizados ou informações identificativas a estes pedidos para além do que é padrão para o carregamento de URLs no iOS/macOS.
 
-## Processamento de IA no Dispositivo
+3. Apple Private Cloud Compute (opcional): Apenas se o ativar nas Definições, a sua pergunta, o texto extraído das fontes web e as instruções de IA são enviados para o serviço Private Cloud Compute da Apple para escrever a resposta.
 
-Todo o processamento de IA no AISight acontece inteiramente no seu dispositivo utilizando a framework FoundationModels da Apple (Apple Intelligence). As suas consultas, resultados de pesquisa e respostas geradas nunca são enviados para qualquer serviço de IA na nuvem. O modelo de IA é executado localmente no motor neural do seu dispositivo.
+4. Fornecedor de IA personalizado (opcional): Apenas se configurar um e confirmar o aviso nas Definições, a sua pergunta, o texto extraído das fontes web e as instruções de IA são enviados para o servidor desse fornecedor. A Busca Profunda envia vários pedidos por pergunta. Aplicam-se os termos e as práticas de privacidade do próprio fornecedor.
+
+## Processamento de IA
+
+Por padrão, todo o processamento de IA no AISight acontece inteiramente no seu dispositivo utilizando a framework FoundationModels da Apple (Apple Intelligence). As suas consultas, resultados de pesquisa e respostas geradas não são enviados para qualquer serviço de IA na nuvem. Se escolher «Apple Private Cloud Compute» em Definições → Modelo de IA, a sua consulta e os resultados de pesquisa necessários para escrever uma resposta são, em vez disso, processados nos servidores Private Cloud Compute da Apple, com as proteções de privacidade da Apple para esse serviço. Pode voltar ao processamento no dispositivo a qualquer momento. Se configurar um fornecedor de IA personalizado em Definições → Modelo de IA e confirmar o aviso, a sua pergunta, o texto extraído das fontes web e as instruções de IA são enviados para esse fornecedor, ao abrigo dos seus próprios termos; a Busca Profunda envia vários pedidos. A chave de API é guardada na Chave de Acesso do seu dispositivo e só é enviada para esse fornecedor.
 
 ## Serviços de Terceiros
 
@@ -80,7 +86,7 @@ Os pedidos de rede para a sua instância SearXNG e websites de origem utilizam e
 
 ## Retenção de Dados
 
-O histórico de pesquisa é mantido no seu dispositivo até que o elimine explicitamente. Nenhum dado é retido em qualquer servidor externo operado por nós. Quando elimina a aplicação, todos os dados armazenados localmente são removidos.
+O histórico de pesquisa é mantido no seu dispositivo até que o elimine explicitamente. Nenhum dado é retido em qualquer servidor externo operado por nós. Quando elimina a aplicação, todos os dados armazenados localmente são removidos. Eliminar todos os dados nas Definições também remove a chave de API e as definições do seu fornecedor personalizado.
 
 ## Este Website
 

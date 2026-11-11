@@ -6,7 +6,7 @@ layout: "single"
 
 # Termos de Utilização
 
-*Última atualização: março de 2026*
+*Última atualização: 11 de novembro de 2026*
 
 Ao utilizar o AISight, concorda com estes termos. Por favor, leia-os atentamente.
 
@@ -16,11 +16,11 @@ Ao descarregar, instalar ou utilizar o AISight ("a Aplicação"), concorda em fi
 
 ## 2. Descrição do Serviço
 
-O AISight é um motor de respostas que pesquisa na web através de um servidor SearXNG configurado pelo utilizador e gera respostas no dispositivo utilizando Apple Intelligence (framework FoundationModels). A Aplicação é fornecida gratuitamente, sem compras na aplicação nem subscrições.
+O AISight é um motor de respostas que pesquisa na web através de um servidor SearXNG configurado pelo utilizador e gera respostas utilizando Apple Intelligence (framework FoundationModels), por predefinição no dispositivo ou, se o ativar, no Private Cloud Compute da Apple. A Aplicação é gratuita para transferir. Uma compra opcional única na aplicação (AISight Pro) desbloqueia funcionalidades adicionais; não há subscrições. Se configurar um fornecedor de IA personalizado, utiliza a sua própria conta e chave de API; aplicam-se os termos do fornecedor e quaisquer custos ou limites que este aplique são da sua responsabilidade.
 
 ## 3. Aviso sobre Conteúdo Gerado por IA
 
-O AISight utiliza inteligência artificial no dispositivo para gerar respostas com base em resultados de pesquisa na web. O utilizador reconhece e concorda que:
+O AISight utiliza inteligência artificial para gerar respostas com base em resultados de pesquisa na web. O utilizador reconhece e concorda que:
 
 - As respostas geradas por IA podem conter imprecisões, erros ou informações desatualizadas.
 - As respostas não substituem aconselhamento profissional de qualquer tipo, incluindo, mas não se limitando a, aconselhamento médico, jurídico, financeiro ou de segurança.
@@ -46,7 +46,7 @@ Concorda em não utilizar o AISight para:
 - Violar leis ou regulamentos aplicáveis.
 - Gerar conteúdo prejudicial, ameaçador, abusivo ou de outra forma objetável.
 - Infringir os direitos de propriedade intelectual de terceiros.
-- Tentar contornar as medidas de segurança da IA no dispositivo.
+- Tentar contornar as medidas de segurança da IA.
 - Apresentar conteúdo gerado por IA como obra de autoria humana.
 
 ## 6. Propriedade Intelectual

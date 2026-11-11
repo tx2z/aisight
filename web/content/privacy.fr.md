@@ -1,16 +1,16 @@
 ---
 title: "Politique de Confidentialité"
-description: "Politique de Confidentialité d'AISight. Nous ne collectons, ne stockons ni ne transmettons vos données personnelles. Tout le traitement IA se fait sur votre appareil."
+description: "Politique de Confidentialité d'AISight. Nous ne collectons, ne stockons ni ne transmettons vos données personnelles. Le traitement IA se fait par défaut sur votre appareil."
 layout: "single"
 ---
 
 # Politique de Confidentialité
 
-*Dernière mise à jour : mars 2026*
+*Dernière mise à jour : 11 novembre 2026*
 
 ## Notre Engagement en Matière de Confidentialité
 
-AISight est conçu avec la confidentialité comme principe fondamental. Nous ne collectons, ne stockons ni ne transmettons vos données personnelles à des serveurs externes que nous exploitons. Il n'y a ni analyse, ni suivi, ni publicité, ni comptes utilisateur. Vos données restent sur votre appareil.
+AISight est conçu avec la confidentialité comme principe fondamental. Nous ne collectons, ne stockons ni ne transmettons vos données personnelles à des serveurs externes que nous exploitons. Il n'y a ni analyse, ni suivi, ni publicité, ni comptes utilisateur. Vos données restent sur votre appareil. Les seules exceptions sont les requêtes réseau et le traitement IA décrits ci-dessous.
 
 ## Informations Que Nous Ne Collectons Pas
 
@@ -35,9 +35,11 @@ AISight stocke les données suivantes localement, uniquement sur votre appareil 
 
 Vous pouvez supprimer toutes les données stockées localement à tout moment depuis Réglages → Données → Supprimer toutes les données.
 
+Réglages du fournisseur d'IA personnalisé : si vous configurez un fournisseur d'IA personnalisé, son URL, son nom de modèle et sa taille de contexte sont stockés dans UserDefaults sur votre appareil, et sa clé d'API dans le trousseau de l'appareil, uniquement sur cet appareil. La suppression de toutes les données dans les Réglages les supprime également.
+
 ## Données Transmises sur le Réseau
 
-AISight effectue deux types de requêtes réseau :
+AISight effectue jusqu'à quatre types de requêtes réseau :
 
 1. **Requêtes de recherche :** Lorsque vous effectuez une recherche, votre requête est envoyée au serveur SearXNG que vous avez configuré. AISight n'exploite pas ce serveur — c'est vous qui le fournissez et le contrôlez. La confidentialité de vos requêtes de recherche dépend de la configuration de votre instance SearXNG.
 
@@ -45,9 +47,13 @@ AISight effectue deux types de requêtes réseau :
 
 AISight n'ajoute pas de paramètres de suivi, d'en-têtes personnalisés ou d'informations d'identification à ces requêtes au-delà de ce qui est standard pour le chargement d'URL sur iOS/macOS.
 
-## Traitement IA sur l'Appareil
+3. Apple Private Cloud Compute (facultatif) : Uniquement si vous l'activez dans les Réglages, votre question, le texte extrait des sources web et les instructions de l'IA sont envoyés au service Private Cloud Compute d'Apple pour rédiger la réponse.
 
-Tout le traitement IA dans AISight se fait entièrement sur votre appareil à l'aide du framework FoundationModels d'Apple (Apple Intelligence). Vos requêtes, résultats de recherche et réponses générées ne sont jamais envoyés à un service d'IA cloud. Le modèle d'IA s'exécute localement sur le moteur neuronal de votre appareil.
+4. Fournisseur d'IA personnalisé (facultatif) : Uniquement si vous en configurez un et confirmez l'invite dans les Réglages, votre question, le texte extrait des sources web et les instructions de l'IA sont envoyés au serveur de ce fournisseur. La recherche approfondie envoie plusieurs requêtes par question. Les conditions et pratiques de confidentialité propres au fournisseur s'appliquent.
+
+## Traitement IA
+
+Par défaut, tout le traitement IA dans AISight se fait entièrement sur votre appareil à l'aide du framework FoundationModels d'Apple (Apple Intelligence). Vos requêtes, résultats de recherche et réponses générées ne sont envoyés à aucun service d'IA cloud. Si vous choisissez « Apple Private Cloud Compute » dans Réglages → Modèle d'IA, votre requête et les résultats de recherche nécessaires à la rédaction d'une réponse sont alors traités sur les serveurs Private Cloud Compute d'Apple, avec les protections de confidentialité d'Apple pour ce service. Vous pouvez revenir à l'appareil à tout moment. Si vous configurez un fournisseur d'IA personnalisé dans Réglages → Modèle d'IA et confirmez l'invite, votre question, le texte extrait des sources web et les instructions de l'IA sont envoyés à ce fournisseur selon ses propres conditions ; la recherche approfondie envoie plusieurs requêtes. La clé d'API est stockée dans le trousseau de votre appareil et n'est envoyée qu'à ce fournisseur.
 
 ## Services Tiers
 
@@ -80,7 +86,7 @@ Les requêtes réseau vers votre instance SearXNG et les sites web sources utili
 
 ## Conservation des Données
 
-L'historique de recherche est conservé sur votre appareil jusqu'à ce que vous le supprimiez explicitement. Aucune donnée n'est conservée sur un serveur externe exploité par nous. Lorsque vous supprimez l'application, toutes les données stockées localement sont supprimées.
+L'historique de recherche est conservé sur votre appareil jusqu'à ce que vous le supprimiez explicitement. Aucune donnée n'est conservée sur un serveur externe exploité par nous. Lorsque vous supprimez l'application, toutes les données stockées localement sont supprimées. La suppression de toutes les données dans les Réglages supprime également la clé d'API et les réglages de votre fournisseur personnalisé.
 
 ## Ce Site Web
 

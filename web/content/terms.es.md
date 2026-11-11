@@ -6,7 +6,7 @@ layout: "single"
 
 # Condiciones de Uso
 
-*Última actualización: marzo de 2026*
+*Última actualización: 11 de noviembre de 2026*
 
 Al utilizar AISight, usted acepta estas condiciones. Por favor, léalas detenidamente.
 
@@ -16,11 +16,11 @@ Al descargar, instalar o utilizar AISight ("la Aplicación"), usted acepta queda
 
 ## 2. Descripción del Servicio
 
-AISight es un motor de respuestas que busca en la web a través de un servidor SearXNG configurado por el usuario y genera respuestas en el dispositivo utilizando Apple Intelligence (framework FoundationModels). La Aplicación se proporciona de forma gratuita, sin compras dentro de la aplicación ni suscripciones.
+AISight es un motor de respuestas que busca en la web a través de un servidor SearXNG configurado por el usuario y genera respuestas utilizando Apple Intelligence (framework FoundationModels), por defecto en el dispositivo o, si lo activa, en Private Cloud Compute de Apple. La Aplicación es gratuita de descargar. Una compra opcional única dentro de la aplicación (AISight Pro) desbloquea funciones adicionales; no hay suscripciones. Si configura un proveedor de IA personalizado, usa su propia cuenta y clave de API; se aplican los términos del proveedor, y cualquier cargo o límite que este aplique es de su responsabilidad.
 
 ## 3. Aviso sobre Contenido Generado por IA
 
-AISight utiliza inteligencia artificial en el dispositivo para generar respuestas basadas en resultados de búsqueda web. Usted reconoce y acepta que:
+AISight utiliza inteligencia artificial para generar respuestas basadas en resultados de búsqueda web. Usted reconoce y acepta que:
 
 - Las respuestas generadas por IA pueden contener inexactitudes, errores o información desactualizada.
 - Las respuestas no sustituyen el asesoramiento profesional de ningún tipo, incluyendo, entre otros, asesoramiento médico, legal, financiero o de seguridad.
@@ -46,7 +46,7 @@ Usted se compromete a no utilizar AISight para:
 - Violar leyes o regulaciones aplicables.
 - Generar contenido que sea dañino, amenazante, abusivo o de cualquier otro modo objetable.
 - Infringir los derechos de propiedad intelectual de terceros.
-- Intentar eludir las medidas de seguridad de la IA en el dispositivo.
+- Intentar eludir las medidas de seguridad de la IA.
 - Hacer pasar contenido generado por IA como trabajo de autoría humana.
 
 ## 6. Propiedad Intelectual

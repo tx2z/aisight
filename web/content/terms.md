@@ -6,7 +6,7 @@ layout: "single"
 
 # Terms of Use
 
-*Last updated: March 2026*
+*Last updated: November 11, 2026*
 
 By using AISight, you agree to these terms. Please read them carefully.
 
@@ -16,11 +16,11 @@ By downloading, installing, or using AISight ("the App"), you agree to be bound 
 
 ## 2. Description of Service
 
-AISight is an answer engine that searches the web via a user-configured SearXNG server and generates answers on-device using Apple Intelligence (FoundationModels framework). The App is provided free of charge with no in-app purchases or subscriptions.
+AISight is an answer engine that searches the web via a user-configured SearXNG server and generates answers using Apple Intelligence (FoundationModels framework), on-device by default or on Apple's Private Cloud Compute if you enable it. The App is free to download. An optional one-time in-app purchase (AISight Pro) unlocks additional features; there are no subscriptions. If you configure a custom AI provider, you use your own account and API key; the provider's terms apply, and any charges or limits it applies are your responsibility.
 
 ## 3. AI-Generated Content Disclaimer
 
-AISight uses on-device artificial intelligence to generate answers based on web search results. You acknowledge and agree that:
+AISight uses artificial intelligence to generate answers based on web search results. You acknowledge and agree that:
 
 - AI-generated answers may contain inaccuracies, errors, or outdated information.
 - Answers are not a substitute for professional advice of any kind, including but not limited to medical, legal, financial, or safety advice.
@@ -46,7 +46,7 @@ You agree not to use AISight to:
 - Violate any applicable laws or regulations.
 - Generate content that is harmful, threatening, abusive, or otherwise objectionable.
 - Infringe on the intellectual property rights of others.
-- Attempt to circumvent the on-device AI safety measures.
+- Attempt to circumvent the AI safety measures.
 - Misrepresent AI-generated content as human-authored work.
 
 ## 6. Intellectual Property
