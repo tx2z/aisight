@@ -2,7 +2,9 @@ import StoreKit
 
 @MainActor @Observable
 final class StoreManager {
-    private(set) var isPro: Bool = false
+    private(set) var isPro: Bool = false {
+        didSet { defaults.set(isPro, forKey: Self.cachedProKey) }
+    }
     private(set) var dailyQueriesUsed: Int = 0
     private(set) var errorMessage: String?
 
@@ -11,6 +13,7 @@ final class StoreManager {
 
     static let dailyLimit = 10
     static let productID = "com.aisight.pro"
+    private static let cachedProKey = "is_pro_cached"
 
     private var transactionListener: Task<Void, Never>?
     private let defaults: UserDefaults
@@ -36,6 +39,7 @@ final class StoreManager {
 
     init(defaults: UserDefaults = .standard) {
         self.defaults = defaults
+        isPro = defaults.bool(forKey: Self.cachedProKey)
         loadDailyCounter()
         refreshCustomServerStatus()
         #if SETAPP
@@ -104,11 +108,11 @@ final class StoreManager {
     #if !SETAPP
     private func startTransactionListener() {
         // Detached to avoid blocking MainActor while awaiting Transaction.updates
-        transactionListener = Task.detached { [weak self] in
+        transactionListener = Task { [weak self] in
             for await result in Transaction.updates {
                 guard let self else { return }
+                await self.refreshPurchaseStatus()
                 if let transaction = try? self.checkVerified(result) {
-                    await MainActor.run { self.isPro = true }
                     await transaction.finish()
                 }
             }
@@ -116,13 +120,15 @@ final class StoreManager {
     }
 
     private func refreshPurchaseStatus() async {
+        var entitled = false
         for await result in Transaction.currentEntitlements {
             if let transaction = try? checkVerified(result),
-               transaction.productID == Self.productID {
-                isPro = true
-                return
+               transaction.productID == Self.productID,
+               transaction.revocationDate == nil {
+                entitled = true
             }
         }
+        isPro = entitled
     }
 
     private nonisolated func checkVerified(_ result: VerificationResult<Transaction>) throws -> Transaction {
