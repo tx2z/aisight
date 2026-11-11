@@ -31,6 +31,11 @@ struct HistoryDetailView: View {
                     .buttonStyle(.plain)
                     .foregroundStyle(.secondary)
 
+                if let generatedBy = entry.generatedBy {
+                    ModelBadge(model: generatedBy)
+                        .foregroundStyle(.tertiary)
+                }
+
                 if !entry.sources.isEmpty {
                     Divider()
 

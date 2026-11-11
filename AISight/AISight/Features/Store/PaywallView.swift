@@ -5,6 +5,7 @@ struct PaywallView: View {
     @Environment(\.dismiss) private var dismiss
 
     var reason: PaywallReason = .dailyLimitReached
+    @State private var cloudStatus: CloudModelStatus = .notOffered
 
     private var subtitle: String {
         switch reason {
@@ -12,6 +13,8 @@ struct PaywallView: View {
             return String(localized: "You've used all \(StoreManager.dailyLimit) free searches today")
         case .deepSearchRequiresPro:
             return String(localized: "Deep Search is a Pro feature")
+        case .cloudModelRequiresPro:
+            return String(localized: "Apple Private Cloud Compute is a Pro feature")
         }
     }
 
@@ -40,6 +43,9 @@ struct PaywallView: View {
                     VStack(alignment: .leading, spacing: 16) {
                         FeatureRow(icon: "magnifyingglass", title: String(localized: "Unlimited searches"))
                         FeatureRow(icon: "sparkle.magnifyingglass", title: String(localized: "Deep Search"))
+                        if cloudStatus != .notOffered {
+                            FeatureRow(icon: "apple.intelligence", title: String(localized: "Apple Private Cloud Compute"))
+                        }
                         FeatureRow(icon: "heart.fill", title: String(localized: "Support AISight development"))
                         FeatureRow(icon: "gift", title: String(localized: "Future features included"))
                     }
@@ -49,7 +55,7 @@ struct PaywallView: View {
                     VStack(spacing: 4) {
                         Text("Or use your own SearXNG server")
                             .font(.subheadline.weight(.medium))
-                        Text("Connect your own server in Settings to unlock all features for free.")
+                        Text("Connect your own server in Settings to unlock unlimited searches and Deep Search for free.")
                             .font(.caption)
                             .foregroundStyle(.secondary)
                             .multilineTextAlignment(.center)
@@ -97,6 +103,7 @@ struct PaywallView: View {
                 }
             }
         }
+        .onAppear { cloudStatus = LanguageModelProvider.cloudStatus() }
         .onChange(of: storeManager.isPro) {
             if storeManager.isPro {
                 dismiss()

@@ -42,6 +42,11 @@ final class SearchViewModel {
         isDeepSearch ? deepSearchPipeline.wasRegenerated : answerSession.wasRegenerated
     }
 
+    /// The model that generated the last answer.
+    var usedModel: ResolvedLanguageModel {
+        isDeepSearch ? deepSearchPipeline.usedModel : answerSession.usedModel
+    }
+
     /// Whether a regeneration (same sources, new LLM pass) is possible.
     var canRegenerate: Bool {
         lastSearchOutput != nil && !isGenerating && !isSearching
@@ -68,20 +73,20 @@ final class SearchViewModel {
 
     // MARK: - Search
 
-    func performSearch(modelContext: ModelContext) {
+    func performSearch(modelContext: ModelContext, canUseCloudModel: Bool) {
         let trimmedQuery = query.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmedQuery.isEmpty else { return }
 
         currentTask?.cancel()
 
         if isDeepSearch {
-            performDeepSearch(trimmedQuery: trimmedQuery, modelContext: modelContext)
+            performDeepSearch(trimmedQuery: trimmedQuery, modelContext: modelContext, canUseCloudModel: canUseCloudModel)
         } else {
-            performNormalSearch(trimmedQuery: trimmedQuery, modelContext: modelContext)
+            performNormalSearch(trimmedQuery: trimmedQuery, modelContext: modelContext, canUseCloudModel: canUseCloudModel)
         }
     }
 
-    private func performDeepSearch(trimmedQuery: String, modelContext: ModelContext) {
+    private func performDeepSearch(trimmedQuery: String, modelContext: ModelContext, canUseCloudModel: Bool) {
         currentTask = Task {
             isSearching = true
             sources = []
@@ -92,7 +97,8 @@ final class SearchViewModel {
             let searchOutput = await deepSearchPipeline.execute(
                 query: trimmedQuery,
                 language: language,
-                searchService: searchService
+                searchService: searchService,
+                canUseCloudModel: canUseCloudModel
             )
 
             guard !Task.isCancelled else { return }
@@ -126,7 +132,7 @@ final class SearchViewModel {
         }
     }
 
-    private func performNormalSearch(trimmedQuery: String, modelContext: ModelContext) {
+    private func performNormalSearch(trimmedQuery: String, modelContext: ModelContext, canUseCloudModel: Bool) {
         currentTask = Task {
             isSearching = true
             sources = []
@@ -170,7 +176,7 @@ final class SearchViewModel {
             self.usedSourceURLs = Set(searchOutput.results.prefix(AppConfig.maxResults).map(\.url))
 
             // 3. Generate answer via AnswerSession with pre-fetched results
-            await answerSession.generateAnswer(for: trimmedQuery, with: searchOutput, language: language)
+            await answerSession.generateAnswer(for: trimmedQuery, with: searchOutput, language: language, canUseCloudModel: canUseCloudModel)
 
             guard !Task.isCancelled else { return }
 
@@ -198,12 +204,12 @@ final class SearchViewModel {
             SourceInfo(url: $0.url, title: $0.title, engine: $0.engine, wasUsed: self.usedSourceURLs.contains($0.url))
         }
         let store = QueryHistoryStore(modelContext: modelContext)
-        store.save(query: query, answer: answer, sources: sourceInfos, isDeepSearch: isDeepSearch)
+        store.save(query: query, answer: answer, sources: sourceInfos, isDeepSearch: isDeepSearch, generatedBy: GeneratedModel(usedModel))
     }
 
     // MARK: - Regenerate (same sources, new LLM pass)
 
-    func regenerateAnswer(modelContext: ModelContext) {
+    func regenerateAnswer(modelContext: ModelContext, canUseCloudModel: Bool) {
         guard let searchOutput = lastSearchOutput else { return }
         let trimmedQuery = query.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmedQuery.isEmpty else { return }
@@ -213,7 +219,7 @@ final class SearchViewModel {
             answerSession.reset()
             errorMessage = nil
 
-            await answerSession.generateAnswer(for: trimmedQuery, with: searchOutput, language: language)
+            await answerSession.generateAnswer(for: trimmedQuery, with: searchOutput, language: language, canUseCloudModel: canUseCloudModel)
 
             guard !Task.isCancelled else { return }
 
@@ -268,11 +274,11 @@ final class SearchViewModel {
         case .searchFailed(let searchError):
             return userFacingMessage(for: searchError)
         case .generationFailed(let message):
-            return String(localized: "An error occurred while generating the answer: \(message)")
+            return message
         case .modelUnavailable:
             return String(localized: "AISight requires Apple Intelligence. Enable it in Settings \u{2192} Apple Intelligence & Siri.")
         case .contentPolicy:
-            return String(localized: "This query can't be answered on-device. Try a different question.")
+            return String(localized: "This query can't be answered. Try a different question.")
         }
     }
 }

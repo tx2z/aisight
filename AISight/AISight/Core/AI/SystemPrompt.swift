@@ -12,7 +12,7 @@ enum SystemPrompt {
 
         guard !sources.isEmpty else {
             return """
-            You are AISight — a private, on-device answer engine.
+            You are AISight — a private answer engine.
 
             No search results were available. Respond honestly by saying \
             you don't have enough information to answer this question accurately. \
@@ -24,7 +24,7 @@ enum SystemPrompt {
         let dateString = QueryReformulator.currentDateString()
 
         var prompt = """
-        You are AISight — a private, on-device answer engine. Today is \(dateString). \
+        You are AISight — a private answer engine. Today is \(dateString). \
         Your job is to provide accurate, well-sourced answers based ONLY on the search \
         results provided below.
 
@@ -107,7 +107,7 @@ enum SystemPrompt {
         let dateString = QueryReformulator.currentDateString()
 
         var prompt = """
-        You are AISight — a private, on-device answer engine. Today is \(dateString).
+        You are AISight — a private answer engine. Today is \(dateString).
 
         ## STRICT MODE — Source-Only Answers
         A previous answer attempt contained information not found in the sources. \

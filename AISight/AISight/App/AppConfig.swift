@@ -1,15 +1,13 @@
 import Foundation
 
-enum AppConfig: Sendable {
+nonisolated enum AppConfig: Sendable {
     // Default SearXNG instance — override in Settings or set your own
     // For local dev: docker-compose up in /searxng folder → http://localhost:8888
     static let defaultSearXNGBaseURL = "https://search.private-search-intelligence.app"
 
     static var effectiveSearXNGBaseURL: String {
         guard let stored = UserDefaults.standard.string(forKey: "searxng_base_url"),
-              let url = URL(string: stored),
-              let scheme = url.scheme?.lowercased(),
-              scheme == "http" || scheme == "https" else {
+              HTTPURL.parse(stored) != nil else {
             return defaultSearXNGBaseURL
         }
         return stored
@@ -21,9 +19,27 @@ enum AppConfig: Sendable {
     static let maxResults = 5
     static let defaultSearchLanguage = "en"
     static let searchTimeoutSeconds: TimeInterval = 10
-    static let maxSnippetLength = 1200 // ~300 tokens — leaves more generation room on 4K context models
+    static let baselineContextSize = 4096 // tokens; context size the base snippet length is tuned for
+    static let baseSnippetLength = 1200 // chars per source at the baseline context size
+    static let maxScaledSnippetLength = 8000 // upper cap for large context models
     static let snippetThreshold = 150 // chars; skip full fetch if snippet > this
     static let minSnippetLength = 30 // discard results with shorter snippets
+
+    /// Per-source snippet length in characters, scaled linearly from `baseSnippetLength`
+    /// at `baselineContextSize` and clamped to `baseSnippetLength...maxScaledSnippetLength`.
+    static func snippetLength(forContextSize contextSize: Int) -> Int {
+        let scaled = baseSnippetLength * contextSize / baselineContextSize
+        return min(max(scaled, baseSnippetLength), maxScaledSnippetLength)
+    }
+
+    /// Upper bound for a generated answer, within every provider's output limit.
+    static let maxAnswerTokens = 4096
+
+    /// Tokens reserved for a generated answer when a provider needs an explicit output limit:
+    /// a third of the context, capped at `maxAnswerTokens`.
+    static func answerTokenBudget(forContextSize contextSize: Int) -> Int {
+        min(contextSize / 3, maxAnswerTokens)
+    }
 
     // Deep Search
     static let deepSearchResearcherCount = 3

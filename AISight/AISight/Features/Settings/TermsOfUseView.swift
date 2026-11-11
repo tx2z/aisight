@@ -7,7 +7,7 @@ struct TermsOfUseView: View {
                 Text("Terms of Use")
                     .font(.largeTitle.bold())
 
-                Text("Last updated: March 13, 2026")
+                Text("Last updated: November 11, 2026")
                     .font(.caption)
                     .foregroundStyle(.secondary)
 
@@ -28,15 +28,18 @@ struct TermsOfUseView: View {
                         title: "2. Description of Service",
                         content: """
                         AISight is an answer engine that searches the web via a user-configured SearXNG server \
-                        and generates answers on-device using Apple Intelligence (FoundationModels framework). \
-                        The App is provided free of charge with no in-app purchases or subscriptions.
+                        and generates answers using Apple Intelligence (FoundationModels framework), on-device by default \
+                        or on Apple's Private Cloud Compute if you enable it. The App is free to download. An optional \
+                        one-time in-app purchase (AISight Pro) unlocks additional features; there are no subscriptions. \
+                        If you configure a custom AI provider, you use your own account and API key; the provider's \
+                        terms apply, and any charges or limits it applies are your responsibility.
                         """
                     )
 
                     LegalSectionView(
                         title: "3. AI-Generated Content Disclaimer",
                         content: """
-                        AISight uses on-device artificial intelligence to generate answers based on web search results. \
+                        AISight uses artificial intelligence to generate answers based on web search results. \
                         You acknowledge and agree that:\n\n\
                         \u{2022} AI-generated answers may contain inaccuracies, errors, or outdated information.\n\
                         \u{2022} Answers are not a substitute for professional advice of any kind, including but not \
@@ -70,7 +73,7 @@ struct TermsOfUseView: View {
                         \u{2022} Violate any applicable laws or regulations.\n\
                         \u{2022} Generate content that is harmful, threatening, abusive, or otherwise objectionable.\n\
                         \u{2022} Infringe on the intellectual property rights of others.\n\
-                        \u{2022} Attempt to circumvent the on-device AI safety measures.\n\
+                        \u{2022} Attempt to circumvent the AI safety measures.\n\
                         \u{2022} Misrepresent AI-generated content as human-authored work.
                         """
                     )

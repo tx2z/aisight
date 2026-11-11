@@ -109,11 +109,16 @@ private struct SearchContentView: View {
                         }
 
                         if let error = viewModel.errorMessage {
-                            Label(error, systemImage: "exclamationmark.triangle.fill")
-                                .foregroundStyle(.orange)
-                                .padding()
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .background(.orange.opacity(0.1), in: .rect(cornerRadius: 10))
+                            VStack(alignment: .leading, spacing: 12) {
+                                Label(error, systemImage: "exclamationmark.triangle.fill")
+                                    .foregroundStyle(.orange)
+                                Button("Try again", systemImage: "arrow.clockwise", action: retry)
+                                    .buttonStyle(.bordered)
+                                    .disabled(viewModel.isSearching || viewModel.isGenerating)
+                            }
+                            .padding()
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .background(.orange.opacity(0.1), in: .rect(cornerRadius: 10))
                         }
 
                         if (viewModel.isSearching || viewModel.isGenerating) && viewModel.streamingText.isEmpty {
@@ -130,7 +135,9 @@ private struct SearchContentView: View {
                             AnswerActionsView(
                                 wasRegenerated: viewModel.wasRegenerated,
                                 canRegenerate: viewModel.canRegenerate,
-                                onRegenerate: { viewModel.regenerateAnswer(modelContext: modelContext) },
+                                onRegenerate: {
+                                    viewModel.regenerateAnswer(modelContext: modelContext, canUseCloudModel: storeManager.canUseCloudModel)
+                                },
                                 onSearchAgain: handleSearch
                             )
                         }
@@ -144,14 +151,7 @@ private struct SearchContentView: View {
 
                         if !viewModel.streamingText.isEmpty && !viewModel.isGenerating {
                             VStack(spacing: 6) {
-                                HStack(spacing: 4) {
-                                    Image(systemName: "apple.intelligence")
-                                        .font(.caption)
-                                        .symbolEffect(.appear)
-                                        .accessibilityHidden(true)
-                                    Text("Generated on-device")
-                                        .font(.caption)
-                                }
+                                ModelBadge(model: GeneratedModel(viewModel.usedModel))
 
                                 Text("AI-generated answers may be inaccurate. Verify important information with original sources.")
                                     .font(.caption)
@@ -245,6 +245,16 @@ private struct SearchContentView: View {
     }
     #endif
 
+    /// Regenerates the answer from the saved sources, or repeats the search when there are none or Deep Search was used.
+    private func retry() {
+        let canUseCloudModel = storeManager.canUseCloudModel
+        if viewModel.isDeepSearch || !viewModel.canRegenerate {
+            viewModel.performSearch(modelContext: modelContext, canUseCloudModel: canUseCloudModel)
+        } else {
+            viewModel.regenerateAnswer(modelContext: modelContext, canUseCloudModel: canUseCloudModel)
+        }
+    }
+
     private func handleSearch() {
         if isDeepSearchEnabled && !storeManager.canDeepSearch {
             paywallReason = .deepSearchRequiresPro
@@ -253,7 +263,7 @@ private struct SearchContentView: View {
         }
         if storeManager.canSearch {
             storeManager.recordQuery()
-            viewModel.performSearch(modelContext: modelContext)
+            viewModel.performSearch(modelContext: modelContext, canUseCloudModel: storeManager.canUseCloudModel)
         } else {
             paywallReason = .dailyLimitReached
             showPaywall = true
@@ -284,7 +294,7 @@ private struct SearchEmptyStateView: View {
 
                 VStack(spacing: 4) {
                     Text("Search the web.")
-                    Text("Get answers on-device.")
+                    Text("Get private answers.")
                 }
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
@@ -409,7 +419,7 @@ private struct SearchBarSection: View {
     var body: some View {
         VStack(spacing: 8) {
             if isDeepSearchEnabled {
-                Text("Deep Search uses multiple AI research passes to find better answers. This takes longer (15-25 seconds vs 5-10 seconds) and uses more on-device processing. Best for complex questions that need thorough research.")
+                Text("Deep Search uses multiple AI research passes to find better answers. This takes longer (15-25 seconds vs 5-10 seconds) and uses more processing. Best for complex questions that need thorough research.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)

@@ -22,6 +22,7 @@ struct SettingsView: View {
     @State private var showClearConfirmation = false
     @State private var showClearError = false
     @State private var showPaywall = false
+    @State private var aiModelSettings = AIModelSettings()
 
     // swiftlint:disable:next force_unwrapping
     private static let searxngURL = URL(string: "https://github.com/searxng/searxng")!
@@ -104,11 +105,11 @@ struct SettingsView: View {
                 }
 
                 if storeManager.isUsingCustomServer {
-                    Label(String(localized: "All features unlocked with your own server"), systemImage: "checkmark.seal.fill")
+                    Label(String(localized: "Unlimited searches and Deep Search unlocked with your own server"), systemImage: "checkmark.seal.fill")
                         .font(.caption)
                         .foregroundStyle(.accent)
                 } else if !storeManager.isPro {
-                    Text("Use your own SearXNG server to unlock all features for free")
+                    Text("Use your own SearXNG server to unlock unlimited searches and Deep Search for free")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -144,6 +145,8 @@ struct SettingsView: View {
                     UserDefaults.standard.set(newValue, forKey: "search_language")
                 }
             }
+
+            AIModelSection(settings: aiModelSettings)
 
             Section("Data") {
                 Button("Delete All Data", role: .destructive) {
@@ -223,18 +226,8 @@ struct SettingsView: View {
         storeManager.refreshCustomServerStatus()
     }
 
-    private func isValidURL(_ urlString: String) -> Bool {
-        guard let url = URL(string: urlString),
-              let scheme = url.scheme?.lowercased(),
-              scheme == "http" || scheme == "https",
-              url.host() != nil else {
-            return false
-        }
-        return true
-    }
-
     private func testConnection() async {
-        guard isValidURL(serverURL) else {
+        guard HTTPURL.parse(serverURL) != nil else {
             testResult = TestResult(success: false, message: String(localized: "Invalid URL. Use http:// or https://."))
             return
         }
@@ -271,6 +264,7 @@ struct SettingsView: View {
         do {
             try modelContext.delete(model: QueryEntry.self)
             try modelContext.save()
+            aiModelSettings.clear()
         } catch {
             showClearError = true
         }

@@ -10,6 +10,7 @@ final class DeepSearchPipeline {
     var currentStep: DeepSearchStep = .idle
     var error: AnswerError? = nil
     private(set) var wasRegenerated: Bool = false
+    private(set) var usedModel = ResolvedLanguageModel.placeholder
 
     enum DeepSearchStep: Equatable {
         case idle
@@ -30,6 +31,7 @@ final class DeepSearchPipeline {
     }
 
     private let contentFetcher = ContentFetcher()
+    private var lastResearcherError: AnswerError?
 
     func reset() {
         streamingText = ""
@@ -37,18 +39,21 @@ final class DeepSearchPipeline {
         currentStep = .idle
         error = nil
         wasRegenerated = false
+        usedModel = .placeholder
     }
 
     /// Execute the full deep search pipeline: reformulate → search → research → synthesize.
     /// Returns the SearchOutput for source display, or nil on failure.
-    func execute(query: String, language: String, searchService: SearXNGService) async -> SearchOutput? {
+    func execute(query: String, language: String, searchService: SearXNGService, canUseCloudModel: Bool) async -> SearchOutput? {
         streamingText = ""
         isGenerating = true
         error = nil
         currentStep = .reformulating
         defer { isGenerating = false }
 
-        let researcherCount = AppConfig.deepSearchResearcherCount
+        lastResearcherError = nil
+        let model = await LanguageModelProvider.resolve(canUseCloudModel: canUseCloudModel)
+        usedModel = model
 
         // Step 1: Reformulate query
         let reformulator = QueryReformulator()
@@ -66,60 +71,72 @@ final class DeepSearchPipeline {
         }
         guard !Task.isCancelled else { return nil }
 
-        // Step 3: Sequential researchers — one per query group
-        var researcherSummaries: [String] = []
-        let groupsToResearch = Array(searchOutput.queryGroups.prefix(researcherCount))
-
-        for (index, group) in groupsToResearch.enumerated() {
-            guard !Task.isCancelled else { return searchOutput }
-            currentStep = .researching(current: index + 1, total: groupsToResearch.count)
-
-            let summary = await runResearcher(
-                query: query,
-                searchGroup: group
+        // Steps 3-4 run on one model; a cloud failure re-runs them all on-device.
+        do {
+            try await LanguageModelProvider.runWithCloudFallback(
+                model,
+                onFallback: { fallback in
+                    usedModel = fallback
+                    streamingText = ""
+                    error = nil
+                    lastResearcherError = nil
+                },
+                work: { model in
+                    try await research(query: query, language: language, searchOutput: searchOutput, model: model)
+                }
             )
-            if let summary {
-                researcherSummaries.append(summary)
-            }
+        } catch {
+            guard !Task.isCancelled else { return searchOutput }
+            self.error = answerError(from: error)
         }
-
-        guard !Task.isCancelled else { return searchOutput }
-
-        // If all researchers failed, fall back — the caller can use normal mode
-        if researcherSummaries.isEmpty {
-            self.error = .generationFailed(String(localized: "Deep search analysis failed. Try again or disable Deep Search."))
-            return searchOutput
-        }
-
-        // Step 4: Synthesize final answer (streamed)
-        currentStep = .synthesizing
-        await runSynthesizer(
-            query: query,
-            summaries: researcherSummaries,
-            sources: searchOutput.results,
-            language: language
-        )
 
         return searchOutput
     }
 
+    /// Sequential researchers (one per query group), then the streamed synthesis.
+    private func research(
+        query: String, language: String, searchOutput: SearchOutput, model: ResolvedLanguageModel
+    ) async throws {
+        var researcherSummaries: [String] = []
+        let groupsToResearch = Array(searchOutput.queryGroups.prefix(AppConfig.deepSearchResearcherCount))
+
+        for (index, group) in groupsToResearch.enumerated() {
+            guard !Task.isCancelled else { return }
+            currentStep = .researching(current: index + 1, total: groupsToResearch.count)
+
+            if let summary = try await runResearcher(query: query, searchGroup: group, model: model) {
+                researcherSummaries.append(summary)
+            }
+        }
+
+        guard !Task.isCancelled else { return }
+
+        if researcherSummaries.isEmpty {
+            self.error = lastResearcherError
+                ?? .generationFailed(String(localized: "Deep search analysis failed. Try again or disable Deep Search."))
+            return
+        }
+
+        currentStep = .synthesizing
+        try await runSynthesizer(
+            query: query,
+            summaries: researcherSummaries,
+            sources: searchOutput.results,
+            language: language,
+            model: model
+        )
+    }
+
     // MARK: - Researcher
 
-    private func runResearcher(query: String, searchGroup: SearchQueryGroup) async -> String? {
+    private func runResearcher(query: String, searchGroup: SearchQueryGroup, model: ResolvedLanguageModel) async throws -> String? {
         let dateString = QueryReformulator.currentDateString()
 
         // Build source text for this group
+        let maxSnippet = AppConfig.snippetLength(forContextSize: model.contextSize)
         var sourcesText = ""
         for result in searchGroup.results.prefix(AppConfig.maxResults) {
-            var snippet = result.content ?? ""
-            if await contentFetcher.shouldFetchFullContent(snippet: snippet) {
-                if let fullContent = try? await contentFetcher.fetchContent(from: result.url) {
-                    snippet = fullContent
-                }
-            }
-            if snippet.count > AppConfig.maxSnippetLength {
-                snippet = String(snippet.prefix(AppConfig.maxSnippetLength))
-            }
+            let snippet = await contentFetcher.snippet(for: result, maxLength: maxSnippet)
             let domain = URL(string: result.url).flatMap { $0.host() }?
                 .replacing("www.", with: "") ?? result.url
             sourcesText += """
@@ -153,18 +170,21 @@ final class DeepSearchPipeline {
         """
 
         do {
-            let session = LanguageModelSession(instructions: instructions)
+            let session = model.makeSession(instructions: instructions)
             let response = try await session.respond(to: prompt)
             let text = response.content.trimmingCharacters(in: .whitespacesAndNewlines)
             return text.isEmpty ? nil : text
         } catch {
+            if model.kind == .appleCloud && LanguageModelProvider.isCloudFallbackError(error) { throw error }
+            guard !Task.isCancelled else { return nil }
+            lastResearcherError = answerError(from: error)
             return nil
         }
     }
 
     // MARK: - Synthesizer
 
-    private func runSynthesizer(query: String, summaries: [String], sources: [SearXNGResult], language: String) async {
+    private func runSynthesizer(query: String, summaries: [String], sources: [SearXNGResult], language: String, model: ResolvedLanguageModel) async throws {
         let dateString = QueryReformulator.currentDateString()
 
         // Build source list
@@ -182,7 +202,7 @@ final class DeepSearchPipeline {
         }
 
         let instructions = """
-        You are AISight — a private, on-device answer engine. Today is \(dateString).
+        You are AISight — a private answer engine. Today is \(dateString).
         Below are research findings from multiple analysts who examined different \
         aspects of the user's question, along with the original sources they referenced.
 
@@ -205,23 +225,17 @@ final class DeepSearchPipeline {
         \(sourceList)
         """
 
-        do {
-            let session = LanguageModelSession(instructions: instructions)
-            let stream = session.streamResponse(to: query)
-            for try await partial in stream {
-                guard !Task.isCancelled else { break }
-                streamingText = partial.content
+        let session = model.makeSession(instructions: instructions)
+        let stream = session.streamResponse(to: query)
+        for try await partial in stream {
+            guard !Task.isCancelled else { break }
+            streamingText = partial.content
 
-                // Stop generation if model starts looping
-                if let trimmed = AnswerValidator.detectAndTrimRepetition(streamingText) {
-                    streamingText = trimmed
-                    break
-                }
+            // Stop generation if model starts looping
+            if let trimmed = AnswerValidator.detectAndTrimRepetition(streamingText) {
+                streamingText = trimmed
+                break
             }
-        } catch let genError as LanguageModelSession.GenerationError {
-            self.error = generationErrorToAnswerError(genError)
-        } catch {
-            self.error = .generationFailed(error.localizedDescription)
         }
     }
 

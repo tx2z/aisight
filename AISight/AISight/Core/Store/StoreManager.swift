@@ -20,6 +20,11 @@ final class StoreManager {
         isUsingCustomServer || isPro || remainingQueries > 0
     }
 
+    /// Apple Private Cloud Compute is a Pro-only feature; a custom SearXNG server does not unlock it.
+    var canUseCloudModel: Bool {
+        isPro
+    }
+
     /// Deep Search is available to PRO users or anyone using their own server.
     var canDeepSearch: Bool {
         isUsingCustomServer || isPro
@@ -46,9 +51,7 @@ final class StoreManager {
     /// Re-evaluates whether the user has a custom server configured. Call after saving or resetting the server URL.
     func refreshCustomServerStatus() {
         guard let stored = defaults.string(forKey: "searxng_base_url"),
-              let url = URL(string: stored),
-              let scheme = url.scheme?.lowercased(),
-              scheme == "http" || scheme == "https" else {
+              HTTPURL.parse(stored) != nil else {
             isUsingCustomServer = false
             return
         }

@@ -6,7 +6,7 @@ import FoundationModels
 final class QueryReformulator {
 
     /// Generates multiple optimized search queries from a conversational user question.
-    /// Uses a fresh, lightweight on-device LLM session (no shared context).
+    /// Uses a fresh, lightweight on-device LLM session, never the cloud model (no shared context).
     /// Returns 1-3 keyword-based queries for parallel search.
     func reformulate(_ query: String, language: String = "en") async -> [String] {
         let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -38,7 +38,7 @@ final class QueryReformulator {
         """
 
         do {
-            let session = LanguageModelSession(instructions: instructions)
+            let session = LanguageModelProvider.makeOnDeviceSession(instructions: instructions)
             let response = try await session.respond(to: trimmed)
             let lines = response.content
                 .split(separator: "\n", omittingEmptySubsequences: false)

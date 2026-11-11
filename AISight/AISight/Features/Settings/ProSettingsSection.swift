@@ -10,7 +10,7 @@ struct ProSettingsSection: View {
                 Label("AISight Pro Active", systemImage: "checkmark.seal.fill")
                     .foregroundStyle(.accent)
             } else if storeManager.isUsingCustomServer {
-                Label(String(localized: "All features unlocked"), systemImage: "checkmark.seal.fill")
+                Label(String(localized: "Unlimited searches and Deep Search unlocked"), systemImage: "checkmark.seal.fill")
                     .foregroundStyle(.accent)
                 Text("Using your own search server")
                     .font(.caption)

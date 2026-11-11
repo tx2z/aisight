@@ -9,6 +9,7 @@ final class AnswerSession {
     var isGenerating: Bool = false
     private(set) var error: AnswerError? = nil
     private(set) var wasRegenerated: Bool = false
+    private(set) var usedModel = ResolvedLanguageModel.placeholder
 
     private let contentFetcher: ContentFetcher
 
@@ -16,86 +17,87 @@ final class AnswerSession {
         self.contentFetcher = contentFetcher
     }
 
-    static func checkAvailability() -> Bool {
-        SystemLanguageModel.default.availability == .available
-    }
-
     func reset() {
         streamingText = ""
         isGenerating = false
         error = nil
         wasRegenerated = false
+        usedModel = .placeholder
     }
 
-    static var availabilityStatus: SystemLanguageModel.Availability {
-        SystemLanguageModel.default.availability
-    }
-
-    func generateAnswer(for query: String, with searchOutput: SearchOutput, language: String = "en") async {
+    func generateAnswer(
+        for query: String, with searchOutput: SearchOutput, language: String = "en", canUseCloudModel: Bool
+    ) async {
         streamingText = ""
         isGenerating = true
         error = nil
         wasRegenerated = false
         defer { isGenerating = false }
 
+        let model = await LanguageModelProvider.resolve(canUseCloudModel: canUseCloudModel)
+        usedModel = model
         do {
-            // 1. Fetch full content for short snippets (concurrent)
-            let results = Array(searchOutput.results.prefix(AppConfig.maxResults))
-            let maxSnippet = AppConfig.maxSnippetLength
-            let fetcher = contentFetcher
-            let sources: [(index: Int, title: String, snippet: String, url: String)]
-            sources = await withTaskGroup(of: (Int, String, String, String).self) { group in
-                for (i, result) in results.enumerated() {
-                    group.addTask {
-                        var snippet = result.content ?? ""
-                        if await fetcher.shouldFetchFullContent(snippet: snippet) {
-                            if let fullContent = try? await fetcher.fetchContent(from: result.url) {
-                                snippet = fullContent
-                            }
-                        }
-                        if snippet.count > maxSnippet {
-                            snippet = String(snippet.prefix(maxSnippet))
-                        }
-                        return (i + 1, result.title, snippet, result.url)
-                    }
+            try await LanguageModelProvider.runWithCloudFallback(
+                model,
+                onFallback: { fallback in
+                    usedModel = fallback
+                    streamingText = ""
+                    wasRegenerated = false
+                },
+                work: { model in
+                    try await generate(query: query, searchOutput: searchOutput, language: language, model: model)
                 }
-                var collected: [(Int, String, String, String)] = []
-                for await result in group {
-                    collected.append(result)
-                }
-                return collected.sorted { $0.0 < $1.0 }
-                    .map { (index: $0.0, title: $0.1, snippet: $0.2, url: $0.3) }
-            }
-
+            )
+        } catch {
             guard !Task.isCancelled else { return }
+            self.error = answerError(from: error)
+        }
+    }
 
-            // 2. Build prompt and generate answer
+    private func generate(
+        query: String, searchOutput: SearchOutput, language: String, model: ResolvedLanguageModel
+    ) async throws {
+        // 1. Fetch full content for short snippets (concurrent)
+        let results = Array(searchOutput.results.prefix(AppConfig.maxResults))
+        let maxSnippet = AppConfig.snippetLength(forContextSize: model.contextSize)
+        let fetcher = contentFetcher
+        let sources: [(index: Int, title: String, snippet: String, url: String)]
+        sources = await withTaskGroup(of: (Int, String, String, String).self) { group in
+            for (i, result) in results.enumerated() {
+                group.addTask {
+                    let snippet = await fetcher.snippet(for: result, maxLength: maxSnippet)
+                    return (i + 1, result.title, snippet, result.url)
+                }
+            }
+            var collected: [(Int, String, String, String)] = []
+            for await result in group {
+                collected.append(result)
+            }
+            return collected.sorted { $0.0 < $1.0 }
+                .map { (index: $0.0, title: $0.1, snippet: $0.2, url: $0.3) }
+        }
+
+        guard !Task.isCancelled else { return }
+
+        // 2. Build prompt and generate answer
+        try await streamAnswer(
+            query: query, sources: sources, searchOutput: searchOutput,
+            language: language, strict: false, model: model
+        )
+
+        guard !Task.isCancelled else { return }
+
+        // 3. Source grounding check — regenerate if answer is poorly grounded
+        let groundingScore = AnswerValidator.checkSourceGrounding(
+            answer: streamingText, sources: sources
+        )
+        if groundingScore < 0.3 && !streamingText.isEmpty {
+            wasRegenerated = true
+            streamingText = ""
             try await streamAnswer(
                 query: query, sources: sources, searchOutput: searchOutput,
-                language: language, strict: false
+                language: language, strict: true, model: model
             )
-
-            guard !Task.isCancelled else { return }
-
-            // 3. Source grounding check — regenerate if answer is poorly grounded
-            let groundingScore = AnswerValidator.checkSourceGrounding(
-                answer: streamingText, sources: sources
-            )
-            if groundingScore < 0.3 && !streamingText.isEmpty {
-                wasRegenerated = true
-                streamingText = ""
-                try await streamAnswer(
-                    query: query, sources: sources, searchOutput: searchOutput,
-                    language: language, strict: true
-                )
-            }
-
-            guard !Task.isCancelled else { return }
-
-        } catch let genError as LanguageModelSession.GenerationError {
-            self.error = generationErrorToAnswerError(genError)
-        } catch {
-            self.error = .generationFailed(error.localizedDescription)
         }
     }
 
@@ -105,7 +107,8 @@ final class AnswerSession {
         sources: [(index: Int, title: String, snippet: String, url: String)],
         searchOutput: SearchOutput,
         language: String,
-        strict: Bool
+        strict: Bool,
+        model: ResolvedLanguageModel
     ) async throws {
         let systemPromptText = strict
             ? SystemPrompt.buildStrict(
@@ -119,7 +122,7 @@ final class AnswerSession {
                 infoboxes: searchOutput.infoboxes, language: language
             )
 
-        let session = LanguageModelSession(instructions: systemPromptText)
+        let session = model.makeSession(instructions: systemPromptText)
         let stream = session.streamResponse(to: query)
         for try await partial in stream {
             guard !Task.isCancelled else { break }

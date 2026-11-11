@@ -7,7 +7,7 @@ struct PrivacyPolicyView: View {
                 Text("Privacy Policy")
                     .font(.largeTitle.bold())
 
-                Text("Last updated: March 13, 2026")
+                Text("Last updated: November 11, 2026")
                     .font(.caption)
                     .foregroundStyle(.secondary)
 
@@ -17,7 +17,8 @@ struct PrivacyPolicyView: View {
                         content: """
                         AISight is built with privacy as a core principle. We do not collect, store, or transmit \
                         your personal data to any external servers we operate. There are no analytics, no tracking, \
-                        no advertising, and no user accounts. Your data stays on your device.
+                        no advertising, and no user accounts. Your data stays on your device. The only exceptions are the \
+                        network requests and AI processing described below.
                         """
                     )
 
@@ -44,14 +45,17 @@ struct PrivacyPolicyView: View {
                         to share it.\n\n\
                         Preferences: Your app settings (language preferences, SearXNG server URL) are stored \
                         in UserDefaults on your device.\n\n\
-                        You can delete all locally stored data at any time from Settings \u{2192} Data \u{2192} Delete All Data.
+                        You can delete all locally stored data at any time from Settings \u{2192} Data \u{2192} Delete All Data.\n\n\
+                        Custom AI provider settings: If you configure a custom AI provider, its URL, model name and \
+                        context size are stored in UserDefaults on your device, and its API key is stored in the device \
+                        Keychain, on this device only. Deleting all data in Settings also removes them.
                         """
                     )
 
                     LegalSectionView(
                         title: "Data Transmitted Over the Network",
                         content: """
-                        AISight makes two types of network requests:\n\n\
+                        AISight makes up to four types of network requests:\n\n\
                         1. Search Queries: When you perform a search, your query is sent to the SearXNG server \
                         you have configured. AISight does not operate this server \u{2014} you provide and control it. \
                         The privacy of your search queries depends on the configuration of your SearXNG instance.\n\n\
@@ -59,18 +63,32 @@ struct PrivacyPolicyView: View {
                         by search results to extract text content for AI summarization. These are standard HTTP \
                         requests similar to visiting a website in a browser.\n\n\
                         AISight does not add tracking parameters, custom headers, or identifying information to \
-                        these requests beyond what is standard for URL loading on iOS/macOS.
+                        these requests beyond what is standard for URL loading on iOS/macOS.\n\n\
+                        3. Apple Private Cloud Compute (optional): Only if you enable it in Settings, your question, \
+                        the text extracted from web sources and the AI instructions are sent to Apple's Private Cloud \
+                        Compute service to write the answer.\n\n\
+                        4. Custom AI provider (optional): Only if you configure one and confirm the prompt in Settings, \
+                        your question, the text extracted from web sources and the AI instructions are sent to that \
+                        provider's server. Deep Search sends several requests per question. The provider's own terms \
+                        and privacy practices apply.
                         """
                     )
                 }
 
                 Group {
                     LegalSectionView(
-                        title: "On-Device AI Processing",
+                        title: "AI Processing",
                         content: """
-                        All AI processing in AISight happens entirely on your device using Apple's FoundationModels \
-                        framework (Apple Intelligence). Your queries, search results, and generated answers are \
-                        never sent to any cloud AI service. The AI model runs locally on your device's neural engine.
+                        By default, all AI processing in AISight happens entirely on your device using Apple's \
+                        FoundationModels framework (Apple Intelligence). Your queries, search results, and generated \
+                        answers are not sent to any cloud AI service. If you choose "Apple Private Cloud Compute" in \
+                        Settings \u{2192} AI Model, your query and the search results needed to write an answer are instead \
+                        processed on Apple's Private Cloud Compute servers, under Apple's privacy protections for that \
+                        service. You can switch back to on-device at any time. \
+                        If you configure a custom AI provider in Settings \u{2192} AI Model and confirm the prompt, your \
+                        question, the text extracted from web sources and the AI instructions are sent to that provider \
+                        under its own terms; Deep Search makes several requests. The API key is stored in your device's \
+                        Keychain and is only sent to that provider.
                         """
                     )
 
@@ -128,7 +146,8 @@ struct PrivacyPolicyView: View {
                         content: """
                         Search history is retained on your device until you explicitly delete it. \
                         No data is retained on any external server operated by us. When you delete the app, \
-                        all locally stored data is removed.
+                        all locally stored data is removed. Deleting all data in Settings also removes your custom \
+                        provider API key and settings.
                         """
                     )
 

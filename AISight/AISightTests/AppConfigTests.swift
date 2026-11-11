@@ -33,8 +33,34 @@ struct AppConfigTests {
         #expect(AppConfig.snippetThreshold > AppConfig.minSnippetLength)
     }
 
-    @Test func maxSnippetLength_greaterThanThreshold() {
-        #expect(AppConfig.maxSnippetLength > AppConfig.snippetThreshold)
+    @Test func baseSnippetLength_greaterThanThreshold() {
+        #expect(AppConfig.baseSnippetLength > AppConfig.snippetThreshold)
+    }
+
+    // MARK: - snippetLength(forContextSize:)
+
+    @Test func snippetLength_at4096_isBase() {
+        #expect(AppConfig.snippetLength(forContextSize: 4096) == AppConfig.baseSnippetLength)
+    }
+
+    @Test func snippetLength_scalesProportionally() {
+        #expect(AppConfig.snippetLength(forContextSize: 8192) == 2 * AppConfig.baseSnippetLength)
+    }
+
+    @Test func snippetLength_belowBase_isClampedToBase() {
+        #expect(AppConfig.snippetLength(forContextSize: 1024) == AppConfig.baseSnippetLength)
+    }
+
+    @Test func snippetLength_hugeContext_isCappedAtMax() {
+        #expect(AppConfig.snippetLength(forContextSize: 1_000_000) == AppConfig.maxScaledSnippetLength)
+    }
+
+    @Test func answerTokenBudget_smallContext_isAThird() {
+        #expect(AppConfig.answerTokenBudget(forContextSize: 4096) == 1365)
+    }
+
+    @Test func answerTokenBudget_largeContext_isCapped() {
+        #expect(AppConfig.answerTokenBudget(forContextSize: 131_072) == AppConfig.maxAnswerTokens)
     }
 
     @Test func trackingParams_containsCommonTrackers() {

@@ -3,14 +3,12 @@ import Foundation
 actor ContentFetcher {
     private let urlSession: URLSession
     private let snippetThreshold: Int
-    private let maxSnippetLength: Int
 
-    init(timeout: TimeInterval = 10, snippetThreshold: Int = 150, maxSnippetLength: Int = 1200) {
+    init(timeout: TimeInterval = 10, snippetThreshold: Int = 150) {
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = timeout
         self.urlSession = URLSession(configuration: configuration)
         self.snippetThreshold = snippetThreshold
-        self.maxSnippetLength = maxSnippetLength
     }
 
     private static let maxRawHTMLSize = 512_000 // 512KB — cap before regex processing
@@ -44,7 +42,17 @@ actor ContentFetcher {
         }
 
         let cleaned = stripHTML(html)
-        return truncate(cleaned, to: maxSnippetLength)
+        return cleaned
+    }
+
+    /// Search snippet for a result: the full page text when the snippet is short, clamped to `maxLength`.
+    func snippet(for result: SearXNGResult, maxLength: Int) async -> String {
+        var snippet = result.content ?? ""
+        if shouldFetchFullContent(snippet: snippet),
+           let fullContent = try? await fetchContent(from: result.url) {
+            snippet = fullContent
+        }
+        return truncate(snippet, to: maxLength)
     }
 
     func shouldFetchFullContent(snippet: String) -> Bool {
