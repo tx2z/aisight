@@ -41,17 +41,6 @@
                ReferencedContainer = "container:AISight.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3AAA71BC2F62B019008E126F"
-               BuildableName = "AISightUITests.xctest"
-               BlueprintName = "AISightUITests"
-               ReferencedContainer = "container:AISight.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
