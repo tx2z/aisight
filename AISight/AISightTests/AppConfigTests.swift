@@ -69,4 +69,49 @@ struct AppConfigTests {
         #expect(AppConfig.trackingParams.contains("gclid"))
         #expect(AppConfig.trackingParams.contains("msclkid"))
     }
+
+    // MARK: - searchLanguage
+
+    @Test func searchLanguage_detectedBeatsStored() {
+        #expect(AppConfig.searchLanguage(detected: "es", stored: "de", preferredLanguages: ["fr-FR"]) == "es")
+    }
+
+    @Test func searchLanguage_nilDetectedUsesStored() {
+        #expect(AppConfig.searchLanguage(detected: nil, stored: "de", preferredLanguages: ["es-ES"]) == "de")
+    }
+
+    @Test func searchLanguage_missingOrInvalidStoredUsesDeviceLanguage() {
+        #expect(AppConfig.searchLanguage(detected: nil, stored: nil, preferredLanguages: ["es-ES"]) == "es")
+        #expect(AppConfig.searchLanguage(detected: nil, stored: "", preferredLanguages: ["zh-Hans-CN"]) == "zh")
+        #expect(AppConfig.searchLanguage(detected: nil, stored: "nl", preferredLanguages: ["pt-BR"]) == "pt")
+    }
+
+    @Test func searchLanguage_normalizesCase() {
+        #expect(AppConfig.searchLanguage(detected: nil, stored: "ES-es", preferredLanguages: []) == "es")
+    }
+
+    @Test func searchLanguage_unsupportedEverythingFallsBackToEnglish() {
+        #expect(AppConfig.searchLanguage(detected: "nl", stored: "nl", preferredLanguages: ["nl-NL"]) == "en")
+        #expect(AppConfig.searchLanguage(detected: nil, stored: nil, preferredLanguages: []) == "en")
+    }
+
+    // MARK: - supportedLanguages
+
+    @Test func supportedLanguages_codesAreUnique() {
+        let codes = AppConfig.supportedLanguages.map(\.code)
+        #expect(Set(codes).count == codes.count)
+    }
+
+    @Test func supportedLanguages_everyCodeHasEnglishName() {
+        for language in AppConfig.supportedLanguages {
+            #expect(AppConfig.englishLanguageName(for: language.code) == language.englishName)
+        }
+    }
+
+    @Test func supportedLanguageCode_extractsBaseCode() {
+        #expect(AppConfig.supportedLanguageCode(from: "es-ES") == "es")
+        #expect(AppConfig.supportedLanguageCode(from: "zh-Hans-CN") == "zh")
+        #expect(AppConfig.supportedLanguageCode(from: "pt_BR") == "pt")
+        #expect(AppConfig.supportedLanguageCode(from: "nl-NL") == nil)
+    }
 }

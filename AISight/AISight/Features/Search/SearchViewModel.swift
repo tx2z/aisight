@@ -22,7 +22,14 @@ final class SearchViewModel {
     private let searchService: SearXNGService
     private let reformulator: QueryReformulator
     private var currentTask: Task<Void, Never>?
-    private var lastSearchOutput: SearchOutput?
+    private var lastSearch: CompletedSearch?
+
+    /// A finished search: the submitted query, its resolved language and the sources found.
+    private struct CompletedSearch {
+        let query: String
+        let language: String
+        let output: SearchOutput
+    }
 
     /// Convenience accessors forwarded from the active pipeline.
     var streamingText: String {
@@ -49,7 +56,7 @@ final class SearchViewModel {
 
     /// Whether a regeneration (same sources, new LLM pass) is possible.
     var canRegenerate: Bool {
-        lastSearchOutput != nil && !isGenerating && !isSearching
+        lastSearch != nil && !isGenerating && !isSearching
     }
 
     /// Current deep search step description, nil when not in deep search or idle.
@@ -67,10 +74,6 @@ final class SearchViewModel {
         self.reformulator = QueryReformulator()
     }
 
-    var language: String {
-        UserDefaults.standard.string(forKey: "search_language") ?? AppConfig.defaultSearchLanguage
-    }
-
     // MARK: - Search
 
     func performSearch(modelContext: ModelContext, canUseCloudModel: Bool) {
@@ -79,14 +82,30 @@ final class SearchViewModel {
 
         currentTask?.cancel()
 
+        let detectedLanguage = QuestionLanguage.detect(trimmedQuery)
+        let requestLanguage = AppConfig.searchLanguage(
+            detected: detectedLanguage,
+            stored: UserDefaults.standard.string(forKey: "search_language"),
+            preferredLanguages: Locale.preferredLanguages
+        )
+
         if isDeepSearch {
-            performDeepSearch(trimmedQuery: trimmedQuery, modelContext: modelContext, canUseCloudModel: canUseCloudModel)
+            performDeepSearch(
+                trimmedQuery: trimmedQuery, detectedLanguage: detectedLanguage, requestLanguage: requestLanguage,
+                modelContext: modelContext, canUseCloudModel: canUseCloudModel
+            )
         } else {
-            performNormalSearch(trimmedQuery: trimmedQuery, modelContext: modelContext, canUseCloudModel: canUseCloudModel)
+            performNormalSearch(
+                trimmedQuery: trimmedQuery, detectedLanguage: detectedLanguage, requestLanguage: requestLanguage,
+                modelContext: modelContext, canUseCloudModel: canUseCloudModel
+            )
         }
     }
 
-    private func performDeepSearch(trimmedQuery: String, modelContext: ModelContext, canUseCloudModel: Bool) {
+    private func performDeepSearch(
+        trimmedQuery: String, detectedLanguage: String?, requestLanguage: String,
+        modelContext: ModelContext, canUseCloudModel: Bool
+    ) {
         currentTask = Task {
             isSearching = true
             sources = []
@@ -96,7 +115,8 @@ final class SearchViewModel {
 
             let searchOutput = await deepSearchPipeline.execute(
                 query: trimmedQuery,
-                language: language,
+                detectedLanguage: detectedLanguage,
+                language: requestLanguage,
                 searchService: searchService,
                 canUseCloudModel: canUseCloudModel
             )
@@ -108,7 +128,7 @@ final class SearchViewModel {
             if let searchOutput {
                 self.sources = searchOutput.results
                 self.queryGroups = searchOutput.queryGroups
-                self.lastSearchOutput = searchOutput
+                self.lastSearch = CompletedSearch(query: trimmedQuery, language: requestLanguage, output: searchOutput)
             }
 
             if let pipelineError = deepSearchPipeline.error {
@@ -132,7 +152,10 @@ final class SearchViewModel {
         }
     }
 
-    private func performNormalSearch(trimmedQuery: String, modelContext: ModelContext, canUseCloudModel: Bool) {
+    private func performNormalSearch(
+        trimmedQuery: String, detectedLanguage: String?, requestLanguage: String,
+        modelContext: ModelContext, canUseCloudModel: Bool
+    ) {
         currentTask = Task {
             isSearching = true
             sources = []
@@ -140,18 +163,18 @@ final class SearchViewModel {
             errorMessage = nil
 
             // 1. Reformulate query into optimized search keywords (fresh LLM session)
-            let searchQueries = await reformulator.reformulate(trimmedQuery, language: language)
+            let searchQueries = await reformulator.reformulate(trimmedQuery, languageCode: detectedLanguage)
 
             guard !Task.isCancelled else { return }
 
             // 2. Search with all reformulated queries in parallel, merge results
             var searchOutput: SearchOutput
             do {
-                searchOutput = try await searchService.multiSearch(queries: searchQueries, language: language)
+                searchOutput = try await searchService.multiSearch(queries: searchQueries, language: requestLanguage)
                 guard !Task.isCancelled else { return }
                 self.sources = searchOutput.results
                 self.queryGroups = searchOutput.queryGroups
-                self.lastSearchOutput = searchOutput
+                self.lastSearch = CompletedSearch(query: trimmedQuery, language: requestLanguage, output: searchOutput)
                 self.isSearching = false
             } catch let error as SearchError {
                 guard !Task.isCancelled else { return }
@@ -176,7 +199,7 @@ final class SearchViewModel {
             self.usedSourceURLs = Set(searchOutput.results.prefix(AppConfig.maxResults).map(\.url))
 
             // 3. Generate answer via AnswerSession with pre-fetched results
-            await answerSession.generateAnswer(for: trimmedQuery, with: searchOutput, language: language, canUseCloudModel: canUseCloudModel)
+            await answerSession.generateAnswer(for: trimmedQuery, with: searchOutput, language: requestLanguage, canUseCloudModel: canUseCloudModel)
 
             guard !Task.isCancelled else { return }
 
@@ -210,16 +233,14 @@ final class SearchViewModel {
     // MARK: - Regenerate (same sources, new LLM pass)
 
     func regenerateAnswer(modelContext: ModelContext, canUseCloudModel: Bool) {
-        guard let searchOutput = lastSearchOutput else { return }
-        let trimmedQuery = query.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !trimmedQuery.isEmpty else { return }
-
+        guard let lastSearch else { return }
+        let trimmedQuery = lastSearch.query
         currentTask?.cancel()
         currentTask = Task {
             answerSession.reset()
             errorMessage = nil
 
-            await answerSession.generateAnswer(for: trimmedQuery, with: searchOutput, language: language, canUseCloudModel: canUseCloudModel)
+            await answerSession.generateAnswer(for: trimmedQuery, with: lastSearch.output, language: lastSearch.language, canUseCloudModel: canUseCloudModel)
 
             guard !Task.isCancelled else { return }
 
@@ -249,7 +270,7 @@ final class SearchViewModel {
         errorMessage = nil
         isSearching = false
         usedSourceURLs = []
-        lastSearchOutput = nil
+        lastSearch = nil
         answerSession.reset()
         deepSearchPipeline.reset()
     }

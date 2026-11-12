@@ -9,14 +9,10 @@ struct SettingsView: View {
     @State private var serverURL: String = AppConfig.effectiveSearXNGBaseURL
     @State private var isTesting = false
     @State private var testResult: TestResult?
-    @State private var selectedLanguage: String = UserDefaults.standard.string(forKey: "search_language") ?? AppConfig.defaultSearchLanguage
+    @State private var selectedLanguage: String = AppConfig.effectiveSearchLanguage
     @State private var selectedAppLanguage: String = {
-        if let preferred = UserDefaults.standard.array(forKey: "AppleLanguages") as? [String],
-           let first = preferred.first {
-            // Normalize "es-ES" → "es"
-            return String(first.prefix(2))
-        }
-        return Locale.current.language.languageCode?.identifier ?? "en"
+        let preferred = UserDefaults.standard.array(forKey: "AppleLanguages") as? [String]
+        return preferred?.first.flatMap(AppConfig.supportedLanguageCode(from:)) ?? "en"
     }()
     @State private var showRestartAlert = false
     @State private var showClearConfirmation = false
@@ -32,18 +28,6 @@ struct SettingsView: View {
         // swiftlint:disable:next force_unwrapping
         return URL(string: "https://private-search-intelligence.app/\(path)contact/")!
     }
-
-    private let supportedLanguages: [(code: String, name: String)] = [
-        ("en", "English"),
-        ("de", "Deutsch"),
-        ("fr", "Fran\u{00E7}ais"),
-        ("es", "Espa\u{00F1}ol"),
-        ("it", "Italiano"),
-        ("ja", "\u{65E5}\u{672C}\u{8A9E}"),
-        ("ko", "\u{D55C}\u{AD6D}\u{C5B4}"),
-        ("zh", "\u{4E2D}\u{6587}"),
-        ("pt", "Portugu\u{00EA}s")
-    ]
 
     private var hasURLChanged: Bool {
         serverURL != AppConfig.effectiveSearXNGBaseURL
@@ -122,10 +106,10 @@ struct SettingsView: View {
                 Text("Search Server")
             }
 
-            Section("Preferences") {
+            Section {
                 Picker("App Language", selection: $selectedAppLanguage) {
-                    ForEach(supportedLanguages, id: \.code) { language in
-                        Text(language.name).tag(language.code)
+                    ForEach(AppConfig.supportedLanguages, id: \.code) { language in
+                        Text(language.nativeName).tag(language.code)
                     }
                 }
                 .onChange(of: selectedAppLanguage) { _, newValue in
@@ -137,13 +121,17 @@ struct SettingsView: View {
                 }
 
                 Picker("Search Language", selection: $selectedLanguage) {
-                    ForEach(supportedLanguages, id: \.code) { language in
-                        Text(language.name).tag(language.code)
+                    ForEach(AppConfig.supportedLanguages, id: \.code) { language in
+                        Text(language.nativeName).tag(language.code)
                     }
                 }
                 .onChange(of: selectedLanguage) { _, newValue in
                     UserDefaults.standard.set(newValue, forKey: "search_language")
                 }
+            } header: {
+                Text("Preferences")
+            } footer: {
+                Text("AISight searches and answers in the language of your question. This language is used when it can't be detected.")
             }
 
             AIModelSection(settings: aiModelSettings)

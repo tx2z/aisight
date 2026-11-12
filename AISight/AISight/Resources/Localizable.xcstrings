@@ -451,6 +451,58 @@
         }
       }
     },
+    "AISight searches and answers in the language of your question. This language is used when it can't be detected." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight sucht und antwortet in der Sprache deiner Frage. Diese Sprache wird verwendet, wenn die Sprache nicht erkannt werden kann."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight busca y responde en el idioma de tu pregunta. Este idioma se usa cuando no se puede detectar."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight recherche et répond dans la langue de votre question. Cette langue est utilisée lorsqu'elle ne peut pas être détectée."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight cerca e risponde nella lingua della tua domanda. Questa lingua viene usata quando non è possibile rilevarla."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight は質問の言語で検索し、回答します。言語を検出できない場合は、この言語が使われます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight는 질문의 언어로 검색하고 답변합니다. 언어를 감지할 수 없을 때 이 언어가 사용됩니다."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O AISight pesquisa e responde no idioma da sua pergunta. Este idioma é usado quando não for possível detectá-lo."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight 会使用你提问所用的语言进行搜索和回答。无法检测到语言时，将使用此语言。"
+          }
+        }
+      }
+    },
     "Try again" : {
       "localizations" : {
         "de" : {

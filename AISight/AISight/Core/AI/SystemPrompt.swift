@@ -21,7 +21,7 @@ enum SystemPrompt {
             """
         }
 
-        let dateString = QueryReformulator.currentDateString()
+        let dateString = AppConfig.todayISODate()
 
         var prompt = """
         You are AISight — a private answer engine. Today is \(dateString). \
@@ -104,7 +104,7 @@ enum SystemPrompt {
         language: String = "en"
     ) -> String {
         let languageInstruction = Self.languageInstruction(for: language)
-        let dateString = QueryReformulator.currentDateString()
+        let dateString = AppConfig.todayISODate()
 
         var prompt = """
         You are AISight — a private answer engine. Today is \(dateString).
@@ -159,20 +159,8 @@ enum SystemPrompt {
         return prompt
     }
 
-    private static let languageNames: [String: String] = [
-        "en": "English",
-        "de": "German",
-        "fr": "French",
-        "es": "Spanish",
-        "it": "Italian",
-        "ja": "Japanese",
-        "ko": "Korean",
-        "zh": "Chinese",
-        "pt": "Portuguese"
-    ]
-
     static func languageInstruction(for code: String) -> String {
-        guard code != "en", let name = languageNames[code] else { return "" }
+        guard code != "en", let name = AppConfig.englishLanguageName(for: code) else { return "" }
         return "- IMPORTANT: Respond entirely in \(name). The user's language is \(name)."
     }
 }

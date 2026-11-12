@@ -44,7 +44,7 @@ final class DeepSearchPipeline {
 
     /// Execute the full deep search pipeline: reformulate → search → research → synthesize.
     /// Returns the SearchOutput for source display, or nil on failure.
-    func execute(query: String, language: String, searchService: SearXNGService, canUseCloudModel: Bool) async -> SearchOutput? {
+    func execute(query: String, detectedLanguage: String?, language: String, searchService: SearXNGService, canUseCloudModel: Bool) async -> SearchOutput? {
         streamingText = ""
         isGenerating = true
         error = nil
@@ -57,7 +57,7 @@ final class DeepSearchPipeline {
 
         // Step 1: Reformulate query
         let reformulator = QueryReformulator()
-        let searchQueries = await reformulator.reformulate(query, language: language)
+        let searchQueries = await reformulator.reformulate(query, languageCode: detectedLanguage)
         guard !Task.isCancelled else { return nil }
 
         // Step 2: Parallel search
@@ -130,7 +130,7 @@ final class DeepSearchPipeline {
     // MARK: - Researcher
 
     private func runResearcher(query: String, searchGroup: SearchQueryGroup, model: ResolvedLanguageModel) async throws -> String? {
-        let dateString = QueryReformulator.currentDateString()
+        let dateString = AppConfig.todayISODate()
 
         // Build source text for this group
         let maxSnippet = AppConfig.snippetLength(forContextSize: model.contextSize)
@@ -185,7 +185,7 @@ final class DeepSearchPipeline {
     // MARK: - Synthesizer
 
     private func runSynthesizer(query: String, summaries: [String], sources: [SearXNGResult], language: String, model: ResolvedLanguageModel) async throws {
-        let dateString = QueryReformulator.currentDateString()
+        let dateString = AppConfig.todayISODate()
 
         // Build source list
         var sourceList = ""
@@ -218,7 +218,7 @@ final class DeepSearchPipeline {
         - If researchers found different or conflicting information, present all viewpoints
         - Write 3-5 paragraphs minimum — this is a deep research answer, not a quick summary
         - Write in clear, accessible language
-        \(Self.languageInstruction(for: language))
+        \(SystemPrompt.languageInstruction(for: language))
         ## Research Findings
         \(findings)
         ## Sources
@@ -237,16 +237,5 @@ final class DeepSearchPipeline {
                 break
             }
         }
-    }
-
-    private static let languageNames: [String: String] = [
-        "en": "English", "de": "German", "fr": "French", "es": "Spanish",
-        "it": "Italian", "ja": "Japanese", "ko": "Korean", "zh": "Chinese",
-        "pt": "Portuguese"
-    ]
-
-    private static func languageInstruction(for code: String) -> String {
-        guard code != "en", let name = languageNames[code] else { return "" }
-        return "- IMPORTANT: Respond entirely in \(name). The user's language is \(name)."
     }
 }

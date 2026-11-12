@@ -79,29 +79,30 @@ final class SearXNGService: SearchService, Sendable {
         var allSuggestions: [String] = []
         var allInfoboxes: [SearXNGInfobox] = []
 
-        // Use a struct to pass back both query and its output
-        await withTaskGroup(of: (String, SearchOutput?).self) { group in
-            for query in queries {
+        var outputs = [SearchOutput?](repeating: nil, count: queries.count)
+        await withTaskGroup(of: (Int, SearchOutput?).self) { group in
+            for (index, query) in queries.enumerated() {
                 group.addTask {
-                    let output = try? await self.search(query: query, language: language)
-                    return (query, output)
+                    (index, try? await self.search(query: query, language: language))
                 }
             }
-
-            for await (query, output) in group {
-                if let output {
-                    queryGroups.append(SearchQueryGroup(query: query, results: output.results))
-                    allResults.append(contentsOf: output.results)
-                    allAnswers.append(contentsOf: output.directAnswers)
-                    allSuggestions.append(contentsOf: output.suggestions)
-                    allInfoboxes.append(contentsOf: output.infoboxes)
-                }
+            for await (index, output) in group {
+                outputs[index] = output
             }
         }
 
+        for (query, output) in zip(queries, outputs) {
+            guard let output else { continue }
+            queryGroups.append(SearchQueryGroup(query: query, results: output.results))
+            allResults.append(contentsOf: output.results)
+            allAnswers.append(contentsOf: output.directAnswers)
+            allSuggestions.append(contentsOf: output.suggestions)
+            allInfoboxes.append(contentsOf: output.infoboxes)
+        }
+
         // Deduplicate and rank the merged results for the answer session
-        // Use first query (original) for relevance boosting
-        let merged = processResults(allResults, query: queries.first)
+        // The title relevance boost uses the terms of every query
+        let merged = processResults(allResults, query: queries.joined(separator: " "))
 
         guard !merged.isEmpty else {
             throw SearchError.noResults
