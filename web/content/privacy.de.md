@@ -35,7 +35,7 @@ AISight speichert die folgenden Daten ausschließlich lokal auf Ihrem Gerät:
 
 Sie können alle lokal gespeicherten Daten jederzeit unter Einstellungen → Daten → Alle Daten löschen entfernen.
 
-Einstellungen für benutzerdefinierte KI-Anbieter: Wenn Sie einen benutzerdefinierten KI-Anbieter konfigurieren, werden dessen URL, Modellname und Kontextgröße in UserDefaults auf Ihrem Gerät gespeichert, der API-Schlüssel im Schlüsselbund des Geräts – ausschließlich auf diesem Gerät. Das Löschen aller Daten in den Einstellungen entfernt sie ebenfalls.
+Einstellungen für benutzerdefinierte KI-Anbieter: Wenn Sie einen benutzerdefinierten KI-Anbieter konfigurieren, werden dessen URL, Modellname und Kontextgröße in UserDefaults auf Ihrem Gerät gespeichert und der API-Schlüssel im Schlüsselbund des Geräts, ausschließlich auf diesem Gerät. Das Löschen aller Daten in den Einstellungen entfernt sie ebenfalls.
 
 ## Über das Netzwerk Übertragene Daten
 
@@ -49,11 +49,11 @@ AISight fügt diesen Anfragen keine Tracking-Parameter, benutzerdefinierten Head
 
 3. Apple Private Cloud Compute (optional): Nur wenn Sie es in den Einstellungen aktivieren, werden Ihre Frage, der aus Webquellen extrahierte Text und die KI-Anweisungen zum Verfassen der Antwort an den Dienst Private Cloud Compute von Apple gesendet.
 
-4. Benutzerdefinierter KI-Anbieter (optional): Nur wenn Sie einen konfigurieren und die Abfrage in den Einstellungen bestätigen, werden Ihre Frage, der aus Webquellen extrahierte Text und die KI-Anweisungen an den Server dieses Anbieters gesendet. Die Tiefensuche sendet mehrere Anfragen pro Frage. Es gelten die eigenen Bedingungen und Datenschutzpraktiken des Anbieters.
+4. Benutzerdefinierter KI-Anbieter (optional): Nur wenn Sie einen konfigurieren und die Rückfrage in den Einstellungen bestätigen, werden Ihre Frage, der aus Webquellen extrahierte Text und die KI-Anweisungen an den Server dieses Anbieters gesendet. Die Tiefensuche sendet mehrere Anfragen pro Frage. Es gelten die eigenen Bedingungen und Datenschutzpraktiken des Anbieters.
 
 ## KI-Verarbeitung
 
-Standardmäßig findet die gesamte KI-Verarbeitung in AISight vollständig auf Ihrem Gerät statt, unter Verwendung von Apples FoundationModels-Framework (Apple Intelligence). Ihre Anfragen, Suchergebnisse und generierten Antworten werden an keinen Cloud-KI-Dienst gesendet. Wenn Sie in den Einstellungen → KI-Modell „Apple Private Cloud Compute“ wählen, werden Ihre Anfrage und die zum Verfassen einer Antwort benötigten Suchergebnisse stattdessen auf den Private-Cloud-Compute-Servern von Apple verarbeitet, unter Apples Datenschutzmaßnahmen für diesen Dienst. Sie können jederzeit wieder auf „Auf dem Gerät“ wechseln. Wenn Sie in den Einstellungen → KI-Modell einen benutzerdefinierten KI-Anbieter konfigurieren und die Abfrage bestätigen, werden Ihre Frage, der aus Webquellen extrahierte Text und die KI-Anweisungen zu dessen eigenen Bedingungen an diesen Anbieter gesendet; die Tiefensuche sendet mehrere Anfragen. Der API-Schlüssel wird im Schlüsselbund Ihres Geräts gespeichert und nur an diesen Anbieter gesendet.
+Standardmäßig findet die gesamte KI-Verarbeitung in AISight vollständig auf Ihrem Gerät statt, unter Verwendung von Apples FoundationModels-Framework (Apple Intelligence). Ihre Anfragen, Suchergebnisse und generierten Antworten werden an keinen Cloud-KI-Dienst gesendet. Wenn Sie in den Einstellungen → KI-Modell „Apple Private Cloud Compute“ wählen, werden Ihre Anfrage und die zum Verfassen einer Antwort benötigten Suchergebnisse stattdessen auf den Private-Cloud-Compute-Servern von Apple verarbeitet, wobei Apples Datenschutzvorkehrungen für diesen Dienst gelten. Sie können jederzeit wieder auf „Auf dem Gerät“ wechseln. Wenn Sie in den Einstellungen → KI-Modell einen benutzerdefinierten KI-Anbieter konfigurieren und die Rückfrage bestätigen, werden Ihre Frage, der aus Webquellen extrahierte Text und die KI-Anweisungen an diesen Anbieter gesendet, wobei dessen eigene Bedingungen gelten; die Tiefensuche sendet mehrere Anfragen. Der API-Schlüssel wird im Schlüsselbund Ihres Geräts gespeichert und nur an diesen Anbieter gesendet.
 
 ## Drittanbieterdienste
 

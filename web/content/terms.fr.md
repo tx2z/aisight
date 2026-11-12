@@ -25,7 +25,7 @@ AISight utilise l'intelligence artificielle pour générer des réponses basées
 - Les réponses générées par l'IA peuvent contenir des inexactitudes, des erreurs ou des informations obsolètes.
 - Les réponses ne se substituent pas aux conseils professionnels de quelque nature que ce soit, y compris mais sans s'y limiter, les conseils médicaux, juridiques, financiers ou de sécurité.
 - Vous êtes seul responsable de la vérification de l'exactitude de toute information avant de vous y fier.
-- Les citations et les sources sont fournies à titre de référence ; vous devez consulter les sources originales pour confirmer leur exactitude.
+- Les citations et les sources sont fournies à titre de référence ; il vous appartient de consulter les sources originales pour confirmer leur exactitude.
 
 L'Application fournit des informations « en l'état ». Nous ne faisons aucune garantie concernant l'exactitude, l'exhaustivité, la fiabilité ou l'adéquation du contenu généré par l'IA à quelque fin que ce soit.
 

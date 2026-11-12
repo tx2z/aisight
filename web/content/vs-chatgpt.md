@@ -26,7 +26,7 @@ layout: "single"
 
 **ChatGPT Search** processes your queries on OpenAI's cloud servers. Your searches are logged, your conversations are stored, and by default your data may be used to train future models. You can opt out, but you're trusting OpenAI to honor that.
 
-**AISight** does not send your queries to any third-party AI service. By default, Apple Intelligence runs locally on your device's neural engine, so there's nothing to opt out of. Only if you choose it in Settings, answers are generated on Apple's Private Cloud Compute instead.
+**AISight** does not send your queries to any third-party AI service unless you configure your own provider. By default, Apple Intelligence runs locally on your device's neural engine, so there's nothing to opt out of. You can choose Apple's Private Cloud Compute or your own AI provider in Settings.
 
 ## Search Quality
 

@@ -16,7 +16,7 @@ Durch das Herunterladen, Installieren oder Nutzen von AISight („die App") erkl
 
 ## 2. Beschreibung des Dienstes
 
-AISight ist eine Antwortmaschine, die über einen benutzerkonfigurierten SearXNG-Server im Web sucht und Antworten mithilfe von Apple Intelligence (FoundationModels-Framework) generiert, standardmäßig auf dem Gerät oder, wenn Sie es aktivieren, über Apples Private Cloud Compute. Die App ist kostenlos herunterladbar. Ein optionaler einmaliger In-App-Kauf (AISight Pro) schaltet zusätzliche Funktionen frei; es gibt keine Abonnements. Wenn Sie einen benutzerdefinierten KI-Anbieter konfigurieren, nutzen Sie Ihr eigenes Konto und Ihren eigenen API-Schlüssel; es gelten die Bedingungen des Anbieters, und alle von ihm erhobenen Kosten oder Limits liegen in Ihrer Verantwortung.
+AISight ist eine Antwortmaschine, die über einen benutzerkonfigurierten SearXNG-Server im Web sucht und Antworten mithilfe von Apple Intelligence (FoundationModels-Framework) generiert, standardmäßig auf dem Gerät oder, wenn Sie es aktivieren, über Apples Private Cloud Compute. Die App ist kostenlos herunterladbar. Ein optionaler einmaliger In-App-Kauf (AISight Pro) schaltet zusätzliche Funktionen frei; es gibt keine Abonnements. Wenn Sie einen benutzerdefinierten KI-Anbieter konfigurieren, nutzen Sie Ihr eigenes Konto und Ihren eigenen API-Schlüssel; es gelten die Bedingungen des Anbieters, und alle von ihm berechneten Kosten und festgelegten Limits liegen in Ihrer Verantwortung.
 
 ## 3. Haftungsausschluss für KI-generierte Inhalte
 

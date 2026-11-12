@@ -53,7 +53,7 @@ AISight 不会在这些请求中添加超出 iOS/macOS URL 加载标准之外的
 
 ## AI 处理
 
-默认情况下，AISight 中的所有 AI 处理完全在您的设备上使用 Apple 的 FoundationModels 框架（Apple Intelligence）进行。您的查询、搜索结果和生成的回答不会发送到任何云 AI 服务。如果您在设置 → AI 模型中选择“Apple Private Cloud Compute”，则撰写回答所需的查询和搜索结果将改为在 Apple 的 Private Cloud Compute 服务器上处理，并受 Apple 针对该服务的隐私保护。您可以随时切换回设备端。如果您在设置 → AI 模型中配置了自定义 AI 提供商并确认提示，您的问题、从网络来源提取的文本和 AI 指令将按该提供商自己的条款发送给它；深度搜索会发送多个请求。API 密钥存储在您设备的钥匙串中，并且只会发送给该提供商。
+默认情况下，AISight 中的所有 AI 处理完全在您的设备上使用 Apple 的 FoundationModels 框架（Apple Intelligence）进行。您的查询、搜索结果和生成的回答不会发送到任何云 AI 服务。如果您在"设置"→"AI 模型"中选择“Apple Private Cloud Compute”，则撰写回答所需的查询和搜索结果将改为在 Apple 的 Private Cloud Compute 服务器上处理，并受 Apple 针对该服务的隐私保护。您可以随时切换回设备端。如果您在"设置"→"AI 模型"中配置了自定义 AI 提供商并确认提示，您的问题、从网络来源提取的文本和 AI 指令将按该提供商自己的条款发送给它；深度搜索会发送多个请求。API 密钥存储在您设备的钥匙串中，并且只会发送给该提供商。
 
 ## 第三方服务
 

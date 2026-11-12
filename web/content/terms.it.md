@@ -16,7 +16,7 @@ Scaricando, installando o utilizzando AISight ("l'Applicazione"), accetti di ess
 
 ## 2. Descrizione del Servizio
 
-AISight è un motore di risposte che cerca nel web tramite un server SearXNG configurato dall'utente e genera risposte utilizzando Apple Intelligence (framework FoundationModels), per impostazione predefinita sul dispositivo o, se lo attivi, su Private Cloud Compute di Apple. L'App è gratuita da scaricare. Un acquisto in-app opzionale una tantum (AISight Pro) sblocca funzioni aggiuntive; non ci sono abbonamenti. Se configuri un provider IA personalizzato, usi il tuo account e la tua chiave API; si applicano i termini del provider e gli eventuali costi o limiti che applica sono di tua responsabilità.
+AISight è un motore di risposte che cerca nel web tramite un server SearXNG configurato dall'utente e genera risposte utilizzando Apple Intelligence (framework FoundationModels), per impostazione predefinita sul dispositivo o, se lo attivi, su Private Cloud Compute di Apple. Il download dell'Applicazione è gratuito. Un acquisto in-app opzionale una tantum (AISight Pro) sblocca funzioni aggiuntive; non ci sono abbonamenti. Se configuri un provider IA personalizzato, usi il tuo account e la tua chiave API; si applicano i termini del provider e gli eventuali costi o limiti che applica sono di tua responsabilità.
 
 ## 3. Avvertenza sui Contenuti Generati dall'IA
 

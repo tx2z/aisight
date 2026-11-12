@@ -35,7 +35,7 @@ AISight memorizza i seguenti dati localmente, solo sul tuo dispositivo:
 
 Puoi eliminare tutti i dati memorizzati localmente in qualsiasi momento da Impostazioni → Dati → Elimina tutti i dati.
 
-Impostazioni del provider IA personalizzato: se configuri un provider IA personalizzato, il suo URL, il nome del modello e la dimensione del contesto sono salvati in UserDefaults sul tuo dispositivo, mentre la chiave API è salvata nel portachiavi del dispositivo, solo su questo dispositivo. L'eliminazione di tutti i dati dalle Impostazioni li rimuove.
+Impostazioni del provider IA personalizzato: se configuri un provider IA personalizzato, il suo URL, il nome del modello e la dimensione del contesto sono salvati in UserDefaults sul tuo dispositivo, mentre la chiave API è salvata nel portachiavi del dispositivo, solo su questo dispositivo. L'eliminazione di tutti i dati dalle Impostazioni rimuove anche queste impostazioni.
 
 ## Dati Trasmessi sulla Rete
 
@@ -49,11 +49,11 @@ AISight non aggiunge parametri di tracciamento, intestazioni personalizzate o in
 
 3. Apple Private Cloud Compute (facoltativo): Solo se lo attivi in Impostazioni, la tua domanda, il testo estratto dalle fonti web e le istruzioni per l'IA vengono inviati al servizio Private Cloud Compute di Apple per scrivere la risposta.
 
-4. Provider IA personalizzato (facoltativo): Solo se ne configuri uno e confermi l'avviso in Impostazioni, la tua domanda, il testo estratto dalle fonti web e le istruzioni per l'IA vengono inviati al server di quel provider. La Ricerca approfondita invia più richieste per domanda. Si applicano i termini e le pratiche sulla privacy del provider.
+4. Provider IA personalizzato (facoltativo): Solo se ne configuri uno e confermi l'avviso in Impostazioni, la tua domanda, il testo estratto dalle fonti web e le istruzioni per l'IA vengono inviati al server di quel provider. La Ricerca Profonda invia più richieste per domanda. Si applicano i termini e le pratiche sulla privacy del provider.
 
 ## Elaborazione IA
 
-Per impostazione predefinita, tutta l'elaborazione IA in AISight avviene interamente sul tuo dispositivo utilizzando il framework FoundationModels di Apple (Apple Intelligence). Le tue query, i risultati di ricerca e le risposte generate non vengono inviati a nessun servizio di IA cloud. Se scegli «Apple Private Cloud Compute» in Impostazioni → Modello IA, la tua query e i risultati di ricerca necessari per scrivere una risposta vengono invece elaborati sui server Private Cloud Compute di Apple, con le protezioni della privacy di Apple per quel servizio. Puoi tornare al dispositivo in qualsiasi momento. Se configuri un provider IA personalizzato in Impostazioni → Modello IA e confermi l'avviso, la tua domanda, il testo estratto dalle fonti web e le istruzioni per l'IA vengono inviati a tale provider secondo i suoi termini; la Ricerca approfondita invia più richieste. La chiave API è salvata nel portachiavi del tuo dispositivo e viene inviata solo a quel provider.
+Per impostazione predefinita, tutta l'elaborazione IA in AISight avviene interamente sul tuo dispositivo utilizzando il framework FoundationModels di Apple (Apple Intelligence). Le tue query, i risultati di ricerca e le risposte generate non vengono inviati a nessun servizio di IA cloud. Se scegli «Apple Private Cloud Compute» in Impostazioni → Modello IA, la tua query e i risultati di ricerca necessari per scrivere una risposta vengono invece elaborati sui server Private Cloud Compute di Apple, con le protezioni della privacy di Apple per quel servizio. Puoi tornare al dispositivo in qualsiasi momento. Se configuri un provider IA personalizzato in Impostazioni → Modello IA e confermi l'avviso, la tua domanda, il testo estratto dalle fonti web e le istruzioni per l'IA vengono inviati a tale provider secondo i suoi termini; la Ricerca Profonda invia più richieste. La chiave API è salvata nel portachiavi del tuo dispositivo e viene inviata solo a quel provider.
 
 ## Servizi di Terze Parti
 

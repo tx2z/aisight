@@ -12,7 +12,7 @@ layout: "single"
 
 **Perplexity** sends every query you type to cloud servers. Your questions are processed by remote AI models, stored on their servers, and potentially used to improve their service. You need an account to use it.
 
-**AISight** processes AI answers on your device by default using Apple Intelligence. Your questions don't leave your phone or Mac unless you opt in to Apple Private Cloud Compute in Settings. There are no accounts, no analytics, and no third-party AI services involved.
+**AISight** processes AI answers on your device by default using Apple Intelligence. Your questions don't leave your phone or Mac unless you opt in to Apple Private Cloud Compute in Settings. There are no accounts, no analytics, and no third-party AI services involved unless you configure your own provider.
 
 ## Privacy Comparison
 
