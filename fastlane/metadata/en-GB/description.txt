@@ -1,0 +1,43 @@
+Ask anything. Get a sourced, cited answer — private by default, generated on your device by Apple Intelligence. No tracking. No ads. No subscription.
+
+Every search engine you use tracks your queries. AI chatbots send your questions to servers you cannot audit. You deserve better.
+
+AISight searches the web privately, then Apple Intelligence reads the results and writes a clear answer — right on your iPhone, iPad, or Mac. By default, your data never leaves your device for AI processing.
+
+● AI ANSWERS WITH REAL SOURCES
+Ask in plain language. AISight searches multiple sources, reads them, and writes a concise answer with numbered citations. Tap any citation to verify the original.
+
+● PRIVATE AI, YOUR CHOICE
+On-device by default: Apple Intelligence answers right on your device, with nothing sent to any AI service. On iOS 27 and macOS 27, AISight Pro can use Apple Private Cloud Compute for a more powerful model, protected by Apple's privacy design. Or bring your own AI provider — OpenAI, Mistral, Claude, Ollama or any OpenAI-compatible service — for free.
+
+● ANSWERS IN YOUR LANGUAGE
+Ask in English, Spanish, French, German, Italian, Portuguese, Japanese, Korean or Chinese, and AISight searches and answers in the language of your question.
+
+● TRULY PRIVATE SEARCH
+No account. No tracking. No ads. No data sold or shared. Web results come from a private, open-source metasearch engine that does not profile you.
+
+● DEEP SEARCH
+Go beyond surface results. Deep Search uses multiple AI research passes to find better answers for complex questions.
+
+● YOUR HISTORY, YOUR DEVICE
+All your past searches and answers are stored securely on your device. Browse, search, and revisit — nothing synced to any server.
+
+● BRING YOUR OWN SERVER — GET EVERYTHING FOR FREE
+Connect your own SearXNG instance and unlimited searches and Deep Search unlock automatically. No purchase needed. I don't want your data, and I'll prove it: keep your data on your own server and you owe me nothing.
+
+HOW IT WORKS
+1. You ask a question
+2. AISight privately searches the web across multiple engines
+3. AI reads and synthesizes the results — on your device by default
+4. You get a cited answer you can verify
+
+Perfect for: researching without leaving a trail, getting quick sourced answers while studying, comparing products without being retargeted with ads, or just searching the way it should be — private.
+
+SIMPLE, HONEST PRICING
+Free: 10 searches per day on my server. Full AI answers and citations. Bring your own AI provider at no cost.
+Pro (one-time purchase): Unlimited searches + Deep Search + Apple Private Cloud Compute (iOS 27 and macOS 27). Support an indie developer. No subscription.
+Self-hosted: Bring your own server → unlimited searches and Deep Search, free forever.
+
+Built by a solo indie developer. No venture capital. No data monetization. Zero external SDKs, analytics, or trackers. Just a native app that respects your privacy.
+
+AISight — Search smarter. Stay private.

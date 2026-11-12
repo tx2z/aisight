@@ -1,0 +1,43 @@
+Chiedi qualsiasi cosa. Ricevi una risposta con fonti e citazioni, privata per impostazione predefinita, generata sul tuo dispositivo da Apple Intelligence. Nessun tracciamento. Nessuna pubblicità. Nessun abbonamento.
+
+Ogni motore di ricerca traccia le tue query. I chatbot IA inviano le tue domande a server che non puoi controllare. Meriti di meglio.
+
+AISight cerca sul web in modo privato, poi Apple Intelligence legge i risultati e scrive una risposta chiara — direttamente sul tuo iPhone, iPad o Mac. Per impostazione predefinita, i tuoi dati non lasciano il dispositivo per l'elaborazione IA.
+
+● RISPOSTE IA CON FONTI REALI
+Chiedi in linguaggio naturale. AISight cerca tra più fonti, le analizza e scrive una risposta concisa con citazioni numerate. Tocca qualsiasi citazione per verificare l'originale.
+
+● IA PRIVATA, A TUA SCELTA
+Sul dispositivo per impostazione predefinita: Apple Intelligence risponde direttamente sul tuo dispositivo, senza inviare nulla a nessun servizio IA. Su iOS 27 e macOS 27, AISight Pro può usare Apple Private Cloud Compute per un modello più potente, protetto dall'architettura di privacy di Apple. Oppure usa il tuo provider IA — OpenAI, Mistral, Claude, Ollama o qualsiasi servizio compatibile con OpenAI — gratis.
+
+● RISPOSTE NELLA TUA LINGUA
+Chiedi in italiano, inglese, spagnolo, francese, tedesco, portoghese, giapponese, coreano o cinese, e AISight cerca e risponde nella lingua della tua domanda.
+
+● RICERCA DAVVERO PRIVATA
+Nessun account. Nessun tracciamento. Nessuna pubblicità. Nessun dato venduto o condiviso. I risultati web provengono da un motore di metaricerca open-source che non ti profila.
+
+● DEEP SEARCH
+Vai oltre i risultati superficiali. Deep Search usa più passaggi di ricerca IA per trovare risposte migliori a domande complesse.
+
+● LA TUA CRONOLOGIA, IL TUO DISPOSITIVO
+Tutte le ricerche e risposte passate sono archiviate in modo sicuro sul tuo dispositivo. Sfoglia, cerca e rivedi — nulla viene sincronizzato con alcun server.
+
+● PORTA IL TUO SERVER — ILLIMITATO E GRATIS
+Collega la tua istanza SearXNG e le ricerche illimitate e Deep Search si sbloccano automaticamente. Nessun acquisto necessario. Non voglio i tuoi dati, e lo dimostro: tieni i tuoi dati sul tuo server e non mi devi nulla.
+
+COME FUNZIONA
+1. Fai una domanda
+2. AISight cerca privatamente sul web tra più motori
+3. L'IA legge e sintetizza i risultati — per impostazione predefinita sul tuo dispositivo
+4. Ricevi una risposta con citazioni che puoi verificare
+
+Perfetto per: fare ricerche senza lasciare tracce, ottenere risposte con fonti mentre studi, confrontare prodotti senza essere bombardato di pubblicità, o semplicemente cercare come si dovrebbe — in privato.
+
+PREZZI SEMPLICI E ONESTI
+Gratis: 10 ricerche al giorno sul mio server. Risposte IA complete e citazioni. Usa il tuo provider IA senza costi.
+Pro (acquisto unico): ricerche illimitate + Deep Search + Apple Private Cloud Compute (iOS 27 e macOS 27). Sostieni uno sviluppatore indie. Nessun abbonamento.
+Self-hosted: porta il tuo server → ricerche illimitate e Deep Search, gratis per sempre.
+
+Creato da uno sviluppatore indipendente. Nessun capitale di rischio. Nessuna monetizzazione dei dati. Zero SDK esterni, analytics o tracker. Solo un'app nativa che rispetta la tua privacy.
+
+AISight — Cerca meglio. Resta privato.

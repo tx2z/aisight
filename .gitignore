@@ -51,3 +51,7 @@ docs/screenshots/
 # Claude Code agent skills (third-party, not project code)
 .agents/
 skills-lock.json
+# Personal contact data for App Review; never commit (public repo)
+fastlane/metadata/review_information/
+fastlane/report.xml
+fastlane/README.md

@@ -1,0 +1,10 @@
+Novità di AISight 1.4
+
+• Apple Private Cloud Compute: un modello Apple più potente per risposte ancora migliori, incluso con AISight Pro (iOS 27 e macOS 27).
+• Usa la tua IA: collega OpenAI, Mistral, Claude, Ollama o qualsiasi provider compatibile con OpenAI, gratis.
+• IA sul dispositivo più intelligente su iOS 27, che legge di più da ogni fonte.
+• Risposte nella lingua in cui fai la domanda.
+• Ricerche più precise che restano in tema.
+• La cronologia ora mostra quale modello ha risposto a ogni domanda.
+• Riprova con un tocco quando una risposta non va a buon fine.
+• Deep Search più affidabile: ignora le fonti non pertinenti e risponde nella tua lingua.

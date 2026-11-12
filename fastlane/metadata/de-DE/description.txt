@@ -1,0 +1,43 @@
+Frag einfach drauflos. Erhalte eine belegte Antwort mit Quellenangaben — standardmäßig privat, auf deinem Gerät mit Apple Intelligence generiert. Kein Tracking. Keine Werbung. Kein Abo.
+
+Jede Suchmaschine, die du nutzt, speichert deine Anfragen. KI-Chatbots senden deine Fragen an Server, die du nicht kontrollierst. Du verdienst etwas Besseres.
+
+AISight durchsucht das Web privat, dann liest Apple Intelligence die Ergebnisse und schreibt eine klare Antwort — direkt auf deinem iPhone, iPad oder Mac. Standardmäßig verlassen deine Daten dein Gerät nicht für die KI-Verarbeitung.
+
+● KI-ANTWORTEN MIT ECHTEN QUELLEN
+Frag in normaler Sprache. AISight durchsucht mehrere Quellen, liest sie und schreibt eine präzise Antwort mit nummerierten Quellenangaben. Tippe auf eine Quellenangabe, um das Original zu prüfen.
+
+● PRIVATE KI — DEINE WAHL
+Standardmäßig auf dem Gerät: Apple Intelligence antwortet direkt auf deinem Gerät, ohne dass etwas an einen KI-Dienst gesendet wird. Unter iOS 27 und macOS 27 kann AISight Pro Apple Private Cloud Compute für ein leistungsstärkeres Modell nutzen, geschützt durch Apples Datenschutzarchitektur. Oder nutze deinen eigenen KI-Anbieter — OpenAI, Mistral, Claude, Ollama oder jeden OpenAI-kompatiblen Dienst — kostenlos.
+
+● ANTWORTEN IN DEINER SPRACHE
+Frag auf Deutsch, Englisch, Spanisch, Französisch, Italienisch, Portugiesisch, Japanisch, Koreanisch oder Chinesisch, und AISight sucht und antwortet in der Sprache deiner Frage.
+
+● WIRKLICH PRIVATE SUCHE
+Kein Konto. Kein Tracking. Keine Werbung. Keine Daten verkauft oder weitergegeben. Suchergebnisse kommen von einer privaten, quelloffenen Metasuchmaschine, die kein Profil von dir erstellt.
+
+● DEEP SEARCH
+Geh über oberflächliche Ergebnisse hinaus. Deep Search nutzt mehrere KI-Recherchedurchläufe, um bessere Antworten auf komplexe Fragen zu finden.
+
+● DEIN VERLAUF, DEIN GERÄT
+Alle bisherigen Suchen und Antworten werden sicher auf deinem Gerät gespeichert. Durchsuchen, stöbern, wiederfinden — nichts wird mit einem Server synchronisiert.
+
+● EIGENEN SERVER NUTZEN — UNBEGRENZT UND KOSTENLOS
+Verbinde deine eigene SearXNG-Instanz, und unbegrenzte Suchen sowie Deep Search werden automatisch freigeschaltet. Kein Kauf erforderlich. Ich will deine Daten nicht, und ich beweise es: Behalte deine Daten auf deinem eigenen Server, und du schuldest mir nichts.
+
+SO FUNKTIONIERT'S
+1. Du stellst eine Frage
+2. AISight durchsucht das Web privat über mehrere Suchmaschinen
+3. Die KI liest und verarbeitet die Ergebnisse — standardmäßig auf deinem Gerät
+4. Du erhältst eine belegte Antwort, die du überprüfen kannst
+
+Perfekt für: Recherche ohne Spuren zu hinterlassen, schnelle belegte Antworten beim Lernen, Produktvergleiche ohne danach mit Werbung verfolgt zu werden — oder einfach so suchen, wie es sein sollte: privat.
+
+EINFACH UND EHRLICH
+Gratis: 10 Suchen pro Tag auf meinem Server. Vollständige KI-Antworten und Quellenangaben. Eigener KI-Anbieter ohne Zusatzkosten.
+Pro (Einmalkauf): Unbegrenzte Suchen + Deep Search + Apple Private Cloud Compute (iOS 27 und macOS 27). Unterstütze einen Indie-Entwickler. Kein Abo.
+Eigener Server: Verbinde deinen eigenen Server → unbegrenzte Suchen und Deep Search, für immer kostenlos.
+
+Von einem unabhängigen Entwickler. Kein Risikokapital. Keine Vermarktung deiner Daten. Keine externen SDKs, Analyse-Tools oder Tracker. Eine native App, die deine Privatsphäre respektiert.
+
+AISight — Schlauer suchen. Privat bleiben.

@@ -1,0 +1,10 @@
+AISight 1.4의 새로운 기능
+
+• Apple Private Cloud Compute: 더욱 강력한 Apple 모델로 더 나은 답변을 제공하며, AISight Pro에 포함됩니다(iOS 27 및 macOS 27).
+• 나만의 AI 사용: OpenAI, Mistral, Claude, Ollama 또는 OpenAI 호환 제공업체를 무료로 연결하세요.
+• iOS 27에서 더 똑똑해진 기기 내 AI가 각 출처를 더 많이 읽습니다.
+• 질문한 언어로 답변합니다.
+• 주제에서 벗어나지 않는 더 정확한 검색.
+• 기록에서 각 질문에 답변한 모델을 확인할 수 있습니다.
+• 답변에 실패하면 한 번의 탭으로 다시 시도하세요.
+• 더 신뢰할 수 있는 Deep Search: 관련 없는 출처는 무시하고 사용자의 언어로 답변합니다.
