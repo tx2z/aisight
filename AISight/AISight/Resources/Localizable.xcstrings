@@ -1546,58 +1546,6 @@
         }
       }
     },
-    "AI runs entirely on your device." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "KI läuft vollständig auf deinem Gerät."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "La IA se ejecuta completamente en tu dispositivo."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "L'IA fonctionne entièrement sur votre appareil."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "L'IA funziona interamente sul tuo dispositivo."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "AIはすべてデバイス上で動作します。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "AI가 기기에서 완전히 실행됩니다."
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A IA é executada inteiramente no seu dispositivo."
-          }
-        },
-        "zh" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "AI完全在您的设备上运行。"
-          }
-        }
-      }
-    },
     "AI runs entirely on your device. Nothing is sent to external AI services." : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1751,58 +1699,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "AISight"
-          }
-        }
-      }
-    },
-    "AISight answers your questions using web sources and AI. By default, all AI processing happens privately on your device. You can choose Apple's Private Cloud Compute or your own AI provider in Settings. For best results, ask clear factual questions; complex research or real-time topics may be beyond what the AI can handle." : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "AISight beantwortet deine Fragen mit Webquellen und KI. Standardmäßig findet die gesamte KI-Verarbeitung privat auf deinem Gerät statt. In den Einstellungen kannst du Apples Private Cloud Compute oder einen eigenen KI-Anbieter wählen. Stelle für beste Ergebnisse klare Sachfragen; komplexe Recherchen oder Echtzeitthemen können die Fähigkeiten der KI übersteigen."
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "AISight responde a tus preguntas con fuentes web e IA. De forma predeterminada, todo el procesamiento de IA se realiza de forma privada en tu dispositivo. En Ajustes puedes elegir Private Cloud Compute de Apple o tu propio proveedor de IA. Para obtener mejores resultados, haz preguntas claras y factuales; las investigaciones complejas o los temas en tiempo real pueden superar lo que la IA puede manejar."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "AISight répond à tes questions à l'aide de sources web et de l'IA. Par défaut, tout le traitement IA se fait de façon privée sur ton appareil. Dans Réglages, tu peux choisir Private Cloud Compute d'Apple ou ton propre fournisseur d'IA. Pour de meilleurs résultats, pose des questions factuelles claires ; les recherches complexes ou les sujets en temps réel peuvent dépasser ce que l'IA sait traiter."
-          }
-        },
-        "it" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "AISight risponde alle tue domande usando fonti web e IA. Per impostazione predefinita, tutta l'elaborazione IA avviene in modo privato sul tuo dispositivo. In Impostazioni puoi scegliere Private Cloud Compute di Apple o un tuo provider IA. Per risultati migliori, poni domande chiare e fattuali; ricerche complesse o argomenti in tempo reale possono andare oltre ciò che l'IA sa gestire."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "AISightはWebの情報源とAIを使って質問に答えます。デフォルトでは、すべてのAI処理はデバイス上でプライベートに行われます。設定でAppleのPrivate Cloud Computeや自分のAIプロバイダを選ぶこともできます。より良い結果を得るには、明確で事実に基づいた質問をしてください。複雑な調査やリアルタイムの話題は、AIの処理能力を超える場合があります。"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "AISight는 웹 출처와 AI로 질문에 답해요. 기본적으로 모든 AI 처리는 기기에서 비공개로 이루어져요. 설정에서 Apple의 Private Cloud Compute나 직접 사용하는 AI 제공업체를 선택할 수 있어요. 더 나은 결과를 위해 명확하고 사실에 기반한 질문을 해 주세요. 복잡한 조사나 실시간 주제는 AI가 처리하기 어려울 수 있어요."
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "O AISight responde às suas perguntas usando fontes da web e IA. Por padrão, todo o processamento de IA acontece de forma privada no seu dispositivo. Em Ajustes, você pode escolher o Private Cloud Compute da Apple ou seu próprio provedor de IA. Para melhores resultados, faça perguntas factuais e claras; pesquisas complexas ou temas em tempo real podem estar além do que a IA consegue tratar."
-          }
-        },
-        "zh" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "AISight 使用网络来源和 AI 回答您的问题。默认情况下，所有 AI 处理都在您的设备上私密进行。您可以在设置中选择 Apple 的 Private Cloud Compute 或您自己的 AI 提供商。为获得最佳效果，请提出清晰的事实性问题；复杂研究或实时话题可能超出 AI 的处理能力。"
           }
         }
       }
@@ -15620,6 +15516,734 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "提出第一个问题后，搜索历史将显示在这里。"
+          }
+        }
+      }
+    },
+    "What's New" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neu in dieser Version"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Novedades"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nouveautés"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Novità"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新機能"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "새로운 기능"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Novidades"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新功能"
+          }
+        }
+      }
+    },
+    "Continue" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weiter"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuar"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuer"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continua"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "続ける"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "계속"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continuar"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "继续"
+          }
+        }
+      }
+    },
+    "A more powerful Apple model, available with AISight Pro." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein leistungsstärkeres Apple-Modell, verfügbar mit AISight Pro."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un modelo de Apple más potente, disponible con AISight Pro."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un modèle Apple plus puissant, disponible avec AISight Pro."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un modello Apple più potente, disponibile con AISight Pro."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "より高性能なAppleのモデル。AISight Proで利用できます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "더 강력한 Apple 모델이에요. AISight Pro에서 사용할 수 있어요."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Um modelo da Apple mais potente, disponível no AISight Pro."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更强大的 Apple 模型，可通过 AISight Pro 使用。"
+          }
+        }
+      }
+    },
+    "Your Own AI Provider" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dein eigener KI-Anbieter"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tu propio proveedor de IA"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ton propre fournisseur d'IA"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il tuo provider IA"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自分のAIプロバイダ"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "나만의 AI 제공업체"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seu próprio provedor de IA"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您自己的 AI 提供商"
+          }
+        }
+      }
+    },
+    "Use OpenAI, Mistral, Claude, Ollama and more, for free, in Settings → AI Model." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nutze OpenAI, Mistral, Claude, Ollama und mehr kostenlos unter Einstellungen → KI-Modell."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa OpenAI, Mistral, Claude, Ollama y más, gratis, en Ajustes → Modelo de IA."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utilise OpenAI, Mistral, Claude, Ollama et plus, gratuitement, dans Réglages → Modèle d'IA."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa OpenAI, Mistral, Claude, Ollama e altri, gratis, in Impostazioni → Modello IA."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定 → AIモデルで、OpenAI、Mistral、Claude、Ollamaなどを無料で使えます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "설정 → AI 모델에서 OpenAI, Mistral, Claude, Ollama 등을 무료로 사용하세요."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use OpenAI, Mistral, Claude, Ollama e mais, de graça, em Ajustes → Modelo de IA."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在设置 → AI 模型中免费使用 OpenAI、Mistral、Claude、Ollama 等。"
+          }
+        }
+      }
+    },
+    "Smarter On-Device AI" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Intelligentere KI auf dem Gerät"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IA en el dispositivo más inteligente"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IA sur l'appareil plus intelligente"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IA sul dispositivo più intelligente"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "より賢いデバイス上のAI"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "더 똑똑해진 온디바이스 AI"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IA no dispositivo mais inteligente"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更智能的设备端 AI"
+          }
+        }
+      }
+    },
+    "A more capable model reads more of each source." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein leistungsfähigeres Modell liest mehr von jeder Quelle."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un modelo más capaz lee más de cada fuente."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un modèle plus performant lit davantage de chaque source."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un modello più capace legge di più di ogni fonte."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "より高性能なモデルが、各ソースをより多く読み取ります。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "더 강력한 모델이 각 출처를 더 많이 읽어요."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Um modelo mais capaz lê mais de cada fonte."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更强大的模型可以读取每个来源的更多内容。"
+          }
+        }
+      }
+    },
+    "Model in History" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modell im Verlauf"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modelo en el historial"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modèle dans l'historique"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modello nella cronologia"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "履歴にモデルを表示"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기록에 모델 표시"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modelo no histórico"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "历史记录显示模型"
+          }
+        }
+      }
+    },
+    "See which model answered each question." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sieh, welches Modell jede Frage beantwortet hat."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consulta qué modelo respondió cada pregunta."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vois quel modèle a répondu à chaque question."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vedi quale modello ha risposto a ogni domanda."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "各質問にどのモデルが回答したかを確認できます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "각 질문에 어떤 모델이 답했는지 볼 수 있어요."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veja qual modelo respondeu a cada pergunta."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "查看每个问题是由哪个模型回答的。"
+          }
+        }
+      }
+    },
+    "Retry with one tap when an answer fails." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wiederhole mit einem Tippen, wenn eine Antwort fehlschlägt."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reintenta con un toque cuando una respuesta falla."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réessaie d'un seul toucher quand une réponse échoue."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Riprova con un tocco quando una risposta non riesce."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "回答に失敗したら、ワンタップでやり直せます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "답변에 실패하면 한 번의 탭으로 다시 시도하세요."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tente novamente com um toque quando uma resposta falhar."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "回答失败时，轻点一下即可重试。"
+          }
+        }
+      }
+    },
+    "On-device AI by default." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standardmäßig KI auf deinem Gerät."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IA en tu dispositivo por defecto."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IA sur l'appareil par défaut."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IA sul dispositivo per impostazione predefinita."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "デフォルトではデバイス上のAIを使用します。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "기본적으로 기기 내 AI를 사용해요."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "IA no dispositivo por padrão."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "默认使用设备端 AI。"
+          }
+        }
+      }
+    },
+    "Your Choice of AI" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deine Wahl der KI"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tú eliges la IA"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ton choix d'IA"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La tua scelta di IA"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AIを選べます"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AI 선택"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sua escolha de IA"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自由选择 AI"
+          }
+        }
+      }
+    },
+    "Use Apple's Private Cloud Compute or your own provider in Settings." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nutze in den Einstellungen Apples Private Cloud Compute oder deinen eigenen Anbieter."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa Private Cloud Compute de Apple o tu propio proveedor en Ajustes."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utilise Private Cloud Compute d'Apple ou ton propre fournisseur dans Réglages."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usa Private Cloud Compute di Apple o il tuo provider in Impostazioni."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定で、AppleのPrivate Cloud Computeまたは自分のプロバイダを選べます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "설정에서 Apple Private Cloud Compute 또는 나만의 제공업체를 선택하세요."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use o Private Cloud Compute da Apple ou seu próprio provedor em Ajustes."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "可在设置中选择 Apple Private Cloud Compute 或您自己的提供商。"
+          }
+        }
+      }
+    },
+    "AISight answers your questions using web sources and AI. By default, all AI processing happens privately on your device. For best results, ask clear factual questions; complex research or real-time topics may be beyond what the AI can handle." : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight beantwortet deine Fragen mit Webquellen und KI. Standardmäßig findet die gesamte KI-Verarbeitung privat auf deinem Gerät statt. Stelle für beste Ergebnisse klare Sachfragen; komplexe Recherchen oder Echtzeitthemen können die Fähigkeiten der KI übersteigen."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight responde a tus preguntas con fuentes web e IA. De forma predeterminada, todo el procesamiento de IA se realiza de forma privada en tu dispositivo. Para obtener mejores resultados, haz preguntas claras y factuales; las investigaciones complejas o los temas en tiempo real pueden superar lo que la IA puede manejar."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight répond à tes questions à l'aide de sources web et de l'IA. Par défaut, tout le traitement IA se fait de façon privée sur ton appareil. Pour de meilleurs résultats, pose des questions factuelles claires ; les recherches complexes ou les sujets en temps réel peuvent dépasser ce que l'IA sait traiter."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight risponde alle tue domande usando fonti web e IA. Per impostazione predefinita, tutta l'elaborazione IA avviene in modo privato sul tuo dispositivo. Per risultati migliori, poni domande chiare e fattuali; ricerche complesse o argomenti in tempo reale possono andare oltre ciò che l'IA sa gestire."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISightはWebの情報源とAIを使って質問に答えます。デフォルトでは、すべてのAI処理はデバイス上でプライベートに行われます。より良い結果を得るには、明確で事実に基づいた質問をしてください。複雑な調査やリアルタイムの話題は、AIの処理能力を超える場合があります。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight는 웹 출처와 AI로 질문에 답해요. 기본적으로 모든 AI 처리는 기기에서 비공개로 이루어져요. 더 나은 결과를 위해 명확하고 사실에 기반한 질문을 해 주세요. 복잡한 조사나 실시간 주제는 AI가 처리하기 어려울 수 있어요."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O AISight responde às suas perguntas usando fontes da web e IA. Por padrão, todo o processamento de IA acontece de forma privada no seu dispositivo. Para melhores resultados, faça perguntas factuais e claras; pesquisas complexas ou temas em tempo real podem estar além do que a IA consegue tratar."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AISight 使用网络来源和 AI 回答您的问题。默认情况下，所有 AI 处理都在您的设备上私密进行。为获得最佳效果，请提出清晰的事实性问题；复杂研究或实时话题可能超出 AI 的处理能力。"
           }
         }
       }

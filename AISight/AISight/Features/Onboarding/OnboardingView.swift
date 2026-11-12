@@ -21,7 +21,7 @@ struct OnboardingView: View {
             }
 
             VStack(spacing: 12) {
-                Text("AISight answers your questions using web sources and AI. By default, all AI processing happens privately on your device. You can choose Apple's Private Cloud Compute or your own AI provider in Settings. For best results, ask clear factual questions; complex research or real-time topics may be beyond what the AI can handle.")
+                Text("AISight answers your questions using web sources and AI. By default, all AI processing happens privately on your device. For best results, ask clear factual questions; complex research or real-time topics may be beyond what the AI can handle.")
                     .font(.callout)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
@@ -37,8 +37,16 @@ struct OnboardingView: View {
                 FeatureRow(
                     icon: "lock.shield.fill",
                     title: "Privacy First",
-                    description: "AI runs entirely on your device."
+                    description: "On-device AI by default."
                 )
+
+                if LanguageModelProvider.supportsCustomModels {
+                    FeatureRow(
+                        icon: "slider.horizontal.3",
+                        title: "Your Choice of AI",
+                        description: "Use Apple's Private Cloud Compute or your own provider in Settings."
+                    )
+                }
 
                 FeatureRow(
                     icon: "bolt.fill",
@@ -105,6 +113,9 @@ struct OnboardingView: View {
     private func completeOnboarding() {
         withAnimation {
             appState.hasSeenOnboarding = true
+            if LanguageModelProvider.supportsCustomModels {
+                appState.lastSeenWhatsNewVersion = AppState.currentWhatsNewVersion
+            }
         }
     }
 }

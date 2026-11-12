@@ -5,6 +5,7 @@ import SwiftData
 struct AISightApp: App {
     @State private var appState = AppState()
     @State private var storeManager = StoreManager()
+    @State private var showWhatsNew = false
 
     var body: some Scene {
         WindowGroup {
@@ -16,10 +17,25 @@ struct AISightApp: App {
                 }
             }
             .animation(.easeIn(duration: 0.3), value: appState.hasSeenOnboarding)
+            .onAppear {
+                showWhatsNew = AppState.shouldShowWhatsNew(
+                    hasSeenOnboarding: appState.hasSeenOnboarding,
+                    lastSeenVersion: appState.lastSeenWhatsNewVersion,
+                    supportsNewFeatures: LanguageModelProvider.supportsCustomModels
+                )
+            }
+            .sheet(isPresented: $showWhatsNew, onDismiss: {
+                appState.lastSeenWhatsNewVersion = AppState.currentWhatsNewVersion
+            }) {
+                WhatsNewView()
+            }
             .environment(appState)
             .environment(storeManager)
         }
         .modelContainer(for: QueryEntry.self)
+        #if os(macOS)
+        .defaultSize(width: 1100, height: 800)
+        #endif
     }
 }
 
