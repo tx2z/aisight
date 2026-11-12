@@ -5817,54 +5817,54 @@
         }
       }
     },
-    "Deep search analysis failed. Try again or disable Deep Search." : {
+    "Deep Search couldn't find relevant information in the sources. Try rephrasing your question." : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Die Tiefensuche-Analyse ist fehlgeschlagen. Versuche es erneut oder deaktiviere die Tiefensuche."
+            "value" : "Die Tiefensuche konnte in den Quellen keine relevanten Informationen finden. Versuche, deine Frage umzuformulieren."
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "El análisis de Búsqueda Profunda falló. Inténtalo de nuevo o desactiva la Búsqueda Profunda."
+            "value" : "La Búsqueda Profunda no encontró información relevante en las fuentes. Prueba a reformular tu pregunta."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "L'analyse approfondie a échoué. Réessaie ou désactive la recherche approfondie."
+            "value" : "La recherche approfondie n'a trouvé aucune information pertinente dans les sources. Essaie de reformuler ta question."
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "L'analisi approfondita non è riuscita. Riprova o disattiva la Ricerca approfondita."
+            "value" : "La Ricerca approfondita non ha trovato informazioni rilevanti nelle fonti. Prova a riformulare la domanda."
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "ディープサーチの分析に失敗しました。再試行するか、ディープサーチを無効にしてください。"
+            "value" : "ディープサーチでは、ソースから関連する情報が見つかりませんでした。質問の表現を変えてみてください。"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "정밀 검색 분석에 실패했어요. 다시 시도하거나 정밀 검색을 비활성화해 주세요."
+            "value" : "정밀 검색에서 소스의 관련 정보를 찾지 못했어요. 질문을 다르게 표현해 보세요."
           }
         },
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "A análise da Busca Profunda falhou. Tente novamente ou desative a Busca Profunda."
+            "value" : "A Busca Profunda não encontrou informações relevantes nas fontes. Tente reformular sua pergunta."
           }
         },
         "zh" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "深度搜索分析失败。请重试或关闭深度搜索。"
+            "value" : "深度搜索未能在来源中找到相关信息。请尝试换一种方式提问。"
           }
         }
       }

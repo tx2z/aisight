@@ -99,12 +99,13 @@ final class DeepSearchPipeline {
     ) async throws {
         var researcherSummaries: [String] = []
         let groupsToResearch = Array(searchOutput.queryGroups.prefix(AppConfig.deepSearchResearcherCount))
+        let researchedSources = DeepSearchSupport.researchedSources(in: groupsToResearch)
 
         for (index, group) in groupsToResearch.enumerated() {
             guard !Task.isCancelled else { return }
             currentStep = .researching(current: index + 1, total: groupsToResearch.count)
 
-            if let summary = try await runResearcher(query: query, searchGroup: group, model: model) {
+            if let summary = try await runResearcher(query: query, searchGroup: group, language: language, model: model) {
                 researcherSummaries.append(summary)
             }
         }
@@ -113,7 +114,7 @@ final class DeepSearchPipeline {
 
         if researcherSummaries.isEmpty {
             self.error = lastResearcherError
-                ?? .generationFailed(String(localized: "Deep search analysis failed. Try again or disable Deep Search."))
+                ?? .generationFailed(String(localized: "Deep Search couldn't find relevant information in the sources. Try rephrasing your question."))
             return
         }
 
@@ -121,7 +122,7 @@ final class DeepSearchPipeline {
         try await runSynthesizer(
             query: query,
             summaries: researcherSummaries,
-            sources: searchOutput.results,
+            sources: researchedSources,
             language: language,
             model: model
         )
@@ -129,7 +130,7 @@ final class DeepSearchPipeline {
 
     // MARK: - Researcher
 
-    private func runResearcher(query: String, searchGroup: SearchQueryGroup, model: ResolvedLanguageModel) async throws -> String? {
+    private func runResearcher(query: String, searchGroup: SearchQueryGroup, language: String, model: ResolvedLanguageModel) async throws -> String? {
         let dateString = AppConfig.todayISODate()
 
         // Build source text for this group
@@ -147,17 +148,20 @@ final class DeepSearchPipeline {
         }
 
         let instructions = """
-        You are a research analyst. Read these search results and write a detailed \
-        summary of everything relevant to the user's question. Today is \(dateString).
+        You are a research analyst. Read these search results and write a summary \
+        of what they say that is relevant to the user's question. Today is \(dateString).
 
         Rules:
-        - Extract ALL relevant information from the sources — be thorough, not minimal
-        - Include specific facts, numbers, names, dates, statistics, approval ratings, \
-        rankings, quotes, and any other concrete details
+        - Write the summary using only the sources that help answer the user's question. \
+        Never mention, describe or cite the other sources.
+        - Include specific facts, numbers, names, dates and other concrete details
         - Connect information across sources to build a complete picture
-        - When citing a source, write (via domain.com) using just the domain name
-        - Write 2-4 detailed paragraphs
-        - Always find something useful in the sources — they were selected for relevance
+        - When citing a source, always write (via domain.com) using just the domain name, \
+        for example (via example.com)
+        - Write at most 2 short paragraphs with only what answers the question
+        - If no source helps answer the question, your entire reply must be exactly \
+        \(DeepSearchSupport.noRelevantInfoMarker). Never write \(DeepSearchSupport.noRelevantInfoMarker) together with a summary.
+        \(SystemPrompt.languageInstruction(for: language))
         """
 
         let prompt = """
@@ -173,7 +177,7 @@ final class DeepSearchPipeline {
             let session = model.makeSession(instructions: instructions)
             let response = try await session.respond(to: prompt)
             let text = response.content.trimmingCharacters(in: .whitespacesAndNewlines)
-            return text.isEmpty ? nil : text
+            return text.isEmpty || DeepSearchSupport.isNoRelevantInfo(text) ? nil : text
         } catch {
             if model.kind == .appleCloud && LanguageModelProvider.isCloudFallbackError(error) { throw error }
             guard !Task.isCancelled else { return nil }
@@ -189,7 +193,7 @@ final class DeepSearchPipeline {
 
         // Build source list
         var sourceList = ""
-        for source in sources.prefix(AppConfig.maxResults) {
+        for source in sources {
             let domain = URL(string: source.url).flatMap { $0.host() }?
                 .replacing("www.", with: "") ?? source.url
             sourceList += "- \(source.title) (\(domain))\n"
@@ -206,17 +210,15 @@ final class DeepSearchPipeline {
         Below are research findings from multiple analysts who examined different \
         aspects of the user's question, along with the original sources they referenced.
 
-        Write a comprehensive, detailed answer that covers the question thoroughly.
+        Write a comprehensive answer that covers the question.
 
         ## Rules
-        - Be detailed and thorough — the user chose Deep Search because they want depth
+        - Be as detailed as the findings support, without filler or repetition
         - Use **bold** for key terms and bullet lists when comparing or listing items
         - When using information from a source, attribute it inline like (via nytimes.com) \
         or (via wikipedia.org) using just the domain name
         - Combine and connect findings from all researchers into a coherent narrative
-        - Include all specific facts, numbers, statistics, and details from the research
         - If researchers found different or conflicting information, present all viewpoints
-        - Write 3-5 paragraphs minimum — this is a deep research answer, not a quick summary
         - Write in clear, accessible language
         \(SystemPrompt.languageInstruction(for: language))
         ## Research Findings
@@ -237,5 +239,24 @@ final class DeepSearchPipeline {
                 break
             }
         }
+    }
+}
+
+/// Pure helpers for the Deep Search pipeline.
+nonisolated enum DeepSearchSupport {
+    static let noRelevantInfoMarker = "NO_RELEVANT_INFO"
+
+    /// True when the response is the marker alone, ignoring case, whitespace and surrounding punctuation.
+    static func isNoRelevantInfo(_ text: String) -> Bool {
+        let ignored = CharacterSet.whitespacesAndNewlines.union(.punctuationCharacters).union(.symbols)
+        return text.trimmingCharacters(in: ignored).caseInsensitiveCompare(noRelevantInfoMarker) == .orderedSame
+    }
+
+    /// Results the researchers read (each group capped at `AppConfig.maxResults`), deduplicated by URL in first-seen order.
+    static func researchedSources(in groups: [SearchQueryGroup]) -> [SearXNGResult] {
+        var seen = Set<String>()
+        return groups
+            .flatMap { $0.results.prefix(AppConfig.maxResults) }
+            .filter { seen.insert($0.url).inserted }
     }
 }
