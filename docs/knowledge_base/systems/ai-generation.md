@@ -140,7 +140,7 @@ For complex queries, AISight offers a multi-agent research pipeline that uses 5 
 ```
 User Query
     ↓
-Step 1: Reformulator (fresh session) → 3 keyword queries
+Step 1: Reformulator (fresh session) → original question + up to 2 keyword queries
     ↓
 Step 2: 3 parallel SearXNG searches → raw results per query
     ↓

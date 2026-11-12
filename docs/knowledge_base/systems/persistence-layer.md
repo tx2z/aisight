@@ -60,7 +60,7 @@ let history = store.fetchHistory()
 | Key | Type | Default | Purpose |
 |-----|------|---------|---------|
 | `"searxng_base_url"` | `String?` | `nil` → `AppConfig.defaultSearXNGBaseURL` | User's SearXNG instance URL |
-| `"search_language"` | `String?` | `nil` → `"en"` | Search language preference |
+| `"search_language"` | `String?` | `nil` → device language if supported, else `"en"` | Search language fallback when the question language is not detected |
 | `"hasSeenOnboarding"` | `Bool` | `false` | Whether onboarding has been completed |
 
 ### Why UserDefaults?

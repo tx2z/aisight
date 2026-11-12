@@ -20,10 +20,13 @@
 | `searchEngines` | `String` | `"google,bing,brave"` | Comma-separated SearXNG engine names |
 | `searchCategories` | `String` | `"general"` | SearXNG search category |
 | `maxResults` | `Int` | `5` | Max search results used as sources. Directly impacts context window budget (~400 tokens each). |
-| `defaultSearchLanguage` | `String` | `"en"` | Default search language. User can override via UserDefaults `"search_language"`. |
+| `supportedLanguages` | `[(code, englishName, nativeName)]` | 9 languages | The only language list (prompts and Settings pickers). `supportedLanguageCode(from:)` extracts a supported base code from an identifier. |
+| `effectiveSearchLanguage` | `String` | device language, else `"en"` | UserDefaults `"search_language"` when set, else the device language when supported, else `"en"`. |
+| `searchLanguage(detected:stored:preferredLanguages:)` | `String` | — | Pure resolution: detected question language, stored, device, `"en"`. |
+| `todayISODate()` / `currentYear()` | `String` / `Int` | — | Current date helpers for prompts and recency queries. |
 | `searchTimeoutSeconds` | `TimeInterval` | `10` | URLRequest timeout for SearXNG queries |
 
-**Used by:** `SearXNGService.search()`, `SearchViewModel.language`
+**Used by:** `SearXNGService.search()`, `SearchViewModel` (request language resolved once per search)
 
 ## Content Processing
 

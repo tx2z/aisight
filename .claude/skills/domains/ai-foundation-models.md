@@ -16,6 +16,7 @@ AISight uses Apple's FoundationModels framework (iOS 26+) for answer generation.
 | SystemPrompt.swift | `SystemPrompt` | `AISight/AISight/Core/AI/` |
 | DeepSearchPipeline.swift | `DeepSearchPipeline` | `AISight/AISight/Core/AI/` |
 | QueryReformulator.swift | `QueryReformulator` | `AISight/AISight/Core/AI/` |
+| QuestionLanguage.swift | `QuestionLanguage` | `AISight/AISight/Core/AI/` |
 
 ## AnswerSession
 
@@ -68,14 +69,19 @@ AnswerSession.availabilityStatus   // → SystemLanguageModel.Availability
 
 `@available(iOS 26.0, macOS 26.0, *)` `@MainActor`
 
-Generates 1-3 optimized keyword search queries from a conversational user question using a fresh LLM session. Short queries (≤3 words) pass through unchanged. Used by both normal search and deep search pipelines.
+Builds the search query list for a question: the original question first, then up to `keywordQueryCount` (2) keyword queries from a fresh on-device session. The pure logic (`instructions`, `buildQueries`, `cleanLine`, `needsCurrentYear`, `wordCount`) is `nonisolated`. Used by both normal search and deep search pipelines.
 
-### reformulate(_:) → [String]
+### reformulate(_:languageCode:) → [String]
 
-1. If query ≤3 words, return as-is
-2. Create fresh `LanguageModelSession` with query optimizer instructions
-3. Parse response into lines, return up to 3 queries
-4. Fall back to original query on any error
+1. `languageCode` is the language detected by `QuestionLanguage` (nil when unknown); it names the language in the prompt and selects the recency cues.
+2. Questions of ≤3 words skip the model (empty model output).
+3. Otherwise a fresh `LanguageModelSession` returns one query per line; lines are cleaned (list markers, bold, wrapping quotes), lines with a standalone number absent from the question are dropped, duplicates (case, accent, width, punctuation folded) are removed, then capped.
+4. A question with a recency cue in its language and no year gets the current year appended to the first model line, or to the question (without `?`/`¿`) when no line remains.
+5. Any model error falls back to the question alone (still with the recency year).
+
+## QuestionLanguage
+
+`nonisolated enum`. `detect(_:)` returns the base code of the dominant language via `NLLanguageRecognizer` when it is in `AppConfig.supportedLanguages` and its confidence is ≥ 0.8; `code(from:)` is the pure decision over the hypotheses. `SearchViewModel` detects once per request and resolves the request language with `AppConfig.searchLanguage(detected:stored:preferredLanguages:)`.
 
 ## DeepSearchPipeline
 
@@ -102,9 +108,9 @@ Multi-step research pipeline for complex queries. Uses 5 sequential LLM sessions
 | `.researching(current:total:)` | "Analyzing sources (N/M)..." |
 | `.synthesizing` | "Writing answer..." |
 
-### execute(query:language:searchService:) Flow
+### execute(query:detectedLanguage:language:searchService:canUseCloudModel:) Flow
 
-1. **Reformulate** — reuses `QueryReformulator` → 3 keyword queries
+1. **Reformulate** — reuses `QueryReformulator` → original question + up to 2 keyword queries
 2. **Search** — parallel `SearXNGService.multiSearch()` → merged results
 3. **Research** — 3 sequential researchers, each gets one query group's results. Fresh `LanguageModelSession` each. Outputs key findings summary.
 4. **Synthesize** — fresh session gets all researcher summaries + source list. Streams final cited answer.

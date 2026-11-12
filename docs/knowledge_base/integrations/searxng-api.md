@@ -17,7 +17,7 @@ GET {baseURL}/search
 | `q` | User's query (URL-encoded) | User input |
 | `format` | `json` | Hardcoded |
 | `engines` | `google,bing,brave` | `AppConfig.searchEngines` |
-| `language` | `en` (default) | UserDefaults or `AppConfig.defaultSearchLanguage` |
+| `language` | Detected question language, else `search_language` setting, else device language, else `en` | `AppConfig.searchLanguage(detected:stored:preferredLanguages:)` |
 | `categories` | `general` | `AppConfig.searchCategories` |
 
 **Timeout:** 10 seconds (`AppConfig.searchTimeoutSeconds`)

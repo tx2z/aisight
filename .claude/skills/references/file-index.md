@@ -7,7 +7,7 @@
 | File | Path | Key Types | Responsibility |
 |------|------|-----------|---------------|
 | AISightApp.swift | `AISight/AISight/App/` | `AISightApp` | @main entry point, SwiftData container setup, TabView (Search/History/Settings), StoreManager environment injection |
-| AppConfig.swift | `AISight/AISight/App/` | `AppConfig` (enum) | Centralized config: SearXNG URL, search params, RRF constant, snippet limits, tracking params |
+| AppConfig.swift | `AISight/AISight/App/` | `AppConfig` (enum) | Centralized config: SearXNG URL, search params, supported languages and language resolution, date helpers, RRF constant, snippet limits, tracking params |
 | AppState.swift | `AISight/AISight/App/` | `AppState` | @MainActor @Observable: server availability, onboarding flag, Apple Intelligence availability check |
 
 ## Core/AI
@@ -19,7 +19,8 @@
 | GenerationErrorMessages.swift | `AISight/AISight/Core/AI/` | `GenerationErrorMessages` | Localized error messages for generation errors |
 | SystemPrompt.swift | `AISight/AISight/Core/AI/` | `SystemPrompt` (enum) | Builds LLM instruction text with rules, direct answers, infoboxes, numbered sources, and user query |
 | DeepSearchPipeline.swift | `AISight/AISight/Core/AI/` | `DeepSearchPipeline` | @MainActor @Observable: multi-step research pipeline (reformulate → search → research → synthesize) |
-| QueryReformulator.swift | `AISight/AISight/Core/AI/` | `QueryReformulator` | Generates optimized keyword queries from conversational questions via LLM |
+| QueryReformulator.swift | `AISight/AISight/Core/AI/` | `QueryReformulator` | Original question plus up to 2 keyword queries from the on-device model; cleaning, dedupe, foreign-number filter, recency year |
+| QuestionLanguage.swift | `AISight/AISight/Core/AI/` | `QuestionLanguage` (nonisolated enum) | Per-question language detection (NLLanguageRecognizer, confidence ≥ 0.8, supported languages only) |
 
 ## Core/Search
 
@@ -98,14 +99,16 @@
 | File | Path | Key Types | Responsibility |
 |------|------|-----------|---------------|
 | TestFixtures.swift | `AISight/AISightTests/` | `TestFixtures` (enum) | Factory methods: `makeResult()`, `makeInfobox()`, `decodeSearXNGResponse()` |
-| SearXNGServiceTests.swift | `AISight/AISightTests/` | `SearXNGServiceTests` | URL normalization, RRF ranking, deduplication, edge cases (29 tests) |
+| SearXNGServiceTests.swift | `AISight/AISightTests/` | `SearXNGServiceTests` | URL normalization, RRF ranking, deduplication, edge cases (30 tests) |
 | SearXNGResultTests.swift | `AISight/AISightTests/` | `SearXNGResultTests` | Computed properties: engineCount, snippetLength, domain, id (11 tests) |
 | SearXNGResponseTests.swift | `AISight/AISightTests/` | `SearXNGResponseTests` | JSON decoding with snake_case mapping (3 tests) |
 | ContentFetcherTests.swift | `AISight/AISightTests/` | `ContentFetcherTests` | HTML stripping, entity decoding, truncation, fetch threshold (17 tests) |
 | SystemPromptTests.swift | `AISight/AISightTests/` | `SystemPromptTests` | Prompt building, language instruction parameterized tests (14 tests) |
 | CitationTextTests.swift | `AISight/AISightTests/` | `CitationTextTests` | Block parsing (headings, lists, code), attribution escaping (15 tests) |
 | StoreManagerTests.swift | `AISight/AISightTests/` | `StoreManagerTests` | Daily limit, custom server unlock/reset, invalid URL rejection (18 tests) |
-| AppConfigTests.swift | `AISight/AISightTests/` | `AppConfigTests` | Config constants, snippet threshold ordering, tracking params (7 tests) |
+| AppConfigTests.swift | `AISight/AISightTests/` | `AppConfigTests` | Config constants, snippet threshold ordering, tracking params, language resolution (21 tests) |
+| QueryReformulatorTests.swift | `AISight/AISightTests/` | `QueryReformulatorTests` | Output cleaning, dedupe, number filter, recency year, word count, prompt (36 tests) |
+| QuestionLanguageTests.swift | `AISight/AISightTests/` | `QuestionLanguageTests` | Confidence threshold decision, recognizer smoke tests (8 tests) |
 
 ## Important Notes
 

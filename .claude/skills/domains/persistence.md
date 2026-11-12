@@ -60,7 +60,7 @@ All operations catch errors and `print()` to console. **Non-blocking** — save 
 | Key | Type | Default | Used By |
 |-----|------|---------|---------|
 | `"searxng_base_url"` | `String?` | `nil` (falls back to `AppConfig.defaultSearXNGBaseURL`) | `AppConfig.effectiveSearXNGBaseURL` |
-| `"search_language"` | `String?` | `nil` (falls back to `AppConfig.defaultSearchLanguage`) | `SearchViewModel.language` |
+| `"search_language"` | `String?` | `nil` (falls back to the device language when supported, else `"en"`) | `AppConfig.effectiveSearchLanguage` |
 | `"hasSeenOnboarding"` | `Bool` | `false` | `AppState.hasSeenOnboarding` |
 
 ## Important Constraints

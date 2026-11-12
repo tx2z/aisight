@@ -57,9 +57,9 @@ struct AppConfig {
 | Setting | Stored In | Default |
 |---|---|---|
 | SearXNG Base URL | `UserSettings` model | `AppConfig.defaultSearXNGBaseURL` |
-| Search Language | `UserSettings` model | `AppConfig.searchLanguage` |
+| Search Language | UserDefaults `search_language` | `AppConfig.effectiveSearchLanguage` (device language when unset) |
 
-These are persisted in SwiftData and take precedence over `AppConfig` defaults when set.
+These take precedence over `AppConfig` defaults when set. The language of the question, when detected by `QuestionLanguage`, takes precedence over the Search Language setting.
 
 ---
 
