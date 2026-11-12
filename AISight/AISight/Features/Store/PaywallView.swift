@@ -41,13 +41,13 @@ struct PaywallView: View {
                     }
 
                     VStack(alignment: .leading, spacing: 16) {
-                        FeatureRow(icon: "magnifyingglass", title: String(localized: "Unlimited searches"))
-                        FeatureRow(icon: "sparkle.magnifyingglass", title: String(localized: "Deep Search"))
+                        PaywallFeatureRow(icon: "magnifyingglass", title: String(localized: "Unlimited searches"))
+                        PaywallFeatureRow(icon: "sparkle.magnifyingglass", title: String(localized: "Deep Search"))
                         if cloudStatus != .notOffered {
-                            FeatureRow(icon: "apple.intelligence", title: String(localized: "Apple Private Cloud Compute"))
+                            PaywallFeatureRow(icon: "apple.intelligence", title: String(localized: "Apple Private Cloud Compute"))
                         }
-                        FeatureRow(icon: "heart.fill", title: String(localized: "Support AISight development"))
-                        FeatureRow(icon: "gift", title: String(localized: "Future features included"))
+                        PaywallFeatureRow(icon: "heart.fill", title: String(localized: "Support AISight development"))
+                        PaywallFeatureRow(icon: "gift", title: String(localized: "Future features included"))
                     }
                     .padding()
                     .background(.quaternary.opacity(0.3), in: .rect(cornerRadius: 16))
@@ -126,7 +126,7 @@ struct PaywallView: View {
     #endif
 }
 
-private struct FeatureRow: View {
+private struct PaywallFeatureRow: View {
     let icon: String
     let title: String
 

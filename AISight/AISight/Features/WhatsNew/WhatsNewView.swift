@@ -50,17 +50,14 @@ struct WhatsNewView: View {
                 .frame(maxWidth: .infinity)
             }
 
-            Button {
-                dismiss()
-            } label: {
+            Button(action: dismiss.callAsFunction) {
                 Text("Continue")
                     .font(.headline)
-                    .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
-                    .padding(.vertical, 12)
-                    .background(.accent, in: .rect(cornerRadius: 10))
+                    .padding(.vertical, 6)
             }
-            .buttonStyle(.plain)
+            .buttonStyle(.borderedProminent)
+            .controlSize(.large)
             .padding(.horizontal, 24)
             .padding(.bottom, 24)
             .frame(maxWidth: 560)
@@ -68,35 +65,6 @@ struct WhatsNewView: View {
         #if os(macOS)
         .frame(minWidth: 520, minHeight: 620)
         #endif
-    }
-}
-
-private struct FeatureRow: View {
-    let icon: String
-    let title: LocalizedStringKey
-    let description: LocalizedStringKey
-
-    var body: some View {
-        HStack(alignment: .top, spacing: 16) {
-            Image(systemName: icon)
-                .font(.title2)
-                .foregroundStyle(.accent)
-                .frame(width: 32, height: 32)
-                .symbolRenderingMode(.hierarchical)
-                .accessibilityHidden(true)
-
-            VStack(alignment: .leading, spacing: 2) {
-                Text(title)
-                    .font(.headline)
-
-                Text(description)
-                    .font(.callout)
-                    .foregroundStyle(.secondary)
-            }
-
-            Spacer(minLength: 0)
-        }
-        .accessibilityElement(children: .combine)
     }
 }
 
